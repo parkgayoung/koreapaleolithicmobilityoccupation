@@ -1,7 +1,7 @@
 Package: koreapaleolithicmobilityoccupation
 Title: Change in Mobility and Site Occupation during the Late Pleistocene in Korea
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person(given = "Gayoung",
            family = "Park",
            role = c("aut", "cre"),
@@ -13,3 +13,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/parkgayoung/koreapaleolithicmobilityoccupation
 BugReports: https://github.com/parkgayoung/koreapaleolithicmobilityoccupation/issues
+Imports: bookdown
