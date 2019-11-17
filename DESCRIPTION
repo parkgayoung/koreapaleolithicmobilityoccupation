@@ -1,0 +1,13 @@
+Package: koreapaleolithicmobilityoccupation
+Title: Change in Mobility and Site Occupation during the Late Pleistocene in Korea
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Gayoung",
+           family = "Park",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+Description: This package includes data, code, figures, and manuscript for the paper
+License: MIT + file LICENSE
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
