@@ -1,7 +1,7 @@
 ---
 title: "Change in Mobility and Site Occupation during the Late Pleistocene in Korea"
 author:
-  - Author Gayoung Park
+  - Author Gayoung Park!
   - Author Ben Marwick
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
