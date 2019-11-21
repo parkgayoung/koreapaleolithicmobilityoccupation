@@ -13,4 +13,8 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/parkgayoung/koreapaleolithicmobilityoccupation
 BugReports: https://github.com/parkgayoung/koreapaleolithicmobilityoccupation/issues
-Imports: bookdown
+Imports: bookdown,
+    devtools (>= 2.2.1),
+    git2r (>= 0.26.1),
+    here (>= 0.1),
+    knitr (>= 1.26)
