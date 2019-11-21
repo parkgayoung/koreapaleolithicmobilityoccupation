@@ -3,6 +3,14 @@
 
 # koreapaleolithicmobilityoccupation
 
+<!-- badges: start -->
+
+[![Travis-CI Build
+Status](https://travis-ci.org/parkgayoung/koreapaleolithicmobilityoccupation.svg?branch=master)](https://travis-ci.org/parkgayoung/koreapaleolithicmobilityoccupation)
+[![Launch Rstudio
+Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parkgayoung/koreapaleolithicmobilityoccupation/master?urlpath=rstudio)
+<!-- badges: end -->
+
 This repository contains the data and code for our paper:
 
 > Authors, (YYYY). *Title of your paper goes here*. Name of journal/book
@@ -11,7 +19,7 @@ This repository contains the data and code for our paper:
 Our pre-print is online here:
 
 > Authors, (YYYY). *Title of your paper goes here*. Name of
-> journal/book, Accessed 18 Nov 2019. Online at
+> journal/book, Accessed 20 Nov 2019. Online at
 > <https://doi.org/xxx/xxx>
 
 ### How to cite
@@ -19,7 +27,7 @@ Our pre-print is online here:
 Please cite this compendium as:
 
 > Authors, (2019). *Compendium of R code and data for Title of your
-> paper goes here*. Accessed 18 Nov 2019. Online at
+> paper goes here*. Accessed 20 Nov 2019. Online at
 > <https://doi.org/xxx/xxx>
 
 ### How to download or install

@@ -17,6 +17,11 @@ Title <- "Title of your paper goes here"
 
 # koreapaleolithicmobilityoccupation
 
+<!-- badges: start -->
+[![Travis-CI Build Status](https://travis-ci.org/parkgayoung/koreapaleolithicmobilityoccupation.svg?branch=master)](https://travis-ci.org/parkgayoung/koreapaleolithicmobilityoccupation)
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parkgayoung/koreapaleolithicmobilityoccupation/master?urlpath=rstudio)
+<!-- badges: end -->
+
 This repository contains the data and code for our paper:
 
 > Authors, (YYYY). _`r Title`_. Name of journal/book <https://doi.org/xxx/xxx>
