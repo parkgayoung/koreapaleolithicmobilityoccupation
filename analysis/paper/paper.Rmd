@@ -34,6 +34,26 @@ knitr::opts_chunk$set(
 #library(koreapaleolithicmobilityoccupation)# Or use devtools::load_all('.', quiet = T) if your code is in script files, rather than as functions in the `/R` diretory
 ```
 
+```{r setup, include=FALSE}
+suppressMessages(library(tidyverse))
+library(glue)
+library(ggrepel)
+
+# data from PhD data sheet, not KAS sheet.
+mydata <- read.csv("~/koreapaleolithicmobilityoccupation/General_info.csv")
+
+# raw material data from KAS data sheet.
+kasr <- read.csv("~/koreapaleolithicmobilityoccupation/Rawmaterial_info.csv")
+
+# assemblage composition data from KAS data sheet.
+kasa <- read.csv("~/koreapaleolithicmobilityoccupation/Assemblage_info.csv")
+
+#volume of the cultural layer from KAS data sheet.
+kasv <- read.csv("~/koreapaleolithicmobilityoccupation/Dating_info.csv")
+
+dates <- read.csv("~/koreapaleolithicmobilityoccupation/Radiocarbon dates.csv")
+
+```
 # Introduction
 
 Here is a citation
@@ -70,6 +90,95 @@ Sites and dates
 
 The data analyzed in this paper are gathered from published excavation reports of 22 Paleolithic sites (33 cultural layers) in South Korea dating from 49k BP to 24k BP. After the first excavation at Jeongokri site in the late 1970s, more than 200 Paleolithic sites are discovered in Korea. Among them, we  chose 22 sites based on the existence of absolute dates that match the targeting timeline and officially published excavation report. We include sites dated before and after the transition period (40-35ka) to analyze the process of technological transition. 
 
+```{r}
+#I couldn't find the most recent map that you made. I assume that you don't share the code, but showed me the image so that I just copied it for SAA poster
+#This is what I made first before you made the recent one
+
+korean_archaeological_sites <- readxl::read_excel("~/koreapaleolithicmobilityoccupation/korean-archaeologica-sites.xlsx")
+
+library(tidyverse)
+
+coords <- 
+	korean_archaeological_sites %>% 
+	select(site_name, 
+				 east_longitude, 
+				 north_latitude) %>% 
+	separate(east_longitude, 
+					 into = c("e_deg", "e_min", "e_sec"),
+					 sep =  "°|\\′") %>% 
+	mutate(e_min = str_squish(e_min),
+				 e_sec = str_squish(e_sec)) %>% 
+	separate(e_min, 
+					 into = c("e_min", "e_sec1"), 
+					 sep = "'") %>% 
+	mutate_at(vars(e_deg, e_min, e_sec, e_sec1), parse_number) %>% 
+	mutate(e_sec = ifelse(is.na(e_sec), e_sec1, e_sec)) %>% 
+	select(-e_sec1) %>% 
+	separate(north_latitude, 
+					 into = c("n_deg", "n_min", "n_sec"),
+					 sep =  "°|\\′") %>% 
+	mutate(n_min = str_squish(n_min),
+				 n_sec = str_squish(n_sec)) %>% 
+	separate(n_min, 
+					 into = c("n_min", "n_sec1"), 
+					 sep = "'") %>% 
+	mutate_at(vars(n_deg, n_min, n_sec, n_sec1), parse_number) %>% 
+	mutate_if(is.numeric, list(~ifelse(is.na(.), 0, .))) %>% 
+	mutate(n_sec = ifelse(is.na(n_sec), n_sec1, n_sec)) %>% 
+	select(-n_sec1) %>% 
+	mutate(lat_dms =  str_glue('{n_deg} {n_min} {n_sec}'),
+				 long_dms = str_glue('{e_deg} {e_min} {e_sec}')) %>% 
+	# convert from decimal minutes to decimal degrees
+	mutate(lat_dd = measurements::conv_unit(lat_dms, 
+																			 from = 'deg_min_sec', 
+																			 to = 'dec_deg')) %>% 
+	mutate(long_dd = measurements::conv_unit(long_dms, 
+																				from = 'deg_min_sec', 
+																				to = 'dec_deg')) %>% 
+	mutate_at(vars(lat_dd, long_dd), as.numeric)
+
+# quick map
+
+
+library(ggmap)
+
+# bounding box
+# 39.534214, 124.159154 ... 39.657415, 129.138604
+# 33.694662, 123.491142 ... 34.338454, 130.569658
+
+map <- 
+	get_stamenmap(bbox = c(left = 123, 
+												 bottom = 33, 
+												 right = 	131, 
+												 top = 39),
+								zoom = 10)
+
+library(ggrepel)
+ggmap(map)  + geom_point(data = coords,
+						 aes(long_dd ,
+						 		lat_dd), 
+						 colour = "red",
+						 size = 2) +
+	geom_label_repel(data = coords,
+									aes(long_dd ,
+											lat_dd,
+											label = site_name),
+									size = 2) 
+
+
+
+# pick points off this map with korea_boundary <- locator()
+
+korea_bb <-  
+	data.frame(x = c(125, 
+						       130, 
+						       130, 
+						       125), 
+			 y = c(38, 
+			 			 38, 
+			 			34, 
+			 			34))
+```
 
 Assemblages
 The research analyzes total 33 assemblages and they consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc, 
@@ -91,26 +200,152 @@ Umap: <- depending on whether we are gonna add umap (or PCA) analysis result
 
 # Results
 
-```{r get-data, eval = FALSE}
-# Note the path that we need to use to access our data files when rendering this document
-my_data <- read.csv(here::here('analysis', 'data', 'raw_data', 'my_csv_file.csv'))
-```
-
 Elevation of occupied sites
 The result of the elevation change of 33 cultural layers from 22 sites corresponding to the targeting period shows that there is no remarkable change can be seen in site elevation during the transition (Fig.1: with no sp site distinction). We applied the existence of the stemmed points to the elevation to understand the benefit of having the points in the toolkit and the result indicates that the hunter-gathering groups who carried the technology could occupy higher altitude while the groups with no points stayed at the lower altitude (Fig. 2: distinction between sites with no stemmed points and with stemmed points). 
+
+```{r}
+#site elevation
+mydata_ages <- 
+  mydata %>% 
+  separate(C14.BP., into = c('age', 'error'),
+          sep = "±") %>% 
+  mutate(age_ka = parse_number(age) / 1000,
+         error = parse_number(error)) %>% 
+  mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
+
+ggplot(mydata_ages, 
+       aes(x = age_ka,
+           y = altitude.m._of_main_layer,
+       color = as.factor(has_sp))) +
+  geom_point(size = 3) +
+  xlab("Age of occupation (ka)") +
+  ylab("Elevation above sea level (m)") +
+  geom_smooth(se = FALSE) +
+  scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
+  theme_minimal(base_size = 16) 
+```
 
 Artifact density and Composition of toolkit
 During the transitional period, the artifact volumetric density was relatively small but it becomes higher around 30 ka (Fig. 3: the transition of artifact volumetric density). When it comes to the composition of the toolkit, it is hardly recognized any pattern of changes over time (Fig. 4: the composition of toolkit). Both results with no information about raw material availability near the 22 sites, we assume that the artifact density might relate to the duration of site occupation or group size rather than portability and efficiency of tools. In other words, the small artifact density might indicate shorter duration or smaller group size. Likewise, the composition of toolkit might represent the characteristics or purpose of each site, rather than showing general pattern of chronological change.    
 
+
+
+```{r}
+#Volume and artefact counts to get density over time. 
+kasv_tidy <- 
+kasv %>% 
+  t %>% 
+  as_tibble() %>% 
+  setNames(as.character(.[1,])) %>% 
+  .[-1,] %>% 
+  mutate_all(parse_number) %>% 
+  mutate(artefact_density = total_artifacts / volume,
+         sites = names(kasv)[-1])
+
+
+ggplot(kasv_tidy,
+       aes(date_age,
+           artefact_density)) +
+  geom_point(aes(size = total_artifacts)) +
+  geom_text_repel(aes(label = sites),
+                  nudge_x = 0.25, 
+                  nudge_y = 0.25) +
+  ylab("Artifact density") +
+  xlab("Age of assemblage (ka)") +
+  scale_size_continuous(name = "Total number\nof artifacts")  +
+  theme_minimal(base_size = 16)
+
+```
+
 Artifact density and retouch <- maybe we need to add the result of retouch, separately 
 We use the combination of the artifact density and retouch frequency as a proxy to identify the mobility and residential pattern of hunter-gatherers. The result shows that there is no clear pattern during the transition period and then it became more expedient at the end of the transition (Fig 5. The combination of artifact density and retouch). That is to say, the hunter-gatherer became either more residential or the majority of the site that this research studies were used as base camps or residence rather than shortly occupied camps for certain tasks. 
+
 
 Summed probability distribution
 To understand the population change during the appearance of stemmed points, we analyzed the summed probability distributions of 171 radiocarbon dates from 33 cultural layers and it indicates that there is a higher density of radiocarbon dates from around 34 ka. We could cautiously assume that the population flux might relate to the technological innovation. 
 
+```{r}
+dates_clean <- 
+  dates %>% 
+  mutate(age = parse_number(as.character(age)),
+         error = parse_number(as.character(error))) %>% 
+  filter(age < 50000, method=='AMS')
+
+# devtools::install_github('ahb108/rcarbon')
+library(rcarbon)
+dates_calibrated <- 
+  calibrate(x=dates_clean$age,
+               errors=dates_clean$error,
+               calCurves='intcal13')
+
+dates_calibrated_spd <-  spd(dates_calibrated, timeRange = c( 45000, 1000))
+plot(dates_calibrated_spd)
+
+# Testing Observed SPDs against theoretical models
+## recalibrate dates without normalisation to avoid artificial peaks
+spd_dates<- calibrate(x=dates_clean$age,errors=dates_clean$error,normalised=FALSE,verbose=F) 
+
+spd_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000),model='exponential',nsim=200,ncores=3)
+
+summary(spd_test)
+plot(spd_test)
+```
+
+
 Raw materials
 During the transition period, the use of shale and rhyolite greatly increased. These two raw materials are suitable to make elongate blades and stemmed points. It is considered that he hunter-gatherer started to use raw materials selectively depending on the type of tool, especially the newly produced stemmed points. Raw material availability is a crucial factor in determining the trip and direction for hunter-gatherers [@davies2018modeling]. Therefore the adoption of new raw material along with the emergence of new type of tools demonstrates a significant innovation in not just technology but also cognitive system.    
 
+```{r}
+#raw material information
+kasr_long1 <- 
+  kasr %>% 
+  gather(site, 
+         count, 
+         -X) %>% 
+  group_by(site) %>% 
+  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
+         total = sum(count, na.rm = TRUE)) %>% 
+  filter(!is.na(percentage)) %>% 
+  mutate(raw_material = ifelse(percentage >= 10, as.character(X), "other")) %>% 
+  mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>% 
+  select(-X)
+
+
+  # if percentage is <10%, call it 'other'
+kasr_long2 <- 
+  kasr_long1 %>% 
+  group_by(site, raw_material) %>% 
+  summarise(percentage = sum(percentage)) %>% 
+  ungroup() %>% 
+  left_join(kasr_long1 %>% 
+              select(site, raw_material, total),
+            by = c('site', "raw_material")) %>% 
+  distinct(.keep_all = TRUE) %>% 
+
+  # join to get ages of the sites
+  left_join(mydata_ages, 
+            by = c('site' = 'site_name')) %>% 
+  mutate(age_ka = jitter(age_ka),
+         age_bin  = ntile(age_ka, 5)) %>% 
+  arrange(age_ka) %>% 
+  filter(!is.na(age_ka)) %>% 
+    mutate(axis_label = glue('{site} ({round(age_ka,1)} ka, n = {total})')) 
+
+
+ggplot(kasr_long2, 
+       aes(
+           reorder(axis_label, -age_ka),
+           percentage,
+           fill = raw_material)) +
+  geom_col(position = "fill") +
+  xlab("Assemblage (youngest at the top)") +
+  ylab("Percentage") +
+  scale_fill_viridis_d(name = "Raw material type",
+                       option = "C") +
+  coord_flip() +
+  theme_minimal(base_size = 12) 
+
+```
 Umap
 
 
@@ -130,6 +365,280 @@ To monitor mobility strategies and site occupation pattern, we examined the arti
 
 This research aims to understand how the appearance of new technology affected hunter-gatherers in Korea and answer the three questions, how did the introduction of the new tools change the way people used the landscape, the way people used sites, and the population. To answer the question, we use HBE as a theoretical backgrounds and analyze stone artifacts from 22 sites dated before and after 40-35ka. The new technology is represented the stemmed points and other blade industry made out of new raw materials such as shale and rhyolite. We could clearly see that hunter-gatherers chose these materials particularly to make the newly added stone artifacts to the toolkit. The results also show that the new technology enables the occupation of marginal environments at higher elevations. Besides of technological change, we found that there are more varieties in the type of sites or groups during the transition period, both curated and expedient and then it becomes more expedient. In other words, the foragers became less mobile and prone to stay in one place after the transition ended. We expected to see any pattern that would explain the relationship between environmental change and the emergence of the new technology. However, there was not enough paleoenvironmental information as well as data to apply to verify the model. Therefore we focus on Radiocarbon dates as a proxy of population change based on the premise that population driven pressure could trigger people to invent a new tool. The results show that population dynamics might have had more impact on changes in stone artifact technology. 
 
+
+------------NOT WORKING-------------
+
+```{r}
+#the artifact composition of each sites to figure out what people did as they were occupying the sites.
+kasa_long <-
+  kasa %>%
+  gather(site, 
+         count, 
+         -X) %>% 
+  filter(!is.na(count)) %>% 
+  group_by(site) %>% 
+  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
+         total = sum(count, na.rm = TRUE)) %>% 
+  filter(!is.na(percentage)) %>% 
+  # if percentage is <10%, call it 'other'
+  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
+                                'stemmed_point', 
+                                ifelse(percentage >= 10, 
+                                as.character(X), "other_tools"))) %>% 
+  mutate(axis_label = glue('{site}\n(n = {total})'))  %>% 
+  # join to get ages of the sites
+  left_join(mydata_ages, 
+            by = c('site' = 'site_name')) %>% 
+  arrange(age_ka) %>% 
+   mutate(age_ka = jitter(age_ka))
+
+ggplot(kasa_long, 
+       aes(age_ka, 
+           percentage,
+           fill = artefact_type)) +
+  geom_col() +
+  ylab("Percentage") +
+  xlab("Age of assemblage (ka)") +
+  labs(fill="Artifact type")+
+  theme_minimal(base_size = 16) 
+
+```
+
+Get the lithic data for some sites:
+
+```{r}
+# we'll use googlesheets package to get the data more efficiently
+library(googlesheets)
+
+# here is the key to the google sheet: this ggole sheet is same as kasa. so I could do kas_sites <- kasa 
+kas_sites <- gs_key("14G0Mp-YSsKBOBPF1Z1zPWQbZQ-sjJSWLetDIQSlbsjw")  
+
+# get the tab names from this sheet: But that I couldn't use gs_ws_ls
+kas_sites_names <- gs_ws_ls(kas_sites)
+
+# sheets we need here
+sheets <- c( "general_info",    "assemblage_info" )
+
+# get the data from the tabs in this sheet!
+kas_sites_sheets <- 
+  map(sheets, ~kas_sites %>% gs_read_listfeed(ws = .x))
+```
+
+Compute artefact volumetric density by frequency of retouched piece (log scale), following Julien Riel-Salvatore and C. Michael Barton in  https://www.jstor.org/stable/4128419
+
+```{r}
+# put the site names on this list of data frames
+site_names <-  kas_sites_sheets[[1]] %>%  
+  select(-X1) %>% 
+  names()
+
+# density of arefacts at each site
+artefact_density <- 
+kas_sites_sheets[[1]] %>% 
+  t %>% 
+  as.data.frame() %>% 
+ rownames_to_column() %>% 
+  mutate_all(as.character) 
+
+names(artefact_density) <- as.character(as.vector(artefact_density[1, ]))
+artefact_density <- artefact_density[-1,]
+
+artefact_density <- 
+artefact_density %>% 
+  mutate(density = as.numeric(total_artifacts) / as.numeric(volume)) %>% 
+   mutate_at(2:ncol(.), as.numeric)  
+
+# frequency of retouched artefacts
+retouched_artefacts <- 
+ kas_sites_sheets[[2]] %>% 
+   filter(!X1 %in% c("debris", 
+                     "unkown", 
+                     "pebble",  
+                     "metate", 
+                     "flake",
+                     "unfinished",
+                     "ground",
+                     "blank"
+                     )) %>% 
+    t %>% 
+  as.data.frame() %>% 
+ rownames_to_column() %>% 
+  mutate_all(as.character) 
+
+names(retouched_artefacts) <- as.character(as.vector(retouched_artefacts[1, ]))
+retouched_artefacts <- retouched_artefacts[-1,]
+
+retouched_artefacts <- 
+retouched_artefacts %>% 
+  mutate_at(2:ncol(.), as.numeric)  %>% 
+  mutate(total_retouched = rowSums(.[,-1], na.rm = TRUE))
+
+
+# join together the site age, artefact density df with the retouched artefacts df
+kas_density_retouch_ages <- 
+artefact_density %>% 
+  left_join(retouched_artefacts) %>% 
+  mutate(proportion_retouched = total_retouched / total_artifacts) %>% 
+  mutate(sites = X1)
+
+ 
+# compute correlation
+kas_sites_retouch_density_corr <- 
+cor.test(kas_density_retouch_ages$proportion_retouched,
+         kas_density_retouch_ages$density)
+
+r_value <- unname(kas_sites_retouch_density_corr$estimate)
+
+```
+
+
+```{r}
+size <-  8
+
+
+ggplot(kas_density_retouch_ages,
+       aes(density,
+           proportion_retouched
+           )) +
+  geom_point(aes(colour = date_age / 1000,
+                 size = total_artifacts,
+                 shape = is.na(stemmed_point))) +
+ # geom_text_repel(aes(label = sites),
+ #                 nudge_x = 0.075, 
+ #                 nudge_y = -0.075,
+ #                 size = 5) +
+  geom_smooth(alpha = 0.2) +
+  scale_y_log10(limits = c(0.001, 1),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  scale_x_log10(limits = c(0.001, 10),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  theme_minimal(base_size = 12) +
+  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
+  xlab("Artifact volumetric density") +
+  ylab("Proportion of retouched pieces") +
+  annotate("text",
+           x = 0.005,
+           y = 0.7,
+           label = "Curated",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 5,
+           y = 0.01,
+           label = "Expedient",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 0.01,
+           y = 0.01,
+           label = glue('r = {round(r_value, 3)}'),
+           size = size - 2,
+           colour = "grey50")
+
+```
+
+```{r}
+# I wanna make simple table for artifact density and frequency of retouched pieces again. Because the complex table above is hard to make comments..
+
+
+
+ggplot(kas_density_retouch_ages,
+       aes(density,
+           proportion_retouched
+           )) +
+  geom_point(aes(colour = date_age / 1000,
+                 size = 7)) +
+ # geom_text_repel(aes(label = sites),
+ #                 nudge_x = 0.075, 
+ #                 nudge_y = -0.075,
+ #                 size = 5) +
+  geom_smooth(alpha = 0.2) +
+  scale_y_log10(limits = c(0.001, 1),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  scale_x_log10(limits = c(0.001, 10),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  theme_minimal(base_size = 12) +
+  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
+  xlab("Artifact volumetric density") +
+  ylab("Proportion of retouched pieces") +
+  annotate("text",
+           x = 0.005,
+           y = 0.7,
+           label = "Curated",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 5,
+           y = 0.01,
+           label = "Expedient",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 0.01,
+           y = 0.01,
+           label = glue('r = {round(r_value, 3)}'),
+           size = size - 2,
+           colour = "grey50")
+
+
+
+```
+
+
+Artefact volumetric density and frequency of retouched pieces can be proxies to identify the characteristics of the hunter-gatherers who carried that stone tools whether they are residentially mobile or logistically orgnized foragers based on the premise that the relationship between lithic assemblage composition and land-use strategy represent an expression of economizing behavior. 
+
+The artefact volumetric density is defined as the total number of artefacts per cubic meter of excavated sediment, and served as a proxy for accumulation ratio of artefacts. the relative frequency of retouched pieces is the count of retouched flake tools devided by the total number of artifacts. 
+
+The two ends of the curated-expedient show that residential to logistical mobility. Expedient assemblages can be depicted as "base camps" or "residences", while curated ones represent either residential mobility, where the central locus of group changes frequently, or certain task groups from a central residential site. 
+
+The plot show that younger sites are likely to be used as base camp than older site, which means that people tended to stay longer at one place after around 40-35ka. 
+
+(Riel-Salvatore and Barton 2004)
+
+
+```{r}
+# dating
+library(rcarbon)
+
+# I'm working through https://cran.r-project.org/web/packages/rcarbon/vignettes/rcarbon.html
+
+kas_ages <- 
+kas_density_retouch_ages %>% 
+  select(sites, date_age, date_error) %>% 
+  mutate(sites = str_remove_all(sites, "_"))
+
+kas_caldates <- 
+  calibrate(x = kas_ages$date_age,
+            errors = kas_ages$date_error,
+            calCurves='intcal13',
+            ncores=3) #running calibration over 3 cores
+
+kas_spd = spd(kas_caldates, timeRange = c(50000,25000)) 
+plot(kas_spd)
+
+binsense(x=kas_caldates,
+         y=kas_ages$sites,
+         h=seq(0,5000,100),
+         timeRange=c(50000,25000)) 
+
+ggplot(kas_spd$grid,
+       aes(calBP,
+           PrDens)) +
+  geom_line() +
+  scale_y_log10(name = "Summed probability")
+
+
+# test how the SPD fits to an exponential growth model:
+expnull <- modelTest(kas_caldates, 
+                     errors=kas_ages$date_error, 
+                     nsim=100, 
+                     timeRange=c(50000,25000),
+                     model="uniform",
+                     runm=10)
+
+plot(expnull)
+
+```
 
 # Acknowledgements
 
