@@ -38,20 +38,21 @@ knitr::opts_chunk$set(
 suppressMessages(library(tidyverse))
 library(glue)
 library(ggrepel)
+library(here)
 
 # data from PhD data sheet, not KAS sheet.
-mydata <- read.csv("~/koreapaleolithicmobilityoccupation/General_info.csv")
+mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
 
 # raw material data from KAS data sheet.
-kasr <- read.csv("~/koreapaleolithicmobilityoccupation/Rawmaterial_info.csv")
+kasr <- read.csv(here("analysis/data/raw_data/Rawmaterial_info.csv"))
 
 # assemblage composition data from KAS data sheet.
-kasa <- read.csv("~/koreapaleolithicmobilityoccupation/Assemblage_info.csv")
+kasa <- read.csv(here("analysis/data/raw_data/Assemblage_info.csv"))
 
 #volume of the cultural layer from KAS data sheet.
-kasv <- read.csv("~/koreapaleolithicmobilityoccupation/Dating_info.csv")
+kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 
-dates <- read.csv("~/koreapaleolithicmobilityoccupation/Radiocarbon dates.csv")
+dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
 
 ```
 # Introduction
