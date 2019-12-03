@@ -40,6 +40,8 @@ library(glue)
 library(ggrepel)
 library(here)
 
+korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
+
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
 
@@ -94,11 +96,7 @@ Sites and dates
 The data analyzed in this paper are gathered from published excavation reports of 22 Paleolithic sites (33 cultural layers) in South Korea dating from 49k BP to 24k BP. After the first excavation at Jeongokri site in the late 1970s, more than 200 Paleolithic sites are discovered in Korea. Among them, we  chose 22 sites based on the existence of absolute dates that span our period of interest. We include sites dated before and after the transition period (40-35 ka) to analyze the process of technological transition. 
 
 ```{r cache = TRUE, fig.cap="Map of sites discussed in the text."}
-library(here)
 
-korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
-
-library(tidyverse)
 
 coords <- 
 	korean_archaeological_sites %>% 
@@ -212,20 +210,17 @@ The result of the elevation change of 33 cultural layers from 22 sites correspon
 ```{r}
 # site elevation
 
-mydata <- korean_archaeological_sites
-
 mydata_ages <- 
   mydata %>% 
-  separate(`C14(BP)`, into = c('age', 'error'),
+  separate(C14.BP., into = c('age', 'error'),
           sep = "±") %>% 
   mutate(age_ka = parse_number(age) / 1000,
-         error = parse_number(error),
-         `altitude(m)_of_main_layer` = parse_number(`altitude(m)_of_main_layer`)) %>% 
-  mutate(has_sp = ifelse(!is.na(`SP#`), "yes", "no"))
+         error = parse_number(error)) %>% 
+  mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
 
 ggplot(mydata_ages, 
        aes(x = age_ka,
-           y = `altitude(m)_of_main_layer`,
+           y = altitude.m._of_main_layer,
        color = as.factor(has_sp))) +
   geom_point(size = 3) +
   xlab("Age of occupation (ka)") +
@@ -234,7 +229,6 @@ ggplot(mydata_ages,
   scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
   theme_minimal(base_size = 16) 
 
-ggsave(here("analysis/figures/site-elevation-by-age.png"))
 ```
 
 Artifact density and Composition of toolkit
@@ -275,9 +269,9 @@ We use the combination of the artifact density and retouch frequency as a proxy 
 
 Summed probability distribution
 
-To understand the population change during the appearance of stemmed points, we analyzed the summed probability distributions of 171 radiocarbon dates from 33 cultural layers and it indicates that there is a higher density of radiocarbon dates from around 34 ka. We could cautiously assume that the population flux might relate to the technological innovation. 
+To understand the population change during the appearance of stemmed points, we analyzed the summed probability distributions of 171 radiocarbon dates from 33 cultural layers to get a rough image of population dynamics at the sites. The result indicates that there is a higher density of radiocarbon dates from around 34 ka. We could cautiously assume that the population flux might relate to the technological innovation. 
 
-```{r}
+```{r cache=TRUE}
 dates_clean <- 
   dates %>% 
   mutate(age = parse_number(as.character(age)),
@@ -401,12 +395,12 @@ kasa_long <-
                                 'stemmed_point', 
                                 ifelse(percentage >= 10, 
                                 as.character(X), "other_tools"))) %>% 
-  mutate(axis_label = glue('{site}\n(n = {total})'))  %>% 
+  mutate(axis_label = as.character(glue('{site}\n(n = {total})')))  %>% 
   # join to get ages of the sites
   left_join(mydata_ages, 
             by = c('site' = 'site_name')) %>% 
-  arrange(age_ka) %>% 
-   mutate(age_ka = jitter(age_ka))
+  arrange(age_ka) #%>% 
+  # mutate(age_ka = jitter(age_ka))
 
 ggplot(kasa_long, 
        aes(age_ka, 
