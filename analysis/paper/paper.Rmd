@@ -42,6 +42,7 @@ library(here)
 
 korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
 
+
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
 
@@ -261,8 +262,106 @@ ggplot(kasv_tidy,
   scale_size_continuous(name = "Total number\nof artifacts")  +
   theme_minimal(base_size = 16)
 
+# without site name
+ggplot(kasv_tidy,
+       aes(date_age / 1000,
+           artefact_density)) +
+  geom_point(aes(size = total_artifacts)) +
+  ylab("Artefact density") +
+  xlab("Age of assemblage (ka)") + 
+  scale_size_continuous(name = "Total number\nof artifacts")  +
+  theme_minimal(base_size = 16)
+ggsave("figures/age-by-density.png")
+
+
 ```
 
+```{r}
+#the artifact composition of each sites to figure out what people did as they were occupying the sites.
+kasa_long <-
+  kasa %>%
+  gather(site, 
+         count, 
+         -X) %>% 
+  filter(!is.na(count)) %>% 
+  group_by(site) %>% 
+  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
+         total = sum(count, na.rm = TRUE)) %>% 
+  filter(!is.na(percentage)) %>% 
+  # if percentage is <10%, call it 'other'
+  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
+                                'stemmed_point', 
+                                ifelse(percentage >= 10, 
+                                as.character(X), "other_tools"))) %>% 
+  mutate(axis_label = as.character(glue('{site}\n(n = {total})')))  %>% 
+  # join to get ages of the sites
+  left_join(mydata_ages, 
+            by = c('site' = 'site_name')) %>% 
+  arrange(age_ka) #%>% 
+  # mutate(age_ka = jitter(age_ka))
+
+ggplot(kasa_long, 
+       aes(age_ka, 
+           percentage,
+           fill = artefact_type)) +
+  geom_col(position = "fill") +
+  ylab("Percentage") +
+  xlab("Age of assemblage (ka)") +
+    scale_fill_viridis_d(name = "Artifact type",
+                       option = "D") +
+  coord_flip() +
+  theme_minimal(base_size = 16) 
+
+# comparable figure to the raw material one (BM created)
+  
+kasa_long1 <-
+  kasa %>%
+  gather(site, 
+         count, 
+         -X) %>% 
+  filter(!is.na(count)) %>% 
+  group_by(site) %>% 
+   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
+         total = sum(count, na.rm = TRUE)) %>% 
+  filter(!is.na(percentage)) %>% 
+  # if percentage is <10%, call it 'other'
+  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
+                                'stemmed_point', 
+                                ifelse(percentage >= 10 | X == "unkown", 
+                                as.character(X), "other_tools"))) %>% 
+  mutate(axis_label = glue('{site}\n(n = {total})'))  %>% 
+  select(-X)
+  # join to get ages of the sites
+kasa_long2 <- 
+kasa_long1 %>% 
+  group_by(site, 
+           artefact_type) %>% 
+  summarise(percentage = sum(percentage)) %>% 
+  left_join(mydata_ages, 
+            by = c('site' = 'site_name')) %>% 
+  arrange(age_ka) %>% 
+  distinct(.keep_all = TRUE) %>%
+  filter(!is.na(age_ka)) %>% 
+  mutate(axis_label = glue('{site} ({round(age_ka,1)} ka)')) 
+
+ggplot(kasa_long2, 
+       aes(
+           reorder(axis_label, -age_ka),
+           percentage,
+           fill = artefact_type)) +
+  geom_col(position = "fill") +
+  ylab("Percentage") +
+   xlab("Assemblage (youngest at the top)") +
+  theme_minimal(base_size = 16)  +
+    scale_fill_viridis_d(name = "Artefact type",
+                       option = "D") +
+  coord_flip() +
+  theme_minimal(base_size = 12) 
+ggsave("figures/artefact-types.png")
+
+  
+
+```
 Artifact density and retouch <- maybe we need to add the result of retouch, separately 
 We use the combination of the artifact density and retouch frequency as a proxy to identify the mobility and residential pattern of hunter-gatherers. The result shows that there is no clear pattern during the transition period and then it became more expedient at the end of the transition (Fig 5. The combination of artifact density and retouch). That is to say, the hunter-gatherer became either more residential or the majority of the site that this research studies were used as base camps or residence rather than shortly occupied camps for certain tasks. 
 
@@ -378,41 +477,6 @@ This research aims to understand how the appearance of new technology affected h
 
 ------------NOT WORKING-------------
 
-```{r}
-#the artifact composition of each sites to figure out what people did as they were occupying the sites.
-kasa_long <-
-  kasa %>%
-  gather(site, 
-         count, 
-         -X) %>% 
-  filter(!is.na(count)) %>% 
-  group_by(site) %>% 
-  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
-         total = sum(count, na.rm = TRUE)) %>% 
-  filter(!is.na(percentage)) %>% 
-  # if percentage is <10%, call it 'other'
-  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
-                                'stemmed_point', 
-                                ifelse(percentage >= 10, 
-                                as.character(X), "other_tools"))) %>% 
-  mutate(axis_label = as.character(glue('{site}\n(n = {total})')))  %>% 
-  # join to get ages of the sites
-  left_join(mydata_ages, 
-            by = c('site' = 'site_name')) %>% 
-  arrange(age_ka) #%>% 
-  # mutate(age_ka = jitter(age_ka))
-
-ggplot(kasa_long, 
-       aes(age_ka, 
-           percentage,
-           fill = artefact_type)) +
-  geom_col() +
-  ylab("Percentage") +
-  xlab("Age of assemblage (ka)") +
-  labs(fill="Artifact type")+
-  theme_minimal(base_size = 16) 
-
-```
 
 Get the lithic data for some sites:
 
@@ -432,6 +496,21 @@ sheets <- c( "general_info",    "assemblage_info" )
 # get the data from the tabs in this sheet!
 kas_sites_sheets <- 
   map(sheets, ~kas_sites %>% gs_read_listfeed(ws = .x))
+```
+
+
+```{r}
+
+# try not to use googlesheet and make the upper chunck work
+
+library(readxl)
+path <- "analysis/data/raw_data/Overall_info.xlsx"
+excel_sheets(path = path)
+
+p_sheets <- c("general_info" ,"assemblage_info")
+
+k_kas_sites_sheets <- map(p_sheets, ~path %>% )
+
 ```
 
 Compute artefact volumetric density by frequency of retouched piece (log scale), following Julien Riel-Salvatore and C. Michael Barton in  https://www.jstor.org/stable/4128419
