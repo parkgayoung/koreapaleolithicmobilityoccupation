@@ -35,13 +35,12 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include=FALSE}
-suppressMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyverse))
 library(glue)
 library(ggrepel)
 library(here)
 
 korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
-
 
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
@@ -58,6 +57,21 @@ kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
 
 ```
+
+```{r}
+
+# join artefact type freqs with site data
+
+kasa %>% 
+  pivot_longer(-X, 
+               names_to = "site_name",
+               values_to = "count") %>% 
+  pivot_wider(names_from = "X",
+              values_from = "count") %>% 
+  left_join(mydata)
+
+```
+
 # Introduction
 
 The appearance of stemmed points in the Late Pleistocene (~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it it thought to reflect more specialed hunting practices (citations). Stemmed points are considered to be projectile weapon tips because the stem of these tools is cconsidered to represent halfting technology that joins the lithic to a wooden shaft. Stemmed points represent the first appearance of halfting technology in Korea. Here we explore questions about these transformations using behavioural ecology to investigate changes in the way people used the landscape, and the way people used sites. We examined stone artifacts from 22 sites in South Korea to investigate the technological transition represented by the appearance of a new tool, stemmed points, and the blade industry that followed. Previous work on this technological change has focussed on issues of the transition from the Early to the Late Paleolithic and the disperal of _Homo sapiens_ (citations). To our knowledge, the implications for forager mobility and site use have not been explored. Most Korean Paleolithic sites do not preserve organic remains to understand forager subsistence economies, so we lack direct faunal evidence on hunting strategies. We attempt to identify patterns of mobility through analysis of the stone artefact assemblages using Human Behavioral Ecology (HBE) models. Drawing on established relationships between lithic technology and forager mobility (citations, Shott, Kuhn) we hypothesize that the appearance of the new hunting tool might reflect a preference for more portable and efficient technologies, that are part of a broader strategy of moving frequently and further, possibly as an adaptation to population or environmntal changes. 
@@ -513,23 +527,7 @@ This research aims to understand how the appearance of new technology affected h
 
 Get the lithic data for some sites:
 
-```{r}
-# we'll use googlesheets package to get the data more efficiently
-library(googlesheets)
 
-# here is the key to the google sheet: this ggole sheet is same as kasa. so I could do kas_sites <- kasa 
-kas_sites <- gs_key("14G0Mp-YSsKBOBPF1Z1zPWQbZQ-sjJSWLetDIQSlbsjw")  
-
-# get the tab names from this sheet: But that I couldn't use gs_ws_ls
-kas_sites_names <- gs_ws_ls(kas_sites)
-
-# sheets we need here
-sheets <- c( "general_info",    "assemblage_info" )
-
-# get the data from the tabs in this sheet!
-kas_sites_sheets <- 
-  map(sheets, ~kas_sites %>% gs_read_listfeed(ws = .x))
-```
 
 
 ```{r}
