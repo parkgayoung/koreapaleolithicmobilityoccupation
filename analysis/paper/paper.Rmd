@@ -73,19 +73,22 @@ Stone artifact assemblages have important information about hunter-gatherer mobi
 
 <!-- one equal-sized paragraph for each of our three questions, with lots of recent, specific citations for each Q -->
 
-<!-- this is what I'm newly writing 
-In this research, we try to answer the three questions to understand the technological transition period. First, we are asking how the introduction of the new tools changed the usage of landscape. The new technology might allow hunter-gatherers to explore and stay in different or harsher territories by increasing mobility as well as innovating hunting strategies []. Or people could change their landscape using the new tools such as []. 
-According to ethnographic observations of mobility, people move frequently with little knowledge of the places for foraging and acquiring raw materials purpose with portable, mulifunctional, long lasting tools[@clarkson2008lithics;@kuhn2014mousterian]. The study reported here was designed to 
+In this research, we try to answer the three questions to understand the technological transition period. First, we are asking how the introduction of the new tools related to the usage of landscape. The new technology might allow hunter-gatherers to explore and stay in different or harsher territories by increasing mobility as well as innovating foraging strategies. In addition, the new tool production technique required hunter-gatherers to move for acquiring specific raw materials [@blumenschine2008effects; @reti2016quantifying]. According to ethnographic observations of mobility, people move frequently with little knowledge of the places for foraging and acquiring raw materials purpose with portable, mulifunctional, long lasting tools[@clarkson2008lithics;@kuhn2014mousterian]. The study reported here was designed to interpret the impact of the new tools on the landscape use during the transitional period. 
 
-Second, we focus on how did the new technology change the way people use their sites whether they tended to stay in one spot longer as a base campe or shorter period for specific purpose such as summer hunting camp. The stone artifact assemblage from a site can inform us how long individuals or groupd stayed or what they did there so we can assume the way people use the site. It is because a stone artifact
-contains a record of material transport and selection and it was carefully designed so that people could make a living from the landscape that constraints the production, efficiency, use, transportation, and maintenance [@clarkson2008lithics]. This project will look into stone assemblages that hunter-gatherers left behind to understand the site occupation pattern change during the transition period and the relationship with the appearance of new tools.
+<!-- I think we were also talking about example that a new tech actually changed the landscape. But I'm not sure where I can put the example
+
+For example, the new technology could change their landscape. Hominin fire use in the early Pleistocene has been studied and some argue that usage of fire changed the landscape and their dietary [@pruetz2010brief; @glikson2013fire; @parker2016pyrophilic; @hlubik2019hominin].
+
+-->
+
+Second, we focus on how the new technology changed the way people use their sites whether they tended to stay in one spot longer as a base campe or shorter period for specific purpose such as summer hunting camp. The stone artifact assemblage from a site can inform us how long individuals or groupd stayed or what they did there so we can assume the way people use the site [@binford1979organization; @kelly1995foraging; @kuhn2016moves; @holdaway2019surface]. Stone artifact contains a record of material transport and selection because it was carefully designed so that people could make a living from the landscape that constraints the production, efficiency, use, transportation, and maintenance [@clarkson2008lithics]. Archaeological sites indicate depositional phenomena and places where artifacts and other debris accumulated reflecting human activities in the past [@kuhn2015artifact]. This project will look into stone assemblages that hunter-gatherers left behind to understand the site occupation pattern change during the transition period and the relationship with the appearance of new tools.
 
 Lastly, we want to know about population dynamics during the transition period based on a premise that population change could be a driver of the new invention as well as the source of it if they brought the new tools from outside. The demands derived from significan population dynamic in addition to environmental change could lead to development of the tools [buchanan2016drivers; @mihailovic2016technological; prufer2019linking]. Some studies argue that technological complexity and richness are highly influenced by population size because in large population, because new innovation could occur during the process of learning from others [@shennan2001demography; @henrich2004demography; @collared2005causes; @collard2013risk; @buchanan2016drivers]. Therefore, we will check the population change during the transitional period to understand its impact on the technology. 
 
 
 
 
--->
+-------------- previous paragraphs ------
 
 New technologies have led people to adjust the speed and frequency of mobility, explore the new landscape, or even manage the population size of the foraging group or overall population occupied one region. Previous studies show that new technologies play an important role in the change in the use of the landscape. For instance, Morisaki et al. argue that the transition of the blades and points becoming dominant over trapezoid in toolkits around 25 ka cal BP in north Paleo-Honshu Island enabled the foragers to extend their occupation at residential sites [@Morisaki_Izuho_Terry_Sato_2015]. In Australia during the mid-Holocene, the highly retouched and finely shaped tools with shafts appeared to reduce risks of being in a different environment so that they could broaden their occupations to offshore islands on the northeast and northwest coast [@Hiscock_1994]. New tools tend to appear as a risk reduction strategy when they confront an unfamiliar environment mainly caused by climate change, migration to previously unoccupied landscapes, based on the understanding of resource distribution, tool manufacturing process, and the characteristics of the foraging group. The appearance of microliths as portable and standardized tools is a great example to show that people made new tools to increase multi-functionality and tool readiness so that they can minimize the economic risk and/or scheduling difficulties [@Hiscock_Clarkson_Mackay_2011]. 
 
@@ -204,7 +207,13 @@ The research analyzes total 33 assemblages [need to explain what is the differen
 
 - Assemblage is a group of artifacts recurring together at a particular time and place, and representing the sum of human activities (Renfrew and Bahn 1996).
 
-- Site is a place where past activity is preserved with material evidence.
+- Site is a place where past activity is preserved with material evidence (GP).
+
+- What we call sites are essentially depositional phenomena, places where, for behavioral or geologic reasons, artifacts and other debris accumulated in sufficient concentrations to attract the attention of archeologists (Kuhn and Clark 2015).
+
+==> I put "Archaeological sites indicate depositional phenomena and places where artifacts and other debris accumulated reflecting human activities in the past" in the paragraph of the second question.
+
+
 
 - This research analyzes total 33 assemblages from 22 sites. Some sites have mutiple  assemblages from differnt stratigraphic units.
 
