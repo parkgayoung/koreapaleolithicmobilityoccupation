@@ -85,7 +85,7 @@ Lastly, we want to know about population dynamics during the transition period b
 
 
 
---->
+-->
 
 New technologies have led people to adjust the speed and frequency of mobility, explore the new landscape, or even manage the population size of the foraging group or overall population occupied one region. Previous studies show that new technologies play an important role in the change in the use of the landscape. For instance, Morisaki et al. argue that the transition of the blades and points becoming dominant over trapezoid in toolkits around 25 ka cal BP in north Paleo-Honshu Island enabled the foragers to extend their occupation at residential sites [@Morisaki_Izuho_Terry_Sato_2015]. In Australia during the mid-Holocene, the highly retouched and finely shaped tools with shafts appeared to reduce risks of being in a different environment so that they could broaden their occupations to offshore islands on the northeast and northwest coast [@Hiscock_1994]. New tools tend to appear as a risk reduction strategy when they confront an unfamiliar environment mainly caused by climate change, migration to previously unoccupied landscapes, based on the understanding of resource distribution, tool manufacturing process, and the characteristics of the foraging group. The appearance of microliths as portable and standardized tools is a great example to show that people made new tools to increase multi-functionality and tool readiness so that they can minimize the economic risk and/or scheduling difficulties [@Hiscock_Clarkson_Mackay_2011]. 
 
@@ -196,7 +196,20 @@ korea_bb <-
 
 Assemblages
 
-The research analyzes total 33 assemblages [need to explain what is the difference between 'assemblage' and 'site'] and they consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc, 
+The research analyzes total 33 assemblages [need to explain what is the difference between 'assemblage' and 'site'] and they consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc.
+
+<!-- GP needs to explain what is the difference between 'assemblage' and 'site', need to be very precise about the definitions of these: ‘assemblage’ and ‘layer’. Don’t say ‘layer’ at all, say ‘excavation unit’ or ‘stratigraphic unit’. Add a short example of how you identify multiple assemblages in one site (one sentence). => I don't know how to put these definitions in the manuscript naturally. 
+ 
+- Assemblage is a set of artifacts that are found in same exacation unit so archaeologists assume that they are associated each other in terms of period and used by same group of people (GP).  
+
+- Assemblage is a group of artifacts recurring together at a particular time and place, and representing the sum of human activities (Renfrew and Bahn 1996).
+
+- Site is a place where past activity is preserved with material evidence.
+
+- This research analyzes total 33 assemblages from 22 sites. Some sites have mutiple  assemblages from differnt stratigraphic units.
+
+-->
+
 
 Some artifacts are not included as certain tools due to their vague or broken shape presumably related to the characteristics of raw materials such as quartz, quartz vein, and quartzite. In that case, we named them as unknown, unfinished, or pebble. The stone artifacts from all of these sites are stored in museums located throughout South Korea, and have been briefly described in the excavation reports. We have visited most of these collections, collected PDFs of the excavation reports, and negotiated permission to study the materials. For example, the Hwadae-ri site has three cultural layers. The lowest horizon at the bottom, dated to 39,000±1400 BP by OSL, contains coarse flake tools made of vein quartz and quartzite. The middle cultural horizon has stemmed points made of porphyry, with quartz and quartzite dominating the assemblage. This layer dated to 31,200±900 BP by radiocarbon dating and 30,000±1,700 BP by OSL. The uppermost layer, dated to 22,000±100 BC by OSL, contains blades, scrapers, awls, and denticulates [@seong2009emergence]. We compare the assemblages from the two older layers at this and other sites to investigate the transition process.     
 
