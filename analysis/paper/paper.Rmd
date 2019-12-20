@@ -1,5 +1,5 @@
 ---
-title: "Changes in Mobility and Site Occupation during the Late Pleistocene in Korea"
+title: "Change in Mobility and Site Occupation during the Late Pleistocene in Korea"
 author:
   - Author Gayoung Park
   - Author Ben Marwick
@@ -35,12 +35,13 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include=FALSE}
-suppressPackageStartupMessages(library(tidyverse))
+suppressMessages(library(tidyverse))
 library(glue)
 library(ggrepel)
 library(here)
 
 korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
+
 
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
@@ -57,28 +58,9 @@ kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
 
 ```
-
-```{r}
-
-# join artefact type freqs with site data
-
-kasa %>% 
-  pivot_longer(-X, 
-               names_to = "site_name",
-               values_to = "count") %>% 
-  pivot_wider(names_from = "X",
-              values_from = "count") %>% 
-  left_join(mydata)
-
-```
-
 # Introduction
 
-The appearance of stemmed points in the Late Pleistocene (~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it it thought to reflect more specialed hunting practices (citations). Stemmed points are considered to be projectile weapon tips because the stem of these tools is cconsidered to represent halfting technology that joins the lithic to a wooden shaft. Stemmed points represent the first appearance of halfting technology in Korea. Here we explore questions about these transformations using behavioural ecology to investigate changes in the way people used the landscape, and the way people used sites. We examined stone artifacts from 22 sites in South Korea to investigate the technological transition represented by the appearance of a new tool, stemmed points, and the blade industry that followed. Previous work on this technological change has focussed on issues of the transition from the Early to the Late Paleolithic and the disperal of _Homo sapiens_ (citations). To our knowledge, the implications for forager mobility and site use have not been explored. Most Korean Paleolithic sites do not preserve organic remains to understand forager subsistence economies, so we lack direct faunal evidence on hunting strategies. We attempt to identify patterns of mobility through analysis of the stone artefact assemblages using Human Behavioral Ecology (HBE) models. Drawing on established relationships between lithic technology and forager mobility (citations, Shott, Kuhn) we hypothesize that the appearance of the new hunting tool might reflect a preference for more portable and efficient technologies, that are part of a broader strategy of moving frequently and further, possibly as an adaptation to population or environmntal changes. 
-
-<!--
-Need something about connection between stemmed point and specifics of hunting, what kind delivery system? What kind of game?
--->
+Stone artifact assemblages have important information about hunter-gatherer mobility and foraging strategies, according to the behavioral ecological theory that links technological changes to human adaptation to the surrounding environment. Our research focuses on technological change during the Late Pleistocene in Korea, around ~40-35 ka. We examined stone artifacts from 22 sites in South Korea to investigate the technological transition represented by the appearance of a new tool, stemmed points, and the following blade industry. The overall aim is to understand how the appearance of stemmed points affected hunter-gatherers in Korea, which leads to three specific questions to pursue: how did the introduction of the new tools change the way people used the landscape, the way people used sites, and the population. This technological change has been studied related to the issues of the transition from the Early to the Late Paleolithic and the migration of Homo sapiens. However, the studies rarely consider the relationship between the technological transition and change in human foraging strategies. The most Korean Paleolithic sites do not preserve much information to understand hunter-gatherers or the transition in their tool kit due to a lack of material evidence. Therefore, we apply theoretical hypotheses to understand the relationship between hunter-gatherers, technology, and the environment. Using Human Behavioral Ecology (HBE) driven models, we hypothesized that hunter-gatherers should move frequently and further in order to adapt to a changing environment, so their tools became more portable and efficient, as indicated by decreases in the size of both individual tools and toolkit and increases in function and utility.  
 
 
 # Background
@@ -99,7 +81,7 @@ State the questions very clearly and give background into relevant literature:
 
 -->
 
-We ask two questions to invetigate the period around the introduction of stemmed points. First, we are asking how the introduction of the new tools changed forager landscape use, specifically, was the use of stemmed points associated with occupation of marginal or exterme environments? The new technology might allow hunter-gatherers to explore and stay in different or harsher territories by increasing mobility as well as innovating foraging strategies. In addition, the new tool production technique required hunter-gatherers to move for acquiring specific raw materials [@blumenschine2008effects; @reti2016quantifying]. According to ethnographic observations of mobility, people move frequently with little knowledge of the places for foraging and acquiring raw materials purpose with portable, mulifunctional, long lasting tools[@clarkson2008lithics;@kuhn2014mousterian]. The study reported here was designed to interpret the impact of the new tools on the landscape use during the transitional period. 
+In this research, we try to answer the three questions to understand the technological transition period. First, we are asking how the introduction of the new tools related to the usage of landscape. The new technology might allow hunter-gatherers to explore and stay in different or harsher territories by increasing mobility as well as innovating foraging strategies. In addition, the new tool production technique required hunter-gatherers to move for acquiring specific raw materials [@blumenschine2008effects; @reti2016quantifying]. According to ethnographic observations of mobility, people move frequently with little knowledge of the places for foraging and acquiring raw materials purpose with portable, mulifunctional, long lasting tools[@clarkson2008lithics;@kuhn2014mousterian]. The study reported here was designed to interpret the impact of the new tools on the landscape use during the transitional period. 
 
 <!-- I think we were also talking about example that a new tech actually changed the landscape. But I'm not sure where I can put the example
 
@@ -137,7 +119,7 @@ In this research, we choose to focus on the technological transition and its imp
 
 Sites and dates
 
-The data analyzed in this paper are gathered from published excavation reports of 22 Paleolithic open air sites in South Korea dating from 49k BP to 24k BP. Within these 22 sites we have 33 assemblages.  Multiple assemblages in a site were distinguised culturally sterile deposits in between artefact-bearing deposits, or by stratigraphic units identified by major differences in the texture and composition of the sedimentary deposit containing the stone artefacts. After the first excavation at Jeongokri site in the late 1970s, more than 200 Paleolithic sites are discovered in Korea. Among them, we  chose 22 sites based on absolute dates that span our period of interest. We include sites dated before and after the transition period (40-35 ka) to analyze the process of technological transition. 
+The data analyzed in this paper are gathered from published excavation reports of 22 Paleolithic sites (33 cultural layers) in South Korea dating from 49k BP to 24k BP. After the first excavation at Jeongokri site in the late 1970s, more than 200 Paleolithic sites are discovered in Korea. Among them, we  chose 22 sites based on the existence of absolute dates that span our period of interest. We include sites dated before and after the transition period (40-35 ka) to analyze the process of technological transition. 
 
 ```{r cache = TRUE, fig.cap="Map of sites discussed in the text."}
 
@@ -228,6 +210,21 @@ Assemblages
 
 The research analyzes total 33 assemblages [need to explain what is the difference between 'assemblage' and 'site'] and they consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc.
 
+<!-- GP needs to explain what is the difference between 'assemblage' and 'site', need to be very precise about the definitions of these: ‘assemblage’ and ‘layer’. Don’t say ‘layer’ at all, say ‘excavation unit’ or ‘stratigraphic unit’. Add a short example of how you identify multiple assemblages in one site (one sentence). => I don't know how to put these definitions in the manuscript naturally. 
+ 
+- Assemblage is a set of artifacts that are found in same exacation unit so archaeologists assume that they are associated each other in terms of period and used by same group of people (GP).  
+
+- Assemblage is a group of artifacts recurring together at a particular time and place, and representing the sum of human activities (Renfrew and Bahn 1996).
+
+- Site is a place where past activity is preserved with material evidence (GP).
+
+- What we call sites are essentially depositional phenomena, places where, for behavioral or geologic reasons, artifacts and other debris accumulated in sufficient concentrations to attract the attention of archeologists (Kuhn and Clark 2015).
+
+==> I put "Archaeological sites indicate depositional phenomena and places where artifacts and other debris accumulated reflecting human activities in the past" in the paragraph of the second question.
+
+- This research analyzes total 33 assemblages from 22 sites. Some sites have mutiple  assemblages from differnt stratigraphic units.
+
+-->
 
 
 
@@ -527,7 +524,23 @@ This research aims to understand how the appearance of new technology affected h
 
 Get the lithic data for some sites:
 
+```{r}
+# we'll use googlesheets package to get the data more efficiently
+library(googlesheets)
 
+# here is the key to the google sheet: this ggole sheet is same as kasa. so I could do kas_sites <- kasa 
+kas_sites <- gs_key("14G0Mp-YSsKBOBPF1Z1zPWQbZQ-sjJSWLetDIQSlbsjw")  
+
+# get the tab names from this sheet: But that I couldn't use gs_ws_ls
+kas_sites_names <- gs_ws_ls(kas_sites)
+
+# sheets we need here
+sheets <- c( "general_info",    "assemblage_info" )
+
+# get the data from the tabs in this sheet!
+kas_sites_sheets <- 
+  map(sheets, ~kas_sites %>% gs_read_listfeed(ws = .x))
+```
 
 
 ```{r}
@@ -543,7 +556,7 @@ p_sheets <- c("general_info" ,"assemblage_info")
 #k_kas_sites_sheets <- map(p_sheets, ~path %>% )
 
 #simply combine the two data sets of general info and assemblage info?
-#kk_sheets <- c (mydata, kasa)
+#kk_sheets <-  (mydata, kasa)
 
 
 ```
