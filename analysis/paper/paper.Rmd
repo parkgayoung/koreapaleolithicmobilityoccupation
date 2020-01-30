@@ -91,11 +91,35 @@ The Shuidonggou site in northern China is a typical site for showing the transit
 <!-- the last sentense is a bit long-->
 <!-- "advanced core and flake tools means intentionally prepared platforms and working surfaces, selective raw material usage (using chert rather tahn river pebble), bipolar reduction, and generating small elongated blanks as results" -->
 
-The origins of Late Pleistocene technological innovations in Japan is debated due to the uncertainty about the existence of people in the Archipelago before the appearance of new tools 
+The origins of Late Pleistocene technological innovations in Japan is suddenly appeared in differen regions of the archipelago around 38,000 years ago accaompanying with Homo sapiens found in Okinawa Island (ca. 36,000 cal BP) [@yamaoka2012use; @izuho201421]. The components of the new technologies represented by trap pits, cobble concentrations, hearths, charcoal concentrations, and toolkits including trapezoids, pointed-shaped backed blades, backed points, burins, end scrapers, side scrapers, wedges, beak- shaped tools, axes, edge-ground axes, hammerstones, cobble tools, and anvils [ @bae2017origin; @izuho201421]. These innovations have been interpreted as evidnce of new foraging methods such as watercraft and bow-and-arrow technology, drivien by increased population and ecological changes [@Yamaoka_2012; @bae2017origin; @Nakazawa_Bae_2018; @morisaki2019early]. Especially, hafted trapzoids were designed to be used as multifucntional tools and people tried to maintain and resue trapezoids and tools euipped with trapzoid to adapt to the specific environmental settings on the Japanese Islands [@ono2002radiocaron; @yamaoka2012use]. Ishinomoto 8-ku is one of the earliets sites dated to 39,690–34,790 cal BP, located in Takuma upland of Kumamoto Prefecture. A total of 500 stone artifacts were discovered including trapezoids, side scrapers, flakes, flake cores, edge-ground axes, and cobble tools. The main lithic raw materials are chert and andesite [@izuho201421].      
+
+
+
+
+<!--do we need to talk about AT???People had assumed that Japanese archipelago started to be occupied before 30,000 cal BP based on the existence of primary Aira-Tanzawa tephra (dated at 30,009±189 cal BP) in the excavation unit. Recenly, accummulated radiocarbon data show that --> 
+
+Ishinomoto 8-ku 
+the age of the EUP oc- cupation falls within the interval 39,690–34,790 cal BP.the Takuma upland in Kumamoto Prefecture A total of 500 lithic specimens were recovered from the lithic concentrations. The lithic raw materials are mainly chert and andesite. The lithic assem- blage includes trapezoids, side scrapers, flakes, flake cores, edge-ground axes, and cobble tools
+
+
+
+
+----
 
 [@izuho201421; ]
 
-. New technologies are represented by systematic procurement and reduction of lithic raw materials, trap-pit hunting methods, watercraft, bow-and-arrow technology, and standardization of lithic tools [@bae2017origin]. <!-- need some ages for these types of evidence --> These have been interpreted as evidence of new foraging strategies possibly driven by increased population and ecological changes [@Yamaoka_2012; @bae2017origin; @Nakazawa_Bae_2018; @morisaki2019early]. <!-- need to expand, mention some key site, blades appear when? what is the debate? -->
+ 
+ vegetation during MIS 3 (Takahara and Hayashi), large mammal extinctions in the late Pleistocene (Iwase et al.), colonization processes of the Ryukyu Islands (Kaifu et al.), marine transport of obsidian from the Kozu Island (Ikeya), introduction of new lithic tools from the Korean Peninsula (Morisaki), trap-pit hunting (Sato), Jōmon mitochondrial DNA (Adachi et al.), and the di- versification processes of the microblade technocomplex in Hokkaido (Nakazawa and Yamada)
+ 
+ “circular aggregations” (dense concentrations of stone artifacts aligned in a circle), . High-quality lithic raw mate- rials, such as obsidian, “hard shale,” and sanukite, were often transported long distances and used together with locally available chert, andesite, rhyolite, and chalcedony.
+
+high quarlity raw materials were avaliable (70 obsidian sources). the Aira-Tn (AT) tephra, dated at 30,009±189 cal BP (Smith et al. 2013) (1) the archeological components are situated below the primary AT tephra level (>30,000 cal BP), and (2) the tool kit usually (butnot always) includes trapezoids, pointed-shaped backed blades (“knife-shaped tools” in previous terminology), and edge-ground axes. the stratigraphical chronology is based on Sagamihara Upland and Mt. Ashitaka area
+
+only a few possi- bly pre-UP sites are known, and there is ongoing, heated debate whether or not such archaic industries existed in the Japanese archipelago
+
+
+
+----
 
 The Late Pleistocene technological transition in Korea is mainly characterized by the early appearance of stemmed points, followed by blade technology. The stemmed point is a projectile point made out of elongated flake or blade and with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. The earliest stemmped points were made on flakes. After blades appear at c. 27 ka, the shape of stemmped points became more standardized with one or two ridges on dorsal side and triangular cross section. The stemmed point is often called as a tanged point in western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points in Korea that have long been called 'tanged points'. Stemmed points were made from blade blanks, and became more standardized and increased in quantity over time. Flake tools became more complex, with a greater diversity in both type and size along with continuously used core tools during the Late Pleistocene  [@Bae_2010; @Lee_2013; @Lee_2016]. The oldest stemmed points so far is from the Yongho-dong site dated to 38.5 ka [@seong2009emergence; #### Park 2012 ####; @seong2015diversity; @bae2017origin]. <!-- need to expand, mention some key site & details. what is the debate?  -->
 
