@@ -367,6 +367,7 @@ kasr_long1 <-
   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
          total = sum(count, na.rm = TRUE)) %>% 
   filter(!is.na(percentage)) %>% 
+  # if percentage is <10%, call it 'other'
   mutate(raw_material = ifelse(percentage >= 10, as.character(X), "other")) %>% 
   mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>% 
   select(-X)
@@ -382,12 +383,11 @@ kasr_long2 <-
               select(site, raw_material, total),
             by = c('site', "raw_material")) %>% 
   distinct(.keep_all = TRUE) %>% 
-
   # join to get ages of the sites
   left_join(mydata_ages, 
             by = c('site' = 'site_name')) %>% 
-  mutate(age_ka = jitter(age_ka),
-         age_bin  = ntile(age_ka, 5)) %>% 
+ # mutate(age_ka = jitter(age_ka),
+ #        age_bin  = ntile(age_ka, 5)) %>% 
   arrange(age_ka) %>% 
   filter(!is.na(age_ka)) %>% 
     mutate(axis_label = glue('{site} ({round(age_ka,1)} ka, n = {total})')) 
@@ -395,7 +395,8 @@ kasr_long2 <-
 
 ggplot(kasr_long2, 
        aes(
-           reorder(axis_label, -age_ka),
+           reorder(axis_label, 
+                   -age_ka),
            percentage,
            fill = raw_material)) +
   geom_col(position = "fill") +
