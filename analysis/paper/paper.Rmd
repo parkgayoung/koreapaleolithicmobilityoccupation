@@ -201,33 +201,43 @@ kasv %>%
   .[-1,] %>% 
   mutate_all(parse_number) %>% 
   mutate(artefact_density = total_artifacts / volume,
-         sites = names(kasv)[-1])
+         sites = names(kasv)[-1]) %>% 
+  left_join(mydata, by = c('sites' = 'site_name' )) %>% 
+  mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
 
-
+density_sp_sub_plot <- 
 ggplot(kasv_tidy,
-       aes(date_age,
+       aes(has_sp, 
            artefact_density)) +
-  geom_point(aes(size = total_artifacts)) +
-  geom_text_repel(aes(label = sites),
-                  nudge_x = 0.25, 
-                  nudge_y = 0.25) +
-  ylab("Artifact density") +
-  xlab("Age of assemblage (ka)") +
-  scale_size_continuous(name = "Total number\nof artifacts")  +
-  theme_minimal(base_size = 16)
+  geom_boxplot() +
+  theme_bw(base_size = 8)  +
+  labs(x = "Stemmed points present",
+       y = "Artefact density")
 
-# without site name
+density_sp_main_plot <- 
 ggplot(kasv_tidy,
        aes(date_age / 1000,
            artefact_density)) +
-  geom_point(aes(size = total_artifacts)) +
+  geom_point(aes(size = total_artifacts,
+                 colour = has_sp)) +
   ylab("Artefact density") +
   xlab("Age of assemblage (ka)") + 
+  #geom_smooth(method = "lm") + 
   scale_size_continuous(name = "Total number\nof artifacts")  +
-  theme_minimal(base_size = 16)
+  scale_color_viridis_d(name = "Contains\nstemmed\npoints?") +
+  theme_minimal(base_size = 16)  #+
+  #geom_text_repel(aes(label = sites),
+  #                nudge_x = 0.25, 
+  #                nudge_y = 0.25) 
+
+# https://wilkelab.org/cowplot/articles/drawing_with_on_plots.html
+library(cowplot)
+ggdraw(density_sp_main_plot) +
+  draw_plot(density_sp_sub_plot, 
+            .375, .67, 
+            .25, .25) 
+
 ggsave("figures/age-by-density.png")
-
-
 ```
 
 ```{r}
@@ -318,6 +328,108 @@ ggsave("figures/artefact-types.png")
 ```
 Artifact density and retouch <- maybe we need to add the result of retouch, separately 
 We use the combination of the artifact density and retouch frequency as a proxy to identify the mobility and residential pattern of hunter-gatherers. The result shows that there is no clear pattern during the transition period and then it became more expedient at the end of the transition (Fig 5. The combination of artifact density and retouch). That is to say, the hunter-gatherer became either more residential or the majority of the site that this research studies were used as base camps or residence rather than shortly occupied camps for certain tasks. 
+
+
+```{r}
+# retouch, density, age
+Assemblage_info <- read_csv(here::here("analysis/data/raw_data/Assemblage_info.csv"))
+
+Assemblage_info_retouch_density_ages <- 
+Assemblage_info %>% 
+  pivot_longer(-X1, 
+               names_to = "sites") %>% 
+  left_join(kasv_tidy)
+
+Assemblage_info_retouch_density_ages_prop <- 
+Assemblage_info_retouch_density_ages %>% 
+     filter(!X1 %in% c("debris", 
+                     "unkown", 
+                     "pebble",  
+                     "metate", 
+                     "flake",
+                     "unfinished",
+                     "ground",
+                     "blank"
+                     )) %>% 
+  group_by(sites) %>% 
+  mutate(prop_retouched = sum(value, na.rm = TRUE) / total_artifacts) %>% 
+  arrange(sites) %>% 
+  select(-X1, -value) %>% 
+  distinct_all()
+
+# retouch over time
+retouch_over_time_subplot <- 
+ggplot(Assemblage_info_retouch_density_ages_prop,
+       aes(date_age / 1000,
+           prop_retouched)) +
+  geom_point(size = 3, 
+             colour = "grey80") +
+  labs(x = "Age of assemblage (ka)",
+       y = "Proportion retouched") +
+  theme_bw(base_size = 6)
+
+# compute correlation
+kas_sites_retouch_density_corr <- 
+cor.test(Assemblage_info_retouch_density_ages_prop$prop_retouched,
+         Assemblage_info_retouch_density_ages_prop$artefact_density)
+
+r_value <- unname(kas_sites_retouch_density_corr$estimate)
+p_value <- unname(kas_sites_retouch_density_corr$p.value )
+t_value <- unname(kas_sites_retouch_density_corr$statistic )
+df_value <- unname(kas_sites_retouch_density_corr$parameter )
+
+size <-  8
+Assemblage_info_retouch_density_ages_prop_main_plot <- 
+ggplot(Assemblage_info_retouch_density_ages_prop,
+       aes(artefact_density,
+           prop_retouched
+           )) +
+  geom_point(aes(colour = date_age / 1000,
+                 size = total_artifacts,
+                 shape = has_sp)) +
+ # geom_text_repel(aes(label = sites),
+ #                 nudge_x = 0.075, 
+ #                 nudge_y = -0.075,
+ #                 size = 5) +
+  geom_smooth(alpha = 0.2,
+              method = "lm") +
+  scale_y_log10(limits = c(0.001, 1),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  scale_x_log10(limits = c(0.001, 10),
+                labels = scales::comma_format(accuracy = 0.001)) +
+  theme_minimal(base_size = 12) +
+  scale_shape_discrete("Contains\nstemmed\npoints?") +
+  scale_size("Total number\nof artifacts") +
+  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
+  xlab("Artifact volumetric density") +
+  ylab("Proportion of retouched pieces") +
+  annotate("text",
+           x = 0.005,
+           y = 0.7,
+           label = "Curated",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 5,
+           y = 0.01,
+           label = "Expedient",
+           size = size -2,
+           colour = "grey50") +
+    annotate("text",
+           x = 0.03,
+           y = 0.02,
+           label = glue('r = {round(r_value, 3)}\nt({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
+           size = size - 2,
+           colour = "grey50")
+
+library(cowplot)
+ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
+  draw_plot(retouch_over_time_subplot, 
+            .1, .1, 
+            .35, .25) 
+
+```
+
 
 
 Summed probability distribution
@@ -448,7 +560,7 @@ excel_sheets(path = path)
 
 p_sheets <- c("general_info" ,"assemblage_info")
 
-#k_kas_sites_sheets <- map(p_sheets, ~path %>% )
+k_kas_sites_sheets <- map(p_sheets, ~path %>% read_excel )
 
 #simply combine the two data sets of general info and assemblage info?
 #kk_sheets <- c (mydata, kasa)
@@ -457,6 +569,7 @@ p_sheets <- c("general_info" ,"assemblage_info")
 ```
 
 Compute artefact volumetric density by frequency of retouched piece (log scale), following Julien Riel-Salvatore and C. Michael Barton in  https://www.jstor.org/stable/4128419
+
 
 ```{r}
 # put the site names on this list of data frames
