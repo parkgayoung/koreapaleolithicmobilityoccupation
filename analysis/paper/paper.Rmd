@@ -173,6 +173,16 @@ mydata_ages <-
          error = parse_number(error)) %>% 
   mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
 
+elevation_sp_sub_plot <- 
+ggplot(kasv_tidy,
+       aes(has_sp, 
+           altitude.m._of_main_layer)) +
+  geom_boxplot() +
+  theme_bw(base_size = 8)  +
+  labs(x = "Stemmed points present",
+       y = "Elevation")
+
+elevation_sp_main_plot <- 
 ggplot(mydata_ages, 
        aes(x = age_ka,
            y = altitude.m._of_main_layer,
@@ -184,6 +194,12 @@ ggplot(mydata_ages,
   scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
   theme_minimal(base_size = 16) 
 
+
+library(cowplot)
+ggdraw(elevation_sp_main_plot) +
+  draw_plot(elevation_sp_sub_plot, 
+            .475, .57, 
+            .25, .32) 
 ```
 
 Artifact density and Composition of toolkit
