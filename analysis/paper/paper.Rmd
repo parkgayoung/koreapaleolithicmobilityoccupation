@@ -473,10 +473,16 @@ plot(dates_calibrated_spd)
 ## recalibrate dates without normalisation to avoid artificial peaks
 spd_dates<- calibrate(x=dates_clean$age,errors=dates_clean$error,normalised=FALSE,verbose=F) 
 
+### this code takes long time
 spd_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000),model='exponential',nsim=200,ncores=3)
 
 summary(spd_test)
 plot(spd_test)
+
+# zoom in in on the 40-33ka period GP is trying
+spd_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,33000),model='exponential',nsim=200,ncores=3)
+summary(spd_test_zoom)
+plot(spd_test_zoom)
 ```
 
 
