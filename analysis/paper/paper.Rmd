@@ -479,10 +479,17 @@ spd_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000)
 summary(spd_test)
 plot(spd_test)
 
-# zoom in in on the 40-33ka period GP is trying
+# zoom in in on the 40-30ka period GP is trying
 spd_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000),model='exponential',nsim=200,ncores=3)
 summary(spd_test_zoom)
 plot(spd_test_zoom)
+
+# zoom in in on the 40-30ka period, testing other models
+uni_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='uniform',nsim=200,ncores=3)
+plot(uni_test)
+
+lin_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='linear',nsim=200,ncores=3)
+plot(lin_test)
 ```
 
 
