@@ -17,61 +17,11 @@ temperature <- ncdf4::ncvar_get(env_nc, "temperature")
 biome       <- ncdf4::ncvar_get(env_nc, "biome")
 ncdf4::nc_close(env_nc)
 
-my_year      <- -10000;   # 10,0000 BP
-my_month     <- 6;        # June
-my_longitude <- 0.1218;
-my_latitude  <- 52.2053;  # Cambridge (UK)
-
-my_longitude1 <- 127.108155
-my_latitude1 <-  35.823923  # Bonggok
-
-
-p1 <-
-  print(lattice::levelplot(biome[, , years == my_year], main = "Biome distribution, 10000 BP"))
-
-p2 <-
-  print(lattice::levelplot(temperature[, , months == my_month, years == my_year], main = "Mean June temperature, 10000 BP"))
-
-lonID <- which.min(abs(longitude - my_longitude))
-# check
-longitude[lonID]
-
-latID <- which.min(abs(latitude - my_latitude))
-# check
-latitude[latID]
-
-yearID <- which.min(abs(years - my_year))
-
-
-p3 <-
-  ggplot2::qplot(
-    months,
-    temperature[lonID, latID, , yearID],
-    xlab = "Month",
-    ylab = "Mean temperature",
-    geom = c("point", "line")
-  )
-
-mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
-
-p4 <- ggplot2::qplot(
-  years,
-  mean_annual_temperature[lonID, latID, ],
-  xlab = "Year",
-  ylab = "Temperature",
-  main = "Mean annual temperature time series",
-  geom = c("point", "line")
-)
-
-gridExtra::grid.arrange(p1, p2, p3, p4, nrow = 2)
-
 
 # korean archaeological sites
 library(tidyverse)
 
 site_locations_tbl <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
-
-# site_locations_tbl_temps <-
 
 site_locations_tbl_temps <-
 site_locations_tbl %>%
@@ -84,29 +34,126 @@ site_locations_tbl %>%
          latID = which.min(abs(latitude - lat_dd))) %>%
   mutate(mean_annual_temperature = list(tibble(year = years,
                                                mean_annual_temperature = mean_annual_temperature[lonID, latID, ]))) %>%
-  unnest(mean_annual_temperature)
+  unnest(mean_annual_temperature) %>%
+  filter(between(year, -50000, -10000))
+
+#----------------------------------------------------------------------
+
+# this is the overall time series plot
+# we see the mean for all locations, and individual
+# locations in grey in the background
+mat_time_series_plot <-
+ggplot() +
+  geom_line(data = site_locations_tbl_temps,
+            aes(-year,
+                mean_annual_temperature,
+                group = site_name),
+            colour = "grey90") +
+  geom_line(data = site_locations_tbl_temps %>%
+              group_by(year) %>%
+              summarise(mean_mean_annual_temperature = mean(mean_annual_temperature,
+                                                            na.rm = TRUE)),
+            aes(-year,
+                mean_mean_annual_temperature),
+            size = 2) +
+  scale_x_continuous(labels = scales::comma) +
+  coord_cartesian(ylim = c(1, 12)) +
+  theme_minimal() +
+  labs(y = "Mean annual temperature (MAT, °C)",
+       x = "Year (BP)")
+
+# now we prepare the data to show each site
+# in a boxplot
+
+korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
+
+# get site age and location in neat and tidy format
+site_locations_tbl_temps_periods <-
+site_locations_tbl_temps %>%
+  left_join(korean_archaeological_sites) %>%
+  mutate(years_ka = str_sub(`C14(BP)`, 1, 5)) %>%
+  mutate(years_ka = -as.numeric(str_replace(years_ka, ",", ".")) * 1000)
+
+# filter climate data so we only get the temps during the time the site was occupied
+site_locations_tbl_temps_periods_filtered <-
+site_locations_tbl_temps_periods %>%
+  # we filter 2.5 ka years either side of the radiocarbon age
+  filter(between(year,
+                 (years_ka - 2500),
+                 (years_ka + 2500)))
+#----------------------------------------------------------------------
 
 
-
-  ggplot(site_locations_tbl_temps) +
-  aes(year,
-      mean_annual_temperature,
-      colour = site_name) +
-  geom_line() +
-  xlim(-50000,
-       -10000) +
-  theme_minimal()
-
-  ggplot(site_locations_tbl_temps) +
+# here is the plot that shows the temp range during the period of occupation
+mat_per_site_plot <-
+ggplot(site_locations_tbl_temps_periods_filtered) +
     aes(y = mean_annual_temperature,
         x = reorder(site_name,
                     mean_annual_temperature)) +
     geom_boxplot() +
     coord_flip() +
-    theme_minimal()
+  xlab("") +
+  ylab("Mean annual temperature (MAT, °C)") +
+  theme_minimal()
+
+#----------------------------------------------------------------------
+
+
+# can we have a map also?
+
+library(ggmap)
+
+# bounding box
+# 39.534214, 124.159154 ... 39.657415, 129.138604
+# 33.694662, 123.491142 ... 34.338454, 130.569658
+
+# download background tiles for the map
+map <-
+  get_stamenmap(bbox = c(left = 125.5,
+                         bottom = 34,
+                         right = 	130,
+                         top = 38.5),
+                zoom = 9)
+
+library(ggrepel)
+site_locations_tbl_temps_periods_filtered_means <-
+site_locations_tbl_temps_periods_filtered %>%
+  group_by(site_name) %>%
+  summarise(av_mat = mean(mean_annual_temperature),
+            long_dd = mean(long_dd),
+            lat_dd = mean(lat_dd)
+            )
+#----------------------------------------------------------------------
+
+# map showing temp differences
+mat_site_map_plot <-
+ggmap(map)  +
+  geom_point(data = site_locations_tbl_temps_periods_filtered_means,
+             aes(long_dd ,
+                 lat_dd,
+             colour = av_mat),
+             size = 5) +
+  geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means,
+                   aes(long_dd ,
+                       lat_dd,
+                       label = site_name),
+                  size = 3,
+                  bg.color = "white",
+                  bg.r = 0.1) +
+  scale_colour_viridis_c(name = "MAT") +
+  theme(legend.position = c(0.95, 0.25),
+        axis.line = element_blank(),
+              axis.text = element_blank(),
+              axis.ticks = element_blank(),
+              plot.margin = unit(c(0, 0, -1, -1), 'lines')) +
+          xlab('') +
+          ylab('')
+
+#----------------------------------------------------------------------
 
 library(ggpubr)
 
+mat_elev_cor_plot <-
   site_locations_tbl_temps %>%
     group_by(site_name) %>%
     drop_na() %>%
@@ -115,13 +162,43 @@ library(ggpubr)
   ggplot() +
     aes(y = elev,
         x = mat) +
-    geom_text(aes(label = site_name)) +
+    geom_point() +
+    geom_text_repel(aes(label = site_name)) +
     stat_smooth(method = "lm") +
-    stat_cor(label.x = 9,
+    stat_cor(label.x = 6,
              label.y = 300) +
-    stat_regline_equation(label.x = 9,
+    stat_regline_equation(label.x = 6,
                           label.y = 270) +
+   ylab("Elevation above sea level (m)") +
+   xlab("Mean annual temperature (MAT, °C)") +
     theme_minimal()
+
+#----------------------------------------------------------------------
+
+# combine plots
+library(cowplot)
+top_row <-
+  plot_grid(mat_site_map_plot,
+            mat_per_site_plot,
+            nrow = 1,
+            labels = c('A', 'B'),
+            rel_widths = c(0.3, 1))
+
+bottom_row <-
+  plot_grid(mat_time_series_plot,
+            mat_elev_cor_plot,
+            labels = c('C', 'D'),
+            nrow = 1)
+
+# combine rows
+plot_grid(top_row,
+          bottom_row,
+          ncol = 1)
+
+ggsave(here::here("analysis/figures/climate-model-sites-panel-plot.png"))
+
+
+
 
 
 
