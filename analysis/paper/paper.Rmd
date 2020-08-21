@@ -194,7 +194,7 @@ ggplot(kasv_tidy,
   geom_boxplot() +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
-       y = "Elevation")
+       y = "Elevation above sea level (m)")
 
 elevation_sp_main_plot <- 
 ggplot(mydata_ages, 
