@@ -16,6 +16,8 @@ keywords: |
   keyword 1; keyword 2; keyword 3
 highlights: |
   These are the highlights. 
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -164,6 +166,18 @@ The result of the elevation change of 33 cultural layers from 22 sites correspon
 
 ```{r}
 # site elevation
+kasv_tidy <- 
+kasv %>% 
+  t %>% 
+  as_tibble() %>% 
+  setNames(as.character(.[1,])) %>% 
+  .[-1,] %>% 
+  mutate_all(parse_number) %>% 
+  mutate(artefact_density = total_artifacts / volume,
+         sites = names(kasv)[-1]) %>% 
+  left_join(mydata, by = c('sites' = 'site_name' )) %>% 
+  mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
+
 
 mydata_ages <- 
   mydata %>% 
@@ -198,7 +212,7 @@ ggplot(mydata_ages,
 library(cowplot)
 ggdraw(elevation_sp_main_plot) +
   draw_plot(elevation_sp_sub_plot, 
-            .475, .57, 
+            .575, .60, 
             .25, .32) 
 ```
 
@@ -209,17 +223,6 @@ During the transitional period, the artifact volumetric density was relatively s
 
 ```{r}
 #Volume and artefact counts to get density over time. 
-kasv_tidy <- 
-kasv %>% 
-  t %>% 
-  as_tibble() %>% 
-  setNames(as.character(.[1,])) %>% 
-  .[-1,] %>% 
-  mutate_all(parse_number) %>% 
-  mutate(artefact_density = total_artifacts / volume,
-         sites = names(kasv)[-1]) %>% 
-  left_join(mydata, by = c('sites' = 'site_name' )) %>% 
-  mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
 
 density_sp_sub_plot <- 
 ggplot(kasv_tidy,
@@ -434,7 +437,7 @@ ggplot(Assemblage_info_retouch_density_ages_prop,
     annotate("text",
            x = 0.03,
            y = 0.02,
-           label = glue('r = {round(r_value, 3)}\nt({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
+           label = glue('r = {round(r_value, 3)}\n, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
            size = size - 2,
            colour = "grey50")
 
