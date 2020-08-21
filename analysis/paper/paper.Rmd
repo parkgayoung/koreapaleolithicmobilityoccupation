@@ -187,11 +187,29 @@ mydata_ages <-
          error = parse_number(error)) %>% 
   mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
 
+# compute t-test 
+elev_sp_ttest <- 
+  t.test(altitude.m._of_main_layer ~ has_sp, data = kasv_tidy)
+
+# extract elements from the t-test output
+elev_sp_ttest_t <- round(unname(elev_sp_ttest$statistic), 3)
+elev_sp_ttest_p <- round(unname(elev_sp_ttest$p.value ), 3)
+elev_sp_ttest_df <- round(unname(elev_sp_ttest$parameter ), 3)
+
+# t(degress of freedom) = the t statistic, p = p value.
+elev_sp_ttest_str <- 
+  paste0("t(", elev_sp_ttest_df, ") = ", elev_sp_ttest_t, ", p = ", elev_sp_ttest_p)
+
+
 elevation_sp_sub_plot <- 
 ggplot(kasv_tidy,
        aes(has_sp, 
            altitude.m._of_main_layer)) +
   geom_boxplot() +
+  annotate("text", 
+           x = 1.5, 
+           y = 250,
+           label = elev_sp_ttest_str) +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
        y = "Elevation above sea level (m)")
@@ -206,13 +224,14 @@ ggplot(mydata_ages,
   ylab("Elevation above sea level (m)") +
   geom_smooth(se = FALSE) +
   scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
-  theme_minimal(base_size = 16) 
+  theme_minimal(base_size = 16)  +
+  theme(legend.position = c(0.1, 0.9)) 
 
 
 library(cowplot)
 ggdraw(elevation_sp_main_plot) +
   draw_plot(elevation_sp_sub_plot, 
-            .575, .60, 
+            .7, .60, 
             .25, .32) 
 ```
 
