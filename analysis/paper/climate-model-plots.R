@@ -17,6 +17,7 @@ temperature <- ncdf4::ncvar_get(env_nc, "temperature")
 biome       <- ncdf4::ncvar_get(env_nc, "biome")
 ncdf4::nc_close(env_nc)
 
+mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 
 # korean archaeological sites
 library(tidyverse)
