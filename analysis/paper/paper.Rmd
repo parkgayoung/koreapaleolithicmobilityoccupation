@@ -258,7 +258,7 @@ ggplot(kasv_tidy,
            artefact_density)) +
   geom_point(aes(size = total_artifacts,
                  colour = has_sp)) +
-  ylab("Artefact density") +
+  ylab(bquote('Artefact density'~(n/m^3))) +
   xlab("Age of assemblage (ka)") + 
   #geom_smooth(method = "lm") + 
   scale_size_continuous(name = "Total number\nof artifacts")  +
@@ -360,8 +360,6 @@ ggplot(kasa_long2,
   coord_flip() +
   theme_minimal(base_size = 12) 
 ggsave("figures/artefact-types.png")
-
-  
 
 ```
 Artifact density and retouch <- maybe we need to add the result of retouch, separately 
