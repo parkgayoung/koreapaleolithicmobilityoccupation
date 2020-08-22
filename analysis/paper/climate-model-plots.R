@@ -66,7 +66,7 @@ ggplot() +
 # now we prepare the data to show each site
 # in a boxplot
 
-korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
+korean_archaeological_sites <- readxl::read_excel(here::here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
 
 # get site age and location in neat and tidy format
 site_locations_tbl_temps_periods <-
