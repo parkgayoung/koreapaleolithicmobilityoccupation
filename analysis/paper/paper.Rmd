@@ -314,7 +314,7 @@ ggplot(kasa_long,
   coord_flip() +
   theme_minimal(base_size = 16) 
 
-# comparable figure to the raw material one (BM created)
+# comparable figure to the raw material one 
   
 kasa_long1 <-
   kasa %>%
