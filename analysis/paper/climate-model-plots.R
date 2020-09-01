@@ -24,6 +24,23 @@ library(tidyverse)
 
 site_locations_tbl <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 
+# some problem finding a MAT value for the location
+# Gigok
+site_locations_tbl$lat_dd <-
+  with(site_locations_tbl,
+  ifelse(site_name == "Gigok",
+         round(lat_dd, 0),
+         lat_dd)
+  )
+
+site_locations_tbl$long_dd <-
+  with(site_locations_tbl,
+       ifelse(site_name == "Gigok",
+              round(long_dd, 0),
+              long_dd)
+  )
+
+
 site_locations_tbl_temps <-
 site_locations_tbl %>%
   select(site_name,
