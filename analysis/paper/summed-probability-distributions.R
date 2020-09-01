@@ -69,6 +69,6 @@ View(fit)
 
 AIC(fit, spd_test$fitobject, lin_test$fitobject,  k=2)
 
-uni_test$fitobject,
+
 
 AIC(fit, spd_test_zoom$fitobject, lin_test_zoom$fitobject, k=2)

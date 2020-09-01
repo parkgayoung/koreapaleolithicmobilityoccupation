@@ -133,7 +133,7 @@ ggmap(map)  +
              aes(long_dd ,
                  lat_dd,
              colour = av_mat),
-             size = 5) +
+             size = 2.8) +
   geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means,
                    aes(long_dd ,
                        lat_dd,
