@@ -23,6 +23,7 @@ dates_calibrated <-
 dates_calibrated_spd <-  spd(dates_calibrated, timeRange = c( 45000, 1000))
 plot(dates_calibrated_spd)
 
+
 # Testing Observed SPDs against theoretical models
 ## recalibrate dates without normalisation to avoid artificial peaks
 spd_dates<- calibrate(x=dates_clean$age,errors=dates_clean$error,normalised=FALSE,verbose=F)
@@ -33,19 +34,41 @@ spd_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000)
 summary(spd_test)
 plot(spd_test)
 
+uni_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000), model='uniform',nsim=200,ncores=3)
+plot(uni_test)
+
+lin_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000), model='linear',nsim=200,ncores=3)
+plot(lin_test)
 
 
 
-# zoom in in on the 40-30ka period GP is trying
+# zoom in on the 40-30ka period GP is trying
 spd_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000),model='exponential',nsim=200,ncores=3)
 summary(spd_test_zoom)
 plot(spd_test_zoom)
 
-# zoom in in on the 40-30ka period, testing other models
-uni_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='uniform',nsim=200,ncores=3)
+# zoom in on the 40-30ka period, testing other models
+uni_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='uniform',nsim=200,ncores=3)
 plot(uni_test)
 
-lin_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='linear',nsim=200,ncores=3)
+lin_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='linear',nsim=200,ncores=3)
 plot(lin_test)
-```
 
+
+
+### testing Riris 2019
+fit <- drm(y ~ x,
+           data=data.frame(
+             x=time,
+             y=dates_calibrated_spd$grid$PrDens[dates_calibrated_spd$grid$calBP >= min(time) & dates_calibrated_spd$grid$calBP <= max(time)]),
+           fct=L.3())
+View(fit)
+
+
+
+
+AIC(fit, spd_test$fitobject, lin_test$fitobject,  k=2)
+
+uni_test$fitobject,
+
+AIC(fit, spd_test_zoom$fitobject, lin_test_zoom$fitobject, k=2)
