@@ -57,6 +57,8 @@ plot(lin_test)
 
 
 ### testing Riris 2019
+library(drc)
+
 fit <- drm(y ~ x,
            data=data.frame(
              x=time,
@@ -69,6 +71,11 @@ View(fit)
 
 AIC(fit, spd_test$fitobject, lin_test$fitobject,  k=2)
 
+dates_calibrated_spd_zoom <-  spd(dates_calibrated, timeRange = c( 40000, 30000))
+fit_zoom <- drm(y ~ x,
+                data=data.frame(
+                  x=time,
+                  y=dates_calibrated_spd_zoom$grid$PrDens[dates_calibrated_spd_zoom$grid$calBP >= min(time) & dates_calibrated_spd_zoom$grid$calBP <= max(time)]),
+                fct=L.3())
 
-
-AIC(fit, spd_test_zoom$fitobject, lin_test_zoom$fitobject, k=2)
+AIC(fit_zoom, spd_test_zoom$fitobject, lin_test_zoom$fitobject, k=2)
