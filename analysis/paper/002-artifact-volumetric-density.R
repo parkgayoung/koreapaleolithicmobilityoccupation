@@ -29,8 +29,6 @@ kasa %>%
               values_from = "count") %>%
   left_join(mydata)
 
-
-
 kasv_tidy <-
   kasv %>%
   t %>%
@@ -88,4 +86,5 @@ ggdraw(density_sp_main_plot) +
             .375, .67,
             .25, .25)
 
-ggsave("figures/age-by-density.png")
+ggsave(here::here("analysis/figures/002-age-by-density.png"))
+
