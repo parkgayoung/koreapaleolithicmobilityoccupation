@@ -22,9 +22,14 @@ mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 # korean archaeological sites
 library(tidyverse)
 
+<<<<<<< HEAD
 
 
 site_locations_tbl <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
+=======
+site_locations_tbl_raw <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
+site_locations_tbl <- site_locations_tbl_raw
+>>>>>>> d160257d038e84719bc93506e1cef01841b7f921
 
 # some problem finding a MAT value for the location
 # Gigok
@@ -174,12 +179,18 @@ site_locations_tbl$long_dd <-
 
 mat_site_map_plot <-
 ggmap(map)  +
-  geom_point(data = site_locations_tbl_temps_periods_filtered_means,
+  geom_point(data = site_locations_tbl_temps_periods_filtered_means %>%
+               select(-long_dd,
+                      -lat_dd) %>%
+               left_join(site_locations_tbl_raw) ,
              aes(long_dd ,
                  lat_dd,
              colour = av_mat),
              size = 2.8) +
-  geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means,
+  geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means %>%
+                    select(-long_dd,
+                           -lat_dd) %>%
+                    left_join(site_locations_tbl_raw),
                    aes(long_dd ,
                        lat_dd,
                        label = site_name),

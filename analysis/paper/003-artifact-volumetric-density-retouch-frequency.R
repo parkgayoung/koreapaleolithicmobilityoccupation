@@ -3,15 +3,11 @@ library(glue)
 library(ggrepel)
 library(here)
 
-
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
 
-
 #volume of the cultural layer from KAS data sheet.
 kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
-
-
 
 kasv_tidy <-
   kasv %>%
@@ -123,4 +119,6 @@ ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
   draw_plot(retouch_over_time_subplot,
             .1, .1,
             .35, .25)
+
+ggsave(here::here("analysis/figures/003-retouch-by-density.png"))
 
