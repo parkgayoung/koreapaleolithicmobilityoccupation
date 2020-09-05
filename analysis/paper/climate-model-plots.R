@@ -22,10 +22,13 @@ mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 # korean archaeological sites
 library(tidyverse)
 
+
+
 site_locations_tbl <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 
 # some problem finding a MAT value for the location
 # Gigok
+
 site_locations_tbl$lat_dd <-
   with(site_locations_tbl,
   ifelse(site_name == "Gigok",
@@ -144,6 +147,31 @@ site_locations_tbl_temps_periods_filtered %>%
 #----------------------------------------------------------------------
 
 # map showing temp differences
+
+# we need original data without triming for Gigok's coordinates to create a map
+#37.56667 129.0764
+site_locations_tbl_temps_periods_filtered_means$lat_dd <-
+
+
+site_locations_tbl$lat_dd <-
+  with(site_locations_tbl,
+       ifelse(site_name == "Gigok",
+              round(lat_dd, 0),
+              lat_dd)
+  )
+
+site_locations_tbl$long_dd <-
+  with(site_locations_tbl,
+       ifelse(site_name == "Gigok",
+              round(long_dd, 0),
+              long_dd)
+  )
+
+
+
+#-------------------------
+
+
 mat_site_map_plot <-
 ggmap(map)  +
   geom_point(data = site_locations_tbl_temps_periods_filtered_means,
