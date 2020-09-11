@@ -56,7 +56,8 @@ elevation_sp_sub_plot <-
   annotate("text",
            x = 1.5,
            y = 250,
-           label = elev_sp_ttest_str) +
+           label = elev_sp_ttest_str,
+           size = 3) +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
        y = "Elevation above sea level (m)")

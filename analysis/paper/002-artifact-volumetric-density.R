@@ -51,6 +51,18 @@ mydata_ages <-
   mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
 
 
+# compute t-test
+den_sp_ttest <-
+  t.test(artefact_density ~ has_sp, data = kasv_tidy)
+
+# extract elements from the t-test output
+den_sp_ttest_t <- round(unname(den_sp_ttest$statistic), 3)
+den_sp_ttest_p <- round(unname(den_sp_ttest$p.value ), 3)
+den_sp_ttest_df <- round(unname(den_sp_ttest$parameter ), 3)
+
+# t(degress of freedom) = the t statistic, p = p value.
+den_sp_ttest_str <-
+  paste0("t(", den_sp_ttest_df, ") = ", den_sp_ttest_t, ", p = ", den_sp_ttest_p)
 
 #Volume and artefact counts to get density over time.
 
@@ -59,9 +71,15 @@ density_sp_sub_plot <-
          aes(has_sp,
              artefact_density)) +
   geom_boxplot() +
+  annotate("text",
+           x = 1.5,
+           y = 10,
+           label = den_sp_ttest_str,
+           size = 3) +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
        y = "Artefact density")
+
 
 density_sp_main_plot <-
   ggplot(kasv_tidy,

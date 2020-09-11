@@ -60,6 +60,37 @@ retouch_over_time_subplot <-
        y = "Proportion retouched") +
   theme_bw(base_size = 6)
 
+
+# compute t-test for retouch pieces and SP existence
+retouch_sp_ttest <-
+  t.test(prop_retouched ~ has_sp, data = Assemblage_info_retouch_density_ages_prop)
+
+# extract elements from the t-test output
+retouch_sp_ttest_t <- round(unname(retouch_sp_ttest$statistic), 3)
+retouch_sp_ttest_p <- round(unname(retouch_sp_ttest$p.value ), 3)
+retouch_sp_ttest_df <- round(unname(retouch_sp_ttest$parameter ), 3)
+
+# t(degress of freedom) = the t statistic, p = p value.
+retouch_sp_ttest_str <-
+  paste0("t(", retouch_sp_ttest_df, ") = ", retouch_sp_ttest_t, ", p = ", retouch_sp_ttest_p)
+
+# box plot for # retouch pieces by stemmed point
+
+retouch_sp_sub_plot <-
+  ggplot(Assemblage_info_retouch_density_ages_prop,
+         aes(has_sp,
+             prop_retouched)) +
+  geom_boxplot() +
+  annotate("text",
+           x = 1.5,
+           y = 1.25,
+           label = retouch_sp_ttest_str,
+           size = 3) +
+  theme_bw(base_size = 8)  +
+  labs(x = "Stemmed points present",
+       y = "Proportion retouched")
+
+
 # compute correlation
 kas_sites_retouch_density_corr <-
   cor.test(Assemblage_info_retouch_density_ages_prop$prop_retouched,
@@ -103,7 +134,7 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
            colour = "grey50") +
   annotate("text",
            x = 5,
-           y = 0.01,
+           y = 0.06,
            label = "Expedient",
            size = size -2,
            colour = "grey50") +
@@ -114,11 +145,18 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
            size = size - 2,
            colour = "grey50")
 
+
+
 library(cowplot)
 ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
   draw_plot(retouch_over_time_subplot,
             .1, .1,
-            .35, .25)
+            .40, .30) +
+  draw_plot(retouch_sp_sub_plot,
+            .53, .1,
+            .25, .30)
+
+
 
 ggsave(here::here("analysis/figures/003-retouch-by-density.png"))
 
