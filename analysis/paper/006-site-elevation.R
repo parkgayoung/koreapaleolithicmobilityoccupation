@@ -81,3 +81,5 @@ ggdraw(elevation_sp_main_plot) +
   draw_plot(elevation_sp_sub_plot,
             .7, .60,
             .25, .32)
+
+ggsave(here::here("analysis/figures/006-site-elevation.png"))

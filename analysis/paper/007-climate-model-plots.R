@@ -183,6 +183,7 @@ ggmap(map)  +
 
 library(ggpubr)
 
+
 mat_elev_cor_plot <-
   site_locations_tbl_temps %>%
     group_by(site_name) %>%
@@ -225,7 +226,7 @@ plot_grid(top_row,
           bottom_row,
           ncol = 1)
 
-ggsave(here::here("analysis/figures/climate-model-sites-panel-plot.png"))
+ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"))
 
 
 

@@ -42,7 +42,7 @@ ggmap(map)  +
 
 
 
-
+ggsave(here("analysis/figures/001-site-map.png"))
 
 
 
@@ -123,4 +123,4 @@ ggmap(map)  + geom_point(data = coords,
                        label = site_name),
                    size = 2)
 
-ggsave(here("analysis/figures/site-map.png"))
+

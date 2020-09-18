@@ -47,7 +47,7 @@ kasr_long2 <-
   #        age_bin  = ntile(age_ka, 5)) %>%
   arrange(age_ka) %>%
   filter(!is.na(age_ka)) %>%
-  mutate(axis_label = glue('{site} ({round(age_ka,1)} ka, n = {total})'))
+  mutate(axis_label = glue('{site.y} ({round(age_ka,1)} ka, n = {total})'))
 
 
 ggplot(kasr_long2,
@@ -63,3 +63,6 @@ ggplot(kasr_long2,
                        option = "C") +
   coord_flip() +
   theme_minimal(base_size = 12)
+
+ggsave(here::here("analysis/figures/005-raw-materials.png"))
+
