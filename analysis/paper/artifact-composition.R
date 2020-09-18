@@ -52,7 +52,7 @@ kasa_long2 <-
   arrange(age_ka) %>%
   distinct(.keep_all = TRUE) %>%
   filter(!is.na(age_ka)) %>%
-  mutate(axis_label = glue('{site} ({round(age_ka,1)} ka)'))
+  mutate(axis_label = glue('{site.y} ({round(age_ka,1)} ka)'))
 
 ggplot(kasa_long2,
        aes(
@@ -67,4 +67,7 @@ ggplot(kasa_long2,
                        option = "D") +
   coord_flip() +
   theme_minimal(base_size = 12)
-ggsave("figures/artefact-types.png")
+
+
+ggsave(here::here("analysis/figures/004-artefact-types.png"))
+

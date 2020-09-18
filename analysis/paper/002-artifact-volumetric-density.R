@@ -101,8 +101,8 @@ density_sp_main_plot <-
 library(cowplot)
 ggdraw(density_sp_main_plot) +
   draw_plot(density_sp_sub_plot,
-            .375, .67,
-            .25, .25)
+            .45, .61,
+            .35, .35)
 
 ggsave(here::here("analysis/figures/002-age-by-density.png"))
 
