@@ -46,7 +46,7 @@ kasa_long1 <-
                    'end_scraper',
                    'pebble',
                    'hammer',
-                   'flake',
+                  'flake',
                    'debris',
                    'beak_shaped')
                    ) %>%
