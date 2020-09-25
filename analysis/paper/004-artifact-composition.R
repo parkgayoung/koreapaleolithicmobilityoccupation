@@ -40,15 +40,16 @@ kasa_long1 <-
   filter(!X %in% c('unknown',
                    'unkown',
                    'unfinished',
-                   'plane',
+                   #'plane',
                    'point',
-                   'chopper',
-                  'end_scraper',
+                   #'chopper',
+                  #'end_scraper',
                    'pebble',
                    'hammer',
                   'flake',
                    'debris',
-                   'beak_shaped')
+                   'beak_shaped',
+                  'awl')
                    ) %>%
   # if percentage is <10%, call it 'other'
    mutate(artefact_type =   X #ifelse(as.character(X) == 'stemmed_point',

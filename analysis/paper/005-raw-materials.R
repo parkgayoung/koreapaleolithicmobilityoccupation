@@ -26,14 +26,16 @@ kasr <- read.csv(here("analysis/data/raw_data/Rawmaterial_info.csv"))
          total = sum(count, na.rm = TRUE)) %>%
   filter(!is.na(percentage)) %>%
     filter(!X %in% c(
-      #'gneiss', deleted raw materials used in less then 4 sites
+      #'gneiss', exclude raw materials cluded in less then 4 assemblages
       'crystal',
       'basalt',
       'etc.',
       'iron_ore',
       'slate',
       'limestone',
-      'granite')) %>%
+      'granite',
+      'gneiss',
+      'tuff')) %>%
   # if percentage is <10%, call it 'other'
   mutate(raw_material = X) %>%  #ifelse(percentage >= 10, as.character(X), "other")) %>%
   #mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>%

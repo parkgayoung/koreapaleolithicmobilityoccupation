@@ -72,7 +72,8 @@ retouch_sp_ttest_df <- round(unname(retouch_sp_ttest$parameter ), 3)
 
 # t(degress of freedom) = the t statistic, p = p value.
 retouch_sp_ttest_str <-
-  paste0("t(", retouch_sp_ttest_df, ") = ", retouch_sp_ttest_t, ", p = ", retouch_sp_ttest_p)
+  paste0("t(", retouch_sp_ttest_df, ") = ", retouch_sp_ttest_t, ",
+         p = ", retouch_sp_ttest_p)
 
 # box plot for # retouch pieces by stemmed point
 
