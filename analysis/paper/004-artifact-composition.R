@@ -43,7 +43,7 @@ kasa_long1 <-
                    'plane',
                    'point',
                    'chopper',
-                   'end_scraper',
+                  'end_scraper',
                    'pebble',
                    'hammer',
                   'flake',
@@ -102,8 +102,12 @@ ggplot(kasa_long3,
   coord_flip() +
   theme_minimal(base_size = 12)
 
+ggsave(here::here("analysis/figures/004-artefact-types.png"))
+
 # interactive
 plotly::ggplotly(kasa_long3_fill_plot)
+
+
 
 ggplot(kasa_long3,
        aes(
@@ -121,5 +125,5 @@ ggplot(kasa_long3,
   theme_minimal(base_size = 6)
 
 
-ggsave(here::here("analysis/figures/004-artefact-types.png"))
+
 

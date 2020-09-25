@@ -20,17 +20,27 @@ kasr <- read.csv(here("analysis/data/raw_data/Rawmaterial_info.csv"))
   gather(site,
          count,
          -X) %>%
+    filter(!is.na(count)) %>%
   group_by(site) %>%
   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
          total = sum(count, na.rm = TRUE)) %>%
   filter(!is.na(percentage)) %>%
+    filter(!X %in% c(
+      #'gneiss', deleted raw materials used in less then 4 sites
+      'crystal',
+      'basalt',
+      'etc.',
+      'iron_ore',
+      'slate',
+      'limestone',
+      'granite')) %>%
   # if percentage is <10%, call it 'other'
-  mutate(raw_material = ifelse(percentage >= 10, as.character(X), "other")) %>%
-  mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>%
+  mutate(raw_material = X) %>%  #ifelse(percentage >= 10, as.character(X), "other")) %>%
+  #mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>%
   select(-X)
 
 
-# if percentage is <10%, call it 'other'
+  # join to get ages of the sites
 kasr_long2 <-
   kasr_long1 %>%
   group_by(site, raw_material) %>%
@@ -47,9 +57,10 @@ kasr_long2 <-
   #        age_bin  = ntile(age_ka, 5)) %>%
   arrange(age_ka) %>%
   filter(!is.na(age_ka)) %>%
-  mutate(axis_label = glue('{site.y} ({round(age_ka,1)} ka, n = {total})'))
+  mutate(axis_label = glue('{site_new_name} ({round(age_ka,1)} ka, n = {total})'))
 
 
+kasr_long2_pill_plot<-
 ggplot(kasr_long2,
        aes(
          reorder(axis_label,
@@ -66,3 +77,22 @@ ggplot(kasr_long2,
 
 ggsave(here::here("analysis/figures/005-raw-materials.png"))
 
+# interactive
+plotly::ggplotly(kasr_long2_pill_plot)
+
+
+ggplot(kasr_long2,
+       aes(
+         reorder(axis_label,
+                 -age_ka),
+         percentage)) +
+  geom_col() +
+  xlab("Assemblage (youngest at the top)") +
+  ylab("Percentage") +
+  theme_minimal(base_size = 16) +
+  scale_fill_viridis_d(name = "Raw material type",
+                       option = "C") +
+  facet_wrap(~raw_material,
+             ncol = 1,
+             scales = "free_y") +
+  theme_minimal(base_size = 6)
