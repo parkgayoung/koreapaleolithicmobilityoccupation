@@ -21,6 +21,7 @@ mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 
 # korean archaeological sites
 library(tidyverse)
+library(here)
 
 gigok_others <-
   readxl::read_excel(here("analysis/data/raw_data/gigok_trial.xlsx"))
@@ -58,3 +59,5 @@ mat_time_series_plot <-
   theme_minimal() +
   labs(y = "Mean annual temperature (MAT, °C)",
        x = "Year (BP)")
+
+
