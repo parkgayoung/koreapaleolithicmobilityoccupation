@@ -22,8 +22,6 @@ mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 # korean archaeological sites
 library(tidyverse)
 
-<<<<<<< HEAD
-
 site_locations_tbl_raw <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 site_locations_tbl <- site_locations_tbl_raw
 
