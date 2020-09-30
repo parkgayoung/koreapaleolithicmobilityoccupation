@@ -98,3 +98,55 @@ ggplot(kasr_long2,
              ncol = 1,
              scales = "free_y") +
   theme_minimal(base_size = 6)
+
+
+# raw material groups  ---------------------
+fg <- c('chert', 'hornfels', 'rhyolite', 'shale')
+qz <- c('quartz', 'quartzite', 'quartz_vein')
+
+kasr_long2_rm_group <-
+kasr_long2 %>%
+  mutate(raw_material_group = ifelse(raw_material %in% fg, 'fg',
+                                     ifelse(raw_material %in% qz, "qz",
+                                     "oth")))
+
+  ggplot(kasr_long2_rm_group,
+         aes(
+           reorder(axis_label,
+                   -age_ka),
+           percentage,
+           fill = raw_material_group)) +
+  geom_col(position = "fill") +
+  xlab("Assemblage (youngest at the top)") +
+  ylab("Percentage") +
+  scale_fill_viridis_d(name = "Raw material type",
+                       option = "C") +
+  coord_flip() +
+  theme_minimal(base_size = 12)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

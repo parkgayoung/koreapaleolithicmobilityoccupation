@@ -65,12 +65,15 @@ elevation_sp_sub_plot <-
 elevation_sp_main_plot <-
   ggplot(mydata_ages,
          aes(x = age_ka,
-             y = altitude.m._of_main_layer,
-             color = as.factor(has_sp))) +
-  geom_point(size = 3) +
+             y = altitude.m._of_main_layer
+             )) +
+  geom_point(size = 3,
+             aes(color = as.factor(has_sp))) +
   xlab("Age of occupation (ka)") +
   ylab("Elevation above sea level (m)") +
-  geom_smooth(se = FALSE) +
+  geom_smooth(se = FALSE,
+              aes(color = as.factor(has_sp))) +
+ # geom_smooth(se = FALSE)
   scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
   theme_minimal(base_size = 16)  +
   theme(legend.position = c(0.1, 0.9))
