@@ -63,7 +63,7 @@ site_locations_tbl %>%
 # this is the overall time series plot
 # we see the mean for all locations, and individual
 # locations in grey in the background
-mat_time_series_plot <-
+mat_time_series_plot_no_annotate <-
 ggplot() +
   geom_line(data = site_locations_tbl_temps,
             aes(-year,
@@ -82,6 +82,26 @@ ggplot() +
   theme_minimal() +
   labs(y = "Mean annual temperature (MAT, °C)",
        x = "Year (BP)")
+
+# add annotations for climate events
+mat_time_series_plot<-mat_time_series_plot_no_annotate +
+                      annotate ("rect",
+                              xmin = 14000, xmax = 29000,
+                              ymin = -Inf, ymax = Inf, fill = "lightgrey",
+                              alpha = .4) +
+                      annotate("rect",
+                               xmin = 19000, xmax = 26500,
+                               ymin = 1.5, ymax = 10, fill = "grey",
+                               alpha = .4) +
+                      annotate("text",  x = 12000, y = 11, label = "MIS 1",
+                               fontface="bold", color = "#DC5B44", size = 4) +
+                      annotate("text",  x = 21000, y = 11, label = "MIS 2",
+                               fontface="bold", color = "#DC5B44", size = 4) +
+                      annotate("text",  x = 38000, y = 11, label = "MIS 3",
+                               fontface="bold", color = "#DC5B44", size = 4) +
+                      annotate("text",  x = 23000, y = 8.5, label = "LGM",
+                               fontface="bold", color = "#B04027", size = 4)
+
 
 # now we prepare the data to show each site
 # in a boxplot
