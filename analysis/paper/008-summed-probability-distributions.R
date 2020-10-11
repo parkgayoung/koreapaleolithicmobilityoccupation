@@ -79,13 +79,19 @@ library(drc)
 
 fit <- drm(
   y ~ x,
-  data = data.frame(x = time,
+  data = data.frame (x = time,
                     y = dates_calibrated_spd$grid$PrDens[dates_calibrated_spd$grid$calBP >= min(time) &
                                                         dates_calibrated_spd$grid$calBP <= max(time)]),
-  fct = L.3()
-)
+  fct = L.3())
+
+View(fit)
 
 # smallest AIC value indicates the best model
+AIC(fit,
+    spd_test$fitobject,
+    lin_test$fitobject,
+    k = 2)
+
 AIC(fit,
     exp_test$fitobject,
     uni_test$fitobject,
@@ -146,10 +152,6 @@ fit <- drm(
   fct = L.3()
 )
 View(fit)
-
-
-
-
 AIC(fit,
     spd_test$fitobject,
     lin_test$fitobject,
