@@ -49,7 +49,7 @@ exp_test <-
     ncores = 3
   )
 
-plot(exp_test)
+plot(exp_test, main="Explonetial Model")
 
 uni_test <-
   modelTest(
@@ -60,7 +60,8 @@ uni_test <-
     nsim = 200,
     ncores = 3
   )
-plot(uni_test)
+
+plot(uni_test, main="Uniform Model")
 
 lin_test <-
   modelTest(
@@ -71,7 +72,20 @@ lin_test <-
     nsim = 200,
     ncores = 3
   )
-plot(lin_test)
+plot(lin_test, main="Linear")
+
+## plot for all three models
+#library(cowplot)
+#plot_grid(
+#          ncol = 1)
+
+par(mfrow=c(3,1))
+plot(exp_test, main="Explonetial Model")
+plot(uni_test, main="Uniform Model")
+plot(lin_test, main="Linear")
+
+
+ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 
 ## rank models with subset of ages
 
@@ -88,7 +102,7 @@ fit <- drm (y ~ x,
 View(fit)
 
 # smallest AIC value indicates the best model
-AIC(fit,
+aic <- AIC(fit,
     exp_test$fitobject,
     lin_test$fitobject,
     k = 2)
@@ -100,7 +114,19 @@ AIC(fit,
 
 # Exponential model provides most parsimonious fit for 45000 - 1000 cal BP (deltaAIC = 0).
 
+# create a table
 
+df_aic <- data.frame (Model = c("fit", "exponential", "linear"),
+                     df = c(aic$df),
+                     AIC = c(aic$AIC))
+print(df_aic)
+
+library(gridExtra)
+library(grid)
+
+grid.table(df_aic)
+
+ggsave(here::here("analysis/figures/008-SPD-AIC.png"))
 #-------------------------------------------------
 #-------------------------------------------------
 
