@@ -85,6 +85,7 @@ plot(uni_test, main="Uniform Model")
 plot(lin_test, main="Linear")
 
 
+
 #ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 
 ## rank models with subset of ages
@@ -139,7 +140,7 @@ g <- gtable_add_grob(g,
 grid.draw(g)
 
 
-
+png(here::here("analysis/figures/008-SPD-AIC.png"))
 
 #ggsave(here::here("analysis/figures/008-SPD-AIC.png"))
 
