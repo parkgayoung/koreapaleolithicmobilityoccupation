@@ -73,12 +73,13 @@ lin_test <-
   )
 plot(lin_test)
 
-# model ranking
+## rank models with subset of ages
 
 library(drc)
 
-fit <- drm(
-  y ~ x,
+time <- seq(45000, 1000, -1) # calBP
+
+fit <- drm (y ~ x,
   data = data.frame (x = time,
                     y = dates_calibrated_spd$grid$PrDens[dates_calibrated_spd$grid$calBP >= min(time) &
                                                         dates_calibrated_spd$grid$calBP <= max(time)]),
@@ -88,22 +89,26 @@ View(fit)
 
 # smallest AIC value indicates the best model
 AIC(fit,
-    spd_test$fitobject,
-    lin_test$fitobject,
-    k = 2)
-
-AIC(fit,
     exp_test$fitobject,
-    uni_test$fitobject,
     lin_test$fitobject,
     k = 2)
 
+#                 df       AIC
+#fit                4 -423672.2
+#exp.fit$fitobject  3 -412132.5
+#lin.fit$fitobject  3 -414265.5
+
+# Exponential model provides most parsimonious fit for 45000 - 1000 cal BP (deltaAIC = 0).
+
 
 #-------------------------------------------------
 #-------------------------------------------------
-# rank models with subset of ages
 
-# zoom in on the 40-30ka period GP is trying
+##### zoom in on the 40-30ka period ####
+dates_calibrated_spd_zoom <-
+  spd(dates_calibrated,
+      timeRange = c(40000, 30000))
+
 spd_test_zoom <-
   modelTest(
     spd_dates,
@@ -116,7 +121,6 @@ spd_test_zoom <-
 summary(spd_test_zoom)
 plot(spd_test_zoom)
 
-# zoom in on the 40-30ka period, testing other models
 uni_test_zoom <-
   modelTest(
     spd_dates,
@@ -139,27 +143,7 @@ lin_test_zoom <-
   )
 plot(lin_test)
 
-
-
-### testing Riris 2019
-library(drc)
-
-fit <- drm(
-  y ~ x,
-  data = data.frame(x = time,
-                    y = dates_calibrated_spd$grid$PrDens[dates_calibrated_spd$grid$calBP >= min(time) &
-                                                           dates_calibrated_spd$grid$calBP <= max(time)]),
-  fct = L.3()
-)
-View(fit)
-AIC(fit,
-    spd_test$fitobject,
-    lin_test$fitobject,
-    k = 2)
-
-dates_calibrated_spd_zoom <-
-  spd(dates_calibrated,
-      timeRange = c(40000, 30000))
+time <- seq(40000, 30000, -1)
 
 fit_zoom <- drm(
   y ~ x,
