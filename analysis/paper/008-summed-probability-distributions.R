@@ -85,7 +85,7 @@ plot(uni_test, main="Uniform Model")
 plot(lin_test, main="Linear")
 
 
-ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+#ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 
 ## rank models with subset of ages
 
@@ -121,12 +121,29 @@ df_aic <- data.frame (Model = c("fit", "exponential", "linear"),
                      AIC = c(aic$AIC))
 print(df_aic)
 
-library(gridExtra)
-library(grid)
+#library(gridExtra)
+#library(grid)
 
-grid.table(df_aic)
+#grid.table(df_aic)
 
-ggsave(here::here("analysis/figures/008-SPD-AIC.png"))
+
+library(gtable)
+
+g <- tableGrob(df_aic[1:3, 1:3], rows = NULL)
+g <- gtable_add_grob(g,
+                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
+                     t = 2, b = nrow(g), l = 1, r = ncol(g))
+g <- gtable_add_grob(g,
+                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
+                     t = 1, l = 1, r = ncol(g))
+grid.draw(g)
+
+
+
+
+#ggsave(here::here("analysis/figures/008-SPD-AIC.png"))
+
+
 #-------------------------------------------------
 #-------------------------------------------------
 
