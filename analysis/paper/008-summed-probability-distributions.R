@@ -79,12 +79,15 @@ plot(lin_test, main="Linear")
 #plot_grid(
 #          ncol = 1)
 
+png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+
 par(mfrow=c(3,1))
 plot(exp_test, main="Explonetial Model")
 plot(uni_test, main="Uniform Model")
 plot(lin_test, main="Linear")
 
 
+dev.off()
 
 #ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 
@@ -119,85 +122,86 @@ aic <- AIC(fit,
 
 df_aic <- data.frame (Model = c("fit", "exponential", "linear"),
                      df = c(aic$df),
-                     AIC = c(aic$AIC))
+                     AIC = c(aic$AIC)) %>% arrange(-AIC)
 print(df_aic)
 
-#library(gridExtra)
-#library(grid)
+#save a table of AIC result as csv
+write.csv(df_aic, file="analysis/figures/008-SPD-AIC.csv", row.names = FALSE)
 
-#grid.table(df_aic)
+knitr::kable(df_aic)
 
+#save the table as image file
+#library(gtable)
 
-library(gtable)
-
-g <- tableGrob(df_aic[1:3, 1:3], rows = NULL)
-g <- gtable_add_grob(g,
+#g <- tableGrob(df_aic[1:3, 1:3], rows = NULL)
+#g <- gtable_add_grob(g,
                      grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
                      t = 2, b = nrow(g), l = 1, r = ncol(g))
-g <- gtable_add_grob(g,
+#g <- gtable_add_grob(g,
                      grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
                      t = 1, l = 1, r = ncol(g))
-grid.draw(g)
+#grid.draw(g)
 
 
-png(here::here("analysis/figures/008-SPD-AIC.png"))
+#png(here::here("analysis/figures/008-SPD-AIC.png"))
+#grid.draw(g)
+#dev.off()
 
-#ggsave(here::here("analysis/figures/008-SPD-AIC.png"))
 
 
 #-------------------------------------------------
 #-------------------------------------------------
 
 ##### zoom in on the 40-30ka period ####
-dates_calibrated_spd_zoom <-
-  spd(dates_calibrated,
-      timeRange = c(40000, 30000))
+#dates_calibrated_spd_zoom <-
+#  spd(dates_calibrated,
+#      timeRange = c(40000, 30000))
 
-spd_test_zoom <-
-  modelTest(
-    spd_dates,
-    errors = dates_clean$error,
-    timeRange = c(40000, 30000),
-    model = 'exponential',
-    nsim = 200,
-    ncores = 3
-  )
-summary(spd_test_zoom)
-plot(spd_test_zoom)
+#spd_test_zoom <-
+#  modelTest(
+#    spd_dates,
+#    errors = dates_clean$error,
+#    timeRange = c(40000, 30000),
+#    model = 'exponential',
+#    nsim = 200,
+#    ncores = 3 )
 
-uni_test_zoom <-
-  modelTest(
-    spd_dates,
-    errors = dates_clean$error,
-    timeRange = c(40000, 30000),
-    model = 'uniform',
-    nsim = 200,
-    ncores = 3
-  )
-plot(uni_test)
+#summary(spd_test_zoom)
+#plot(spd_test_zoom)
 
-lin_test_zoom <-
-  modelTest(
-    spd_dates,
-    errors = dates_clean$error,
-    timeRange = c(40000, 30000),
-    model = 'linear',
-    nsim = 200,
-    ncores = 3
-  )
-plot(lin_test)
+#uni_test_zoom <-
+#  modelTest(
+#    spd_dates,
+#    errors = dates_clean$error,
+#    timeRange = c(40000, 30000),
+#    model = 'uniform',
+#    nsim = 200,
+#    ncores = 3)
 
-time <- seq(40000, 30000, -1)
+#plot(uni_test)
 
-fit_zoom <- drm(
-  y ~ x,
-  data = data.frame(x = time,
-                    y = dates_calibrated_spd_zoom$grid$PrDens[dates_calibrated_spd_zoom$grid$calBP >= min(time) &
-                                                                dates_calibrated_spd_zoom$grid$calBP <= max(time)]),
-  fct = L.3()
-)
+#lin_test_zoom <-
+#  modelTest(
+#    spd_dates,
+#    errors = dates_clean$error,
+#    timeRange = c(40000, 30000),
+#    model = 'linear',
+#    nsim = 200,
+#    ncores = 3)
 
-AIC(fit_zoom,
-    spd_test_zoom$fitobject,
-    lin_test_zoom$fitobject,
-    k = 2)
+#plot(lin_test)
+
+#time <- seq(40000, 30000, -1)
+
+#fit_zoom <- drm(
+#  y ~ x,
+#  data = data.frame(x = time,
+#                    y = dates_calibrated_spd_zoom$grid$PrDens[dates_calibrated_spd_zoom$grid$calBP >= min(time) &
+#                                                                dates_calibrated_spd_zoom$grid$calBP <= max(time)]),
+#  fct = L.3()
+#)
+
+#AIC(fit_zoom,
+#    spd_test_zoom$fitobject,
+#    lin_test_zoom$fitobject,
+#    k = 2)
