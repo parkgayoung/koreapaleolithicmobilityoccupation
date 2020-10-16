@@ -86,7 +86,6 @@ plot(exp_test, main="Exponential Model")
 plot(uni_test, main="Uniform Model")
 plot(lin_test, main="Linear Model")
 
-
 dev.off()
 
 #ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
@@ -97,6 +96,7 @@ library(drc)
 
 time <- seq(45000, 1000, -1) # calBP
 
+#logistical growth model
 fit <- drm (y ~ x,
   data = data.frame (x = time,
                     y = dates_calibrated_spd$grid$PrDens[dates_calibrated_spd$grid$calBP >= min(time) &
@@ -110,9 +110,16 @@ aic <- AIC(fit,
     exp_test$fitobject,
     lin_test$fitobject,
     k = 2)
-
 #                 df       AIC
 #fit                4 -423672.2
+#exp.fit$fitobject  3 -412132.5
+#lin.fit$fitobject  3 -414265.5
+
+aic_2 <- AIC(exp_test$fitobject,
+             lin_test$fitobject,
+             k = 2)
+
+#                 df       AIC
 #exp.fit$fitobject  3 -412132.5
 #lin.fit$fitobject  3 -414265.5
 
