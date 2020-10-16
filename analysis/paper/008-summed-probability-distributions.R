@@ -49,7 +49,7 @@ exp_test <-
     ncores = 3
   )
 
-plot(exp_test, main="Explonetial Model")
+plot(exp_test, main="Exponential Model")
 
 uni_test <-
   modelTest(
@@ -72,7 +72,7 @@ lin_test <-
     nsim = 200,
     ncores = 3
   )
-plot(lin_test, main="Linear")
+plot(lin_test, main="Linear Model")
 
 ## plot for all three models
 #library(cowplot)
@@ -82,9 +82,9 @@ plot(lin_test, main="Linear")
 png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 
 par(mfrow=c(3,1))
-plot(exp_test, main="Explonetial Model")
+plot(exp_test, main="Exponential Model")
 plot(uni_test, main="Uniform Model")
-plot(lin_test, main="Linear")
+plot(lin_test, main="Linear Model")
 
 
 dev.off()
@@ -135,11 +135,11 @@ knitr::kable(df_aic)
 
 #g <- tableGrob(df_aic[1:3, 1:3], rows = NULL)
 #g <- gtable_add_grob(g,
-                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
-                     t = 2, b = nrow(g), l = 1, r = ncol(g))
+#                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
+#                     t = 2, b = nrow(g), l = 1, r = ncol(g))
 #g <- gtable_add_grob(g,
-                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
-                     t = 1, l = 1, r = ncol(g))
+#                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 2)),
+#                     t = 1, l = 1, r = ncol(g))
 #grid.draw(g)
 
 
