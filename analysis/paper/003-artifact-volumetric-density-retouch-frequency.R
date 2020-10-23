@@ -54,7 +54,7 @@ retouch_over_time_subplot <-
   ggplot(Assemblage_info_retouch_density_ages_prop,
          aes(date_age / 1000,
              prop_retouched)) +
-  geom_point(size = 3,
+  geom_point(size = 2,
              colour = "grey80") +
   labs(x = "Age of assemblage (ka)",
        y = "Proportion retouched") +
@@ -72,8 +72,7 @@ retouch_sp_ttest_df <- round(unname(retouch_sp_ttest$parameter ), 3)
 
 # t(degress of freedom) = the t statistic, p = p value.
 retouch_sp_ttest_str <-
-  paste0("t(", retouch_sp_ttest_df, ") = ", retouch_sp_ttest_t, ",
-         p = ", retouch_sp_ttest_p)
+  paste0("t(", retouch_sp_ttest_df, ") = ", retouch_sp_ttest_t, ", p = ", retouch_sp_ttest_p)
 
 # box plot for # retouch pieces by stemmed point
 
@@ -86,7 +85,7 @@ retouch_sp_sub_plot <-
            x = 1.5,
            y = 1.25,
            label = retouch_sp_ttest_str,
-           size = 3) +
+           size = 1.7) +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
        y = "Proportion retouched")
@@ -140,10 +139,10 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
            size = size -2,
            colour = "grey50") +
   annotate("text",
-           x = 0.03,
-           y = 0.02,
-           label = glue('r = {round(r_value, 3)}\n, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
-           size = size - 2,
+           x = 0.05,
+           y = 0.03,
+           label = glue('r = {round(r_value, 3)}, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
+           size = 4,
            colour = "grey50")
 
 
@@ -152,10 +151,10 @@ library(cowplot)
 ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
   draw_plot(retouch_over_time_subplot,
             .1, .1,
-            .40, .30) +
+            .35, .25) +
   draw_plot(retouch_sp_sub_plot,
-            .53, .1,
-            .25, .30)
+            .46, .1,
+            .23, .28)
 
 
 

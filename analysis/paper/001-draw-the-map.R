@@ -25,17 +25,18 @@ map <-
                 zoom = 10)
 
 library(ggrepel)
-ggmap(map)  +
-  geom_point(data = korean_archaeological_site_locations,
-                         aes(long_dd ,
-                             lat_dd),
-                         colour = "red",
-                         size = 2) +
-  geom_label_repel(data = korean_archaeological_site_locations,
-                   aes(long_dd ,
-                       lat_dd,
-                       label = site_name),
-                   size = 2)
+#map with site names next to the points
+#ggmap(map)  +
+#  geom_point(data = korean_archaeological_site_locations,
+#                         aes(long_dd ,
+#                             lat_dd),
+#                         colour = "red",
+#                         size = 2) +
+#  geom_label_repel(data = korean_archaeological_site_locations,
+#                   aes(long_dd ,
+#                       lat_dd,
+#                       label = site_name),
+#                   size = 2)
 # use numbering for site name, then the caption has the key to
 # numbers and names
 
