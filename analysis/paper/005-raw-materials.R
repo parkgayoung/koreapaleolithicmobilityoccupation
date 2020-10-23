@@ -12,7 +12,13 @@ kasr <- read.csv(here("analysis/data/raw_data/Rawmaterial_info.csv"))
 
 # join artefact type freqs with site data
 
-
+mydata_ages <-
+  mydata %>%
+  separate(C14.BP., into = c('age', 'error'),
+           sep = "±") %>%
+  mutate(age_ka = parse_number(age) / 1000,
+         error = parse_number(error)) %>%
+  mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
 
  #raw material information
   kasr_long1 <-

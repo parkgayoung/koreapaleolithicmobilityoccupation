@@ -63,7 +63,7 @@ site_locations_tbl %>%
 # this is the overall time series plot
 # we see the mean for all locations, and individual
 # locations in grey in the background
-mat_time_series_plot <-
+mat_time_series_plot_no_annotate <-
 ggplot() +
   geom_line(data = site_locations_tbl_temps,
             aes(-year,
@@ -82,6 +82,26 @@ ggplot() +
   theme_minimal() +
   labs(y = "Mean annual temperature (MAT, °C)",
        x = "Year (BP)")
+
+# add annotations for climate events
+mat_time_series_plot<-mat_time_series_plot_no_annotate +
+                      annotate ("rect",
+                              xmin = 14000, xmax = 29000,
+                              ymin = -Inf, ymax = Inf, fill = "lightgrey",
+                              alpha = .4) +
+                      annotate("rect",
+                               xmin = 19000, xmax = 26500,
+                               ymin = -Inf, ymax = Inf, fill = "grey",
+                               alpha = .4) +
+                      annotate("text",  x = 10800, y = 11, label = "MIS 1",
+                               fontface="bold", color = "#DC5B44", size = 3) +
+                      annotate("text",  x = 22000, y = 11, label = "MIS 2",
+                               fontface="bold", color = "#DC5B44", size = 3) +
+                      annotate("text",  x = 38000, y = 11, label = "MIS 3",
+                               fontface="bold", color = "#DC5B44", size = 3) +
+                      annotate("text",  x = 22500, y = 9.7, label = "LGM",
+                               fontface="bold", color = "#B04027", size = 3)
+
 
 # now we prepare the data to show each site
 # in a boxplot
@@ -157,7 +177,7 @@ ggmap(map)  +
              aes(long_dd ,
                  lat_dd,
              colour = av_mat),
-             size = 2.8) +
+             size = 2) +
   geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means %>%
                     select(-long_dd,
                            -lat_dd) %>%
@@ -165,15 +185,16 @@ ggmap(map)  +
                    aes(long_dd ,
                        lat_dd,
                        label = site_name),
-                  size = 3,
+                  size = 2,
                   bg.color = "white",
                   bg.r = 0.1) +
   scale_colour_viridis_c(name = "MAT") +
-  theme(legend.position = c(0.95, 0.25),
+  theme(legend.position = c(1, 0.25),
         axis.line = element_blank(),
               axis.text = element_blank(),
               axis.ticks = element_blank(),
-              plot.margin = unit(c(0, 0, -1, -1), 'lines')) +
+              plot.margin = unit(c(0, 0, -0.5, -0.5), 'lines'),
+        legend.key.size = unit(0.3, "cm")) +
           xlab('') +
           ylab('')
 
@@ -192,12 +213,12 @@ mat_elev_cor_plot <-
     aes(y = elev,
         x = mat) +
     geom_point() +
-    geom_text_repel(aes(label = site_name)) +
+    geom_text_repel(aes(label = site_name), size = 3.3) +
     stat_smooth(method = "lm") +
     stat_cor(label.x = 6,
-             label.y = 300) +
+             label.y = 300, size = 3) +
     stat_regline_equation(label.x = 6,
-                          label.y = 270) +
+                          label.y = 273, size = 3) +
    ylab("Elevation above sea level (m)") +
    xlab("Mean annual temperature (MAT, °C)") +
     theme_minimal()
@@ -224,7 +245,8 @@ plot_grid(top_row,
           bottom_row,
           ncol = 1)
 
-ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"))
+ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"), scale = 1, width = 8,
+       height = 6)
 
 
 

@@ -60,4 +60,15 @@ mat_time_series_plot <-
   labs(y = "Mean annual temperature (MAT, °C)",
        x = "Year (BP)")
 
+# try to make boxplot
+mat_per_site_plot <-
+  ggplot(site_locations_tbl_temps) +
+  aes(y = mean_annual_temperature,
+      x = reorder(site_name,
+                  mean_annual_temperature)) +
+  geom_boxplot() +
+  coord_flip() +
+  xlab("") +
+  ylab("Mean annual temperature (MAT, °C)") +
+  theme_minimal()
 

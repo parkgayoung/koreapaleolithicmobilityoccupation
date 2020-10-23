@@ -57,8 +57,8 @@ elevation_sp_sub_plot <-
            x = 1.5,
            y = 250,
            label = elev_sp_ttest_str,
-           size = 3) +
-  theme_bw(base_size = 8)  +
+           size = 2.5) +
+  theme_bw(base_size = 7)  +
   labs(x = "Stemmed points present",
        y = "Elevation above sea level (m)")
 
@@ -74,15 +74,15 @@ elevation_sp_main_plot <-
   geom_smooth(se = FALSE,
               aes(color = as.factor(has_sp))) +
  # geom_smooth(se = FALSE)
-  scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
-  theme_minimal(base_size = 16)  +
-  theme(legend.position = c(0.1, 0.9))
+  scale_colour_discrete(name = "Contains stemmed points?") +
+  theme_minimal(base_size = 14)  +
+  theme(legend.position = c(0.2, 0.9))
 
 
 library(cowplot)
 ggdraw(elevation_sp_main_plot) +
   draw_plot(elevation_sp_sub_plot,
-            .7, .60,
-            .25, .32)
+            .66, .60,
+            .29, .32)
 
 ggsave(here::here("analysis/figures/006-site-elevation.png"))

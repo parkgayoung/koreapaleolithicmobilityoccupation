@@ -64,6 +64,8 @@ den_sp_ttest_df <- round(unname(den_sp_ttest$parameter ), 3)
 den_sp_ttest_str <-
   paste0("t(", den_sp_ttest_df, ") = ", den_sp_ttest_t, ", p = ", den_sp_ttest_p)
 
+
+
 #Volume and artefact counts to get density over time.
 
 density_sp_sub_plot <-
@@ -73,9 +75,9 @@ density_sp_sub_plot <-
   geom_boxplot() +
   annotate("text",
            x = 1.5,
-           y = 10,
+           y = 9,
            label = den_sp_ttest_str,
-           size = 3) +
+           size = 2.5) +
   theme_bw(base_size = 8)  +
   labs(x = "Stemmed points present",
        y = "Artefact density")
@@ -101,8 +103,8 @@ density_sp_main_plot <-
 library(cowplot)
 ggdraw(density_sp_main_plot) +
   draw_plot(density_sp_sub_plot,
-            .45, .61,
-            .35, .35)
+            .37, .62,
+            .32, .33)
 
 ggsave(here::here("analysis/figures/002-age-by-density.png"))
 
