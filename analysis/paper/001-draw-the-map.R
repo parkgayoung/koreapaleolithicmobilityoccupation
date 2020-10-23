@@ -45,8 +45,25 @@ ggmap(map)  +
 ggsave(here("analysis/figures/001-site-map.png"))
 
 
+# Put index number, rather than site name
+
+korean_archaeological_site_locations <- tibble::rowid_to_column(korean_archaeological_site_locations, "ID")
+
+ggmap(map)  +
+  geom_point(data = korean_archaeological_site_locations,
+             aes(long_dd ,
+                 lat_dd),
+             colour = "red",
+             size = 2) +
+  geom_text_repel(data = korean_archaeological_site_locations,
+                   aes(long_dd ,
+                       lat_dd,
+                       label = ID),
+                   size = 2)
 
 
+index_table <- korean_archaeological_site_locations %>%
+  select(ID, site_name)
 
 
 #----------------------------------------------------------------
