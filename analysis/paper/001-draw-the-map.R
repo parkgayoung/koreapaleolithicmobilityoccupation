@@ -42,13 +42,14 @@ ggmap(map)  +
 
 
 
-ggsave(here("analysis/figures/001-site-map.png"))
+
 
 
 # Put index number, rather than site name
 
 korean_archaeological_site_locations <- tibble::rowid_to_column(korean_archaeological_site_locations, "ID")
 
+map_index<-
 ggmap(map)  +
   geom_point(data = korean_archaeological_site_locations,
              aes(long_dd ,
@@ -59,12 +60,42 @@ ggmap(map)  +
                    aes(long_dd ,
                        lat_dd,
                        label = ID),
-                   size = 2)
+                   size = 3)
 
-
+library(tidyverse)
 index_table <- korean_archaeological_site_locations %>%
   select(ID, site_name)
 
+
+# create a table
+table_index <- data.frame(Index = korean_archaeological_site_locations$ID,
+                         Site = korean_archaeological_site_locations$site_name)
+
+
+print(table_index)
+
+#save a table of AIC result as csv
+write.csv(table_index, file="analysis/figures/001-Map-site-name.csv", row.names = FALSE)
+
+library(gridExtra)
+library(grid)
+mytheme <- gridExtra::ttheme_minimal(
+  core = list(fg_params=list(cex = 0.5)),
+  colhead = list(fg_params=list(cex = 0.5)),
+  rowhead = list(fg_params=list(cex = 0.25)))
+
+g <- tableGrob(table_index, rows = NULL, theme = mytheme)
+g <- gtable_add_grob(g,
+                     grobs = rectGrob(gp = gpar(fill = NA, lwd = 1)),
+                     t = 1, b = nrow(g), l = 1, r = ncol(g))
+grid.newpage()
+grid.draw(g)
+dev.off()
+
+grid.arrange(map_index, g, ncol=2)
+
+library(here)
+ggsave(here("analysis/figures/001-site-map.png"))
 
 #----------------------------------------------------------------
 # older map data
