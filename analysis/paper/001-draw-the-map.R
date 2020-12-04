@@ -143,7 +143,7 @@ coords <-
                                            to = 'dec_deg')) %>%
   mutate_at(vars(lat_dd, long_dd), as.numeric)
 
-write_csv(coords, here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
+#write_csv(coords, here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 
 # quick map
 
