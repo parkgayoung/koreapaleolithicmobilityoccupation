@@ -105,25 +105,25 @@ ggplot(kasa_long3,
 
 ggsave(here::here("analysis/figures/004-artefact-types.png"))
 
-# interactive
-plotly::ggplotly(kasa_long3_fill_plot)
+#make an interactive plot for interpret the plot easily
+#plotly::ggplotly(kasa_long3_fill_plot)
 
 
 
-ggplot(kasa_long3,
-       aes(
-         reorder(axis_label, -age_ka),
-         percentage)) +
-  geom_col() +
-  ylab("Proportion") +
-  xlab("Assemblage (youngest at the top)") +
-  theme_minimal(base_size = 16)  +
-  scale_fill_viridis_d(name = "Artefact type",
-                       option = "D") +
-  facet_wrap( ~ artefact_type,
-              ncol = 1,
-              scales = "free_y") +
-  theme_minimal(base_size = 6)
+#ggplot(kasa_long3,
+#       aes(
+#         reorder(axis_label, -age_ka),
+#         percentage)) +
+#  geom_col() +
+#  ylab("Proportion") +
+#  xlab("Assemblage (youngest at the top)") +
+#  theme_minimal(base_size = 16)  +
+#  scale_fill_viridis_d(name = "Artefact type",
+#                       option = "D") +
+#  facet_wrap( ~ artefact_type,
+#              ncol = 1,
+#              scales = "free_y") +
+#  theme_minimal(base_size = 6)
 
 
 
