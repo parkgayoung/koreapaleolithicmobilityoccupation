@@ -72,18 +72,17 @@ index_table <- korean_archaeological_site_locations %>%
 table_index <- data.frame(Index = korean_archaeological_site_locations$ID,
                          Site = korean_archaeological_site_locations$site_name)
 
-
-print(table_index)
+# print(table_index)
 
 #save a table
 library(here)
-write.csv(table_index, file=here("analysis/figures/001-Map-site-name.csv", row.names = FALSE))
+#write.csv(table_index, file=here("analysis/figures/001-Map-site-name.csv", row.names = FALSE))
 
 library(gridExtra)
 library(grid)
 library(gtable)
 mytheme <- gridExtra::ttheme_minimal(
-  core = list(fg_params=list(cex = 0.5)),
+  core = list(fg_params=list(cex = 0.6)),
   colhead = list(fg_params=list(cex = 0.5)),
   rowhead = list(fg_params=list(cex = 0.25)))
 
@@ -91,13 +90,23 @@ g <- tableGrob(table_index, rows = NULL, theme = mytheme)
 g <- gtable_add_grob(g,
                      grobs = rectGrob(gp = gpar(fill = NA, lwd = 1)),
                      t = 1, b = nrow(g), l = 1, r = ncol(g))
+
+#g$heights <- unit(rep(5/nrow(g), nrow(g), nrow(g)), "cm")
+
 grid.newpage()
 grid.draw(g)
 dev.off()
 
-grid.arrange(map_index, g, ncol=2)
+#grid.arrange(map_index, g, ncol=2)
 
+library(cowplot)
+ggdraw(map_index) +
+  draw_plot(g,
+            .123, .124,
+            .35, .38)
 
 ggsave(here("analysis/figures/001-site-map.png"))
+
+
 
 

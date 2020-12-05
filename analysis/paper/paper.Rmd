@@ -21,6 +21,27 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r, setup, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  comment = "#>",
+  dpi = 300,
+  fig.path = "../figures/"
+)
+```
+
+<!---```{r}
+quietly <- function(x) {
+  sink(tempfile())
+  on.exit(sink())
+  invisible(force(suppressMessages(x)))
+}
+
+``` --->
+
 # Introduction
 
 The appearance of stemmed points in the Late Pleistocene (~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it reflected more specialized hunting practices [@seong2008tanged; @chang2013human]. Stemmed points are often called as tanged points in the western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points that have long been called 'tanged points' in Korea. The stemmed point is a projectile point made out of elongated flake or blade with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is considered to represent hafting technology that joins the lithic to a wooden shaft. If they were projectile weapon tips, stemmed points represent the first appearance of hafting technology in Korea. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct fauna evidence on hunting and subsistence strategies. Here we explore questions about the implications of the appearance of this new technology using a behavioural ecological framework and stone artefacts. We explore changes in the way people occupied the landscape, the way people used sites, and impact of social and ecological environment. We examined stone artefacts from 22 sites in South Korea to investigate the changes in human behaviour associated with the appearance stemmed points, and the blade industry that followed.
@@ -56,6 +77,7 @@ After the first excavation of a Paleolithic site in Korea at Seokjang-ri site in
 ```{r korea_map, fig.cap="Site map. Korean Paleolithic sites mentioned in the text."}
 source(here::here("analysis/paper/001-draw-the-map.R"))
 knitr::include_graphics(here::here("analysis/figures/001-site-map.png"))
+
 ``` 
 
 
