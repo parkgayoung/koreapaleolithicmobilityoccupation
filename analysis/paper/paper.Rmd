@@ -1,27 +1,25 @@
 ---
-title: "Changes in Mobility and Site Occupation during the Late Pleistocene in Korea"
+title: "How did the introduction of Stemmed Points affect Mobility and Site Occupation during the Late Pleistocene in Korea?"
 author:
   - Author Gayoung Park
   - Author Ben Marwick
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-    bookdown::html_document2:
+    bookdown::html_document2: 
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
 bibliography: references.bib
 csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
 abstract: |
-  The Late Pleistocene saw the introduction of new lithic technologies to the Korean Peninsula, especially stemmed points and blades. We examined stone artifacts from 22 sites in Korea to investigate how the introduction of  new tools changed the way people used the landscape, and the way people used sites. We analyzed artifact density, retouch frequency, radiocarbon ages, site elevation, raw material types, and composition of the toolkit to test hypotheses about site use. The results show that the new technology enabled the occupation of marginal environments at higher elevations. We find no strong relationship between technology and ecological change. Instead, we assume that population dynamics might have had more impact on changes in stone artifact technology and hunter-gatherer foraging strategies. 
+  Human behavioural ecological models use stone artefacts as a source of information for understanding forager mobility. We use these models to examine stone artefacts from 22 sites in Korea to investigate mobility and site occupation during the Late Pleistocene. This study focuses on two questions: how did the introduction of stemmed points change forager' mobility and landscape use? And how did this new technology change the way people use habitation sites? We analyse artefact volumetric density, retouch frequency, composition of toolkits, artefact raw materials, environmental and demographic contexts. Quartz and side scrapers, in addition to cores and choppers, remain dominant in assemblages before and after the introduction of stemmed points throughout the Late Pleistocene. Our results show that forager groups using stemmed points were associated with occupation of marginal or extreme environments. In addition, groups with stemmed points were associated with expedient technologies indicating residential and less mobile behaviours. The environmental context of this technological innovation was a gradual decrease in temperature into the LGM. A population increase followed after the appearance of stemmed points.
+
 keywords: |
-  keyword 1; keyword 2; keyword 3
+  stemmed points; Korean Paleolithic; mobility; site occupation
 highlights: |
   These are the highlights. 
 editor_options: 
   chunk_output_type: console
 ---
-
-
-<!-- This is the format for text comments that will be ignored during renderings. Do not put R code in these comments because it will not be ignored. -->
 
 ```{r, setup, echo = FALSE}
 knitr::opts_chunk$set(
@@ -30,827 +28,200 @@ knitr::opts_chunk$set(
   message = FALSE,
   echo = FALSE,
   comment = "#>",
+  dpi = 300,
   fig.path = "../figures/"
 )
-
-#library(koreapaleolithicmobilityoccupation)# Or use devtools::load_all('.', quiet = T) if your code is in script files, rather than as functions in the `/R` diretory
 ```
 
-```{r setup, include=FALSE}
-suppressPackageStartupMessages(library(tidyverse))
-library(glue)
-library(ggrepel)
-library(here)
+<!---```{r}
+quietly <- function(x) {
+  sink(tempfile())
+  on.exit(sink())
+  invisible(force(suppressMessages(x)))
+}
 
-korean_archaeological_sites <- readxl::read_excel(here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
-
-# data from PhD data sheet, not KAS sheet.
-mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
-
-# raw material data from KAS data sheet.
-kasr <- read.csv(here("analysis/data/raw_data/Rawmaterial_info.csv"))
-
-# assemblage composition data from KAS data sheet.
-kasa <- read.csv(here("analysis/data/raw_data/Assemblage_info.csv"))
-
-#volume of the cultural layer from KAS data sheet.
-kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
-
-dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
-
-```
-
-```{r}
-
-# join artefact type freqs with site data
-
-kasa %>% 
-  pivot_longer(-X, 
-               names_to = "site_name",
-               values_to = "count") %>% 
-  pivot_wider(names_from = "X",
-              values_from = "count") %>% 
-  left_join(mydata)
-
-```
+``` --->
 
 # Introduction
 
-The appearance of stemmed points in the Late Pleistocene (~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it is thought to reflect more specialed hunting practices [@lee2002new;@seong2008tanged;@chang2013human]. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is cconsidered to represent halfting technology that joins the lithic to a wooden shaft. Stemmed points represent the first appearance of halfting technology in Korea. Here we explore questions about these transformations using as behavioural ecology framework to explore changes in the way people used the landscape, and the way people used sites. We examined stone artifacts from 22 sites in South Korea to investigate the technological transition represented by the appearance of a new tool, stemmed points, and the blade industry that followed. Previous work on this technological change in Korea has focussed on issues of the transition from the Early to the Late Paleolithic and modern human dispersals [@norton2009evolution; @bae2010origin]. To our knowledge, the implications for forager mobility and site use have not been explored in detail. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct faunal evidence on hunting and subsistence strategies. Here, we attempt to identify patterns of mobility through analysis of the stone artefact assemblages using Human Behavioral Ecology (HBE) models. Drawing on established relationships between lithic technology and forager mobility [@shott1986settlement; @Hiscock_1994; @kuhn1994formal; @kuhn2004upper; @kuhn2015artifacts; @kuhn2016moves; @capriles2018], we hypothesize that the appearance of the new hunting tool might reflect a preference for more portable and efficient technologies, that are part of a broader strategy of moving frequently and further, possibly as an adaptation to population or environmental changes. 
+The appearance of stemmed points in the Late Pleistocene (~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it reflected more specialized hunting practices [@seong2008tanged; @chang2013human]. Stemmed points are often called as tanged points in the western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points that have long been called 'tanged points' in Korea. The stemmed point is a projectile point made out of elongated flake or blade with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is considered to represent hafting technology that joins the lithic to a wooden shaft. If they were projectile weapon tips, stemmed points represent the first appearance of hafting technology in Korea. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct fauna evidence on hunting and subsistence strategies. Here we explore questions about the implications of the appearance of this new technology using a behavioural ecological framework and stone artefacts. We explore changes in the way people occupied the landscape, the way people used sites, and impact of social and ecological environment. We examined stone artefacts from 22 sites in South Korea to investigate the changes in human behaviour associated with the appearance stemmed points, and the blade industry that followed.
 
-<!-- generally, how do we make sense of new stone tools... When a new stone artefact technology appears, how do we explain that? new species... population movements... (great basin)... environment... (Mesolithic & bow and arrow)...  risk management (Australian small tool tradition) --> 
-<!-- Do you want to have one more paragraph for the general tradition of explaining the emergence of new stone tools? -->
-
+Previous work on this technological change in Korea has focussed on issues of the transition from the Early to the Late Paleolithic and modern human dispersals [@norton2009evolution; @bae2010origin]. To our knowledge, the implications of the appearance of stemmed points for forager mobility and site use have not been explored in detail. Here, we attempt to identify patterns of mobility through analysis of the stone artefact assemblages using Human Behavioural Ecology (HBE) models. Drawing on established relationships between lithic technology and forager mobility [@shott1986settlement; @Hiscock_1994; @kuhn1994formal; @kuhn2004upper; @kuhn2015artifacts; @kuhn2016moves; @capriles2018mobility], we hypothesize that the appearance of the new hunting tool might reflect a preference for more portable and efficient technologies, that are part of a broader strategy of moving frequently and further, possibly as an adaptation to environmental or population changes.
 
 # Background
 
-### Regional archaeology
+In the Eastern hemisphere, major technological innovations during the Late Pleistocene are restricted to Northeast Asia, such as northern China, Japan and Korea. These innovations include blade and micro technology, high frequencies of retouched blade tools, several novel tools such as projectile points, stemmed points, end scrapers, burins, denticulates, etc, and using high-quality raw materials [@bar1999big; @brantingham2001initial; @Bar-Yosef_2002; @bae2017origin; @nakazawa2018quaternary]. Previous work has argued that the appearance of new stone artefact technologies in this region may be linked to modern human dispersals [@seong2008tanged; @bae2010origin; @Bae_2010; @bae2017origin].
 
-In the Eastern hemisphere, striking technological innovations during the Late Pleistocene are restricted to Northeast Asia, such as northern China, Japan and Korea. These innovations include blade and micro technology, high frequencies of retouched blade tools, several novel refined tools such as projectile points, stemmed points, end scrapers, burins, denticulates, etc, and using high-quality raw materials [@bar1999big; @brantingham2001initial; @Bar-Yosef_2002; @bae2017origin; @nakazawa2018quaternary]. Previous work has argued that the appearance of new stone artefact technologies in this region may be linked to modern human dispersals by focusing on the origin of the new tools [@seong2008tanged;@bae2010origin;@Bae_2010; @bae2017origin].
+The Shuidonggou site in northern China is an important example of the transition from cobble to blade tool industries in the Late Pleistocene of Northeast Asia [@Brantingham_Perreault_2010; @Gao_Zhang_Yang_Shen_Wu_2010; @pei2012shuidonggou]. Shuidonggou Locality SDG 2, which dates to around c. 32,000 years, contains fauna specimens, ostrich eggshell beads, and stone artefacts including blades, retouched flakes, cores, and debris along with well-preserved hearths. In Locality 9 dated to c. 29,000 years, there is a small scatter of stone artefacts consisting of blades, Levallois flakes, cores and other retouched flakes. The recent excavation of Locality 12 shows that its archaeological context, dated to 13,078--13,296 cal BP, includes ground stone and more than 30,000 microlithics made out of a variety of raw materials such as fine-grained and siliceous rocks. In addition, more than 10,000 animal fossils and bone tools including a tool for fishing nets, an awl, and two needles were excavated [@pei2012shuidonggou; @gao2014discovery; @zhang2016bone]. Stemmed points are not part of the Shuidonggou assemblages, but microblade technology is argued to have appeared in China after 29ka BP, related to changes in mobility associated with colder climates towards LGM [@yi2014significance]. Shuidonggou shows that the blade component came from Siberia and/or Mongolia at 41 ka (SDG Locality1 and 9), advanced core and flake tools were likely to have been locally developed at 33 ka (2 and 8), and at 10.8 ka microblade technology appears but the origin is uncertain (12) [@yi2014significance; @li2019history].
 
-The Shuidonggou site in northern China is a typical site for showing the transition from cobble to blade tool industries in the Late Pleistocene of Northeast Asia from the Late Pleistocene to Middle Holocene [@Brantingham_Perreault_2010; @Gao_Zhang_Yang_Shen_Wu_2010; @pei2012shuidonggou]. Shuidonggou Localities SDG 2, which dated around c.32,000 years, contains aunal specimens,ostrich eggshell beads,and stone artefacts including blades, retouched flakes, cores, and debries along with well-preserved hearths. In Locality 9 dated to c.29,000years, there is a small scatter of stone artefacts consists of blades, Levallois flakes, cores and other retouched flakes. The recent excavtion of Locality 12 shows that its archaeological layer <!--I shouldn't use 'layer', but I don't know what to say shortly-->, dated to 13,078–13,296 cal BP, includes ground stone and more than 30,000 microlithics made out of a variety of raw materials such as fine-grained and siliceous rocks. In addition, more than 10,000 animal fossils and bone tools including a tool for fishing nets, an awl, and two needles were excavated [@pei2012shuidonggou; @gao2014discovery; @zhang2016bone].<!-- they use OSL data that has wise range, or calibrated years --> Based on the archaeological records, people argue that a microblade technology appeared in China after 29ka BP related to mobility change along with colder climate towards LGM and changed game as surviving strategy [@yi2014significance]. The accumulated studies on Shuidonggou site show that the blade compoenent is claimed to have come from Siberia and/or Mongolia at 41 ka (SDG Locality1 and 9), advanced core and flake tools are likely to be locally developed at 33ka (2 and 8), and at 10.8 ka microblade technology appears but the origin is uncertain (12) [@yi2014significance; @li2019history].
+Late Pleistocene technological innovations in Japan appeared in different regions of the archipelago around 38,000 years ago accompanied by remains of Homo sapiens found in Okinawa Island (c.36,000 cal BP) [@yamaoka2012use; @izuho201421]. These new technologies include trap pits, cobble concentrations, hearths, charcoal concentrations, and toolkits including trapezoids, pointed-shaped backed blades, backed points, burins, end scrapers, side scrapers, wedges, beak-shaped tools, axes, edge-ground axes, hammerstones, cobble tools, and anvils [@bae2017origin; @izuho201421]. These innovations have been interpreted as evidence of new foraging methods such as watercraft (marine transport of obsidian from the Kozu Island) and bow-and-arrow technology, driven by increased population and ecological changes [@Yamaoka_2012; @bae2017origin; @Nakazawa_Bae_2018; @morisaki2019early]. Hafted trapezoids were likely multifunctional tools adapted to the specific environmental settings of the different Japanese Islands [@ono2002radiocaron; @yamaoka2012use]. Ishinomoto 8-ku is one of the earliest sites dated to 39,690--34,790 cal BP, located in Takuma upland of Kumamoto Prefecture. A total of 500 stone artefacts were discovered including trapezoids, side scrapers, flakes, flake cores, edge-ground axes, and cobble tools. The main lithic raw materials are chert and andesite [@izuho201421]. Stemmed points appear much later, dated to between about 15,500 and 13,800 cal BP [@ono2002radiocaron; @tsutsumi2007dynamics]. 
 
-<!-- the last sentense is a bit long-->
-<!-- "advanced core and flake tools means intentionally prepared platforms and working surfaces, selective raw material usage (using chert rather tahn river pebble), bipolar reduction, and generating small elongated blanks as results" -->
+What makes the Korean Late Pleistocene technological transition distinctive from what we see at Shuidonggou and in Japan is that the earliest signs of new technologies in Korean assemblages are stemmed points, followed by blade technologies. Stemmed points appeared in both regions after the case of Korean Peninsula. The oldest stemmed points so far is from the Yonghodong site dated to 38.5 ka and made on elongated flakes [@seong2009emergence; @seong2015diversity; @bae2017origin]. After blades appeared at c. 27 ka and were adopted to the stemmed points, the shape of points became more standardized with one or two ridges on the dorsal side and triangular cross section. Replacing flake to blade as a blank of the points led to an increase in quantity over time. In addition to the stemmed points, flake tools became more complex, with a greater diversity in both type and size along with continuously used core tools during the Late Pleistocene [@Bae_2010; @Lee_2013; @Lee_2016]. There are several attempts to explain the technological transition and they can be summarized into two competing models: 'heterogenic' migration [@bae2010origin] or *in situ* evolution [@seong2009emergence]. The migration model argues that the new blade industry including stemmed points, and the earlier coarse flake tradition including large cores, polyhedrons, choppers, and even handaxes, came from different origins as the result of continuing influx of model human migration from two routes. Bae (2010) explains that blade and stemmed points arrived in the Korean peninsula from Siberia, Mongolia, or other regions of northeast China following the Liaohe and Sunghe rivers around 35 ka BP with the earliest evidence of blade in those regions. He assumes that core and flake industry come from southern China based on the existence of similar assemblages in both Korea and southern China in addition to a genetic analysis of the Y-chromosome of the modern population [@bae2013early; @lee2013current]. The '*in situ*' model claims that stemmed points and other Late Paleolithic assemblages including blade industries autonomously emerged in the south of the Korean peninsula with no external influence [@seong2008tanged]. This claim is supported by the earliest appearance of stemmed points among Northeast Asia, such as Hwadae-ri, Hopyeong-dong, and Yonghodong sites dated to 40-35ka BP [@seong2009emergence]. Seong(2009) uses the increased blade-to-flake ratios on lithic assemblages to support the *in situ* model based on the premise that the blade industry represents new technology while flakes indicate a continuing local one. \
 
-The origins of Late Pleistocene technological innovations in Japan is suddenly appeared in differen regions of the archipelago around 38,000 years ago accaompanying with Homo sapiens found in Okinawa Island (ca. 36,000 cal BP) [@yamaoka2012use; @izuho201421]. The components of the new technologies represented by trap pits, cobble concentrations, hearths, charcoal concentrations, and toolkits including trapezoids, pointed-shaped backed blades, backed points, burins, end scrapers, side scrapers, wedges, beak- shaped tools, axes, edge-ground axes, hammerstones, cobble tools, and anvils [ @bae2017origin; @izuho201421]. These innovations have been interpreted as evidnce of new foraging methods such as watercraft (marine transport of obsidian from the Kozu Island) and bow-and-arrow technology, drivien by increased population and ecological changes [@Yamaoka_2012; @bae2017origin; @Nakazawa_Bae_2018; @morisaki2019early]. Especially, hafted trapzoids were designed to be used as multifucntional tools and people tried to maintain and resue trapezoids and tools euipped with trapzoid to adapt to the specific environmental settings on the Japanese Islands [@ono2002radiocaron; @yamaoka2012use]. Ishinomoto 8-ku is one of the earliets sites dated to 39,690–34,790 cal BP, located in Takuma upland of Kumamoto Prefecture. A total of 500 stone artifacts were discovered including trapezoids, side scrapers, flakes, flake cores, edge-ground axes, and cobble tools. The main lithic raw materials are chert and andesite [@izuho201421].      
+<!-- need to put two images,  one for stemmed points, one for overall lithic assemblages -->
 
+## Behavioural ecology and forager land use behaviours
 
-<!--do we need to talk about AT???People had assumed that Japanese archipelago started to be occupied before 30,000 cal BP based on the existence of primary Aira-Tanzawa tephra (dated at 30,009±189 cal BP) in the excavation unit. Recenly, accummulated radiocarbon data show that --> 
-<<!-- do we need to mention popular research topic such as existance of pre UP ("archaic industries")as a heated debate?--->
+Our brief review of Late Pleistocene technological innovations in Northeast Asia shows that previous work has largely focussed on timing, location, origins and description of these new tools, but modelling the land-use behaviours that generated these assemblages has rarely been undertaken. We focus on the appearance of stemmed points in Korea because these are a new technology that represents a new hunting method. This is because the hafting implies throwing techniques that can reach long-distance targets [@Keeley_1982; @kuhn2015artifacts]. We draw on behavioural ecological theory to model the effects of this technological change. Behavioural ecology theory offers structured and testable models based on optimality assumptions that stand on economic rationality and environmental knowledge [@winterhalder1992evolutionary; @prentiss2019handbook]. The patch choice model and marginal value theorem predict that forager mobility and travel times will increase when resource patch productivity decreases [@smith1991inujjuamiunt; @smith1983anthropological; @bettinger1997evolutionary; @wolverton2015patch; @llano2015optimal]. We can also model individual artefact types as a kind of resource patch. Foragers may find a more costly and complicated technology (such as stemmed points relative to flakes) optimal if they have a long cumulative time in use, if they are maintainable and reusable in a landscape where lithic raw material supply is uncertain. That is, they may move to a patch where they can stay longer (i.e. an artefact type that has a long and extendible use-life) when they are not certain of the productivity and travel times of other patches [@kuhn2015artifacts].
 
-The Late Pleistocene technological transition in Korea is mainly characterized by the early appearance of stemmed points, followed by blade technology. The stemmed point is a projectile point made out of elongated flake or blade and with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. The earliest stemmped points were made on flakes. After blades appear at c. 27 ka, the shape of stemmped points became more standardized with one or two ridges on dorsal side and triangular cross section. The stemmed point is often called as a tanged point in western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points in Korea that have long been called 'tanged points'. Stemmed points were made from blade blanks, and became more standardized and increased in quantity over time. Flake tools became more complex, with a greater diversity in both type and size along with continuously used core tools during the Late Pleistocene  [@Bae_2010; @Lee_2013; @Lee_2016]. The oldest stemmed points so far is from the Yongho-dong site dated to 38.5 ka [@seong2009emergence; #### Park 2012 ####; @seong2015diversity; @bae2017origin]. 
+We ask two questions to investigate the period around the introduction of stemmed points in Korea. First, how did the introduction of the new tools change foragers' landscape use? Specifically, was the use of stemmed points associated with occupation of marginal or extreme environments? Our assumption here is that this new technology might have allowed foragers to explore and sojourn in less productive landscapes by increasing their mobility. In Australia during the mid-Holocene, Hiscock et al. argue that the first appearance of microlithics in many locations represent a portable and multi-functional toolkit that minimize travel expenses and increase tool readiness to adapt to patchy and unpredictable resources associated with environmental change [@Hiscock_1994; @Hiscock_Clarkson_Mackay_2011].Similarly, in Japan, Morisaki et al. [@Morisaki_Izuho_Terry_Sato_2015] argue that the transition from trapezoid to the blades and projectile points around 25 ka cal BP in north Paleo-Honshu Island enabled the foragers to extend their occupation into cold grassland landscapes.
 
-The origin of the stemmed point is one of the most frequently discussed topics among Paleolithic research in Korea. Especially, this debate includes questions about the origin of the Late Paleolithic period in Korea, the existence and nature of Middle Paleolithic technology, and reconstructions of anatomically modern human dispersals in eastern Asia. Most Korean archaeologists had assumed that the new blade technology represented came from Shuidonggou in the northeast China because this site has one of the earliest blade industries (around 35,000 BP) in northeast Asia and it is geographically close to the Korean peninsula [seong2008tanged; @lee2013current]. However, signs of early technological change in Korea, including stemmed points and blades, have been discovered from deposits dated to 40-35 ka BP from Hwadae-ri, Hopyeong-dong, and Yongho-dong, pre-dating the Shuidonggou finds [@seong2009emergence]. The debate about origins can be summarized into two models competing to explain the appearance of the new Late Pleistocene technologies: in situ evolution [@seong2009emergence] and ‘heterogenic’ migration [@bae2010origin]. The ‘in situ’ model claims that stemmed points and other Late Paleolithic assemblages including a blade industry autonomously emerged in the south of the Korean peninsula with no external influence. Seong (2009) uses the blade-to-flake ratios of lithic assemblages to support his claim. In his view, the blade industry represents new technology while flakes indicate a continuing local one. He argues that the increased ratio of blades in lithic assemblages shows an expansion of the new technology. The migration model argues that the new blade industry, including stemmed points, and the earlier coarse flake tradition including large cores, polyhedrons, choppers, and even handaxes, came from different origins. While Seong’s model (2009) proposes that the ‘heterogenic’ character is the result of indigenous development, Bae (2010) proposes that it is the result of the continuous influx of modern human populations from both Siberia and southern China. Bae’s model suggests blade technology arrived in the Korean peninsula from Siberia, Mongolia, or other regions of northeast China following the Liaohe and Sunghe rivers around 35 ka BP [@bae2013early]. 
-<!--- I don't know how to connect this debate to our research. It is really needed? --->
-
-
-### Behavioural ecology and forager land use behaviours
-
-Our review of Late Pleistocene technological innovations in Northeast Asia shows that previous work has largely focussed on timing, location, origins and description of these new tools, but there has been little effort to model the land-use behaviours that generated these assemblages. We focus on the appearance of stemmed points in Korea because these are one of the earliest new technologies that definiately represents a new hunting methods because the halfting implies throwing techniques that can reach long-distance targets [@Keeley_1982; @kuhn2015artifacts]. We ask two questions to invetigate the period around the introduction of stemmed points in Korea. 
-
-First, we ask how the introduction of the new tools changed foragers' landscape use, specifically, was the use of stemmed points associated with occupation of marginal or exterme environments? The new technology might allow foragers to explore and stay in different or harsher territories by increasing mobility. For instance, Morisaki et al. argue that the transition from trapezoid to the blades and projectile points around 25 ka cal BP in north Paleo-Honshu Island enabled the foragers to extend their occupation at residential sites [@Morisaki_Izuho_Terry_Sato_2015]. In Australia during the mid-Holocene, the highly retouched and finely shaped tools combined with shafts were appeared to  broaden their occupations to offshore islands on the northeast and northwest coast [@Hiscock_1994]. Hiscock et al. insist that the appearance of mirolithcs is great example to show that people made portable and multi-functional tools to minimize the travel expense and increase tool readiness [@Hiscock_Clarkson_Mackay_2011].
-
-Second, we focus on how the new technology changed the way people use their habitation sites. After the appearance of these new tools, did they tend to stay in one location longer, or for shorter periods, perhaps for specific purposes?. Archaeological sites indicate depositional phenomena and places where artifacts and other debris accumulated reflecting human activities in the past [@kuhn2015artifact]. The stone artifact assemblage from a site can inform us how long individuals or groups stayed and give insignts into what they did there [@binford1979organization; @kelly1995foraging; @kuhn2016moves; @holdaway2019surface]. Stone artifacts can contain a record of raw material transport and selection and give insights into land-use behaviour [@clarkson2008lithics]. For example, stone artifact density and the frequency of retouched pieces (scaled to the volume of excavated sediment) are often used as proxies to represent occupation patterns. Assemablges with low density but a high proportion of retouched and backed pieces would indicate the remains of 'short-term camp', while the combination of high density and low retouched pieces represent 'logistically organized basecampe' [@clark2017lithics; clark2019landscapes].
-
-
-
-
-<!-- Lastly, we want to know about population dynamics during the transition period based on a premise that population change could be a driver of the new invention as well as the source of it if they brought the new tools from outside. The demands derived from significan population dynamic in addition to environmental change could lead to development of the tools [buchanan2016drivers; @mihailovic2016technological; prufer2019linking]. Some studies argue that technological complexity and richness are highly influenced by population size because in large population, because new innovation could occur during the process of learning from others [@shennan2001demography; @henrich2004demography; @collared2005causes; @collard2013risk; @buchanan2016drivers]. Therefore, we will check the population change during the transitional period to understand its impact on the technology. -->
-
-
-
-
+Second, we ask how the new technology changed the way people use habitation sites and mobility. After the appearance of these new tools, did people tend to stay in one location for longer or shorter periods, perhaps for specific purposes? The stone artefact assemblage from a site can inform us how long individuals or groups stayed and give insights into their activities [@binford1979organization; @kelly1995foraging; @kuhn2016moves; @holdaway2019surface]. For example, stone artifact density and the frequency of retouched pieces (scaled to the volume of excavated sediment) can be used as proxies to represent occupation patterns [@barton2011modeling; @clark2017lithics]. Assemblages with low density but a high proportion of retouched and backed pieces may indicate the remains of 'short-term camp', which is a site for small and ephemeral overnight camp or limited activity station. On the other hand, the combination of high density and low retouched pieces represent logistically organized basecamp, which is a site with greater residential stability, long site occupation and occupied by larger groups [@clark2017lithics; @clark2019landscapes].
 
 # Methods
 
-Sites and dates
+## Sites and dates
 
-The data analyzed in this paper are gathered from published excavation reports of 22 Paleolithic open air sites in South Korea dating from 49k BP to 24k BP. Within these 22 sites we have 33 assemblages.  Multiple assemblages in a site were distinguised culturally sterile deposits in between artefact-bearing deposits, or by stratigraphic units identified by major differences in the texture and composition of the sedimentary deposit containing the stone artefacts. After the first excavation at Jeongokri site in the late 1970s, more than 200 Paleolithic sites are discovered in Korea. Among them, we  chose 22 sites based on absolute dates that span our period of interest. We include sites dated before and after the transition period (40-35 ka) to analyze the process of technological transition. 
+After the first excavation of a Paleolithic site in Korea at Seokjang-ri site in the 1960s, more than 200 Paleolithic sites have been discovered in South Korea [@lee2019were]. We selected sites dated to before and after the transition period (40-35 ka) to analyze the process of technological change. This resulted in a sample of analysed 33 assemblages from 22 sites spanning 49-24 ka (Figure \@ref(fig:korea-map)). We identified multiple assemblages in a site where culturally sterile deposits separated artefact-bearing deposits, or where stratigraphic units could be identified by major differences in the texture and composition of the sedimentary deposit containing the stone artefacts. For example, the Hwadae-ri site has three cultural layers. The lowest horizon at the bottom, dated to 39,000±1400 BP by OSL, contains coarse flake tools made of vein quartz and quartzite. The middle cultural horizon has stemmed points made of porphyry, with quartz and quartzite dominating the assemblage. This layer was dated to 31,200±900 BP by radiocarbon dating and 30,000±1,700 BP by OSL. The uppermost layer, dated to 22,000±100 BP by OSL, contains blades, scrapers, awls, and denticulates [@seong2009emergence]. We obtained the data from published excavation reports held by provincial museums.
 
-```{r cache = TRUE, fig.cap="Map of sites discussed in the text."}
+```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text."}
+source(here::here("analysis/paper/001-draw-the-map.R"))
+knitr::include_graphics(here::here("analysis/figures/001-site-map.png"))
 
-```
+``` 
 
-Assemblages
+## Assemblages
 
+The 33 assemblages consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc. We excluded some artefacts from our sample because of uncertainty about their typology. The stone artefacts from all of these sites are stored in museums located throughout South Korea, and have been briefly described in the excavation reports. We have visited most of these collections to obtain permission to study the materials. 
 
-The research analyzes total 33 assemblages [need to explain what is the difference between 'assemblage' and 'site'] and they consist of cores, blade cores, blades, flakes, debris, hammers, choppers, plans, polyhedrals, side scrapers, end scrapers, notches, cleavers, stemmed points, awls, denticulates, burins, handaxes, blanks, knives, handadzes, peaks, flatters, flakers etc.
+## Statistical methods 
 
+To answer the two research questions, we compiled information about artefact density, retouch frequency, toolkit composition, raw materials, site elevation, and radiocarbon ages.
 
+The artefact volumetric density is defined as the total number of artefacts per cubic meter of excavated sediment, and serves as a proxy for the accumulation ratio of artefacts [@clark2017lithics; @clark2019landscapes]. We used these density values to evaluate mobility and land-use practices of hunter-gatherers during the Late Pleistocene. The retouch frequency is the number of retouched tools divided by the total number of artefacts in an assemblage. This value represents mobility and duration of site occupation based on the concept that tool reduction is an tactic to extend the use-life of a tool by generating sharp, usable edges while minimizing the cost of transporting tools or bulky raw materials by reducing the total load weight [@Kuhn_1990; @buvit2014late; @clark2019landscapes]. In other words, producing and carrying highly retouched tools will increase portability and efficiency by decreasing the size of both individual tools and the assemblages so that hunter-gatherers could move often or further, or both [@kuhn1991unpacking; @kuhn1994formal; @kuhn2004upper; @andrefsky1994raw; @davies2018modeling]. Combining these two proxies, the artefact volumetric density and the retouch frequency, we expect to determine whether or not the hunter-gatherers were residentially mobile or logistically organized. If the assemblage in a site has a high artefact density and small proportion of retouch, we interpret it as a more expedient assemblage that represents “base camps” or “residences”, while less density with higher proportions of retouch shows a more curated assemblage and indicates either residential mobility or certain task groups away from residential sites [@riel2004late; @clark2017lithics].
 
+We calculated toolkit composition by analysing tool and debitage frequencies to identify changes in the assemblages during the transition period. Toolkit composition helps us answer the question of how site occupation patterns changed before and after the appearance of new technology. The type and proportion of retouched tools and knapping products, including debris and hammerstones, could give information about settlement patterns based on a premise that more activities are conducted with a wider range of tool types for longer occupation [@buvit2014late; @garcia2017occupational; @centi2019bulb]. For instance, small sized assemblages with a few types of tools represent short duration of site occupation [@shott2010size; @buvit2014late] .
 
-Some artifacts are not included as certain tools due to their vague or broken shape presumably related to the characteristics of raw materials such as quartz, quartz vein, and quartzite. In that case, we named them as unknown, unfinished, or pebble. The stone artifacts from all of these sites are stored in museums located throughout South Korea, and have been briefly described in the excavation reports. We have visited most of these collections, collected PDFs of the excavation reports, and negotiated permission to study the materials. For example, the Hwadae-ri site has three cultural layers. The lowest horizon at the bottom, dated to 39,000±1400 BP by OSL, contains coarse flake tools made of vein quartz and quartzite. The middle cultural horizon has stemmed points made of porphyry, with quartz and quartzite dominating the assemblage. This layer dated to 31,200±900 BP by radiocarbon dating and 30,000±1,700 BP by OSL. The uppermost layer, dated to 22,000±100 BC by OSL, contains blades, scrapers, awls, and denticulates [@seong2009emergence]. We compare the assemblages from the two older layers at this and other sites to investigate the transition process.     
+Studying the raw material consumption patterns is based on an assumption that stone raw materials were transported and consumed to optimize mobility and minimize risk of not having artefacts when they were needed [@andrefsky1994raw; @brantingham2000raw; @brantingham2003neutral; @yue2020lithic]. The representation of raw materials in an assemblage can be an indicator of site occupation patterns. For example, a large variability of raw materials in a site can suggest long-term settlement, while varied and exotic raw materials can indicate higher mobility [@valde2020models]. Here we want to know the specific raw materials that relate to the appearance of a new technology, and understanding site occupation patterns by examining changes in the proportions of raw material types in the assemblages. 
 
-Statistical methods 
+HBE models require environmental proxies to build hypotheses of behavioural change influenced by the surrounding environment. However, there are few paleoenvironmental proxies in Korean relevant to our target period. For example, geoarchaeological observations suggest that environment of the period was “overall cooler and drier during MIS 3” [@Han_2008; @seong2008tanged; @Choi_2011; @Chang_2013; @im2015study; @bak2017late]. To supplement the limited availability of high-resolution local proxies, we used climate information from the simulated data set of paleoclimate including global monthly temperature, covering the last 120,000 years [@beyer2020high]. We applied information of site location including elevation, latitude and longitude to the simulated data set to get the annual temperature of our research period and area. Besides the climate analysis, we analysed site elevation as a proxy to represent different environments at local scales, to identify how these impact mobility and site occupation. We mainly focused on the elevation of the sites before and after the appearance of new technology and its relationship with the stemmed points.   
 
-To answer the three research questions, we gather information such as elevation of the sites, artifact density, retouch frequency, radiocarbon dates toolkit composition, and raw material type. The elevation is the main proxy for environmental information in this research. The Korean paleoenvironmental data and information are not rich enough to directly apply HBE driven models or questions [####Han 2008####; @Chang_2013]. Rather, the paleoenvironment of the Korean Peninsula for this proposed research time period can be simply summarized as ‘overall cooler and drier during MIS 3’ [###Han 2008###; ####Seong 2008####; ###Choi 2011####; @Chang_2013; @im2015study; @bak2017late]. In this regard, it is much harder to understand the regional as well as shorter-time scale of paleoenvironmental change in the Korean Peninsula. In addition, the targeting period is not exactly matched with major environmental changes that we can check through global sea level change, it seems rather monotonous around 40-35 ka [@Bailey_2010; @Lorscheid_Stocchi_Casella_Gómez-Pujol_Vacchi_Mann_Rovere_2017]. In this research, we chose elevation to make a premise that the site elevation can represent different environment in local scale and hunter-gatherers moved to different elevation as a result of environment related risk. This research focuses on the change of the elevation of the sites throughout time and accompanying toolkits, and its relationship with the appearance of new tools.
+We used radiocarbon dates as a reference for population level. Summed probability distributions (SPD) of radiocarbon dates are often used to understand temporal trends in past human populations [@rick1987dates; @bamforth2012radiocarbon; @shennan2013regional; @timpson2014reconstructing; @contreras2014summed; @riris2019widespread]. Despite limitations of the validity of SPD [@williams2012use; @bamforth2012radiocarbon], including the lack of excavated sites in certain periods, sample size, and calibration effects, this method may be helpful as a proxy for a first approximation of population fluctuations. Although this is often used with samples of thousands of ages, this method can also be useful for small sample sizes. For instance, Timpson et al. apply SPD to 93 ages from Eastern Middle Sweden and demonstrate that the result is equivalent to a larger sample size (n= 243) [@timpson2014reconstructing]. We used 108 radiocarbon ages from 22 sites to examine connections between population trends during the Late Pleistocene in Korea and technological innovation. 
 
-The artifact volumetric density is defined as the total number of artifacts per cubic meter of excavated sediment, and served as a proxy for accumulation ratio of artifacts [@clark2017lithics; @clark2019landscapes]. We expected to use this value to evaluate mobility and land-use practices of hunter-gatherers during the Late Pleistocene. We count the retouch frequency as the number of retouched tools divided by the total number of artifacts. This value represents general proficiency of lithic manufacturing, raw material availability, and foraging strategies including mobility and duration of site occupation based on the concept that tool reductioning is an economical tactic to generate sharp, usable edges while minimizing the cost of transporting tools or bulky raw materials by reducing the total load weight [@Kuhn_1990; @clark2019landscapes]. In other words, producing and carrying highly retouched tools will increase portability and efficiency by decrease in the size of both individual tools and the assemblages so that hunter-gatherers could move often or further, or both [@kuhn1991unpacking; @kuhn1994formal; @kuhn2004upper; @andrefsky1994raw; @davies2018modeling]. For example, highly retouched and finely shaped implements appeared in Australia during the mid-Holocene to minimize risk associated with environmental change and high mobility [@Hiscock_1994].
+There is a debate about whether past population growth has played a role in technological change [@shennan2001demography; @kline2010population]. @shennan2009pattern observed a correlation between population decrease and technological simplification in their study of  lithic arrowheads from the southern Scandinavian Mesolithic. They found that the lithics became less complex, and point shape changed as the population level dropped. On the other hand, @collard2013population argue that regional archaeological data do not support the population-driven models [@buchanan2016drivers]. For example, @buchanan2016drivers concluded that changes in point types from >13,000 years ago to 400 years ago in Texas were related to environmental risk, and not dependent on population size. We explored SPD to test for correlations between population, environmental risk and technological change. We used the R package ‘rcarbon’ [@cremaanalysing] to perform statistical analyses and conduct model testing using Monte Carlo methods. We generated exponential, uniform, and linear models and evaluated the model goodness-of-fit by applying Akaike’s Information Criterion (AIC) as a selection criterion [@sakamoto1986akaike; @bevan2017holocene; @riris2019widespread].
 
-Combined the two proxies, the artifact volumetric density and the retouch frequency, we expect to determine whether or not the hunter-gatherers were residentially mobile or logistically organized. If the assemblage in a site has high density and less retouched, it is depicted as expedient assemblage that represents “base camps” or “residences”, while less density with high retouched one shows curated assemblage and indicates either residential mobility or certain task groups from main residential site [@Riel-Salvatore_Barton_2004; @clark2017lithics].
-
-Radiocarbon dates provide a proxy for change in human population levels. Summed probability distributions (SPD) of radiocarbon dates are often used to understand temporal trends in ancient human populations [@rick1987dates; @bamforth2012radiocarbon; @shennan2013regional; @timpson2014reconstructing; @contreras2014summed]. Even though there must be unavoidable limitations for the validity of SPD such as the lack of excavated sites in certain period, this method is still helpful to be used as a proxy for population fluctuation. Timpson et al. demonstrate its usefulness by testing data sets in 12 European regions and assert that this SPD is extremely robust to deal with small sample size [@timpson2014reconstructing]. We use 171 radiocarbon dates from 22 sites to search for population trends during the Late Pleistocene in Korea based on the premise that population change or pressure could be another catalyst to improve or innovate technology.      
-
-In terms of the composition of toolkits, we count kind of tools as well as the amount of debitabitage to search for the change in the toolkits around the transition period. The tools represent paleo hunter-gatherers’ adaptive strategies. We analyze the composition of raw materials in the assemblages to see the relationships between the choice of specific raw materials and technological innovation as well as raw material availability and its consuming pattern based on an assumption that stone raw materials were carefully transported and consumed to optimize mobility and technological strategies, depth of planning in landscape use and risk minimization [@brantingham2003neutral].
-
-Umap: <- depending on whether we are gonna add umap (or PCA) analysis result 
-
-
+All analyses and visualization are performed in the R Environment [@team2017r]. Our R code and data are available on the following GitHub repository: https://github.com/parkgayoung/koreapaleolithicmobilityoccupation as well as on the Open Science Framework: https://osf.io/yagd2/ to enable full reproducibility [@marwick2017computational]. 
 
 # Results
 
-Elevation of occupied sites
-
-The result of the elevation change of 33 cultural layers from 22 sites corresponding to the targeting period shows that there is no remarkable change can be seen in site elevation during the transition (Fig.1: with no sp site distinction). We applied the existence of the stemmed points to the elevation to understand the benefit of having the points in the toolkit and the result indicates that the hunter-gathering groups who carried the technology could occupy higher altitude while the groups with no points stayed at the lower altitude (Fig. 2: distinction between sites with no stemmed points and with stemmed points). 
-
-```{r}
-# site elevation
-kasv_tidy <- 
-kasv %>% 
-  t %>% 
-  as_tibble() %>% 
-  setNames(as.character(.[1,])) %>% 
-  .[-1,] %>% 
-  mutate_all(parse_number) %>% 
-  mutate(artefact_density = total_artifacts / volume,
-         sites = names(kasv)[-1]) %>% 
-  left_join(mydata, by = c('sites' = 'site_name' )) %>% 
-  mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
-
-
-mydata_ages <- 
-  mydata %>% 
-  separate(C14.BP., into = c('age', 'error'),
-          sep = "±") %>% 
-  mutate(age_ka = parse_number(age) / 1000,
-         error = parse_number(error)) %>% 
-  mutate(has_sp = ifelse(!is.na(SP.), "yes", "no"))
-
-# compute t-test 
-elev_sp_ttest <- 
-  t.test(altitude.m._of_main_layer ~ has_sp, data = kasv_tidy)
-
-# extract elements from the t-test output
-elev_sp_ttest_t <- round(unname(elev_sp_ttest$statistic), 3)
-elev_sp_ttest_p <- round(unname(elev_sp_ttest$p.value ), 3)
-elev_sp_ttest_df <- round(unname(elev_sp_ttest$parameter ), 3)
-
-# t(degress of freedom) = the t statistic, p = p value.
-elev_sp_ttest_str <- 
-  paste0("t(", elev_sp_ttest_df, ") = ", elev_sp_ttest_t, ", p = ", elev_sp_ttest_p)
-
-
-elevation_sp_sub_plot <- 
-ggplot(kasv_tidy,
-       aes(has_sp, 
-           altitude.m._of_main_layer)) +
-  geom_boxplot() +
-  annotate("text", 
-           x = 1.5, 
-           y = 250,
-           label = elev_sp_ttest_str) +
-  theme_bw(base_size = 8)  +
-  labs(x = "Stemmed points present",
-       y = "Elevation above sea level (m)")
-
-elevation_sp_main_plot <- 
-ggplot(mydata_ages, 
-       aes(x = age_ka,
-           y = altitude.m._of_main_layer,
-       color = as.factor(has_sp))) +
-  geom_point(size = 3) +
-  xlab("Age of occupation (ka)") +
-  ylab("Elevation above sea level (m)") +
-  geom_smooth(se = FALSE) +
-  scale_colour_discrete(name = "Contains\nstemmed\npoints?") +
-  theme_minimal(base_size = 16)  +
-  theme(legend.position = c(0.1, 0.9)) 
-
-
-library(cowplot)
-ggdraw(elevation_sp_main_plot) +
-  draw_plot(elevation_sp_sub_plot, 
-            .7, .60, 
-            .25, .32) 
-```
-
-Artifact density and Composition of toolkit
-
-During the transitional period, the artifact volumetric density was relatively small but it becomes higher around 30 ka (Fig. 3: the transition of artifact volumetric density). When it comes to the composition of the toolkit, it is hardly recognized any pattern of changes over time (Fig. 4: the composition of toolkit). Both results with no information about raw material availability near the 22 sites, we assume that the artifact density might relate to the duration of site occupation or group size rather than portability and efficiency of tools. In other words, the small artifact density might indicate shorter duration or smaller group size. Likewise, the composition of toolkit might represent the characteristics or purpose of each site, rather than showing general pattern of chronological change.    
-
-
-```{r}
-#Volume and artefact counts to get density over time. 
-
-density_sp_sub_plot <- 
-ggplot(kasv_tidy,
-       aes(has_sp, 
-           artefact_density)) +
-  geom_boxplot() +
-  theme_bw(base_size = 8)  +
-  labs(x = "Stemmed points present",
-       y = "Artefact density")
-
-density_sp_main_plot <- 
-ggplot(kasv_tidy,
-       aes(date_age / 1000,
-           artefact_density)) +
-  geom_point(aes(size = total_artifacts,
-                 colour = has_sp)) +
-  ylab(bquote('Artefact density'~(n/m^3))) +
-  xlab("Age of assemblage (ka)") + 
-  #geom_smooth(method = "lm") + 
-  scale_size_continuous(name = "Total number\nof artifacts")  +
-  scale_color_viridis_d(name = "Contains\nstemmed\npoints?") +
-  theme_minimal(base_size = 16)  #+
-  #geom_text_repel(aes(label = sites),
-  #                nudge_x = 0.25, 
-  #                nudge_y = 0.25) 
-
-# https://wilkelab.org/cowplot/articles/drawing_with_on_plots.html
-library(cowplot)
-ggdraw(density_sp_main_plot) +
-  draw_plot(density_sp_sub_plot, 
-            .375, .67, 
-            .25, .25) 
-
-ggsave("figures/age-by-density.png")
-```
-
-```{r}
-#the artifact composition of each sites to figure out what people did as they were occupying the sites.
-kasa_long <-
-  kasa %>%
-  gather(site, 
-         count, 
-         -X) %>% 
-  filter(!is.na(count)) %>% 
-  group_by(site) %>% 
-  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
-         total = sum(count, na.rm = TRUE)) %>% 
-  filter(!is.na(percentage)) %>% 
-  # if percentage is <10%, call it 'other'
-  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
-                                'stemmed_point', 
-                                ifelse(percentage >= 10, 
-                                as.character(X), "other_tools"))) %>% 
-  mutate(axis_label = as.character(glue('{site}\n(n = {total})')))  %>% 
-  # join to get ages of the sites
-  left_join(mydata_ages, 
-            by = c('site' = 'site_name')) %>% 
-  arrange(age_ka) #%>% 
-  # mutate(age_ka = jitter(age_ka))
-
-ggplot(kasa_long, 
-       aes(age_ka, 
-           percentage,
-           fill = artefact_type)) +
-  geom_col(position = "fill") +
-  ylab("Percentage") +
-  xlab("Age of assemblage (ka)") +
-    scale_fill_viridis_d(name = "Artifact type",
-                       option = "D") +
-  coord_flip() +
-  theme_minimal(base_size = 16) 
-
-# comparable figure to the raw material one 
-  
-kasa_long1 <-
-  kasa %>%
-  gather(site, 
-         count, 
-         -X) %>% 
-  filter(!is.na(count)) %>% 
-  group_by(site) %>% 
-   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
-         total = sum(count, na.rm = TRUE)) %>% 
-  filter(!is.na(percentage)) %>% 
-  # if percentage is <10%, call it 'other'
-  mutate(artefact_type = ifelse(as.character(X) == 'stemmed_point',
-                                'stemmed_point', 
-                                ifelse(percentage >= 10 | X == "unkown", 
-                                as.character(X), "other_tools"))) %>% 
-  mutate(axis_label = glue('{site}\n(n = {total})'))  %>% 
-  select(-X)
-  # join to get ages of the sites
-kasa_long2 <- 
-kasa_long1 %>% 
-  group_by(site, 
-           artefact_type) %>% 
-  summarise(percentage = sum(percentage)) %>% 
-  left_join(mydata_ages, 
-            by = c('site' = 'site_name')) %>% 
-  arrange(age_ka) %>% 
-  distinct(.keep_all = TRUE) %>%
-  filter(!is.na(age_ka)) %>% 
-  mutate(axis_label = glue('{site} ({round(age_ka,1)} ka)')) 
-
-ggplot(kasa_long2, 
-       aes(
-           reorder(axis_label, -age_ka),
-           percentage,
-           fill = artefact_type)) +
-  geom_col(position = "fill") +
-  ylab("Percentage") +
-   xlab("Assemblage (youngest at the top)") +
-  theme_minimal(base_size = 16)  +
-    scale_fill_viridis_d(name = "Artefact type",
-                       option = "D") +
-  coord_flip() +
-  theme_minimal(base_size = 12) 
-ggsave("figures/artefact-types.png")
-
-```
-Artifact density and retouch <- maybe we need to add the result of retouch, separately 
-We use the combination of the artifact density and retouch frequency as a proxy to identify the mobility and residential pattern of hunter-gatherers. The result shows that there is no clear pattern during the transition period and then it became more expedient at the end of the transition (Fig 5. The combination of artifact density and retouch). That is to say, the hunter-gatherer became either more residential or the majority of the site that this research studies were used as base camps or residence rather than shortly occupied camps for certain tasks. 
-
-
-```{r}
-# retouch, density, age
-Assemblage_info <- read_csv(here::here("analysis/data/raw_data/Assemblage_info.csv"))
-
-Assemblage_info_retouch_density_ages <- 
-Assemblage_info %>% 
-  pivot_longer(-X1, 
-               names_to = "sites") %>% 
-  left_join(kasv_tidy)
-
-Assemblage_info_retouch_density_ages_prop <- 
-Assemblage_info_retouch_density_ages %>% 
-     filter(!X1 %in% c("debris", 
-                     "unkown", 
-                     "pebble",  
-                     "metate", 
-                     "flake",
-                     "unfinished",
-                     "ground",
-                     "blank"
-                     )) %>% 
-  group_by(sites) %>% 
-  mutate(prop_retouched = sum(value, na.rm = TRUE) / total_artifacts) %>% 
-  arrange(sites) %>% 
-  select(-X1, -value) %>% 
-  distinct_all()
-
-# retouch over time
-retouch_over_time_subplot <- 
-ggplot(Assemblage_info_retouch_density_ages_prop,
-       aes(date_age / 1000,
-           prop_retouched)) +
-  geom_point(size = 3, 
-             colour = "grey80") +
-  labs(x = "Age of assemblage (ka)",
-       y = "Proportion retouched") +
-  theme_bw(base_size = 6)
-
-# compute correlation
-kas_sites_retouch_density_corr <- 
-cor.test(Assemblage_info_retouch_density_ages_prop$prop_retouched,
-         Assemblage_info_retouch_density_ages_prop$artefact_density)
-
-r_value <- unname(kas_sites_retouch_density_corr$estimate)
-p_value <- unname(kas_sites_retouch_density_corr$p.value )
-t_value <- unname(kas_sites_retouch_density_corr$statistic )
-df_value <- unname(kas_sites_retouch_density_corr$parameter )
-
-size <-  8
-Assemblage_info_retouch_density_ages_prop_main_plot <- 
-ggplot(Assemblage_info_retouch_density_ages_prop,
-       aes(artefact_density,
-           prop_retouched
-           )) +
-  geom_point(aes(colour = date_age / 1000,
-                 size = total_artifacts,
-                 shape = has_sp)) +
- # geom_text_repel(aes(label = sites),
- #                 nudge_x = 0.075, 
- #                 nudge_y = -0.075,
- #                 size = 5) +
-  geom_smooth(alpha = 0.2,
-              method = "lm") +
-  scale_y_log10(limits = c(0.001, 1),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  scale_x_log10(limits = c(0.001, 10),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  theme_minimal(base_size = 12) +
-  scale_shape_discrete("Contains\nstemmed\npoints?") +
-  scale_size("Total number\nof artifacts") +
-  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
-  xlab("Artifact volumetric density") +
-  ylab("Proportion of retouched pieces") +
-  annotate("text",
-           x = 0.005,
-           y = 0.7,
-           label = "Curated",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 5,
-           y = 0.01,
-           label = "Expedient",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 0.03,
-           y = 0.02,
-           label = glue('r = {round(r_value, 3)}\n, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
-           size = size - 2,
-           colour = "grey50")
-
-library(cowplot)
-ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
-  draw_plot(retouch_over_time_subplot, 
-            .1, .1, 
-            .35, .25) 
-
-```
-
-
-
-Summed probability distribution
-
-To understand the population change during the appearance of stemmed points, we analyzed the summed probability distributions of 171 radiocarbon dates from 33 cultural layers to get a rough image of population dynamics at the sites. The result indicates that there is a higher density of radiocarbon dates from around 34 ka. We could cautiously assume that the population flux might relate to the technological innovation. 
-
-```{r cache=TRUE}
-dates_clean <- 
-  dates %>% 
-  mutate(age = parse_number(as.character(age)),
-         error = parse_number(as.character(error))) %>% 
-  filter(age < 50000, method=='AMS')
-
-# devtools::install_github('ahb108/rcarbon')
-library(rcarbon)
-dates_calibrated <- 
-  calibrate(x=dates_clean$age,
-               errors=dates_clean$error,
-               calCurves='intcal13')
-
-dates_calibrated_spd <-  spd(dates_calibrated, timeRange = c( 45000, 1000))
-plot(dates_calibrated_spd)
-
-# Testing Observed SPDs against theoretical models
-## recalibrate dates without normalisation to avoid artificial peaks
-spd_dates<- calibrate(x=dates_clean$age,errors=dates_clean$error,normalised=FALSE,verbose=F) 
-
-### this code takes long time
-spd_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(45000,1000),model='exponential',nsim=200,ncores=3)
-
-summary(spd_test)
-plot(spd_test)
-
-
-
-
-# zoom in in on the 40-30ka period GP is trying
-spd_test_zoom <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000),model='exponential',nsim=200,ncores=3)
-summary(spd_test_zoom)
-plot(spd_test_zoom)
-
-# zoom in in on the 40-30ka period, testing other models
-uni_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='uniform',nsim=200,ncores=3)
-plot(uni_test)
-
-lin_test <- modelTest(spd_dates,errors=dates_clean$error,timeRange=c(40000,30000), model='linear',nsim=200,ncores=3)
-plot(lin_test)
-```
-
-
-Raw materials
-
-During the transition period, the use of shale and rhyolite greatly increased. These two raw materials are suitable to make elongate blades and stemmed points. It is considered that he hunter-gatherer started to use raw materials selectively depending on the type of tool, especially the newly produced stemmed points. Raw material availability is a crucial factor in determining the trip and direction for hunter-gatherers [@davies2018modeling]. Therefore the adoption of new raw material along with the emergence of new type of tools demonstrates a significant innovation in not just technology but also cognitive system.    
-
-```{r}
-#raw material information
-kasr_long1 <- 
-  kasr %>% 
-  gather(site, 
-         count, 
-         -X) %>% 
-  group_by(site) %>% 
-  mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
-         total = sum(count, na.rm = TRUE)) %>% 
-  filter(!is.na(percentage)) %>% 
-  # if percentage is <10%, call it 'other'
-  mutate(raw_material = ifelse(percentage >= 10, as.character(X), "other")) %>% 
-  mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>% 
-  select(-X)
-
-
-  # if percentage is <10%, call it 'other'
-kasr_long2 <- 
-  kasr_long1 %>% 
-  group_by(site, raw_material) %>% 
-  summarise(percentage = sum(percentage)) %>% 
-  ungroup() %>% 
-  left_join(kasr_long1 %>% 
-              select(site, raw_material, total),
-            by = c('site', "raw_material")) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  # join to get ages of the sites
-  left_join(mydata_ages, 
-            by = c('site' = 'site_name')) %>% 
- # mutate(age_ka = jitter(age_ka),
- #        age_bin  = ntile(age_ka, 5)) %>% 
-  arrange(age_ka) %>% 
-  filter(!is.na(age_ka)) %>% 
-    mutate(axis_label = glue('{site} ({round(age_ka,1)} ka, n = {total})')) 
-
-
-ggplot(kasr_long2, 
-       aes(
-           reorder(axis_label, 
-                   -age_ka),
-           percentage,
-           fill = raw_material)) +
-  geom_col(position = "fill") +
-  xlab("Assemblage (youngest at the top)") +
-  ylab("Percentage") +
-  scale_fill_viridis_d(name = "Raw material type",
-                       option = "C") +
-  coord_flip() +
-  theme_minimal(base_size = 12) 
-
-```
-Umap
-
-
-# Discussion 
-
-1. The new technology and occupation in high elevation
-
-The new technology appeared around 40-35ka in the Korean Peninsula includes stemmed points and following blade industry. The stemmed points brought new paradigms in stone artifact assemblages. For example, projectile points are only a part of composit artifacts and this specific characteristics could contribute to increase efficiency of maintaining the toolkit by easily replacing the damaged part [@kuhn2015artifacts; @cardillo2010some]. Combining with other materials increases utility or functionality of the tool by adding extra weight and providing a shaft, which makes it earlier to grip. Selective use of raw material might impact on hunter-gathers’ mobility and occupation pattern depending on availability of the specific raw materials such as shale and rhyolite. In addition, this research shows that carrying the points enabled hunter-gatherers to occupy higher elevation compared to the sites with no stemmed points. Therefore, we can assume that the technology would play an important role to survive in more risky environments. 
-
-2. Population change
-
-Interpreted in HBE, we expected there might be close connection between environmental change and the appearance of new technology based on the prediction that the new invention was the result of risk. The research suggests that the environmental pressure could be related to population change. We cannot simply predicate that the increased population around 35ka was due to dispersal of Homo Sapiens since there is no reliable human remains in South Korea. However, the migration of Homo sapiens was not impossible scenario at the same time. In fact, one model explains that the emergence of stemmed points and blade industry came from outside of the Korean peninsula and the new technology was the result of the continuous influx of modern human populations from Siberia while the earlier coarse flake trandition was come from southern China [@Bae_2010]. Since this migration model barely explains about preexisted stone artifact assemblages and people in the Korean Peninsula, it is hard to accept his argument without knowing about the native people. In short, we assume that the stemmed points appeared related to the increased population and it can be related to the modern human dispersal or indigenously increased occupants.        
-
-3. Expedient vs curated
-
-To monitor mobility strategies and site occupation pattern, we examined the artifact density and retouch frequency, based on the premise that highly mobile foragers would have light weighted, highly retouched, replaceable, almost completely made tools and leave small amount of artifacts when they move to the new location (curated). One the other hand, less mobile foragers who tend to stay in one place yield more debitage and debris, produce less efficient tools since they can easily get supplied (expedient) [@clark2019landscapes; @kuhn1994formal; @kuhn2014mousterian; @meignen2006middle]. Therefore, the curated technology indicates sites with special or highly mobile groups with stone artifacts that are thoroughly designed and based on a high level of investment of time and effort in artifact manufacture and maintenance. The expedient technology represents base camp or residence with artifacts that tend to be manufactured, used, and abandoned in the short period of time [@vaquero2018searching;@binford1979organization; @torrence1989time]. There appear to be more variety in the type of sites (or group) during the transition period, both expedient or curated. It became more expedient at the end of the transition, which means foragers became less mobile and tended to stay in the base camp. Combined with the result of population dynamics, we can assume that the increased population made each group bigger and let them stay in one place. 
-
-# Conclusion 
-
-This research aims to understand how the appearance of new technology affected hunter-gatherers in Korea and answer the three questions, how did the introduction of the new tools change the way people used the landscape, the way people used sites, and the population. To answer the question, we use HBE as a theoretical backgrounds and analyze stone artifacts from 22 sites dated before and after 40-35ka. The new technology is represented the stemmed points and other blade industry made out of new raw materials such as shale and rhyolite. We could clearly see that hunter-gatherers chose these materials particularly to make the newly added stone artifacts to the toolkit. The results also show that the new technology enables the occupation of marginal environments at higher elevations. Besides of technological change, we found that there are more varieties in the type of sites or groups during the transition period, both curated and expedient and then it becomes more expedient. In other words, the foragers became less mobile and prone to stay in one place after the transition ended. We expected to see any pattern that would explain the relationship between environmental change and the emergence of the new technology. However, there was not enough paleoenvironmental information as well as data to apply to verify the model. Therefore we focus on Radiocarbon dates as a proxy of population change based on the premise that population driven pressure could trigger people to invent a new tool. The results show that population dynamics might have had more impact on changes in stone artifact technology. 
-
-
-------------NOT WORKING-------------
-
-
-Get the lithic data for some sites:
-
-
-
-
-```{r}
-
-# try not to use googlesheet and make the upper chunck work
-
-library(readxl)
-path <- "analysis/data/raw_data/Overall_info.xlsx"
-excel_sheets(path = path)
-
-p_sheets <- c("general_info" ,"assemblage_info")
-
-k_kas_sites_sheets <- map(p_sheets, ~path %>% read_excel )
-
-#simply combine the two data sets of general info and assemblage info?
-#kk_sheets <- c (mydata, kasa)
-
-
-```
-
-Compute artefact volumetric density by frequency of retouched piece (log scale), following Julien Riel-Salvatore and C. Michael Barton in  https://www.jstor.org/stable/4128419
-
-
-```{r}
-# put the site names on this list of data frames
-site_names <-  kas_sites_sheets[[1]] %>%  
-  select(-X1) %>% 
-  names()
-
-# density of arefacts at each site
-artefact_density <- 
-kas_sites_sheets[[1]] %>% 
-  t %>% 
-  as.data.frame() %>% 
- rownames_to_column() %>% 
-  mutate_all(as.character) 
-
-names(artefact_density) <- as.character(as.vector(artefact_density[1, ]))
-artefact_density <- artefact_density[-1,]
-
-artefact_density <- 
-artefact_density %>% 
-  mutate(density = as.numeric(total_artifacts) / as.numeric(volume)) %>% 
-   mutate_at(2:ncol(.), as.numeric)  
-
-# frequency of retouched artefacts
-retouched_artefacts <- 
- kas_sites_sheets[[2]] %>% 
-   filter(!X1 %in% c("debris", 
-                     "unkown", 
-                     "pebble",  
-                     "metate", 
-                     "flake",
-                     "unfinished",
-                     "ground",
-                     "blank"
-                     )) %>% 
-    t %>% 
-  as.data.frame() %>% 
- rownames_to_column() %>% 
-  mutate_all(as.character) 
-
-names(retouched_artefacts) <- as.character(as.vector(retouched_artefacts[1, ]))
-retouched_artefacts <- retouched_artefacts[-1,]
-
-retouched_artefacts <- 
-retouched_artefacts %>% 
-  mutate_at(2:ncol(.), as.numeric)  %>% 
-  mutate(total_retouched = rowSums(.[,-1], na.rm = TRUE))
-
-
-# join together the site age, artefact density df with the retouched artefacts df
-kas_density_retouch_ages <- 
-artefact_density %>% 
-  left_join(retouched_artefacts) %>% 
-  mutate(proportion_retouched = total_retouched / total_artifacts) %>% 
-  mutate(sites = X1)
-
- 
-# compute correlation
-kas_sites_retouch_density_corr <- 
-cor.test(kas_density_retouch_ages$proportion_retouched,
-         kas_density_retouch_ages$density)
-
-r_value <- unname(kas_sites_retouch_density_corr$estimate)
-
-```
-
-
-```{r}
-size <-  8
-
-
-ggplot(kas_density_retouch_ages,
-       aes(density,
-           proportion_retouched
-           )) +
-  geom_point(aes(colour = date_age / 1000,
-                 size = total_artifacts,
-                 shape = is.na(stemmed_point))) +
- # geom_text_repel(aes(label = sites),
- #                 nudge_x = 0.075, 
- #                 nudge_y = -0.075,
- #                 size = 5) +
-  geom_smooth(alpha = 0.2) +
-  scale_y_log10(limits = c(0.001, 1),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  scale_x_log10(limits = c(0.001, 10),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  theme_minimal(base_size = 12) +
-  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
-  xlab("Artifact volumetric density") +
-  ylab("Proportion of retouched pieces") +
-  annotate("text",
-           x = 0.005,
-           y = 0.7,
-           label = "Curated",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 5,
-           y = 0.01,
-           label = "Expedient",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 0.01,
-           y = 0.01,
-           label = glue('r = {round(r_value, 3)}'),
-           size = size - 2,
-           colour = "grey50")
-
-```
-
-```{r}
-# I wanna make simple table for artifact density and frequency of retouched pieces again. Because the complex table above is hard to make comments..
-
-
-
-ggplot(kas_density_retouch_ages,
-       aes(density,
-           proportion_retouched
-           )) +
-  geom_point(aes(colour = date_age / 1000,
-                 size = 7)) +
- # geom_text_repel(aes(label = sites),
- #                 nudge_x = 0.075, 
- #                 nudge_y = -0.075,
- #                 size = 5) +
-  geom_smooth(alpha = 0.2) +
-  scale_y_log10(limits = c(0.001, 1),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  scale_x_log10(limits = c(0.001, 10),
-                labels = scales::comma_format(accuracy = 0.001)) +
-  theme_minimal(base_size = 12) +
-  scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
-  xlab("Artifact volumetric density") +
-  ylab("Proportion of retouched pieces") +
-  annotate("text",
-           x = 0.005,
-           y = 0.7,
-           label = "Curated",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 5,
-           y = 0.01,
-           label = "Expedient",
-           size = size -2,
-           colour = "grey50") +
-    annotate("text",
-           x = 0.01,
-           y = 0.01,
-           label = glue('r = {round(r_value, 3)}'),
-           size = size - 2,
-           colour = "grey50")
-
-
-
-```
-
-
-Artefact volumetric density and frequency of retouched pieces can be proxies to identify the characteristics of the hunter-gatherers who carried that stone tools whether they are residentially mobile or logistically orgnized foragers based on the premise that the relationship between lithic assemblage composition and land-use strategy represent an expression of economizing behavior. 
-
-The artefact volumetric density is defined as the total number of artefacts per cubic meter of excavated sediment, and served as a proxy for accumulation ratio of artefacts. the relative frequency of retouched pieces is the count of retouched flake tools devided by the total number of artifacts. 
-
-The two ends of the curated-expedient show that residential to logistical mobility. Expedient assemblages can be depicted as "base camps" or "residences", while curated ones represent either residential mobility, where the central locus of group changes frequently, or certain task groups from a central residential site. 
-
-The plot show that younger sites are likely to be used as base camp than older site, which means that people tended to stay longer at one place after around 40-35ka. 
-
-(Riel-Salvatore and Barton 2004)
-
-
-```{r}
-# dating
-library(rcarbon)
-
-# I'm working through https://cran.r-project.org/web/packages/rcarbon/vignettes/rcarbon.html
-
-kas_ages <- 
-kas_density_retouch_ages %>% 
-  select(sites, date_age, date_error) %>% 
-  mutate(sites = str_remove_all(sites, "_"))
-
-kas_caldates <- 
-  calibrate(x = kas_ages$date_age,
-            errors = kas_ages$date_error,
-            calCurves='intcal13',
-            ncores=3) #running calibration over 3 cores
-
-kas_spd = spd(kas_caldates, timeRange = c(50000,25000)) 
-plot(kas_spd)
-
-binsense(x=kas_caldates,
-         y=kas_ages$sites,
-         h=seq(0,5000,100),
-         timeRange=c(50000,25000)) 
-
-ggplot(kas_spd$grid,
-       aes(calBP,
-           PrDens)) +
-  geom_line() +
-  scale_y_log10(name = "Summed probability")
-
-
-# test how the SPD fits to an exponential growth model:
-expnull <- modelTest(kas_caldates, 
-                     errors=kas_ages$date_error, 
-                     nsim=100, 
-                     timeRange=c(50000,25000),
-                     model="uniform",
-                     runm=10)
-
-plot(expnull)
-
-```
+## Artefact volumetric density and retouch frequency
+
+Figure \@ref(fig:volume-density) shows that there is no clear temporal pattern of changes in artefact density, although the density of some assemblages are two or three times higher than others, especially after 30ka. The inset figure shows that assemblages with stemmed points have higher artefact densities than the assemblages without. With the newer tools, hunter-gatherers may have stayed in the same location for longer durations, and we may be seeing site occupation patterns in this sample that represent the use of both base camps or residences, with the artefact higher densities, and more briefly occupied camps with lower densities.
+
+```{r volume-density, fig.cap="The main plot shows the artefact volumetric density over time. The size of data points represent the total number of artefacts from each assemblage and the colour indicates the presence of stemmed points. The inset plot shows direct comparison of artefact densities for assemblages with and without stemmed points."}
+source(here::here("analysis/paper/002-artifact-volumetric-density.R"))
+knitr::include_graphics(here::here("analysis/figures/002-age-by-density.png"))
+``` 
+
+
+Figure \@ref(fig:volume-density-retouch) shows a strong pattern of artefacts from less dense assemblages having higher retouch frequencies while more dense assemblages have lower retouch frequencies (p=0.043), further showing a spectrum of site functions in this sample. As for artefact density, there are no clear chronological trends in retouch frequencies. The assemblages containing stemmed points tend to have fewer retouched pieces compared to assemblages without stemmed points (p=0.011). 
+
+```{r volume-density-retouch, fig.cap="Main plot shows relationship between artefact density and retouch frequency. The colour of the data points indicate the age of the assemblage, point size indicates assemblage size, and shape indicates presence or absence of stemmed points. Assemblages with higher proportions of retouched pieces and lower densities indicate curated technologies, and assemblages at the other end of the spectrum indicate expedient technologies [@riel2004late]. The inset plot on the bottom left shows the proportion of retouched pieces in the assemblages over time. The inset plot on the bottom right shows the proportion of retouched pieces in the assemblages with or without stemmed points."}
+source(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R"))
+knitr::include_graphics(here::here("analysis/figures/003-retouch-by-density.png"))
+``` 
+
+## Composition of toolkit 
+
+Figure \@ref(fig:artefact-composition) shows that side scrapers are the major part of most assemblages and are present in all assemblages. For example, more than 70 percent of the two assemblages from Hwaderi are side scrapers. After around 31 ka, the proportion of side scrapers declines. In addition to side scrapers, cores also exist in all assemblages often as a high proportion. The proportion of choppers decreased towards in more recent assemblages. Blades first appeared in Gawolri-A at 43 ka and then often found in assemblages thereafter. Stemmed points first appear in Bonggok around 41.5ka and were typically found in assemblages that contain blades, except for Songamri-A. Other artefacts, including burins, denticulates, end scrapers, handaxes, knives, notches, planes, and polyhedrals made up a small proportion of the assemblages.
+
+```{r artefact-composition, fig.cap="This plot shows the composition of each assemblage. We excluded artefacts related to manufacturing processes such as pebbles, hammers, flakes and debris, artefacts appeared only in a few assemblages including point, beak shaped, and awl, and unknown and unfinished pieces. The colour represents different types of tools and the assemblages are placed in chronological order."}
+source(here::here("analysis/paper/004-artifact-composition.R"))
+knitr::include_graphics(here::here("analysis/figures/004-artefact-types.png"))
+``` 
+
+
+## Raw materials 
+
+Quartz, quartz vein and quartzites were the most frequently found raw materials, and they were constantly used throughout the Late Pleistocene (Figure \@ref(fig:raw-materials)). For example, both Galdamri-A, dated to 44ka with a small assemblage, and Hopyeongdong-B, dated to 27.5ka with a larger assemblage, consist of only the quartz related materials. The use of chert, hornfels, rhyolite, and shale increased after 41.5 ka. All artefacts in Sageunri are made of rhyolite. Hornfels are dominant at Yongsandong and Yongbang sites at 25 ka. Chert, hornfels, rhyolite, and shale are very suitable to make elongate blades and stemmed points because of the predictability of flaking afforded by their fine-grained texture. For example, Yongsandong has the largest number of stemmed points (n=40) among the assemblages studied here, and all stemmed points from Yongsandong are made from hornfels. Other raw materials, such as porphyry and sandstone, were found in just a few assemblages in small proportions.
+
+```{r raw-materials, fig.cap="This plot shows the composition of raw material type in each assemblage. We excluded raw materials that are included in less than 5 assemblages including crystal, basalt, iron_ore, slate, limestone, granite, gneiss, tuff, and unidentified ones. Hornfels are shown in 4 assemblages but since it occupies more than half of the Yongsandong and Yongband assemblages, we included it in the plot. The color represents different types of raw materials, and the assemblages are placed in chronological order."}
+source(here::here("analysis/paper/005-raw-materials.R"))
+knitr::include_graphics(here::here("analysis/figures/005-raw-materials.png"))
+``` 
+
+
+## Environmental context 
+
+Figure \@ref(fig:site-elevation) shows that people occupied sites located at similar elevations, around 0 to 200 meters above sea level. However, there is a substantial difference in elevation between sites with stemmed points and sites without. The distribution of elevations of sites without stemmed points is generally lower than the elevations of sites with stemmed points. Although not a statistically significant difference in elevations (p = 0.102), this may indicate that forager groups who used stemmed points were able to occupy higher altitudes, while the groups without tended to prefer lower altitudes. Sites without stemmed points reach a maximum elevation of about 150m at around 39ka. Sites containing stemmed points reach a maximum elevation of 175 m at 28ka.
+
+```{r site-elevation, fig.cap="The main plot shows the site elevation by the age of the deposit. Colour indicates presence/absence of stemmed points. The lines display a locally weighted regression. The inset plot shows a direct relationship between the site elevation and stemmed points."}
+source(here::here("analysis/paper/006-site-elevation.R"))
+knitr::include_graphics(here::here("analysis/figures/006-site-elevation.png"))
+``` 
+
+Among the sites in our sample there is a variation of about 5 degrees in the mean annual temperature (MAT), mostly controlled by elevation (Figure \@ref(fig:climate-model)). Compared to the east side of the Korean Peninsula, the west side tends to be relatively warmer. The range of MAT at the sites over our study period is 2-10℃. Gihwari and Gigok sites have the lowest (3℃) and Jeungsan-ri site has the highest MAT (8℃). The mean MAT for all sites fluctuated within 4℃ between 50ka and 10ka. Through MIS 3, the temperature gradually decreased until the Last Glacial Maximum (LGM, 26.5-20 ka) [@clark2009last]. The first appearance of stemmed points occurs in the middle of the decreasing MAT trend in MIS 3, at 40-35ka. The MAT of MIS 2, including LGM, was relatively stable. The temperature increased again from late MIS 2 towards MIS 1.  Figure 7D shows a negative relationship between temperature and elevation (p = 0.073). For example, Gihwa-ri Cave site, with one of the lowest MAT distributions, is located in the highest elevation around 300m above sea level. Jeungsan-ri is located at a lower elevation and has one of the highest MAT distributions.
+
+
+```{r climate-model, fig.cap="Mean Annual Temperature (MAT) of the Korean Paleolithic assemblages mentioned in this research. A: Site locations on the map and MAT. B: MAT distributions for each site during the period they were occupied. C: MAT from 50ka to 10ka. The grey lines indicate the MAT for each site and the black line is the mean temperature of all sites. The light grey area in the middle of the plot indicates the duration of MIS 2, separating MIS 3 and 1, and dark grey area represents the duration of LGM. D: The relationship between MAT and site elevation. The blue line is a linear regression on elevation and MAT with the grey area showing the 95% confidence interval.t."}
+source(here::here("analysis/paper/007-climate-model-plots.R"))
+knitr::include_graphics(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"))
+``` 
+
+## Demographic context
+
+Figure \@ref(fig:spd-model) shows the four theoretical null models of demographic change for the period 50ka to 10ka, exponential, uniform, linear, and logistic, generated from the radiocarbon dates. Statistical significance of each model is computed using 200 simulations and the global p-values are 0.004, 0.004, 0.009, and 0.004, respectively. In this case, the linear model is the best fit with lower value verified by AIC <!---(Table 1)--->. However, the other models have similar patterns with a minor margin at -48.6. The radiocarbon dates fit well with the overall trajectory of the null models (grey shading) with both positive and negative deviations. SPD shows a steady growth until 35ka, stays at the peak with minor deviation 32ka, and then starts declining with frequent temporary fluctuations (relatively sharp). The beginning and ending of the SPD indicates significant negative deviation with low density of radiocarbon dates. 
+
+<!---
+Caption for Table 1: Summary of model comparison based on Akaike’s Information Criterion (AIC). 
+We applied logistic, exponential and linear to AIC along with the logistical growth model (fit) to evaluate each model [@riris2019widespread]. We excluded the uniform model because it has no fitted curve or surface to evaluate. The best fit model has the lowest AIC score. In this case, the linear model is the best fit, with the next-best fit (exponential) having a higher AIC score by a minor margin at -48.6. ---> 
+
+```{r spd-model, fig.cap="Summed probability distribution of 108 radiocarbon dates. The black solid line represents actual radiocarbon ages. The grey shaded region shows the critical envelope that encompasses the 95% confidence interval for the null models. The red and blue vertical bands highlight the portions of the SPD where positive and negative deviations are detected."}
+source(here::here("analysis/paper/008-summed-probability-distributions.R"))
+knitr::include_graphics(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+``` 
+
+
+# Discussion
+
+Our study focussed on two questions: how did the introduction of the new tools change foragers' mobility and landscape use; and how did the new technology change the way people use habitation sites? Overall, our results show that assemblages with stemmed points tend to have higher artefact densities and lower proportions of retouched pieces. Quartz and side scrapers, in addition to cores and choppers, remain dominant in assemblages before and after the introduction of stemmed points. The environmental context of this technological innovation was a gradual decrease in temperature into the LGM. 
+
+## Artifact volumetric density and retouch frequency
+
+We examined the artefact volumetric density and retouch frequency to understand the difference in mobility strategies and site occupation patterns before and after the introduction of stemmed points. The analyses are based on the premise that highly mobile groups would carry lightweight toolkits with more retouched and easily replaceable composite tools, and leave a smaller amount of artefacts on site as a result of short-term occupations. These curated technologies invest time and effort in stone artefact manufacturing and maintenance to optimize travel costs for groups using high mobility or special purpose forays. On the other hand, less mobile groups would produce fewer retouched tools and more simple tools, and leave higher densities of artefacts generated from long-term occupations. These expedient technologies are more typical for groups with greater residential stability who can make, use, abandon, and remake their tools frequently in the same location [@binford1979organization; @torrence1989time; @kuhn1994formal; @meignen2006middle; @kuhn2014mousterian; @vaquero2018searching; @clark2019landscapes]. Our data support the concept of the curated and expedient technology by showing a strong pattern of artefacts from less dense assemblages having higher retouch frequencies, while more dense assemblages have lower retouch frequencies. Our results show that foragers with stemmed points tended to stay in the same site for longer periods with higher artefact densities and fewer retouched pieces, compared to assemblages without stemmed points. In general, the new technology of stemmed points was more associated with expedient technological strategies. 
+
+It could be assumed that foragers with stemmed points were highly mobile groups and chose curated technologies since the stemmed points were likely used for hunting activities [@Chang_2013; @lee2019were]. However, our results show the opposite that the new technology was more often associated with  expedient technological strategies. Furthermore, our results show that different sites represent different occupation patterns during the time of technological transition, making it difficult to characterise this period with a single land use strategy. Seong claims that transitions from the expedient to curated technology in the Late Pleistocene were neither a straightforward nor unilineal processes and diverse site types can be more related to different occupation purposes including hunting camps, limited activity stations, caches, and so forth [@seong2015diversity]. Our findings support Seong, with some sites such as Bonggok and Yonghodong containing only 2 stemmed points, while Yongsandong has 38 points including broken tips and a base. More than 70% of Yongsandong stemmed points were unearthed, dominating the tool kit with 233 blades and other byproducts related to lithic manufacturing including cores and debris made of the same raw materials [@kim2004yongsan; @bae2012nature]. In the specific case of Yongsandong it seems likely that stemmed points were manufactured for hunting purposes, which dominated the function of the site. On the other hand, at Bonggok and Yonghodong stemmed points were only a minor part of activities there.   
+
+## Composition of toolkits and raw materials
+
+The composition of toolkits during the Late Pleistocene of Korea has been described within multiple chronological sub-periods. Seong divides five successive assemblage types for the Late/Upper Paleolithic in Korea: (1) quartzite and quartz vein artefacts; (2) mostly small quartzite and quartz vein artefacts with some large artefacts such as cores and choppers; (3) stemmed points dominant; (4) typical blade assemblages including stemmed points; and (5) microblade after 30ka [@seong2015diversity]. Lee focuses on the Honam region in southwestern Korea and divides the same time frame into two phases; ‘core tool industry with large flake knapping’ during early MIS 3 (59−40 ka), and ‘blade industry with tanged point chiefly’ during late MIS (40−24 ka) [@lee2012characteristics]. Both Seong and Lee mention that core tools made of quartz or quartz vein never disappeared and they point out the appearance of stemmed points and blade technology as an addition, rather than replacement. Our results, covering 49-24 ka and corresponding to the first three types of Seong’s divisions, support the continuation of core tools abundantly throughout the Late Pleistocene. In addition, our data show that side scrapers stayed as major tools while other tools occupied only a small portion of the assemblages. As stemmed points and blades increased in the toolkits, both choppers and side scrapers went through minor decreases but still remained abundant.  
+
+Changes in raw material composition were closely associated with the appearance of stemmed points. Previous studies claim that the existing tools, including choppers, polyhedrals, handaxes and cores were usually made of locally acquired quartzite, while the new tools including stemmed points and other blade assemblages were made of more fine-grained materials such as siliceous shale, hornfels, and obsidian which might be brought from distant sources [@Chang_2013; @seong2015diversity]. Our data also show that quartz, quartz vein and quartzite were consistently dominant and the use of fine-grained materials including chert, hornfels, rhyolite, and shale, increased after 41.5 ka, around the time that stemmed points appear. Projectile points, such as stemmed points, need high quality materials which enable high flaking quality, durability and effectiveness of an edge, as well as the creation of well-defined outline forms [@bamforth2009projectile]. The increased use of finer-grained raw materials likely changed forager mobility patterns to ensure their movements over the landscape supplied them with the materials needed to make stemmed points. 
+
+## Environmental and demographic context 
+
+We hypothesized that the introduction of stemmed points might reflect a preference for more portable and efficient hunting tools, as an adaptation to environmental or population changes. As the first composite tool appearing on the Korean Peninsula, stemmed points represent a major change in stone artefact technology. An important quality of composite tools is that the user can easily replace damaged parts,  contributing to an increased maintainability of the tool [@kuhn2015artifacts; @cardillo2010some]. Combining the stone projective with a wooden shaft further materials enhances functionality of the tool such as improving penetration by increasing weight [@browne1940projectile]. We expected that the functional advantage of the new composite tool might have allowed foragers to be more active in less productive landscapes. Previous studies simply describe the environment of the research period as  “overall cooler and drier during MIS 3” but lack detail due to a lack of direct paleoenvironmental proxies in Korea  [@Han_2008; @seong2008tanged; @Choi_2011; @Chang_2013; @im2015study; @bak2017late]. To explore environmental and demographic context related to the technological transition, we examined the distribution of site elevations, and simulated MAT during the Late Pleistocene. The results show that groups with stemmed points occupied higher elevations, where the MAT was lower. This supports our hypothesis that stemmed points supported occupation of more marginal habitats. Through MIS 3 the temperature gradually decreased until the LGM, suggesting that stemmed points may have been part of a suite of adaptations to cooler temperatures. We see a similar pattern of new technologies enabling expansion into marginal areas at a later time in north Paleo-Honshu Island, Japan, where the appearance of blade and projectile points at about 25 ka were associated with foragers moving into cold grassland areas [@Morisaki_Izuho_Terry_Sato_2015]. 
+
+We investigated forager population dynamics to assess if population change might be a relevant mechanism to explain the appearance of stemmed points. The output of our SPD models indicate population increasing until 35 ka and remaining at the peak with minor deviations for about 3,000 years. If population dynamics were a key driver, then we expect population to be high at the time the new technology first appears. However, with the first stemmed points appearing at 38 ka, well before the observed peak in population, we conclude that population dynamics were not a major mechanism in the appearance of this new technology. Bae claims that stemmed points are the result of the continuous influx of modern humans from a Siberian migration [@Bae_2010]. Our results are consistent with this scenario, showing a gradual increase in population after the appearance of stemmed points which may reflect a continuous influx of migrants over a long period. 
+
+
+# Conclusion
+
+To understand the change in mobility and site occupation related to the appearance of new technologies during the late Pleistocene in Korea, we examined stone artefacts from 22 sites dated to 49-24 ka. The results show that the forager groups with stemmed points tended to be located at higher elevations, which means the use of stemmed points was associated with occupation of marginal or extreme environments. In addition, the groups with stemmed points had expedient technologies which reflect residential and less mobile land use patterns. The temperature gradually decreased during the technological transition and after the appearance of stemmed points, population gradually increased. 
+
+Our findings are limited by the relatively small number of sites and radiocarbon ages currently available. The absence of detailed stratigraphic data limit the chronological resolution for the assemblages in our sample. Furthermore, we currently lack functional data on individual artefact assemblages to support our conclusions about site use. With future work we may be better able to distinguish a high density of stone artefacts as results from a long-term/small group occupation versus a short-term/large group occupation. Further research should focus on detailed assemblage analysis at each site to better understand foragers mobility and site use strategies.  
+
+
 
 # Acknowledgements
 
 <!-- The following line inserts a page break when the output is MS Word. For page breaks in PDF, use \newpage on its own line.  -->
+
 ##### pagebreak
 
-# References 
+# References
+
 <!-- The following line ensures the references appear here for the MS Word or HTML output files, rather than right at the end of the document (this will not work for PDF files):  -->
-<div id="refs"></div>
+
+<div>
+
+</div>
 
 ##### pagebreak
 
 ### Colophon
 
-This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
+This report was generated on `r Sys.time()` using the following computational environment and dependencies:
 
 ```{r colophon, cache = FALSE}
 # which R packages and versions?
