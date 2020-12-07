@@ -1,7 +1,7 @@
 
-require("ncdf4")
-require("lattice")
-require("ggplot2")
+library(ncdf4)
+library(lattice)
+library(ggplot2)
 
 # you'll need to get this file from
 # https://figshare.com/articles/LateQuaternary_Environment_nc/12293345/3
@@ -22,7 +22,7 @@ mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 # korean archaeological sites
 library(tidyverse)
 
-site_locations_tbl_raw <- read_csv(here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
+site_locations_tbl_raw <- read_csv (here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 site_locations_tbl <- site_locations_tbl_raw
 
 

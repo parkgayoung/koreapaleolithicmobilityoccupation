@@ -174,7 +174,7 @@ df_aic <- data.frame (Model = c("logistic",
 df_aic
 
 #save a table of AIC result as csv
-write.csv(df_aic, file="analysis/figures/008-SPD-AIC.csv", row.names = FALSE)
+# write.csv(df_aic, file="analysis/figures/008-SPD-AIC.csv", row.names = FALSE)
 
-knitr::kable(df_aic)
+# knitr::kable(df_aic)
 
