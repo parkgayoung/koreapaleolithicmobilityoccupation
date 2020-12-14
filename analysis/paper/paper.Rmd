@@ -33,16 +33,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{=html}
-<!---```{r}
-quietly <- function(x) {
-  sink(tempfile())
-  on.exit(sink())
-  invisible(force(suppressMessages(x)))
-}
-
-``` --->
-```
 # Introduction
 
 The appearance of stemmed points in the Late Pleistocene (\~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it reflected more specialized hunting practices [@seong2008tanged; @chang2013human]. Stemmed points are often called as tanged points in the western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points that have long been called 'tanged points' in Korea. The stemmed point is a projectile point made out of elongated flake or blade with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is considered to represent hafting technology that joins the lithic to a wooden shaft. If they were projectile weapon tips, stemmed points represent the first appearance of hafting technology in Korea. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct fauna evidence on hunting and subsistence strategies. Here we explore questions about the implications of the appearance of this new technology using a behavioural ecological framework and stone artefacts. We explore changes in the way people occupied the landscape, the way people used sites, and impact of social and ecological environment. We examined stone artefacts from 22 sites in South Korea to investigate the changes in human behaviour associated with the appearance stemmed points, and the blade industry that followed.
@@ -159,21 +149,11 @@ knitr::include_graphics(here::here("analysis/figures/007-climate-model-sites-pan
 
 Figure \@ref(fig:spd-model) shows the four theoretical null models of demographic change for the period 50ka to 10ka, exponential, uniform, linear, and logistic, generated from the radiocarbon dates. Statistical significance of each model is computed using 200 simulations and the global p-values are 0.004, 0.004, 0.009, and 0.004, respectively. In this case, the linear model is the best fit with lower value verified by AIC <!---(Table 1)--->. However, the other models have similar patterns with a minor margin at -48.6. The radiocarbon dates fit well with the overall trajectory of the null models (grey shading) with both positive and negative deviations. SPD shows a steady growth until 35ka, stays at the peak with minor deviation 32ka, and then starts declining with frequent temporary fluctuations (relatively sharp). The beginning and ending of the SPD indicates significant negative deviation with low density of radiocarbon dates.
 
-```{=html}
-<!---
-Caption for Table 1: Summary of model comparison based on Akaike’s Information Criterion (AIC). 
-We applied logistic, exponential and linear to AIC along with the logistical growth model (fit) to evaluate each model [@riris2019widespread]. We excluded the uniform model because it has no fitted curve or surface to evaluate. The best fit model has the lowest AIC score. In this case, the linear model is the best fit, with the next-best fit (exponential) having a higher AIC score by a minor margin at -48.6. --->
-```
-```{r spd-model, fig.cap="Summed probability distribution of 108 radiocarbon dates. The black solid line represents actual radiocarbon ages. The grey shaded region shows the critical envelope that encompasses the 95% confidence interval for the null models. The red and blue vertical bands highlight the portions of the SPD where positive and negative deviations are detected."}
-source(here::here("analysis/paper/008-summed-probability-distributions.R"))
-knitr::include_graphics(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
-```
-
 # Discussion
 
 Our study focussed on two questions: how did the introduction of the new tools change foragers' mobility and landscape use; and how did the new technology change the way people use habitation sites? Overall, our results show that assemblages with stemmed points tend to have higher artefact densities and lower proportions of retouched pieces. Quartz and side scrapers, in addition to cores and choppers, remain dominant in assemblages before and after the introduction of stemmed points. The environmental context of this technological innovation was a gradual decrease in temperature into the LGM.
 
-## Artifact volumetric density and retouch frequency
+## Artefact volumetric density and retouch frequency
 
 We examined the artefact volumetric density and retouch frequency to understand the difference in mobility strategies and site occupation patterns before and after the introduction of stemmed points. The analyses are based on the premise that highly mobile groups would carry lightweight toolkits with more retouched and easily replaceable composite tools, and leave a smaller amount of artefacts on site as a result of short-term occupations. These curated technologies invest time and effort in stone artefact manufacturing and maintenance to optimize travel costs for groups using high mobility or special purpose forays. On the other hand, less mobile groups would produce fewer retouched tools and more simple tools, and leave higher densities of artefacts generated from long-term occupations. These expedient technologies are more typical for groups with greater residential stability who can make, use, abandon, and remake their tools frequently in the same location [@binford1979organization; @torrence1989time; @kuhn1994formal; @meignen2006middle; @kuhn2014mousterian; @vaquero2018searching; @clark2019landscapes]. Our data support the concept of the curated and expedient technology by showing a strong pattern of artefacts from less dense assemblages having higher retouch frequencies, while more dense assemblages have lower retouch frequencies. Our results show that foragers with stemmed points tended to stay in the same site for longer periods with higher artefact densities and fewer retouched pieces, compared to assemblages without stemmed points. In general, the new technology of stemmed points was more associated with expedient technological strategies.
 
