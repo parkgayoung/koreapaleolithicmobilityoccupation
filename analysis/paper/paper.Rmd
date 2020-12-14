@@ -140,7 +140,6 @@ quietly(source(here::here("analysis/paper/005-raw-materials.R")))
 knitr::include_graphics(here::here("analysis/figures/005-raw-materials.png"))
 ```
 
-
 ## Environmental context
 
 Figure \@ref(fig:site-elevation) shows that people occupied sites located at similar elevations, around 0 to 200 meters above sea level. However, there is a substantial difference in elevation between sites with stemmed points and sites without. The distribution of elevations of sites without stemmed points is generally lower than the elevations of sites with stemmed points. Although not a statistically significant difference in elevations (p = 0.102), this may indicate that forager groups who used stemmed points were able to occupy higher altitudes, while the groups without tended to prefer lower altitudes. Sites without stemmed points reach a maximum elevation of about 150m at around 39ka. Sites containing stemmed points reach a maximum elevation of 175 m at 28ka.
