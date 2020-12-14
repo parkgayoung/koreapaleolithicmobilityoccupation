@@ -33,6 +33,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}	
+quietly <- function(x) {	
+  sink(tempfile())	
+  on.exit(sink())	
+  invisible(force(suppressMessages(x)))	
+}	
+```
 # Introduction
 
 The appearance of stemmed points in the Late Pleistocene (\~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it reflected more specialized hunting practices [@seong2008tanged; @chang2013human]. Stemmed points are often called as tanged points in the western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points that have long been called 'tanged points' in Korea. The stemmed point is a projectile point made out of elongated flake or blade with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is considered to represent hafting technology that joins the lithic to a wooden shaft. If they were projectile weapon tips, stemmed points represent the first appearance of hafting technology in Korea. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct fauna evidence on hunting and subsistence strategies. Here we explore questions about the implications of the appearance of this new technology using a behavioural ecological framework and stone artefacts. We explore changes in the way people occupied the landscape, the way people used sites, and impact of social and ecological environment. We examined stone artefacts from 22 sites in South Korea to investigate the changes in human behaviour associated with the appearance stemmed points, and the blade industry that followed.
@@ -65,11 +72,12 @@ Second, we ask how the new technology changed the way people use habitation site
 
 After the first excavation of a Paleolithic site in Korea at Seokjang-ri site in the 1960s, more than 200 Paleolithic sites have been discovered in South Korea [@lee2019were]. We selected sites dated to before and after the transition period (40-35 ka) to analyze the process of technological change. This resulted in a sample of analysed 33 assemblages from 22 sites spanning 49-24 ka (Figure \@ref(fig:korea-map)). We identified multiple assemblages in a site where culturally sterile deposits separated artefact-bearing deposits, or where stratigraphic units could be identified by major differences in the texture and composition of the sedimentary deposit containing the stone artefacts. For example, the Hwadae-ri site has three cultural layers. The lowest horizon at the bottom, dated to 39,000±1400 BP by OSL, contains coarse flake tools made of vein quartz and quartzite. The middle cultural horizon has stemmed points made of porphyry, with quartz and quartzite dominating the assemblage. This layer was dated to 31,200±900 BP by radiocarbon dating and 30,000±1,700 BP by OSL. The uppermost layer, dated to 22,000±100 BP by OSL, contains blades, scrapers, awls, and denticulates [@seong2009emergence]. We obtained the data from published excavation reports held by provincial museums.
 
-```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text."}
-source(here::here("analysis/paper/001-draw-the-map.R"))
+```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/001-draw-the-map.R"))}
+quietly(source(here::here("analysis/paper/001-draw-the-map.R")))
 knitr::include_graphics(here::here("analysis/figures/001-site-map.png"))
 
 ```
+
 
 ## Assemblages
 
@@ -99,55 +107,67 @@ All analyses and visualization are performed in the R Environment [@team2017r]. 
 
 Figure \@ref(fig:volume-density) shows that there is no clear temporal pattern of changes in artefact density, although the density of some assemblages are two or three times higher than others, especially after 30ka. The inset figure shows that assemblages with stemmed points have higher artefact densities than the assemblages without. With the newer tools, hunter-gatherers may have stayed in the same location for longer durations, and we may be seeing site occupation patterns in this sample that represent the use of both base camps or residences, with the artefact higher densities, and more briefly occupied camps with lower densities.
 
-```{r volume-density, fig.cap="The main plot shows the artefact volumetric density over time. The size of data points represent the total number of artefacts from each assemblage and the colour indicates the presence of stemmed points. The inset plot shows direct comparison of artefact densities for assemblages with and without stemmed points."}
-source(here::here("analysis/paper/002-artifact-volumetric-density.R"))
+```{r volume-density, fig.cap="The main plot shows the artefact volumetric density over time. The size of data points represent the total number of artefacts from each assemblage and the colour indicates the presence of stemmed points. The inset plot shows direct comparison of artefact densities for assemblages with and without stemmed points.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/002-artifact-volumetric-density.R"))}
+quietly(source(here::here("analysis/paper/002-artifact-volumetric-density.R")))
 knitr::include_graphics(here::here("analysis/figures/002-age-by-density.png"))
 ```
 
+
 Figure \@ref(fig:volume-density-retouch) shows a strong pattern of artefacts from less dense assemblages having higher retouch frequencies while more dense assemblages have lower retouch frequencies (p=0.043), further showing a spectrum of site functions in this sample. As for artefact density, there are no clear chronological trends in retouch frequencies. The assemblages containing stemmed points tend to have fewer retouched pieces compared to assemblages without stemmed points (p=0.011).
 
-```{r volume-density-retouch, fig.cap="Main plot shows relationship between artefact density and retouch frequency. The colour of the data points indicate the age of the assemblage, point size indicates assemblage size, and shape indicates presence or absence of stemmed points. Assemblages with higher proportions of retouched pieces and lower densities indicate curated technologies, and assemblages at the other end of the spectrum indicate expedient technologies [@riel2004late]. The inset plot on the bottom left shows the proportion of retouched pieces in the assemblages over time. The inset plot on the bottom right shows the proportion of retouched pieces in the assemblages with or without stemmed points."}
-source(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R"))
+```{r volume-density-retouch, fig.cap="Main plot shows relationship between artefact density and retouch frequency. The colour of the data points indicate the age of the assemblage, point size indicates assemblage size, and shape indicates presence or absence of stemmed points. Assemblages with higher proportions of retouched pieces and lower densities indicate curated technologies, and assemblages at the other end of the spectrum indicate expedient technologies [@riel2004late]. The inset plot on the bottom left shows the proportion of retouched pieces in the assemblages over time. The inset plot on the bottom right shows the proportion of retouched pieces in the assemblages with or without stemmed points.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R"))}
+quietly(source(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R")))
 knitr::include_graphics(here::here("analysis/figures/003-retouch-by-density.png"))
 ```
+
 
 ## Composition of toolkit
 
 Figure \@ref(fig:artefact-composition) shows that side scrapers are the major part of most assemblages and are present in all assemblages. For example, more than 70 percent of the two assemblages from Hwaderi are side scrapers. After around 31 ka, the proportion of side scrapers declines. In addition to side scrapers, cores also exist in all assemblages often as a high proportion. The proportion of choppers decreased towards in more recent assemblages. Blades first appeared in Gawolri-A at 43 ka and then often found in assemblages thereafter. Stemmed points first appear in Bonggok around 41.5ka and were typically found in assemblages that contain blades, except for Songamri-A. Other artefacts, including burins, denticulates, end scrapers, handaxes, knives, notches, planes, and polyhedrals made up a small proportion of the assemblages.
 
-```{r artefact-composition, fig.cap="This plot shows the composition of each assemblage. We excluded artefacts related to manufacturing processes such as pebbles, hammers, flakes and debris, artefacts appeared only in a few assemblages including point, beak shaped, and awl, and unknown and unfinished pieces. The colour represents different types of tools and the assemblages are placed in chronological order."}
-source(here::here("analysis/paper/004-artifact-composition.R"))
+```{r artefact-composition, fig.cap="This plot shows the composition of each assemblage. We excluded artefacts related to manufacturing processes such as pebbles, hammers, flakes and debris, artefacts appeared only in a few assemblages including point, beak shaped, and awl, and unknown and unfinished pieces. The colour represents different types of tools and the assemblages are placed in chronological order.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/004-artifact-composition.R"))}
+quietly(source(here::here("analysis/paper/004-artifact-composition.R")))
 knitr::include_graphics(here::here("analysis/figures/004-artefact-types.png"))
 ```
+
 
 ## Raw materials
 
 Quartz, quartz vein and quartzites were the most frequently found raw materials, and they were constantly used throughout the Late Pleistocene (Figure \@ref(fig:raw-materials)). For example, both Galdamri-A, dated to 44ka with a small assemblage, and Hopyeongdong-B, dated to 27.5ka with a larger assemblage, consist of only the quartz related materials. The use of chert, hornfels, rhyolite, and shale increased after 41.5 ka. All artefacts in Sageunri are made of rhyolite. Hornfels are dominant at Yongsandong and Yongbang sites at 25 ka. Chert, hornfels, rhyolite, and shale are very suitable to make elongate blades and stemmed points because of the predictability of flaking afforded by their fine-grained texture. For example, Yongsandong has the largest number of stemmed points (n=40) among the assemblages studied here, and all stemmed points from Yongsandong are made from hornfels. Other raw materials, such as porphyry and sandstone, were found in just a few assemblages in small proportions.
 
-```{r raw-materials, fig.cap="This plot shows the composition of raw material type in each assemblage. We excluded raw materials that are included in less than 5 assemblages including crystal, basalt, iron_ore, slate, limestone, granite, gneiss, tuff, and unidentified ones. Hornfels are shown in 4 assemblages but since it occupies more than half of the Yongsandong and Yongband assemblages, we included it in the plot. The color represents different types of raw materials, and the assemblages are placed in chronological order."}
-source(here::here("analysis/paper/005-raw-materials.R"))
+```{r raw-materials, fig.cap="This plot shows the composition of raw material type in each assemblage. We excluded raw materials that are included in less than 5 assemblages including crystal, basalt, iron_ore, slate, limestone, granite, gneiss, tuff, and unidentified ones. Hornfels are shown in 4 assemblages but since it occupies more than half of the Yongsandong and Yongband assemblages, we included it in the plot. The color represents different types of raw materials, and the assemblages are placed in chronological order.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/005-raw-materials.R"))}
+quietly(source(here::here("analysis/paper/005-raw-materials.R")))
 knitr::include_graphics(here::here("analysis/figures/005-raw-materials.png"))
 ```
+
 
 ## Environmental context
 
 Figure \@ref(fig:site-elevation) shows that people occupied sites located at similar elevations, around 0 to 200 meters above sea level. However, there is a substantial difference in elevation between sites with stemmed points and sites without. The distribution of elevations of sites without stemmed points is generally lower than the elevations of sites with stemmed points. Although not a statistically significant difference in elevations (p = 0.102), this may indicate that forager groups who used stemmed points were able to occupy higher altitudes, while the groups without tended to prefer lower altitudes. Sites without stemmed points reach a maximum elevation of about 150m at around 39ka. Sites containing stemmed points reach a maximum elevation of 175 m at 28ka.
 
-```{r site-elevation, fig.cap="The main plot shows the site elevation by the age of the deposit. Colour indicates presence/absence of stemmed points. The lines display a locally weighted regression. The inset plot shows a direct relationship between the site elevation and stemmed points."}
-source(here::here("analysis/paper/006-site-elevation.R"))
+```{r site-elevation, fig.cap="The main plot shows the site elevation by the age of the deposit. Colour indicates presence/absence of stemmed points. The lines display a locally weighted regression. The inset plot shows a direct relationship between the site elevation and stemmed points.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/006-site-elevation.R"))}
+quietly(source(here::here("analysis/paper/006-site-elevation.R")))
 knitr::include_graphics(here::here("analysis/figures/006-site-elevation.png"))
 ```
 
+
 Among the sites in our sample there is a variation of about 5 degrees in the mean annual temperature (MAT), mostly controlled by elevation (Figure \@ref(fig:climate-model)). Compared to the east side of the Korean Peninsula, the west side tends to be relatively warmer. The range of MAT at the sites over our study period is 2-10℃. Gihwari and Gigok sites have the lowest (3℃) and Jeungsan-ri site has the highest MAT (8℃). The mean MAT for all sites fluctuated within 4℃ between 50ka and 10ka. Through MIS 3, the temperature gradually decreased until the Last Glacial Maximum (LGM, 26.5-20 ka) [@clark2009last]. The first appearance of stemmed points occurs in the middle of the decreasing MAT trend in MIS 3, at 40-35ka. The MAT of MIS 2, including LGM, was relatively stable. The temperature increased again from late MIS 2 towards MIS 1. Figure 7D shows a negative relationship between temperature and elevation (p = 0.073). For example, Gihwa-ri Cave site, with one of the lowest MAT distributions, is located in the highest elevation around 300m above sea level. Jeungsan-ri is located at a lower elevation and has one of the highest MAT distributions.
 
-```{r climate-model, fig.cap="Mean Annual Temperature (MAT) of the Korean Paleolithic assemblages mentioned in this research. A: Site locations on the map and MAT. B: MAT distributions for each site during the period they were occupied. C: MAT from 50ka to 10ka. The grey lines indicate the MAT for each site and the black line is the mean temperature of all sites. The light grey area in the middle of the plot indicates the duration of MIS 2, separating MIS 3 and 1, and dark grey area represents the duration of LGM. D: The relationship between MAT and site elevation. The blue line is a linear regression on elevation and MAT with the grey area showing the 95% confidence interval.t."}
-source(here::here("analysis/paper/007-climate-model-plots.R"))
+```{r climate-model, fig.cap="Mean Annual Temperature (MAT) of the Korean Paleolithic assemblages mentioned in this research. A: Site locations on the map and MAT. B: MAT distributions for each site during the period they were occupied. C: MAT from 50ka to 10ka. The grey lines indicate the MAT for each site and the black line is the mean temperature of all sites. The light grey area in the middle of the plot indicates the duration of MIS 2, separating MIS 3 and 1, and dark grey area represents the duration of LGM. D: The relationship between MAT and site elevation. The blue line is a linear regression on elevation and MAT with the grey area showing the 95% confidence interval.t.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/007-climate-model-plots.R"))}
+quietly(source(here::here("analysis/paper/007-climate-model-plots.R")))
 knitr::include_graphics(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"))
 ```
 
+
 ## Demographic context
 
-Figure \@ref(fig:spd-model) shows the four theoretical null models of demographic change for the period 50ka to 10ka, exponential, uniform, linear, and logistic, generated from the radiocarbon dates. Statistical significance of each model is computed using 200 simulations and the global p-values are 0.004, 0.004, 0.009, and 0.004, respectively. In this case, the linear model is the best fit with lower value verified by AIC <!---(Table 1)--->. However, the other models have similar patterns with a minor margin at -48.6. The radiocarbon dates fit well with the overall trajectory of the null models (grey shading) with both positive and negative deviations. SPD shows a steady growth until 35ka, stays at the peak with minor deviation 32ka, and then starts declining with frequent temporary fluctuations (relatively sharp). The beginning and ending of the SPD indicates significant negative deviation with low density of radiocarbon dates.
+Figure \@ref(fig:spd-model) shows the four theoretical null models of demographic change for the period 50ka to 10ka, exponential, uniform, linear, and logistic, generated from the radiocarbon dates. Statistical significance of each model is computed using 200 simulations and the global p-values are 0.004, 0.004, 0.009, and 0.004, respectively. In this case, the linear model is the best fit with lower value verified by AIC. However, the other models have similar patterns with a minor margin at -48.6. The radiocarbon dates fit well with the overall trajectory of the null models (grey shading) with both positive and negative deviations. SPD shows a steady growth until 35ka, stays at the peak with minor deviation 32ka, and then starts declining with frequent temporary fluctuations (relatively sharp). The beginning and ending of the SPD indicates significant negative deviation with low density of radiocarbon dates.
+
+```{r spd-model, fig.cap="Summed probability distribution of 108 radiocarbon dates. The black solid line represents actual radiocarbon ages. The grey shaded region shows the critical envelope that encompasses the 95% confidence interval for the null models. The red and blue vertical bands highlight the portions of the SPD where positive and negative deviations are detected. We applied logistic, exponential and linear to AIC along with the logistical growth model (fit) to evaluate each model [@riris2019widespread]. We excluded the uniform model because it has no fitted curve or surface to evaluate. The best fit model has the lowest AIC score. In this case, the linear model is the best fit, with the next-best fit (exponential) having a higher AIC score by a minor margin at -48.6."}
+source(here::here("analysis/paper/008-summed-probability-distributions.R"))
+knitr::include_graphics(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+```
+
 
 # Discussion
 

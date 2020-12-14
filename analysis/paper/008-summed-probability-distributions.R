@@ -158,21 +158,32 @@ df_aic <- data.frame (Model = c("logistic",
                                 ),
                      df = c(aic$df),
                      AIC = c(aic$AIC)) %>% arrange(-AIC)
-df_aic
+# Model df       AIC
+# logistic  4 -363176.8
+#  exponential  3 -368376.7
+#     linear  3 -368425.3
 
-## plots for all three models
-df_exp <-  3
-aic_exp <- 345
-p_exp <-  0.005
 
+## plots for all three models.
+df_exp <- 3
+aic_exp <- -368376.7
+
+df_log <- 4
+aic_log <- -363176.8
+
+df_lin <- 3
+aic_lin <- -368425.3
+
+par(mar=c(2,2,1,1))
 par(mfrow=c(4,1))
-# make a string with the model stats for each plot title
-plot(exp_test, main = paste0("Exponential Model (df = ", df_exp, ", AIC = ", aic_exp, ", p = ", p_exp, ")"))
-plot(uni_test, main="Uniform Model")
-plot(lin_test, main="Linear Model")
-plot(log_test, main="Logistic Model")
 
-dev.off()
+#make a string with the model stats for each plot title
+plot(exp_test, main = paste0("Exponential Model (df = ", df_exp, ", AIC = ", aic_exp,")"))
+plot(uni_test, main = "Uniform Model")
+plot(lin_test, main = paste0("Linear Model (df = ", df_lin, ", AIC = ", aic_lin,")"))
+plot(log_test, main = paste0("Logistic Model (df = ", df_log, ", AIC = ", aic_log,")"))
+
+#dev.off()
 
 png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 #ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
