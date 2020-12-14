@@ -53,8 +53,6 @@ exp_test <-
     ncores = 3
   )
 
-plot(exp_test, main="Exponential Model")
-
 # uniform model, does not produce anything for $fitobject
 uni_test <-
   modelTest(
@@ -66,7 +64,6 @@ uni_test <-
     ncores = 3
   )
 
-plot(uni_test, main="Uniform Model")
 
 # linear model
 lin_test <-
@@ -79,7 +76,6 @@ lin_test <-
     ncores = 3
   )
 
-plot(lin_test, main="Linear Model")
 
 # logistical model
 
