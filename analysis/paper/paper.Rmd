@@ -199,7 +199,7 @@ Our findings are limited by the relatively small number of sites and radiocarbon
 
 # Acknowledgements
 
-<!-- The following line inserts a page break when the output is MS Word. For page breaks in PDF, use \newpage on its own line.  -->
+<!--The following line inserts a page break when the output is MS Word. For page breaks in PDF, use \newpage on its own line.  -->
 
 ##### pagebreak
 
