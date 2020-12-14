@@ -25,7 +25,7 @@ dates_calibrated <-
 dates_calibrated_spd <-
   spd(dates_calibrated,
       timeRange = c(50000, 10000))
-plot(dates_calibrated_spd)
+# plot(dates_calibrated_spd)
 
 # Testing Observed SPDs against theoretical models
 ## recalibrate dates without normalisation to avoid artificial peaks
@@ -121,19 +121,6 @@ log_test  <- modelTest(spd_dates,
                      raw = TRUE)
 
 
-## plots for all three models
-
-par(mfrow=c(4,1))
-plot(exp_test, main="Exponential Model")
-plot(uni_test, main="Uniform Model")
-plot(lin_test, main="Linear Model")
-plot(log_test, main="Logistic Model")
-
-dev.off()
-
-png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
-#ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
-
 # look at p-values for the models
 exp_test$pval
 uni_test$pval
@@ -172,6 +159,24 @@ df_aic <- data.frame (Model = c("logistic",
                      df = c(aic$df),
                      AIC = c(aic$AIC)) %>% arrange(-AIC)
 df_aic
+
+## plots for all three models
+df_exp <-  3
+aic_exp <- 345
+p_exp <-  0.005
+
+par(mfrow=c(4,1))
+# make a string with the model stats for each plot title
+plot(exp_test, main = paste0("Exponential Model (df = ", df_exp, ", AIC = ", aic_exp, ", p = ", p_exp, ")"))
+plot(uni_test, main="Uniform Model")
+plot(lin_test, main="Linear Model")
+plot(log_test, main="Logistic Model")
+
+dev.off()
+
+png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+#ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+
 
 #save a table of AIC result as csv
 # write.csv(df_aic, file="analysis/figures/008-SPD-AIC.csv", row.names = FALSE)
