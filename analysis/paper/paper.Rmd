@@ -72,7 +72,7 @@ Second, we ask how the new technology changed the way people use habitation site
 
 After the first excavation of a Paleolithic site in Korea at Seokjang-ri site in the 1960s, more than 200 Paleolithic sites have been discovered in South Korea [@lee2019were]. We selected sites dated to before and after the transition period (40-35 ka) to analyze the process of technological change. This resulted in a sample of analysed 33 assemblages from 22 sites spanning 49-24 ka (Figure \@ref(fig:korea-map)). We identified multiple assemblages in a site where culturally sterile deposits separated artefact-bearing deposits, or where stratigraphic units could be identified by major differences in the texture and composition of the sedimentary deposit containing the stone artefacts. For example, the Hwadae-ri site has three cultural layers. The lowest horizon at the bottom, dated to 39,000±1400 BP by OSL, contains coarse flake tools made of vein quartz and quartzite. The middle cultural horizon has stemmed points made of porphyry, with quartz and quartzite dominating the assemblage. This layer was dated to 31,200±900 BP by radiocarbon dating and 30,000±1,700 BP by OSL. The uppermost layer, dated to 22,000±100 BP by OSL, contains blades, scrapers, awls, and denticulates [@seong2009emergence]. We obtained the data from published excavation reports held by provincial museums.
 
-```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text.", include=FALSE, cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/001-draw-the-map.R"))}
+```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text.", cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/001-draw-the-map.R"))}
 quietly(source(here::here("analysis/paper/001-draw-the-map.R")))
 knitr::include_graphics(here::here("analysis/figures/001-site-map.png"))
 
@@ -139,7 +139,6 @@ Quartz, quartz vein and quartzites were the most frequently found raw materials,
 quietly(source(here::here("analysis/paper/005-raw-materials.R")))
 knitr::include_graphics(here::here("analysis/figures/005-raw-materials.png"))
 ```
-
 
 ## Environmental context
 
