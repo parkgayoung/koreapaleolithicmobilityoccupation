@@ -129,7 +129,6 @@ quietly(source(here::here("analysis/paper/004-artifact-composition.R")))
 knitr::include_graphics(here::here("analysis/figures/004-artefact-types.png"))
 ```
 
-
 ## Raw materials
 
 Quartz, quartz vein and quartzites were the most frequently found raw materials, and they were constantly used throughout the Late Pleistocene (Figure \@ref(fig:raw-materials)). For example, both Galdamri-A, dated to 44ka with a small assemblage, and Hopyeongdong-B, dated to 27.5ka with a larger assemblage, consist of only the quartz related materials. The use of chert, hornfels, rhyolite, and shale increased after 41.5 ka. All artefacts in Sageunri are made of rhyolite. Hornfels are dominant at Yongsandong and Yongbang sites at 25 ka. Chert, hornfels, rhyolite, and shale are very suitable to make elongate blades and stemmed points because of the predictability of flaking afforded by their fine-grained texture. For example, Yongsandong has the largest number of stemmed points (n=40) among the assemblages studied here, and all stemmed points from Yongsandong are made from hornfels. Other raw materials, such as porphyry and sandstone, were found in just a few assemblages in small proportions.

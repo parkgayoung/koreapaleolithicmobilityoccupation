@@ -65,10 +65,12 @@ kasr_long2 <-
   #        age_bin  = ntile(age_ka, 5)) %>%
   arrange(age_ka) %>%
   filter(!is.na(age_ka)) %>%
-  mutate(axis_label = glue('{site_new_name} ({round(age_ka,1)} ka, n = {total})'))
+  mutate(axis_label = glue('{site_new_name} ({round(age_ka,1)} ka, n = {total})')) %>%
+  # replace _ with space for pretty text in legend
+  mutate(raw_material = str_replace_all(raw_material, "_", " "))
 
 
-kasr_long2_pill_plot<-
+kasr_long2_pill_plot <-
 ggplot(kasr_long2,
        aes(
          reorder(axis_label,
@@ -76,14 +78,17 @@ ggplot(kasr_long2,
          percentage,
          fill = raw_material)) +
   geom_col(position = "fill") +
-  xlab("Assemblage (youngest at the top)") +
-  ylab("Percentage") +
-  scale_fill_viridis_d(name = "Raw material type",
+  xlab("") +
+  ylab("Assemblage proportion") +
+  scale_fill_viridis_d(name = "Raw material",
                        option = "C") +
   coord_flip() +
-  theme_minimal(base_size = 12)
+  theme_minimal(base_size = 8)
 
-ggsave(here::here("analysis/figures/005-raw-materials.png"))
+ggsave(here::here("analysis/figures/005-raw-materials.png"),
+       width = 4.45,
+       height = 5,
+       units = "in")
 
 # interactive
 #plotly::ggplotly(kasr_long2_pill_plot)
