@@ -86,7 +86,9 @@ kasa_long2 %>%
 # filter out rare types
 kasa_long3 <-
 kasa_long2 %>%
-  filter(artefact_type %in% types_in_many_sites$artefact_type)
+  filter(artefact_type %in% types_in_many_sites$artefact_type) %>%
+  # replace _ with space for pretty text in legend
+  mutate(artefact_type = str_replace_all(artefact_type, "_", " "))
 
 kasa_long3_fill_plot <-
 ggplot(kasa_long3,
@@ -95,15 +97,18 @@ ggplot(kasa_long3,
          percentage,
          fill = artefact_type)) +
   geom_col(position = "fill") +
-  ylab("Proportion") +
-  xlab("Assemblage (youngest at the top)") +
-  theme_minimal(base_size = 16)  +
+  ylab("Assemblage proportion") +
+  xlab("") +
   scale_fill_viridis_d(name = "Artefact type",
                        option = "D") +
   coord_flip() +
-  theme_minimal(base_size = 12)
+  theme_minimal(base_size = 8)
 
-ggsave(here::here("analysis/figures/004-artefact-types.png"))
+ggsave(plot = kasa_long3_fill_plot,
+         here::here("analysis/figures/004-artefact-types.png"),
+       width = 4.45,
+       height = 5,
+       units = "in")
 
 #make an interactive plot for interpret the plot easily
 #plotly::ggplotly(kasa_long3_fill_plot)

@@ -120,7 +120,6 @@ quietly(source(here::here("analysis/paper/003-artifact-volumetric-density-retouc
 knitr::include_graphics(here::here("analysis/figures/003-retouch-by-density.png"))
 ```
 
-
 ## Composition of toolkit
 
 Figure \@ref(fig:artefact-composition) shows that side scrapers are the major part of most assemblages and are present in all assemblages. For example, more than 70 percent of the two assemblages from Hwaderi are side scrapers. After around 31 ka, the proportion of side scrapers declines. In addition to side scrapers, cores also exist in all assemblages often as a high proportion. The proportion of choppers decreased towards in more recent assemblages. Blades first appeared in Gawolri-A at 43 ka and then often found in assemblages thereafter. Stemmed points first appear in Bonggok around 41.5ka and were typically found in assemblages that contain blades, except for Songamri-A. Other artefacts, including burins, denticulates, end scrapers, handaxes, knives, notches, planes, and polyhedrals made up a small proportion of the assemblages.
