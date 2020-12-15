@@ -1,11 +1,11 @@
 ---
 title: "How did the introduction of Stemmed Points affect Mobility and Site Occupation during the Late Pleistocene in Korea?"
 author:
-  - Author Gayoung Park
-  - Author Ben Marwick
+  - Gayoung Park
+  - Ben Marwick
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-    bookdown::html_document2: 
+    bookdown::word_document2: 
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
 bibliography: references.bib
