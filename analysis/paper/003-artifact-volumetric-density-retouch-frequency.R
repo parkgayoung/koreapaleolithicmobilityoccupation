@@ -2,6 +2,7 @@ suppressPackageStartupMessages(library(tidyverse))
 library(glue)
 library(ggrepel)
 library(here)
+library(cowplot)
 
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
@@ -20,8 +21,6 @@ kasv_tidy <-
          sites = names(kasv)[-1]) %>%
   left_join(mydata, by = c('sites' = 'site_name' )) %>%
   mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
-
-
 
 # retouch, density, age
 Assemblage_info <- read_csv(here::here("analysis/data/raw_data/Assemblage_info.csv"))
@@ -58,7 +57,7 @@ retouch_over_time_subplot <-
              colour = "grey80") +
   labs(x = "Age of assemblage (ka)",
        y = "Proportion retouched") +
-  theme_bw(base_size = 6)
+  theme_bw(base_size = 4)
 
 
 # compute t-test for retouch pieces and SP existence
@@ -85,11 +84,10 @@ retouch_sp_sub_plot <-
            x = 1.5,
            y = 1.25,
            label = retouch_sp_ttest_str,
-           size = 1.7) +
-  theme_bw(base_size = 8)  +
-  labs(x = "Stemmed points present",
+           size = 1.5) +
+  theme_bw(base_size = 4)  +
+  labs(x = "Contains stemmed points?",
        y = "Proportion retouched")
-
 
 # compute correlation
 kas_sites_retouch_density_corr <-
@@ -101,7 +99,7 @@ p_value <- unname(kas_sites_retouch_density_corr$p.value )
 t_value <- unname(kas_sites_retouch_density_corr$statistic )
 df_value <- unname(kas_sites_retouch_density_corr$parameter )
 
-size <-  8
+size <-  6
 Assemblage_info_retouch_density_ages_prop_main_plot <-
   ggplot(Assemblage_info_retouch_density_ages_prop,
          aes(artefact_density,
@@ -120,7 +118,7 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
                 labels = scales::comma_format(accuracy = 0.001)) +
   scale_x_log10(limits = c(0.001, 10),
                 labels = scales::comma_format(accuracy = 0.001)) +
-  theme_minimal(base_size = 12) +
+  theme_minimal(base_size = 6) +
   scale_shape_discrete("Contains\nstemmed\npoints?") +
   scale_size("Total number\nof artifacts") +
   scale_color_viridis_c(name = "Age of\nassemblage (ka)") +
@@ -130,33 +128,33 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
            x = 0.005,
            y = 0.7,
            label = "Curated",
-           size = size -2,
+           size = size - 2,
            colour = "grey50") +
   annotate("text",
            x = 5,
            y = 0.06,
            label = "Expedient",
-           size = size -2,
+           size = size - 2,
            colour = "grey50") +
   annotate("text",
            x = 0.05,
            y = 0.03,
            label = glue('r = {round(r_value, 3)}, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
-           size = 4,
+           size = size - 3,
            colour = "grey50")
 
 
-
-library(cowplot)
 ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
   draw_plot(retouch_over_time_subplot,
             .1, .1,
-            .35, .25) +
+            .35, .28) +
   draw_plot(retouch_sp_sub_plot,
             .46, .1,
             .23, .28)
 
 
-
-ggsave(here::here("analysis/figures/003-retouch-by-density.png"))
+ggsave(here::here("analysis/figures/003-retouch-by-density.png"),
+       width = 4.45,
+       height = 4.45,
+       units = "in")
 
