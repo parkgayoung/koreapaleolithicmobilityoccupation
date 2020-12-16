@@ -79,7 +79,7 @@ retouch_sp_sub_plot <-
   ggplot(Assemblage_info_retouch_density_ages_prop,
          aes(has_sp,
              prop_retouched)) +
-  geom_boxplot() +
+  geom_boxplot(lwd = 0.1) +
   annotate("text",
            x = 1.5,
            y = 1.25,

@@ -47,7 +47,7 @@ elevation_sp_sub_plot <-
   ggplot(kasv_tidy,
          aes(has_sp,
              altitude.m._of_main_layer)) +
-  geom_boxplot(outlier.size = 0.5) +
+  geom_boxplot(outlier.size = 0.5, lwd = 0.1) +
   annotate("text",
            x = 1.5,
            y = 250,

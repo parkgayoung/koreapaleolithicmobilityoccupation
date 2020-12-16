@@ -70,7 +70,7 @@ density_sp_sub_plot <-
   ggplot(kasv_tidy,
          aes(has_sp,
              artefact_density)) +
-  geom_boxplot() +
+  geom_boxplot(lwd = 0.1) +
   annotate("text",
            x = 1.5,
            y = 9,
