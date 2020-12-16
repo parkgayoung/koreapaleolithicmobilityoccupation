@@ -2,6 +2,7 @@
 library(ncdf4)
 library(lattice)
 library(ggplot2)
+library(cowplot)
 
 # you'll need to get this file from
 # https://figshare.com/articles/LateQuaternary_Environment_nc/12293345/3
@@ -17,6 +18,7 @@ temperature <- ncdf4::ncvar_get(env_nc, "temperature")
 biome       <- ncdf4::ncvar_get(env_nc, "biome")
 ncdf4::nc_close(env_nc)
 
+# this takes a few minutes
 mean_annual_temperature <- apply(temperature, c(1, 2, 4), mean)
 
 # korean archaeological sites
@@ -24,7 +26,6 @@ library(tidyverse)
 
 site_locations_tbl_raw <- read_csv (here::here("analysis/data/raw_data/korean_palaeolithic_site_locations.csv"))
 site_locations_tbl <- site_locations_tbl_raw
-
 
 # some problem finding a MAT value for the location
 # Gigok
@@ -59,54 +60,67 @@ site_locations_tbl %>%
   filter(between(year, -50000, -10000))
 
 #----------------------------------------------------------------------
+base_size = 6
 
 # this is the overall time series plot
 # we see the mean for all locations, and individual
 # locations in grey in the background
-mat_time_series_plot_no_annotate <-
+mat_time_series_plot_annotated <-
 ggplot() +
+  # add annotations for climate events
+  annotate ("rect",
+            xmin = 14000, xmax = 29000,
+            ymin = -Inf, ymax = Inf, fill = "lightgrey",
+            alpha = .4) +
+  annotate("rect",
+           xmin = 19000, xmax = 26500,
+           ymin = -Inf, ymax = Inf, fill = "grey",
+           alpha = .4)   +
+  # add lines for each location
   geom_line(data = site_locations_tbl_temps,
             aes(-year,
                 mean_annual_temperature,
                 group = site_name),
             colour = "grey90") +
+  # add mean line for all locations
   geom_line(data = site_locations_tbl_temps %>%
               group_by(year) %>%
               summarise(mean_mean_annual_temperature = mean(mean_annual_temperature,
                                                             na.rm = TRUE)),
             aes(-year,
                 mean_mean_annual_temperature),
-            size = 2) +
+            size = 1) +
+  annotate("text",
+           x = 11100,
+           y = 11,
+           label = "MIS\n1",
+           size = 3) +
+  annotate("text",
+           x = 22000,
+           y = 11,
+           label = "MIS\n2",
+           size = 3) +
+  annotate("text",
+           x = 38000,
+           y = 11,
+           label = "MIS\n3",
+           size = 3) +
+  annotate("text",
+           x = 22500,
+           y = 9.7,
+           label = "LGM",
+           size = 2) +
   scale_x_continuous(labels = scales::comma) +
   coord_cartesian(ylim = c(1, 12)) +
-  theme_minimal() +
+  theme_minimal(base_size = base_size ) +
   labs(y = "Mean annual temperature (MAT, °C)",
        x = "Year (BP)")
-
-# add annotations for climate events
-mat_time_series_plot<-mat_time_series_plot_no_annotate +
-                      annotate ("rect",
-                              xmin = 14000, xmax = 29000,
-                              ymin = -Inf, ymax = Inf, fill = "lightgrey",
-                              alpha = .4) +
-                      annotate("rect",
-                               xmin = 19000, xmax = 26500,
-                               ymin = -Inf, ymax = Inf, fill = "grey",
-                               alpha = .4) +
-                      annotate("text",  x = 10800, y = 11, label = "MIS 1",
-                               fontface="bold", color = "#DC5B44", size = 3) +
-                      annotate("text",  x = 22000, y = 11, label = "MIS 2",
-                               fontface="bold", color = "#DC5B44", size = 3) +
-                      annotate("text",  x = 38000, y = 11, label = "MIS 3",
-                               fontface="bold", color = "#DC5B44", size = 3) +
-                      annotate("text",  x = 22500, y = 9.7, label = "LGM",
-                               fontface="bold", color = "#B04027", size = 3)
-
 
 # now we prepare the data to show each site
 # in a boxplot
 
-korean_archaeological_sites <- readxl::read_excel(here::here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
+korean_archaeological_sites <-
+  readxl::read_excel(here::here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
 
 # get site age and location in neat and tidy format
 site_locations_tbl_temps_periods <-
@@ -124,21 +138,19 @@ site_locations_tbl_temps_periods %>%
                  (years_ka + 2500)))
 #----------------------------------------------------------------------
 
-
 # here is the plot that shows the temp range during the period of occupation
 mat_per_site_plot <-
 ggplot(site_locations_tbl_temps_periods_filtered) +
     aes(y = mean_annual_temperature,
         x = reorder(site_name,
                     mean_annual_temperature)) +
-    geom_boxplot() +
+    geom_boxplot(lwd = 0.1) +
     coord_flip() +
   xlab("") +
   ylab("Mean annual temperature (MAT, °C)") +
-  theme_minimal()
+  theme_minimal(base_size = base_size)
 
 #----------------------------------------------------------------------
-
 
 # can we have a map also?
 
@@ -185,11 +197,12 @@ ggmap(map)  +
                    aes(long_dd ,
                        lat_dd,
                        label = site_name),
-                  size = 2,
+                  size = 1.5,
                   bg.color = "white",
                   bg.r = 0.1) +
   scale_colour_viridis_c(name = "MAT") +
-  theme(legend.position = c(1, 0.25),
+  theme_bw(base_size = base_size) +
+  theme(legend.position = c(0.9, 0.25),
         axis.line = element_blank(),
               axis.text = element_blank(),
               axis.ticks = element_blank(),
@@ -212,32 +225,36 @@ mat_elev_cor_plot <-
   ggplot() +
     aes(y = elev,
         x = mat) +
-    geom_point() +
-    geom_text_repel(aes(label = site_name), size = 3.3) +
     stat_smooth(method = "lm") +
+    geom_point() +
+    geom_text_repel(aes(label = site_name),
+                    size = 2,
+                    bg.color = "white",
+                    bg.r = 0.1) +
     stat_cor(label.x = 6,
-             label.y = 300, size = 3) +
-    stat_regline_equation(label.x = 6,
-                          label.y = 273, size = 3) +
+             label.y = 300,
+             size = 2)  +
    ylab("Elevation above sea level (m)") +
    xlab("Mean annual temperature (MAT, °C)") +
-    theme_minimal()
+    theme_minimal(base_size = base_size)
 
 #----------------------------------------------------------------------
 
 # combine plots
-library(cowplot)
+
 top_row <-
   plot_grid(mat_site_map_plot,
             mat_per_site_plot,
             nrow = 1,
             labels = c('A', 'B'),
-            rel_widths = c(0.3, 1))
+            label_size = 6,
+            rel_widths = c(0.7, 1))
 
 bottom_row <-
-  plot_grid(mat_time_series_plot,
+  plot_grid(mat_time_series_plot_annotated,
             mat_elev_cor_plot,
             labels = c('C', 'D'),
+            label_size = 6,
             nrow = 1)
 
 # combine rows
@@ -245,8 +262,11 @@ plot_grid(top_row,
           bottom_row,
           ncol = 1)
 
-ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"), scale = 1, width = 8,
-       height = 6)
+ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"),
+       scale = 1,
+       width = 4.45,
+       height = 5,
+       units = "in")
 
 
 
