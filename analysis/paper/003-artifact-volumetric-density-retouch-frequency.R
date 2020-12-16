@@ -45,7 +45,7 @@ Assemblage_info_retouch_density_ages_prop <-
   group_by(sites) %>%
   mutate(prop_retouched = sum(value, na.rm = TRUE) / total_artifacts) %>%
   arrange(sites) %>%
-  select(-X1, -value) %>%
+  dplyr::select(-X1, -value) %>%
   distinct_all()
 
 # retouch over time

@@ -47,7 +47,7 @@ site_locations_tbl$long_dd <-
 
 site_locations_tbl_temps <-
 site_locations_tbl %>%
-  select(site_name,
+  dplyr::select(site_name,
          lat_dd,
          long_dd,
          elevation) %>%
@@ -183,7 +183,7 @@ site_locations_tbl_temps_periods_filtered %>%
 mat_site_map_plot <-
 ggmap(map)  +
   geom_point(data = site_locations_tbl_temps_periods_filtered_means %>%
-               select(-long_dd,
+               dplyr::select(-long_dd,
                       -lat_dd) %>%
                left_join(site_locations_tbl_raw) ,
              aes(long_dd ,
@@ -191,7 +191,7 @@ ggmap(map)  +
              colour = av_mat),
              size = 2) +
   geom_text_repel(data = site_locations_tbl_temps_periods_filtered_means %>%
-                    select(-long_dd,
+                    dplyr::select(-long_dd,
                            -lat_dd) %>%
                     left_join(site_locations_tbl_raw),
                    aes(long_dd ,

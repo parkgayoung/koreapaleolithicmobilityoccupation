@@ -58,7 +58,7 @@ kasa_long1 <-
   #                                     as.character(X), "other_tools"))
 ) %>%
   mutate(axis_label = glue('{site}\n(n = {total})'))  %>%
-  select(-X)
+  dplyr::select(-X)
 
 # join to get ages of the sites
 kasa_long2 <-
@@ -110,25 +110,9 @@ ggsave(plot = kasa_long3_fill_plot,
        height = 5,
        units = "in")
 
-#make an interactive plot for interpret the plot easily
-#plotly::ggplotly(kasa_long3_fill_plot)
+# make an interactive plot for interpret the plot easily
+# plotly::ggplotly(kasa_long3_fill_plot)
 
-
-
-#ggplot(kasa_long3,
-#       aes(
-#         reorder(axis_label, -age_ka),
-#         percentage)) +
-#  geom_col() +
-#  ylab("Proportion") +
-#  xlab("Assemblage (youngest at the top)") +
-#  theme_minimal(base_size = 16)  +
-#  scale_fill_viridis_d(name = "Artefact type",
-#                       option = "D") +
-#  facet_wrap( ~ artefact_type,
-#              ncol = 1,
-#              scales = "free_y") +
-#  theme_minimal(base_size = 6)
 
 
 

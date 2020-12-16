@@ -7,7 +7,6 @@ korean_archaeological_site_locations <-
 korean_archaeological_site_locations <-
   tibble::rowid_to_column(korean_archaeological_site_locations, "ID")
 
-
 library(ggplot2)
 
 # # check the basic look
@@ -15,7 +14,6 @@ library(ggplot2)
 #   aes(x = long_dd,
 #       y = lat_dd) +
 #   geom_point()
-
 
 library(ggmap)
 
@@ -31,7 +29,7 @@ map <-
                 zoom = 10)
 
 library(ggrepel)
-#devtools::install_github('3wen/legendMap')
+# devtools::install_github('3wen/legendMap')
 library(legendMap)
 
 # map with site names next to the points
@@ -91,7 +89,7 @@ library(ggplot2)
 mycrs <- "+proj=longlat +datum=WGS84 +no_defs"
 
 #Using the original maps package, then converting map into SpatialPolygons object
-world <- maps::map("world", fill=TRUE) %$%
+world <- maps::map("world", fill=TRUE,  plot = FALSE) %$%
   maptools::map2SpatialPolygons(., IDs=names,proj4string=CRS(mycrs))
 
 #The resulting map has self intersection problems so any further operation reports errors; using buffers of width 0 is a fast fix
@@ -110,12 +108,12 @@ ggplot() +
                    group=group),
                fill='NA',
                color='black',
-               size=0.2) +
+               size=0.1) +
   annotate("rect",
-           xmin = 119,
-           xmax = 136,
-           ymin = 29,
-           ymax = 46,
+           xmin = 118,
+           xmax = 137,
+           ymin = 28,
+           ymax = 47,
            fill = NA,
            colour = "red",
            size = 0.5

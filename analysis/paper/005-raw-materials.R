@@ -26,7 +26,7 @@ mydata_ages <-
   gather(site,
          count,
          -X) %>%
-    filter(!is.na(count)) %>%
+  filter(!is.na(count)) %>%
   group_by(site) %>%
   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
          total = sum(count, na.rm = TRUE)) %>%
@@ -45,7 +45,7 @@ mydata_ages <-
   # if percentage is <10%, call it 'other'
   mutate(raw_material = X) %>%  #ifelse(percentage >= 10, as.character(X), "other")) %>%
   #mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>%
-  select(-X)
+  dplyr::select(-X)
 
 
   # join to get ages of the sites
@@ -55,7 +55,7 @@ kasr_long2 <-
   summarise(percentage = sum(percentage)) %>%
   ungroup() %>%
   left_join(kasr_long1 %>%
-              select(site, raw_material, total),
+              dplyr::select(site, raw_material, total),
             by = c('site', "raw_material")) %>%
   distinct(.keep_all = TRUE) %>%
   # join to get ages of the sites
@@ -91,49 +91,8 @@ ggsave(here::here("analysis/figures/005-raw-materials.png"),
        units = "in")
 
 # interactive
-#plotly::ggplotly(kasr_long2_pill_plot)
+# plotly::ggplotly(kasr_long2_pill_plot)
 
-
-#ggplot(kasr_long2,
-#       aes(
-#         reorder(axis_label,
-#                 -age_ka),
-#         percentage)) +
-#  geom_col() +
-#  xlab("Assemblage (youngest at the top)") +
-#  ylab("Percentage") +
-#  theme_minimal(base_size = 16) +
-#  scale_fill_viridis_d(name = "Raw material type",
-#                       option = "C") +
-#  facet_wrap(~raw_material,
-#             ncol = 1,
-#             scales = "free_y") +
-#  theme_minimal(base_size = 6)
-
-
-# raw material groups  ---------------------
-#fg <- c('chert', 'hornfels', 'rhyolite', 'shale')
-#qz <- c('quartz', 'quartzite', 'quartz_vein')
-
-#kasr_long2_rm_group <-
-#kasr_long2 %>%
-#  mutate(raw_material_group = ifelse(raw_material %in% fg, 'fg',
-#                                     ifelse(raw_material %in% qz, "qz",
-#                                     "oth")))
-
-#  ggplot(kasr_long2_rm_group,
-#         aes(
-#           reorder(axis_label,
-#                   -age_ka),
-#           percentage,
-#           fill = raw_material_group)) +
-#  geom_col(position = "fill") +
-#  xlab("Assemblage (youngest at the top)") +
-#  ylab("Percentage") +
-#  scale_fill_viridis_d(name = "Raw material type",
-#                       option = "C") +
-#  coord_flip() +
-#  theme_minimal(base_size = 12)
 
 
 
