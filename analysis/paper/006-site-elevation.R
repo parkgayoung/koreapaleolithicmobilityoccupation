@@ -3,14 +3,11 @@ library(glue)
 library(ggrepel)
 library(here)
 
-
 # data from PhD data sheet, not KAS sheet.
 mydata <- read.csv(here("analysis/data/raw_data/General_info.csv"))
 
-
 #volume of the cultural layer from KAS data sheet.
 kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
-
 
 # site elevation
 kasv_tidy <-
@@ -24,7 +21,6 @@ kasv_tidy <-
          sites = names(kasv)[-1]) %>%
   left_join(mydata, by = c('sites' = 'site_name' )) %>%
   mutate(has_sp = ifelse(is.na(SP.), "no", "yes"))
-
 
 mydata_ages <-
   mydata %>%
@@ -47,27 +43,26 @@ elev_sp_ttest_df <- round(unname(elev_sp_ttest$parameter ), 3)
 elev_sp_ttest_str <-
   paste0("t(", elev_sp_ttest_df, ") = ", elev_sp_ttest_t, ", p = ", elev_sp_ttest_p)
 
-
 elevation_sp_sub_plot <-
   ggplot(kasv_tidy,
          aes(has_sp,
              altitude.m._of_main_layer)) +
-  geom_boxplot() +
+  geom_boxplot(outlier.size = 0.5, lwd = 0.1) +
   annotate("text",
            x = 1.5,
            y = 250,
            label = elev_sp_ttest_str,
-           size = 2.5) +
-  theme_bw(base_size = 7)  +
-  labs(x = "Stemmed points present",
-       y = "Elevation above sea level (m)")
+           size = 1.5) +
+  theme_bw(base_size = 6)  +
+  labs(x = "Contains stemmed points?",
+       y = "Elevation above\nsea level (m)")
 
 elevation_sp_main_plot <-
   ggplot(mydata_ages,
          aes(x = age_ka,
              y = altitude.m._of_main_layer
              )) +
-  geom_point(size = 3,
+  geom_point(size = 2,
              aes(color = as.factor(has_sp))) +
   xlab("Age of occupation (ka)") +
   ylab("Elevation above sea level (m)") +
@@ -75,7 +70,7 @@ elevation_sp_main_plot <-
               aes(color = as.factor(has_sp))) +
  # geom_smooth(se = FALSE)
   scale_colour_discrete(name = "Contains stemmed points?") +
-  theme_minimal(base_size = 14)  +
+  theme_minimal(base_size = 6)  +
   theme(legend.position = c(0.2, 0.9))
 
 
@@ -85,4 +80,7 @@ ggdraw(elevation_sp_main_plot) +
             .66, .60,
             .29, .32)
 
-ggsave(here::here("analysis/figures/006-site-elevation.png"))
+ggsave(here::here("analysis/figures/006-site-elevation.png"),
+       width = 4.45,
+       height = 3,
+       units = "in")

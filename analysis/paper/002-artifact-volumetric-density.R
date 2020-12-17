@@ -64,22 +64,20 @@ den_sp_ttest_df <- round(unname(den_sp_ttest$parameter ), 3)
 den_sp_ttest_str <-
   paste0("t(", den_sp_ttest_df, ") = ", den_sp_ttest_t, ", p = ", den_sp_ttest_p)
 
-
-
 #Volume and artefact counts to get density over time.
 
 density_sp_sub_plot <-
   ggplot(kasv_tidy,
          aes(has_sp,
              artefact_density)) +
-  geom_boxplot() +
+  geom_boxplot(lwd = 0.1) +
   annotate("text",
            x = 1.5,
            y = 9,
            label = den_sp_ttest_str,
-           size = 2.5) +
-  theme_bw(base_size = 8)  +
-  labs(x = "Stemmed points present",
+           size = 1.5) +
+  theme_bw(base_size = 6)  +
+  labs(x = "Stemmed points present?",
        y = "Artefact density")
 
 
@@ -91,13 +89,9 @@ density_sp_main_plot <-
                  colour = has_sp)) +
   ylab(bquote('Artefact density'~(n/m^3))) +
   xlab("Age of assemblage (ka)") +
-  #geom_smooth(method = "lm") +
   scale_size_continuous(name = "Total number\nof artifacts")  +
-  scale_color_viridis_d(name = "Contains\nstemmed\npoints?") +
-  theme_minimal(base_size = 16)  #+
-#geom_text_repel(aes(label = sites),
-#                nudge_x = 0.25,
-#                nudge_y = 0.25)
+  scale_color_viridis_d(name = "Stemmed\npoints\npresent?") +
+  theme_minimal(base_size = 8)
 
 # https://wilkelab.org/cowplot/articles/drawing_with_on_plots.html
 library(cowplot)
@@ -106,5 +100,8 @@ ggdraw(density_sp_main_plot) +
             .37, .62,
             .32, .33)
 
-ggsave(here::here("analysis/figures/002-age-by-density.png"))
+ggsave(here::here("analysis/figures/002-age-by-density.png"),
+       width = 4.45,
+       height = 4.45,
+       units = "in")
 
