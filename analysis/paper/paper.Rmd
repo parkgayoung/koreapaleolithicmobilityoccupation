@@ -75,7 +75,6 @@ After the first excavation of a Paleolithic site in Korea at Seokjang-ri site in
 ```{r korea-map, fig.cap="Korean Paleolithic sites mentioned in the text.", cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/001-draw-the-map.R"))}
 quietly(source(here::here("analysis/paper/001-draw-the-map.R")))
 knitr::include_graphics(here::here("analysis/figures/001-site-map.png"))
-
 ```
 
 
