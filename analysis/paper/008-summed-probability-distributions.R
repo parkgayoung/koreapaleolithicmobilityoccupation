@@ -170,7 +170,7 @@ aic_log <- -363176.8
 df_lin <- 3
 aic_lin <- -368425.3
 
-par(mar=c(2,2,1,1))
+par(mar=c(2,2,2,2))
 par(mfrow=c(4,1))
 
 #make a string with the model stats for each plot title
@@ -181,8 +181,12 @@ plot(log_test, main = paste0("Logistic Model (df = ", df_log, ", AIC = ", aic_lo
 
 #dev.off()
 
-png(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
+    h = 5,
+    w = 4,
+    units = "px")
 #ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+
 
 
 #save a table of AIC result as csv
