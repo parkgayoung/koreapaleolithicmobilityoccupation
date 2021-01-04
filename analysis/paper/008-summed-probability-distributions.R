@@ -170,27 +170,98 @@ aic_log <- -363176.8
 df_lin <- 3
 aic_lin <- -368425.3
 
-par(mar=c(2,2,2,2))
-par(mfrow=c(4,1))
+#make a string with the model stats for each plot title : basic figure
+# par(mar=c(2,2,2,2))
+# par(mfrow=c(4,1))
+#
+# plot(exp_test, main = paste0("Exponential Model (df = ", df_exp, ", AIC = ", aic_exp,")"))
+# plot(uni_test, main = "Uniform Model")
+# plot(lin_test, main = paste0("Linear Model (df = ", df_lin, ", AIC = ", aic_lin,")"))
+# plot(log_test, main = paste0("Logistic Model (df = ", df_log, ", AIC = ", aic_log,")"))
 
-#make a string with the model stats for each plot title
-plot(exp_test, main = paste0("Exponential Model (df = ", df_exp, ", AIC = ", aic_exp,")"))
-plot(uni_test, main = "Uniform Model")
-plot(lin_test, main = paste0("Linear Model (df = ", df_lin, ", AIC = ", aic_lin,")"))
-plot(log_test, main = paste0("Logistic Model (df = ", df_log, ", AIC = ", aic_log,")"))
 
-#dev.off()
+
+#move the title inside the plot area
+# Codes from https://zenodo.org/record/4322979#.X-4bH-lKgWo
+ymax <- max(ko.spd.smoothed$grid$PrDens)
+
+# par(mar=c(2,2,2,2))
+# par(mfrow=c(4,1))
+#
+# plot(exp_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+# legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+# text(x=48000, ymax*0.90, labels="Exponential Model", font=2, cex=0.6, adj=c(0,0.7))
+# text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_exp, ", AIC = ", aic_exp,")"))
+# box()
+# xticks <- seq(50000,10000,-10000)
+# axis(side=1, at=xticks, labels=xticks, cex.axis=0.8)
+# mtext("Years cal BP",1, 2.3, at=34000, adj=0, font=2, cex=0.8)
+# plot(uni_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+# legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+# text(x=48000, ymax*0.90, labels="Uniform Model", font=2, cex=0.6, adj=c(0,0.7))
+# box()
+# xticks <- seq(50000,10000,-10000)
+# axis(side=1, at=xticks, labels=xticks, cex.axis=0.8)
+# mtext("Years cal BP",1, 2.3, at=34000, adj=0, font=2, cex=0.8)
+# plot(lin_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+# legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+# text(x=48000, ymax*0.90, labels="Linear Model", font=2, cex=0.6, adj=c(0,0.7))
+# text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_lin, ", AIC = ", aic_exp,")"))
+# box()
+# xticks <- seq(50000,10000,-10000)
+# axis(side=1, at=xticks, labels=xticks, cex.axis=0.8)
+# mtext("Years cal BP",1, 2.3, at=34000, adj=0, font=2, cex=0.8)
+# plot(log_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+# legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+# text(x=48000, ymax*0.90, labels="Logistic Model", font=2, cex=0.6, adj=c(0,0.7))
+# text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_log, ", AIC = ", aic_exp,")"))
+# box()
+# xticks <- seq(50000,10000,-10000)
+# axis(side=1, at=xticks, labels=xticks, cex.axis=0.8)
+# mtext("Years cal BP",1, 2.3, at=34000, adj=0, font=2, cex=0.8)
+#
+#
+#
+# dev.off()
+
+# remove the x-axis
+
+layout(matrix(c(1,2,3,4), 4, 1, byrow=TRUE), widths=6, heights=c(1.8,1.8,1.8,2.6))
+par(mar=c(0, 1, 1, 1)) #c(bottom, left, top, right)
+plot(exp_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+text(x=48000, ymax*0.90, labels="Exponential Model", font=2, cex=0.6, adj=c(0,0.7))
+text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_exp, ", AIC = ", aic_exp,")"))
+box()
+par(mar=c(0, 1, 0, 1))
+plot(uni_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+text(x=48000, ymax*0.90, labels="Uniform Model", font=2, cex=0.6, adj=c(0,0.7))
+box()
+par(mar=c(0, 1, 0, 1))
+plot(lin_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+text(x=48000, ymax*0.90, labels="Linear Model", font=2, cex=0.6, adj=c(0,0.7))
+text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_lin, ", AIC = ", aic_exp,")"))
+box()
+par(mar=c(6, 1, 0, 1))
+plot(log_test, ylim=c(0,ymax), xlim=c(50000,10000), drawaxes=FALSE )
+legend(x=49000, ymax*0.94, legend=c("radiocarbon ages", "95% MC envelope","positive deviation","negative deviation"),col=c( "black","lightgrey",rgb(0.7,0,0,0.2),rgb(0,0,0.7,0.2)), lwd=c(0.5,5,5,5), cex=0.6, bg="white", title="")
+text(x=48000, ymax*0.90, labels="Logistic Model", font=2, cex=0.6, adj=c(0,0.7))
+text(x=48000, ymax*0.54, cex=0.5, font=2, adj=c(0,0),labels=paste0("(df = ", df_log, ", AIC = ", aic_exp,")"))
+box()
+xticks <- seq(50000,10000,-10000)
+axis(side=1, at=xticks, labels=xticks, cex.axis=0.8)
+mtext("Years cal BP",1, 2.3, at=34000, adj=0, font=2, cex=0.8)
 
 png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
     h = 5,
     w = 4,
     units = "px")
-#ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
+
+#dev.off()
 
 
 
-#save a table of AIC result as csv
-# write.csv(df_aic, file="analysis/figures/008-SPD-AIC.csv", row.names = FALSE)
 
-# knitr::kable(df_aic)
 
