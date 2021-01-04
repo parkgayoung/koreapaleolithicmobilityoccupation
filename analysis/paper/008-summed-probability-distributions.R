@@ -259,7 +259,7 @@ png(here::here("analysis/figures/008-summed-probability-distribution-models.png"
     w = 4,
     units = "px")
 
-dev.off()
+#dev.off()
 
 
 
