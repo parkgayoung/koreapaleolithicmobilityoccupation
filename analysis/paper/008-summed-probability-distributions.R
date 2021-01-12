@@ -189,6 +189,15 @@ ymax <- max(ko.spd.smoothed$grid$PrDens)
 
 # remove the x-axis
 
+# start the file that will hold the plot, then draw the plot
+# after this...
+png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
+    h = 15,
+    w = 13,
+    res = 1000,
+    units = "cm")
+
+# begin drawing the plot
 layout(
   matrix(c(1, 2, 3, 4), 4, 1, byrow = TRUE),
   widths = 6,
@@ -366,12 +375,10 @@ mtext(
   cex = 0.8
 )
 
-png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
-    h = 5,
-    w = 4,
-    units = "px")
+# now close the connection to the PNG file so we can take a look at it
+dev.off()
 
-#dev.off()
+# the figure is 008-summed-probability-distribution-models.png
 
 
 
