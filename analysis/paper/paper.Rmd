@@ -40,6 +40,12 @@ quietly <- function(x) {
   invisible(force(suppressMessages(x)))	
 }	
 ```
+
+# Keywords {-}
+Human Behavioural Ecology, Stemmed points, Mobility, Site occupation, Landscape use, Summed Probability Distribution, Pleistocene, Korean Late Paleolithic
+
+
+
 # Introduction {-}
 
 The appearance of stemmed points (Figure \@ref(fig:stemmed-points)) in the Late Pleistocene (\~40-35 ka) in Korea is often assumed to have transformed forager lifeways because it reflected more specialized hunting practices [@seong2008tanged; @chang2013human]. Stemmed points are often called as tanged points in the western hemisphere, but we use 'stemmed point' to distinguish from Bronze Age stone projectile points that have long been called 'tanged points' in Korea. The stemmed point is a projectile point made out of elongated flake or blade with slight retouch on the proximal end to shape an acute tip and on the distal end to make a stem, which connects to a shaft. Stemmed points are likely to have been projectile weapon tips because the stem of these tools is considered to represent hafting technology that joins the lithic to a wooden shaft. If they were projectile weapon tips, stemmed points represent the first appearance of hafting technology in Korea. Most Korean Paleolithic sites do not preserve organic remains, so we lack direct fauna evidence on hunting and subsistence strategies. Here we explore questions about the implications of the appearance of this new technology using a behavioural ecological framework and stone artefacts. We explore changes in the way people occupied the landscape, the way people used sites, and impact of social and ecological environment. We examined stone artefacts from 22 sites in South Korea to investigate the changes in human behaviour associated with the appearance stemmed points, and the blade industry that followed.
@@ -166,9 +172,9 @@ knitr::include_graphics(here::here("analysis/figures/007-climate-model-sites-pan
 
 Figure \@ref(fig:spd-model) shows the four theoretical null models of demographic change for the period 50ka to 10ka, exponential, uniform, linear, and logistic, generated from the radiocarbon dates. Statistical significance of each model is computed using 200 simulations and the global p-values are 0.004, 0.004, 0.009, and 0.004, respectively. In this case, the linear model is the best fit with lower value verified by AIC. However, the other models have similar patterns with a minor margin at -48.6. The radiocarbon dates fit well with the overall trajectory of the null models (grey shading) with both positive and negative deviations. SPD shows a steady growth until 35ka, stays at the peak with minor deviation 32ka, and then starts declining with frequent temporary fluctuations (relatively sharp). The beginning and ending of the SPD indicates significant negative deviation with low density of radiocarbon dates.
 
-fig.cap="Summed probability distribution of 108 radiocarbon dates. The black solid line represents actual radiocarbon ages. The grey shaded region shows the Monte Carlo envelope that encompasses the 95% confidence interval for the null models. The red and blue vertical bands highlight the portions of the SPD where positive and negative deviations are detected. We applied logistic, exponential and linear to AIC along with the logistical growth model (fit) to evaluate each model [@riris2019widespread]. We excluded the uniform model because it has no fitted curve or surface to evaluate. The best fit model has the lowest AIC score. In this case, the linear model is the best fit, with the next-best fit (exponential) having a higher AIC score by a minor margin at -48.6."
 
-```{r spd-model,  cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/008-summed-probability-distributions.R"))}
+
+```{r spd-model, fig.cap="Summed probability distribution of 108 radiocarbon dates. The black solid line represents actual radiocarbon ages. The grey shaded region shows the Monte Carlo envelope that encompasses the 95% confidence interval for the null models. The red and blue vertical bands highlight the portions of the SPD where positive and negative deviations are detected. We applied logistic, exponential and linear to AIC along with the logistical growth model (fit) to evaluate each model [@riris2019widespread]. We excluded the uniform model because it has no fitted curve or surface to evaluate. The best fit model has the lowest AIC score. In this case, the linear model is the best fit, with the next-best fit (exponential) having a higher AIC score by a minor margin at -48.6.", cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/008-summed-probability-distributions.R"))}
 quietly(source(here::here("analysis/paper/008-summed-probability-distributions.R")))
 knitr::include_graphics(here::here("analysis/figures/008-summed-probability-distribution-models.png"))
 ```
@@ -200,6 +206,15 @@ We investigated forager population dynamics to assess if population change might
 To understand the change in mobility and site occupation related to the appearance of new technologies during the late Pleistocene in Korea, we examined stone artefacts from 22 sites dated to 49-24 ka. The results show that the forager groups with stemmed points tended to be located at higher elevations, which means the use of stemmed points was associated with occupation of marginal or extreme environments. In addition, the groups with stemmed points had expedient technologies which reflect residential and less mobile land use patterns. The temperature gradually decreased during the technological transition and after the appearance of stemmed points, population gradually increased.
 
 Our findings are limited by the relatively small number of sites and radiocarbon ages currently available. The absence of detailed stratigraphic data limit the chronological resolution for the assemblages in our sample. Furthermore, we currently lack functional data on individual artefact assemblages to support our conclusions about site use. With future work we may be better able to distinguish a high density of stone artefacts as results from a long-term/small group occupation versus a short-term/large group occupation. Further research should focus on detailed assemblage analysis at each site to better understand foragers mobility and site use strategies.
+
+# CRediT authorship contribution statement {-}
+Gayoung Park: Conceptualization, Data curation, Methodology, Software, Validation, Formal analysis, Resources, Writing - original draft, Visualization, Project administration, Funding acquisition. 
+
+Ben Marwick: Methodology, Formal analysis, Investigation, Software, Validation, Visualization, Supervision, Project administration, Funding acquisition.
+
+# Funding source {-}
+This work was supported by Quaternary Research Center funding, and travel grants from the Department of Anthropology and Center for Statistics and the Social Sciences at University of Washington.   
+
 
 # Acknowledgements {-}
 

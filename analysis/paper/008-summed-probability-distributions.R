@@ -239,12 +239,13 @@ text(
 # draw Exp plot: model stats
 text(
   x = 48000,
-  ymax * 0.8,
+  ymax * 0.49,
   cex = 0.5,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("df = ", df_exp, ", AIC = ", aic_exp)
+  labels = paste0("(df = ", df_exp, ", AIC = ", aic_exp, ")")
 )
+
 box()
 # draw Uni plot
 par(mar = c(0, 1, 0, 1))
@@ -280,6 +281,8 @@ text(
   adj = c(0, 0.7)
 )
 box()
+
+# draw lin plot
 par(mar = c(0, 1, 0, 1))
 plot(
   lin_test,
@@ -351,7 +354,7 @@ text(
 )
 text(
   x = 48000,
-  ymax * 0.54,
+  ymax * 0.47,
   cex = 0.5,
   font = 2,
   adj = c(0, 0),
