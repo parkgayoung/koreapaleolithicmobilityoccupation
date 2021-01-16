@@ -203,8 +203,54 @@ layout(
   widths = 6,
   heights = c(1.8, 1.8, 1.8, 2.6)
 )
-# draw Exp plot
+
+# first plot: linear
 par(mar = c(0, 1, 1, 1)) #c(bottom, left, top, right)
+
+plot(
+  lin_test,
+  ylim = c(0, ymax),
+  xlim = c(50000, 10000),
+  drawaxes = FALSE
+)
+legend(
+  x = 49000,
+  ymax * 0.94,
+  legend = c(
+    "radiocarbon ages",
+    "95% MC envelope",
+    "positive deviation",
+    "negative deviation"
+  ),
+  col = c("black", "lightgrey", rgb(0.7, 0, 0, 0.2), rgb(0, 0, 0.7, 0.2)),
+  lwd = c(0.5, 5, 5, 5),
+  cex = 0.6,
+  bg = "white",
+  title = ""
+)
+text(
+  x = 48000,
+  ymax * 0.90,
+  labels = "Linear Model",
+  font = 2,
+  cex = 0.6,
+  adj = c(0, 0.7)
+)
+text(
+  x = 41000,
+  ymax * 0.90,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("AIC = ", round(aic_lin, digits = 0))
+)
+
+
+box()
+
+# Second plot: exponential
+par(mar = c(0, 1, 0, 1))
+
 plot(
   exp_test,
   ylim = c(0, ymax),
@@ -238,17 +284,68 @@ text(
 )
 # draw Exp plot: model stats
 text(
-  x = 48000,
-  ymax * 0.49,
-  cex = 0.5,
+  x = 41000,
+  ymax * 0.90,
+  cex = 0.6,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("AIC = ", aic_exp)
+  labels = paste0("AIC = ", round(aic_exp, digits = 0))
+)
+
+
+
+box()
+
+# Third plot: logistic
+par(mar = c(0, 1, 0, 1))
+
+plot(
+  log_test,
+  ylim = c(0, ymax),
+  xlim = c(50000, 10000),
+  drawaxes = FALSE
+)
+
+legend(
+  x = 49000,
+  ymax * 0.94,
+  legend = c(
+    "radiocarbon ages",
+    "95% MC envelope",
+    "positive deviation",
+    "negative deviation"
+  ),
+  col = c("black", "lightgrey", rgb(0.7, 0, 0, 0.2), rgb(0, 0, 0.7, 0.2)),
+  lwd = c(0.5, 5, 5, 5),
+  cex = 0.6,
+  bg = "white",
+  title = ""
+)
+
+
+text(
+  x = 48000,
+  ymax * 0.90,
+  labels = "Logistic Model",
+  font = 2,
+  cex = 0.6,
+  adj = c(0, 0.7)
+)
+text(
+  x = 41000,
+  ymax * 0.90,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("AIC = ", round(aic_log, digits = 0))
 )
 
 box()
-# draw Uni plot
-par(mar = c(0, 1, 0, 1))
+
+
+#forth plot: uniform
+par(mar = c(6, 1, 0, 1))
+
 plot(
   uni_test,
   ylim = c(0, ymax),
@@ -282,87 +379,8 @@ text(
 )
 box()
 
-# draw lin plot
-par(mar = c(0, 1, 0, 1))
-plot(
-  lin_test,
-  ylim = c(0, ymax),
-  xlim = c(50000, 10000),
-  drawaxes = FALSE
-)
-legend(
-  x = 49000,
-  ymax * 0.94,
-  legend = c(
-    "radiocarbon ages",
-    "95% MC envelope",
-    "positive deviation",
-    "negative deviation"
-  ),
-  col = c("black", "lightgrey", rgb(0.7, 0, 0, 0.2), rgb(0, 0, 0.7, 0.2)),
-  lwd = c(0.5, 5, 5, 5),
-  cex = 0.6,
-  bg = "white",
-  title = ""
-)
-text(
-  x = 48000,
-  ymax * 0.90,
-  labels = "Linear Model",
-  font = 2,
-  cex = 0.6,
-  adj = c(0, 0.7)
-)
-text(
-  x = 48000,
-  ymax * 0.54,
-  cex = 0.5,
-  font = 2,
-  adj = c(0, 0),
-  labels = paste0("AIC = ", aic_lin)
-)
 
 
-box()
-par(mar = c(6, 1, 0, 1))
-plot(
-  log_test,
-  ylim = c(0, ymax),
-  xlim = c(50000, 10000),
-  drawaxes = FALSE
-)
-legend(
-  x = 49000,
-  ymax * 0.94,
-  legend = c(
-    "radiocarbon ages",
-    "95% MC envelope",
-    "positive deviation",
-    "negative deviation"
-  ),
-  col = c("black", "lightgrey", rgb(0.7, 0, 0, 0.2), rgb(0, 0, 0.7, 0.2)),
-  lwd = c(0.5, 5, 5, 5),
-  cex = 0.6,
-  bg = "white",
-  title = ""
-)
-text(
-  x = 48000,
-  ymax * 0.90,
-  labels = "Logistic Model",
-  font = 2,
-  cex = 0.6,
-  adj = c(0, 0.7)
-)
-text(
-  x = 48000,
-  ymax * 0.47,
-  cex = 0.5,
-  font = 2,
-  adj = c(0, 0),
-  labels = paste0("AIC = ", aic_log)
-)
-box()
 xticks <- seq(50000, 10000, -10000)
 axis(
   side = 1,
