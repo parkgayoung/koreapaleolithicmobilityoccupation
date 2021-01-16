@@ -243,7 +243,7 @@ text(
   cex = 0.5,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("(df = ", df_exp, ", AIC = ", aic_exp, ")")
+  labels = paste0("AIC = ", aic_exp)
 )
 
 box()
@@ -319,8 +319,10 @@ text(
   cex = 0.5,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("(df = ", df_lin, ", AIC = ", aic_exp, ")")
+  labels = paste0("AIC = ", aic_lin)
 )
+
+
 box()
 par(mar = c(6, 1, 0, 1))
 plot(
@@ -358,7 +360,7 @@ text(
   cex = 0.5,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("(df = ", df_log, ", AIC = ", aic_exp, ")")
+  labels = paste0("AIC = ", aic_log)
 )
 box()
 xticks <- seq(50000, 10000, -10000)
