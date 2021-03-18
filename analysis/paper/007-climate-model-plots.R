@@ -278,5 +278,3 @@ ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"),
 
 
 
-
-
