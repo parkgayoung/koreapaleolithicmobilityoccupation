@@ -404,6 +404,10 @@ dev.off()
 # the figure is 008-summed-probability-distribution-models.png
 
 
+#save linear model data for another figure with MAT
+save(lin_test, aic_lin, file = "spd_lin.RData")
+# To load the data again
+load("spd_lin.RData")
 
 
 
