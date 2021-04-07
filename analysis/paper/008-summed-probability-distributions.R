@@ -40,7 +40,7 @@ spd_dates <-
 
 #-------------------------------------------------
 ### this section of code takes long time, fyi
-nsim = 200
+nsim = 1000
 
 # exponential model
 exp_test <-

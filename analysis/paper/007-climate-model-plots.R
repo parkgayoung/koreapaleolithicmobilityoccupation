@@ -122,6 +122,19 @@ ggplot() +
 korean_archaeological_sites <-
   readxl::read_excel(here::here("analysis/data/raw_data/korean-archaeologica-sites.xlsx"))
 
+# retouch, density, age
+Assemblage_info <-
+  read_csv(here::here("analysis/data/raw_data/Assemblage_info.csv")) %>%
+  pivot_longer(-X1,
+               names_to = "sites") %>%
+  pivot_wider(names_from = X1) %>%
+  mutate(site = str_remove_all(sites, "_.*|\\d")) %>%
+  group_by(site) %>%
+  summarise(across(is.numeric, ~sum(.x, na.rm = TRUE))) %>%
+  dplyr::select(site, stemmed_point)
+
+
+
 # get site age and location in neat and tidy format
 site_locations_tbl_temps_periods <-
 site_locations_tbl_temps %>%
@@ -133,7 +146,8 @@ site_locations_tbl_temps %>%
 site_locations_tbl_temps_periods_filtered <-
 site_locations_tbl_temps_periods %>%
   # we filter 2.5 ka years either side of the radiocarbon age
-  filter(between(year,
+  rowwise() %>%
+  dplyr::filter(between(year,
                  (years_ka - 2500),
                  (years_ka + 2500)))
 #----------------------------------------------------------------------
@@ -215,18 +229,20 @@ ggmap(map)  +
 
 library(ggpubr)
 
-
 mat_elev_cor_plot <-
   site_locations_tbl_temps %>%
     group_by(site_name) %>%
     drop_na() %>%
     summarise(mat = mean(mean_annual_temperature),
               elev = mean(elevation)) %>%
+  left_join(Assemblage_info,
+            by = c("site_name" = "site")) %>%
+  mutate(has_sp = ifelse(stemmed_point == 0, "no", "yes")) %>%
   ggplot() +
     aes(y = elev,
         x = mat) +
     stat_smooth(method = "lm") +
-    geom_point() +
+    geom_point(aes(shape = has_sp)) +
     geom_text_repel(aes(label = site_name),
                     size = 2,
                     bg.color = "white",
@@ -236,7 +252,10 @@ mat_elev_cor_plot <-
              size = 2)  +
    ylab("Elevation above sea level (m)") +
    xlab("Mean annual temperature (MAT, °C)") +
-    theme_minimal(base_size = base_size)
+  scale_shape_discrete("Contains\nstemmed\npoints?") +
+  theme_minimal(base_size = base_size) +
+  theme(legend.position = c(0.75, 0.8),
+        legend.key.size = unit(0.5, 'lines'))
 
 #----------------------------------------------------------------------
 
