@@ -99,13 +99,13 @@ ggplot(kasa_long3,
   geom_col(position = "fill") +
   ylab("Assemblage proportion") +
   xlab("") +
-  scale_fill_viridis_d(name = "Artefact type",
+  scale_fill_viridis_d(name = "Artifact type",
                        option = "D") +
   coord_flip() +
   theme_minimal(base_size = 8)
 
 ggsave(plot = kasa_long3_fill_plot,
-         here::here("analysis/figures/004-artefact-types.png"),
+         here::here("analysis/figures/004-artifact-types.png"),
        width = 4.45,
        height = 5,
        units = "in")

@@ -78,7 +78,7 @@ density_sp_sub_plot <-
            size = 1.5) +
   theme_bw(base_size = 6)  +
   labs(x = "Stemmed points present?",
-       y = "Artefact density")
+       y = "Artifact density")
 
 
 density_sp_main_plot <-
@@ -87,7 +87,7 @@ density_sp_main_plot <-
              artefact_density)) +
   geom_point(aes(size = total_artifacts,
                  colour = has_sp)) +
-  ylab(bquote('Artefact density'~(n/m^3))) +
+  ylab(bquote('Artifact density'~(n/m^3))) +
   xlab("Age of assemblage (ka)") +
   scale_size_continuous(name = "Total number\nof artifacts")  +
   scale_color_viridis_d(name = "Stemmed\npoints\npresent?") +
