@@ -294,10 +294,10 @@ ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"),
 
 
 
-
-
-
-
+#save MAT plot for another figure with spd
+save(mat_time_series_plot_annotated, file = "mat_time.RData")
+# To load the data again
+load("mat_time.RData")
 
 
 
