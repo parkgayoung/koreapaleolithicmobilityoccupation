@@ -40,7 +40,7 @@ spd_dates <-
 
 #-------------------------------------------------
 ### this section of code takes long time, fyi
-nsim = 1000
+nsim = 10000 # set to 10 while developing, then to 10000 for the final run
 
 # exponential model
 exp_test <-
@@ -189,13 +189,10 @@ ymax <- max(ko.spd.smoothed$grid$PrDens)
 
 # remove the x-axis
 
-# start the file that will hold the plot, then draw the plot
-# after this...
-png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
-    h = 15,
-    w = 13,
-    res = 1000,
-    units = "cm")
+
+
+# define a function that emits the desired plot
+p1 <- function() {
 
 # begin drawing the plot
 layout(
@@ -397,9 +394,28 @@ mtext(
   font = 2,
   cex = 0.8
 )
+}
 
-# now close the connection to the PNG file so we can take a look at it
-dev.off()
+ggdraw(p1)
+
+ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
+       h = 15,
+       w = 13,
+       dpi = 1000,
+       units = "cm")
+
+# # start the file that will hold the plot, then draw the plot
+# # after this...
+# png(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
+#     h = 15,
+#     w = 13,
+#     res = 1000,
+#     units = "cm")
+#
+# p1
+#
+# # now close the connection to the PNG file so we can take a look at it
+# dev.off()
 
 # the figure is 008-summed-probability-distribution-models.png
 
