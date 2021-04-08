@@ -420,10 +420,10 @@ ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.p
 # the figure is 008-summed-probability-distribution-models.png
 
 
-#save linear model data for another figure with MAT
-save(lin_test, aic_lin, file = "spd_lin.RData")
+# save linear model data for another figure with MAT
+# save(lin_test, aic_lin, file = "spd_lin.RData")
 # To load the data again
-load("spd_lin.RData")
+# load("spd_lin.RData")
 
 
 
