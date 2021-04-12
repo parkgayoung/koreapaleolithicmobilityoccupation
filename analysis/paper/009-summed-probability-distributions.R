@@ -2,6 +2,7 @@ suppressPackageStartupMessages(library(tidyverse))
 library(glue)
 library(ggrepel)
 library(here)
+library(cowplot)
 
 dates <-
   read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
@@ -118,10 +119,10 @@ log_test  <- modelTest(spd_dates,
 
 
 # look at p-values for the models
-exp_test$pval
-uni_test$pval
-lin_test$pval
-log_test$pval
+exp_test$pval #0.09090909
+uni_test$pval #0.09090909
+lin_test$pval #0.09090909
+log_test$pval #0.09090909
 # they are all the same!
 
 ## rank models by AIC score with subset of ages
@@ -192,7 +193,7 @@ ymax <- max(ko.spd.smoothed$grid$PrDens)
 
 
 # define a function that emits the desired plot
-p1 <- function() {
+#p1 <- function() {
 
 # begin drawing the plot
 layout(
@@ -241,6 +242,15 @@ text(
   adj = c(0, 0),
   labels = paste0("AIC = ", round(aic_lin, digits = 0))
 )
+text(
+  x = 41000,
+  ymax * 0.80,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("P-value = ", round(lin_test$pval, digits = 6))
+)
+
 
 
 box()
@@ -394,9 +404,9 @@ mtext(
   font = 2,
   cex = 0.8
 )
-}
+#}
 
-ggdraw(p1)
+#ggdraw(p1)
 
 ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
        h = 15,
