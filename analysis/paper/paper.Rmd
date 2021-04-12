@@ -133,12 +133,13 @@ quietly(source(here::here("analysis/paper/002-artifact-volumetric-density.R")))
 knitr::include_graphics(here::here("analysis/figures/002-age-by-density.png"))
 ```
 
-Figure \@ref(fig:volume-density-retouch) shows a strong pattern of artifacts from less dense assemblages having higher retouch frequencies while more dense assemblages have lower retouch frequencies (p=0.043), further showing a spectrum of site functions in this sample. As we saw for artifact density, there are no clear directional chronological trends in retouch frequencies. Assemblages containing stemmed points tend to have substantially fewer retouched pieces compared to assemblages without stemmed points (p=0.011).
-
 ```{r volume-density-retouch, fig.cap="Relationship between artifact density and retouch frequency. The colour of the data points indicate the age of the assemblage, point size indicates assemblage size, and shape indicates presence or absence of stemmed points. Assemblages with higher proportions of retouched pieces and lower densities indicate curated technologies, and assemblages at the other end of the spectrum indicate expedient technologies [@riel2004late]. The inset plot on the bottom left shows the proportion of retouched pieces in the assemblages over time. The inset plot on the bottom right shows the proportion of retouched pieces in the assemblages with or without stemmed points.", cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R"))}
 quietly(source(here::here("analysis/paper/003-artifact-volumetric-density-retouch-frequency.R")))
 knitr::include_graphics(here::here("analysis/figures/003-retouch-by-density.png"))
 ```
+
+Figure \@ref(fig:volume-density-retouch) shows a strong pattern of artifacts from less dense assemblages having higher retouch frequencies while more dense assemblages have lower retouch frequencies (`r apa::apa(den_sp_ttest)`), further showing a spectrum of site functions in this sample. As we saw for artifact density, there are no clear directional chronological trends in retouch frequencies. Assemblages containing stemmed points tend to have substantially fewer retouched pieces compared to assemblages without stemmed points (`r apa::apa(retouch_sp_ttest)`).
+
 
 ## Toolkit Composition {-}
 
