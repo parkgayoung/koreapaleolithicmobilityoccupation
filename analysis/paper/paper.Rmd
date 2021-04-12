@@ -229,7 +229,8 @@ This work was supported by Quaternary Research Center funding, and travel grants
 
 # Acknowledgements {-}
 
-<!--The following line inserts a page break when the output is MS Word. For page breaks in PDF, use \newpage on its own line.  -->
+We thank Yongjoon Chang, Seonsook Park, Jaeyoung Kim, Soonmi Lee, Taeyoung Kim, and the staff in Korean national museums, and Sangtaek Lim, Chuntaek Seong, Sangmin Cha, Sooa Kim, Gigil Lee, Myeongjin Choi, and Chanho Park in local archaeological institutions and University museums in Korea for their assistance and support in accessing to the data used in this paper and accommodating our trip to their collections. This work was supported by grant award of Quaternary Research Center and travel grands from the Department of Anthropology and Center for Statistics and the Social Sciences at University of Washington. We appreciate insightful feedback on an early draft from Ben Fitzhugh and Peter Lape.  
+
 
 ##### pagebreak
 
