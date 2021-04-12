@@ -120,7 +120,7 @@ There is a debate about whether past population growth has played a role in tech
 
 ## Reproducibility and Open Source Materials {-}
 
-The entire R code [@Rlanguage2019] used for all the analysis and visualizations contained in this paper is included in the Supplementary Online Materials at http://doi.org/osf.io/yagd2/ to enable re-use of materials and improve reproducibility and transparency [@Marwick2017]. Also in this version-controlled compendium [@marwick2018packaging] are the raw data for all the visualizations and tests reported here. All of the figures, tables, and statistical test results presented here can be independently reproduced with the code and data in this repository. The code is released under the MIT license, the data as CC-0, and figures as CC-BY, to enable maximum re-use.
+The entire R code [@Rlanguage2019] used for all the analysis and visualizations contained in this paper is included in the Supplementary Online Materials at https://osf.io/jxwy5/ to enable re-use of materials and improve reproducibility and transparency [@Marwick2017]. Also in this version-controlled compendium [@marwick2018packaging] are the raw data for all the visualizations and tests reported here. All of the figures, tables, and statistical test results presented here can be independently reproduced with the code and data in this repository. The code is released under the MIT license, the data as CC-0, and figures as CC-BY, to enable maximum re-use.
 
 # Results {-}
 
