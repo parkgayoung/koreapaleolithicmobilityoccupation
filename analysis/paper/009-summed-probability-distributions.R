@@ -193,7 +193,7 @@ ymax <- max(ko.spd.smoothed$grid$PrDens)
 
 
 # define a function that emits the desired plot
-#p1 <- function() {
+p1 <- function() {
 
 # begin drawing the plot
 layout(
@@ -248,7 +248,7 @@ text(
   cex = 0.6,
   font = 2,
   adj = c(0, 0),
-  labels = paste0("P-value = ", round(lin_test$pval, digits = 6))
+  labels = paste0("p = ", round(lin_test$pval, digits = 3))
 )
 
 
@@ -404,9 +404,9 @@ mtext(
   font = 2,
   cex = 0.8
 )
-#}
+}
 
-#ggdraw(p1)
+ggdraw(p1)
 
 ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
        h = 15,
