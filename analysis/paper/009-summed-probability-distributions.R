@@ -299,7 +299,14 @@ text(
   labels = paste0("AIC = ", round(aic_exp, digits = 0))
 )
 
-
+text(
+  x = 41000,
+  ymax * 0.80,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("p = ", round(exp_test$pval, digits = 3))
+)
 
 box()
 
@@ -346,6 +353,14 @@ text(
   adj = c(0, 0),
   labels = paste0("AIC = ", round(aic_log, digits = 0))
 )
+text(
+  x = 41000,
+  ymax * 0.80,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("p = ", round(log_test$pval, digits = 3))
+)
 
 box()
 
@@ -384,6 +399,16 @@ text(
   cex = 0.6,
   adj = c(0, 0.7)
 )
+
+text(
+  x = 41000,
+  ymax * 0.80,
+  cex = 0.6,
+  font = 2,
+  adj = c(0, 0),
+  labels = paste0("p = ", round(uni_test$pval, digits = 3))
+)
+
 box()
 
 
