@@ -94,10 +94,16 @@ kas_sites_retouch_density_corr <-
   cor.test(Assemblage_info_retouch_density_ages_prop$prop_retouched,
            Assemblage_info_retouch_density_ages_prop$artefact_density)
 
-r_value <- unname(kas_sites_retouch_density_corr$estimate)
-p_value <- unname(kas_sites_retouch_density_corr$p.value )
-t_value <- unname(kas_sites_retouch_density_corr$statistic )
-df_value <- unname(kas_sites_retouch_density_corr$parameter )
+r_value <- round(unname(kas_sites_retouch_density_corr$estimate), 3)
+p_value <- round(unname(kas_sites_retouch_density_corr$p.value ), 3)
+t_value <- round(unname(kas_sites_retouch_density_corr$statistic ), 3)
+df_value <- round(unname(kas_sites_retouch_density_corr$parameter ), 3)
+
+
+# t(degress of freedom) = the t statistic, p = p value.
+combined_retouch_density_ttest_str <-
+  paste0("t(", df_value, ") = ", t_value, ", p = ", p_value)
+
 
 size <-  6
 Assemblage_info_retouch_density_ages_prop_main_plot <-
