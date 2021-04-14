@@ -41,7 +41,7 @@ spd_dates <-
 
 #-------------------------------------------------
 ### this section of code takes long time, fyi
-nsim = 10 # set to 10 while developing, then to 1000 for the final run
+nsim = 1000 # set to 10 while developing, then to 1000 for the final run
 
 # exponential model
 exp_test <-
