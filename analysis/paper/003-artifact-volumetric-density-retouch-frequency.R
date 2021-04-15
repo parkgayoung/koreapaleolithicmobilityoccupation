@@ -104,7 +104,6 @@ df_value <- round(unname(kas_sites_retouch_density_corr$parameter ), 3)
 combined_retouch_density_ttest_str <-
   paste0("t(", df_value, ") = ", t_value, ", p = ", p_value)
 
-
 size <-  6
 Assemblage_info_retouch_density_ages_prop_main_plot <-
   ggplot(Assemblage_info_retouch_density_ages_prop,
