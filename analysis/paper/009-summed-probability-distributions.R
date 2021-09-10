@@ -5,7 +5,7 @@ library(here)
 library(cowplot)
 
 dates <-
-  read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
+  read.csv(here("analysis/data/raw_data/Radiocarbon dates_revision.csv"))
 
 dates_clean <-
   dates %>%
