@@ -1,34 +1,36 @@
-site_name,site_new_name,site_name_original,dating_method,C14(BP),altitude(m)_of_main_layer,east_longitude,north_latitude,SP#,reference
-Nosanri4_3,Nosanri-A,Nosan-ri4_3,OSL,"49,000±4,000",34,127° 34′∼127° 46,36° 36′∼ 36° 46′,,"한국선사문화연구원 2011 (이융조 외 2002, 한서문 2008은 참조만)"
-Nosanri4_4,Nosanri-B,Nosan-ri4_4,OSL,"45,000±3,000",34.5,127° 34′∼127° 46,36° 36′∼ 36° 46′,,"한국선사문화연구원 2011 (이융조 외 2002, 한서문 2008은 참조만)"
-Galdamri_3,Galdamri-A,Galdamri537 3rd,OSL,"44,010±2,400",66,,,,금강문화재연구소 2011
-Gawolri_2,Gawolri-A,Gawol-ri 2nd cultural layer,OSL,"43,000±5000",32.3,127°01′~126°41′,37°42′~38°07′,,국방문화재연구원 2012
-Bonggok,Bonggok,Bonggok,AMS,"41,500±1,500",48,127° 06′,35° 49′,2,호남문화재연구원 등 2008
-Hahwagyeri_3,Hahwagyeri,Hahwagye-ri 3rd IIlayer,AMS,"40,600±1,500",140,127°32′~128°36′,37°33′~37°57′,,최복규 외 2004
-Gihwari,Gihwari,Gihwa-ri Cave,AMS,"39,280±470",300,128° 31′,37° 19′,,"박영철 등 2007, 연세대 2014"
-Hwadaeri_3,Hwadaeri-A,Hwadae-ri 3rd cultural layer,OSL,"39,000±140",128,"127°20'06.4""","37°58'46.1""",,
-Suyanggae_1,Suyanggae-A,Suyanggae location3 _1,OSL,"38,800±3,400",157.5,128° 19′55′′,36° 57′ 37′′,,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고)
-Yonghodong,Yonghodong,Yongho-dong 2nd cultural layer,AMS,"38,500±1,000",39.6,127° 27′ 9.27″,36° 26′ 55″,2,한남대 2016
-Suyanggae_2,Suyanggae-B,Suyanggae location3 _2,OSL,"37,900±3,600",157.5,128° 19′55′′,36° 57′ 37′′,,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고)
-Gawolri_1,Gawolri-B,Gawol-ri 1st cultural layer,AMS,"37,384±822",33,127°01′~126°41′,37°42′~38°07′,,국방문화재연구원 2012
-Galdun_4,Galdun-A,Galdun 4th Layer,AMS,"37,300±400",84.7,"127°41'33.74""","37°53'59.07""",,강원문화재연구소 2008
-Gigok,Gigok,Gigok B-1 (2nd cultural layer),AMS,"33,500±1200",23,"129°04'35.2""","37°34'27.5""",,강원문화재연구소 2005
-Cheonri,Cheonri,Cheon-ri,OSL,"36,000±4000",97.6,127°01′~ 26′,37°05′~22′,,경희대학교 중앙박물관 2013
-Suyanggae_3,Suyanggae-C,Suyanggae location3 _3,OSL,"34,300±2,600",157.5,128° 19′55′′,36° 57′ 37′′,1,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고)
-Songamri_3,Songamri-A,Songam-ri 3rd (2nd cultural layer),AMS,"33,190±160",129.5,127° 42′,37° 00′8′′,1,한국선사문화연구원 2012
-Songamri_2,Songamri-B,Songam-ri 2nd(1st cultural layer),AMS,"32,300±160",130,127° 42′,37° 00′8′′,3,한국선사문화연구원 2012
-Hwadaeri_2,Hwadaeri-B,Hwadae-ri 2nd cultural layer,AMS,"31,200±900",128.5,"127°20'06.4""","37°58'46.1""",4,"최복규,유혜정 2005"
-Sageunri,Sageunri,Sageun-ri,AMS,"30,800±300",31,"127°07'57.0""","35°51'48.0""",,전북문화재연구원 2006
-Geumpari,Geumpari,Geumpa-ri,AMS,"30,800±100",20,126°49',37°56',,한양대 2006
-Ssangjungri_3,Ssangjungri-A,Ssangjung-ri,AMS,"29,450±130",16,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012
-Hopyeongdong2_3b,Hopyeongdong-A,Hopyeong-dong2,AMS,"30,000±1,500",146.5,127°05′15′′~127°22′52′′,37°46′11′′~37°30′32′′,3,경기문화재연구원 2008
-Hopyeongdong1_3b,Hopyeongdong-B,Hopyeong-dong,AMS,"27,500±300",141.5,127°05′15′′~127°22′52′′,37°46′11′′~37°30′32′′,3,경기문화재연구원 2008
-Jeungsanri_1,Jeungsanri,Jeungsan-ri,AMS,"29,800±1,500",54.5,126°26′~ 46′,35°18′~34′,,호남문화재연구원 등 2011
-Galdun_3,Galdun-B,Galdun 3th Layer,AMS,"29,900±100",84.8,"127°41'33.74""","37°53'59.07""",,강원문화재연구소 2008
-Jungjangri,Jungjangri,Jungjang-ri,AMS,"29,340±700",207.5,127° 55′,35° 40′,1,경남발전연구원 역사문화센터 2004
-Ssangjungri_2,Ssangjungri-B,Ssangjung-ri_2,AMS,"28,780±130",14.5,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012
-Galdamri_4,Galdamri-B,Galdamri537,OSL,"28,410±3,400",67.5,,,,
-Ssangjungri_1,Ssangjungri-C,Ssangjung-ri_1,AMS,"27,340±120",14,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012
-Sinbook_1,Sinbook,Sinbook,AMS,"25,500±1,000",187,126°59′50′′,34°44′30′′,2,대한문화재 2017
-Yongbang_B,Yongbang,Yongbang,AMS,"25,200±200",33,"127°27'34.4""","36°27'20.2""",5,천권희 2008
-Yongsandong,Yongsandong,Yongsandong,AMS,"24,430±870",35,127°23′48′′,36°25′19′′,40,중앙문화재연구원 2007
+site_name,site_new_name,site_name_original,dating_method,C14(BP),altitude(m)_of_main_layer,east_longitude,north_latitude,SP#,reference,,
+Nosanri4_3,Nosanri-A,Nosan-ri4_3,OSL,"49,000±4,000",34,127° 34′∼127° 46,36° 36′∼ 36° 46′,,"한국선사문화연구원 2011 (이융조 외 2002, 한서문 2008은 참조만)",,
+Nosanri4_4,Nosanri-B,Nosan-ri4_4,OSL,"45,000±3,000",34.5,127° 34′∼127° 46,36° 36′∼ 36° 46′,,"한국선사문화연구원 2011 (이융조 외 2002, 한서문 2008은 참조만)",,
+Galdamri_3,Galdamri-A,Galdamri537 3rd,OSL,"44,010±2,400",66,,,,금강문화재연구소 2011,,
+Gawolri_2,Gawolri-A,Gawol-ri 2nd cultural layer,OSL,"43,000±5000",32.3,127°01′~126°41′,37°42′~38°07′,,국방문화재연구원 2012,,
+Bonggok,Bonggok,Bonggok,AMS,"41,500±1,500",48,127° 06′,35° 49′,2,호남문화재연구원 등 2008,,
+Hahwagyeri_3,Hahwagyeri,Hahwagye-ri 3rd IIlayer,AMS,"40,600±1,500",140,127°32′~128°36′,37°33′~37°57′,,최복규 외 2004,,
+Hajinri_4,,Hajinri_4th_layer,AMS,"42,000±340",127.8,,,73,_________ 2018,,
+Gihwari,Gihwari,Gihwa-ri Cave,AMS,"39,280±470",300,128° 31′,37° 19′,,"박영철 등 2007, 연세대 2014",,
+Hwadaeri_3,Hwadaeri-A,Hwadae-ri 3rd cultural layer,OSL,"39,000±140",128,"127°20'06.4""","37°58'46.1""",,,,
+Suyanggae_1,Suyanggae-A,Suyanggae location3 _1,OSL,"38,800±3,400",157.5,128° 19′55′′,36° 57′ 37′′,,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고),,
+Yonghodong,Yonghodong,Yongho-dong 2nd cultural layer,AMS,"38,500±1,000",39.6,127° 27′ 9.27″,36° 26′ 55″,2,한남대 2016,,
+Suyanggae_2,Suyanggae-B,Suyanggae location3 _2,OSL,"37,900±3,600",157.5,128° 19′55′′,36° 57′ 37′′,,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고),,
+Gawolri_1,Gawolri-B,Gawol-ri 1st cultural layer,AMS,"37,384±822",33,127°01′~126°41′,37°42′~38°07′,,국방문화재연구원 2012,,
+Galdun_4,Galdun-A,Galdun 4th Layer,AMS,"37,300±400",84.7,"127°41'33.74""","37°53'59.07""",,강원문화재연구소 2008,,
+Gigok,Gigok,Gigok B-1 (2nd cultural layer),AMS,"33,500±1200",23,"129°04'35.2""","37°34'27.5""",,강원문화재연구소 2005,,
+Cheonri,Cheonri,Cheon-ri,OSL,"36,000±4000",97.6,127°01′~ 26′,37°05′~22′,,경희대학교 중앙박물관 2013,,
+Hajinri_3,,Hajinri_4th_layer,AMS,"34,550±190",128.9,,,13,_________ 2018,,
+Suyanggae_3,Suyanggae-C,Suyanggae location3 _3,OSL,"34,300±2,600",157.5,128° 19′55′′,36° 57′ 37′′,1,이융조 외(한국선사문화연구원) 2013 3지구 10차 (9차는 참고),,
+Songamri_3,Songamri-A,Songam-ri 3rd (2nd cultural layer),AMS,"33,190±160",129.5,127° 42′,37° 00′8′′,1,한국선사문화연구원 2012,,
+Songamri_2,Songamri-B,Songam-ri 2nd(1st cultural layer),AMS,"32,300±160",130,127° 42′,37° 00′8′′,3,한국선사문화연구원 2012,,
+Hwadaeri_2,Hwadaeri-B,Hwadae-ri 2nd cultural layer,AMS,"31,200±900",128.5,"127°20'06.4""","37°58'46.1""",4,"최복규,유혜정 2005",,
+Sageunri,Sageunri,Sageun-ri,AMS,"30,800±300",31,"127°07'57.0""","35°51'48.0""",,전북문화재연구원 2006,,
+Geumpari,Geumpari,Geumpa-ri,AMS,"30,800±100",20,126°49',37°56',,한양대 2006,,
+Ssangjungri_3,Ssangjungri-A,Ssangjung-ri,AMS,"29,450±130",16,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012,,
+Hopyeongdong2_3b,Hopyeongdong-A,Hopyeong-dong2,AMS,"30,000±1,500",146.5,127°05′15′′~127°22′52′′,37°46′11′′~37°30′32′′,3,경기문화재연구원 2008,,
+Hopyeongdong1_3b,Hopyeongdong-B,Hopyeong-dong,AMS,"27,500±300",141.5,127°05′15′′~127°22′52′′,37°46′11′′~37°30′32′′,3,경기문화재연구원 2008,,
+Jeungsanri_1,Jeungsanri,Jeungsan-ri,AMS,"29,800±1,500",54.5,126°26′~ 46′,35°18′~34′,,호남문화재연구원 등 2011,,
+Galdun_3,Galdun-B,Galdun 3th Layer,AMS,"29,900±100",84.8,"127°41'33.74""","37°53'59.07""",,강원문화재연구소 2008,,
+Jungjangri,Jungjangri,Jungjang-ri,AMS,"29,340±700",207.5,127° 55′,35° 40′,1,경남발전연구원 역사문화센터 2004,,
+Ssangjungri_2,Ssangjungri-B,Ssangjung-ri_2,AMS,"28,780±130",14.5,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012,,
+Galdamri_4,Galdamri-B,Galdamri537,OSL,"28,410±3,400",67.5,,,,,,
+Ssangjungri_1,Ssangjungri-C,Ssangjung-ri_1,AMS,"27,340±120",14,126°51′10′′~127°08′30′′,35°52′50′′~36°09′20′′,,전라문화연구원 2012,,
+Sinbook_1,Sinbook,Sinbook,AMS,"25,500±1,000",187,126°59′50′′,34°44′30′′,2,대한문화재 2017,,
+Yongbang_B,Yongbang,Yongbang,AMS,"25,200±200",33,"127°27'34.4""","36°27'20.2""",5,천권희 2008,,
+Yongsandong,Yongsandong,Yongsandong,AMS,"24,430±870",35,127°23′48′′,36°25′19′′,40,중앙문화재연구원 2007,,
