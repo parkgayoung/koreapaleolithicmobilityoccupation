@@ -17,8 +17,6 @@ kasa <- read.csv(here("analysis/data/raw_data/Assemblage_info.csv"))
 #volume of the cultural layer from KAS data sheet.
 kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 
-dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
-
 # join artefact type freqs with site data
 
 kasa %>%

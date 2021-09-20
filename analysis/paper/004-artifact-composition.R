@@ -20,10 +20,10 @@ mydata_ages <-
 # join artefact type freqs with site data
 
 kasa %>%
-  pivot_longer(-X,
+  pivot_longer(-X1,
                names_to = "site_name",
                values_to = "count") %>%
-  pivot_wider(names_from = "X",
+  pivot_wider(names_from = "X1",
               values_from = "count") %>%
   left_join(mydata)
 
@@ -31,13 +31,13 @@ kasa_long1 <-
   kasa %>%
   gather(site,
          count,
-         -X) %>%
+         -X1) %>%
   filter(!is.na(count)) %>%
   group_by(site) %>%
   mutate(percentage = count / sum(count, na.rm = TRUE) * 100,
          total = sum(count, na.rm = TRUE)) %>%
   filter(!is.na(percentage)) %>%
-  filter(!X %in% c('unknown',
+  filter(!X1 %in% c('unknown',
                    'unkown',
                    'unfinished',
                    #'plane',
@@ -52,13 +52,13 @@ kasa_long1 <-
                   'awl')
                    ) %>%
   # if percentage is <10%, call it 'other'
-   mutate(artefact_type =   X #ifelse(as.character(X) == 'stemmed_point',
+   mutate(artefact_type =   X1 #ifelse(as.character(X) == 'stemmed_point',
   #                              'stemmed_point',
   #                              ifelse(percentage >= 10 | X == "unkown",
   #                                     as.character(X), "other_tools"))
 ) %>%
   mutate(axis_label = glue('{site}\n(n = {total})'))  %>%
-  dplyr::select(-X)
+  dplyr::select(-X1)
 
 # join to get ages of the sites
 kasa_long2 <-
