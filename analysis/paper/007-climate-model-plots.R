@@ -60,8 +60,10 @@ site_locations_tbl %>%
   filter(between(year, -50000, -10000))
 
 # save this for later since it takes ages to get this out of the ncdf file!
-write_csv(site_locations_tbl_temps,
+write.csv(site_locations_tbl_temps,
           here::here("analysis/data/site_locations_tbl_temps.csv"))
+
+
 
 #----------------------------------------------------------------------
 base_size = 6
