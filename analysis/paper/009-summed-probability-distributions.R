@@ -432,7 +432,11 @@ mtext(
 
 }
 
-ggdraw(p1)
+library(gridGraphics)
+ggdraw(p1) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+        plot.background = element_rect(fill='white', colour="white"))
+
 
 ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
        h = 15,
@@ -447,7 +451,7 @@ ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.p
 #     w = 13,
 #     res = 1000,
 #     units = "cm")
-#
+# #
 # p1
 #
 # # now close the connection to the PNG file so we can take a look at it

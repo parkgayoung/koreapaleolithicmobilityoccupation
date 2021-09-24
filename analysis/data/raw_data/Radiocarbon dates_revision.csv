@@ -170,40 +170,40 @@ Yongbang_B,Yongbang,"59,000","4,000",OSL,29.8m. BC
 Yongbang_B,Yongbang,"48,000","4,000",OSL,32.8m. BC
 Yongbang_B,Yongbang,"43,000","4,000",OSL,32.5m. mcl. BC
 Yongsandong,Yongsandong,"24,430",870,AMS,mcl
-,Nobong,"33,300","1,700",,"2nd, From here: added for the 1st revision. data from Cha's Masters"
-,Jongdong,35300,340,,"3rd, disturb"
-,Jongdong,36610,320,,3rd
-,Jongdong,22560,140,,2nd
-,Jongdong,25700,170,,2nd
-,Jongdong,14820,100,,1st
-,Galsanri,30400,2000,,
-,Galsanri,26040,130,,
-,Jangdong,30290,100,,2nd
-,Jangdong,34200,600,,2nd
-,Jangdong,20300,80,,1st
-,Jangdong,22600,200,,1st
-,Seoduri2,31230,210,,
-,Dongbaekri,20670,410,,2nd
-,Dongbaekri,"27,000",300,,2nd
-,Dongbaekri,"31,100",300,,2nd
-,Ungyo,"28,500",210,,3rd
-,Ungyo,"21,290",120,,1st
-,Ungyo,"27,330",210,,Excavation report :완주 운교
-,Ungyo,"37,590",340,,
-,Ungyo,"50,140",450,,
-,Sangma,"23,300",250,,
-,Sangma,"23,070",400,,
-,Sangma,"26,700",250,,
-,Jingeuneul,"22,850",350,,
-,Jingeuneul,"17,310",80,,
-,Yulyangdong,"22,360",126,,1st
-,Noeundong,"22,870",110,,
-,Sukpyeong,"19,820",80,,2nd
-,Sukpyeong,"14,450",50,,3rd
-,Sukpyeong,"6,730",30,,
-,Sukpyeong,"8,690",40,,
-,Haga,"19,700",300,,
-,Haga,"19,500",200,,
+,Nobong,"33,300","1,700",AMS,"2nd, From here: added for the 1st revision. data from Cha's Masters"
+,Jongdong,35300,340,AMS,"3rd, disturb"
+,Jongdong,36610,320,AMS,3rd
+,Jongdong,22560,140,AMS,2nd
+,Jongdong,25700,170,AMS,2nd
+,Jongdong,14820,100,AMS,1st
+,Galsanri,30400,2000,AMS,
+,Galsanri,26040,130,AMS,
+,Jangdong,30290,100,AMS,2nd
+,Jangdong,34200,600,AMS,2nd
+,Jangdong,20300,80,AMS,1st
+,Jangdong,22600,200,AMS,1st
+,Seoduri2,31230,210,AMS,
+,Dongbaekri,20670,410,AMS,2nd
+,Dongbaekri,"27,000",300,AMS,2nd
+,Dongbaekri,"31,100",300,AMS,2nd
+,Ungyo,"28,500",210,AMS,3rd
+,Ungyo,"21,290",120,AMS,1st
+,Ungyo,"27,330",210,AMS,Excavation report :완주 운교
+,Ungyo,"37,590",340,AMS,
+,Ungyo,"50,140",450,AMS,
+,Sangma,"23,300",250,AMS,
+,Sangma,"23,070",400,AMS,
+,Sangma,"26,700",250,AMS,
+,Jingeuneul,"22,850",350,AMS,
+,Jingeuneul,"17,310",80,AMS,
+,Yulyangdong,"22,360",126,AMS,1st
+,Noeundong,"22,870",110,AMS,
+,Sukpyeong,"19,820",80,AMS,2nd
+,Sukpyeong,"14,450",50,AMS,3rd
+,Sukpyeong,"6,730",30,AMS,
+,Sukpyeong,"8,690",40,AMS,
+,Haga,"19,700",300,AMS,
+,Haga,"19,500",200,AMS,
 ,Jiphyeon,"19,640",100,AMS,
 ,Jiphyeon,"20,150",100,AMS,
 ,Jiphyeon,"13,160",280,AMS,
@@ -213,8 +213,8 @@ Yongsandong,Yongsandong,"24,430",870,AMS,mcl
 ,Jiphyeon,"20,480",800,AMS,
 ,Jiphyeon,"18,730",89,AMS,
 ,Daejungdong,"19,680",90,AMS,
-,Ojiri,"9,180",80,,
-,Ojiri,"17,700",200,,
+,Ojiri,"9,180",80,AMS,
+,Ojiri,"17,700",200,AMS,
 ,Geoduri,"28,100",200,AMS,"2nd, data from Chang's 2014"
 ,Dangga,"45,385","1,250",AMS,2nd
 ,Dangga,"44,170","1,150",AMS,2nd
@@ -316,70 +316,70 @@ Yongsandong,Yongsandong,"24,430",870,AMS,mcl
 ,Jeongokri,"31,000",600,AMS,V
 ,Jeongokri,"35,700","3,000",AMS,V
 ,Jeommal,"13,700",700,AMS,4th
-,Suyanggae location1,"28,630",190,,From Suyanggae location 6 report
-,Suyanggae location1,"26,420",200,,
-,Suyanggae location1,"31,140",280,,
-,Hajinri,"18,770",60,,Suyanggae location 6
-,Hajinri,18690,60,,2nd
-,Hajinri,"17,850",60,,2nd
-,Hajinri,"17,660",90,,2nd
-,Hajinri,"17,779",85,,2nd
-,Hajinri,"20,470",70,,2nd
-,Hajinri,"18,400",60,,2nd
-,Hajinri,"17,550",80,,2nd
-,Hajinri,"18,490",80,,2nd
-,Hajinri,"39,930",270,,3rd
-,Hajinri,"33,220",240,,3rd
-,Hajinri,"39,330",360,,3rd
-,Hajinri,"40,070",380,,3rd
-,Hajinri,"35,280",470,,3rd
-,Hajinri,"34,020",400,,3rd
-,Hajinri,"38,180",230,,3rd
-,Hajinri,"39,680",390,,3rd
-,Hajinri,"30,360",350,,3rd
-,Hajinri,"44,100","1,900",,
-,Hajinri,"36,000","1,100",,
-,Hajinri,"36,280",200,,
-,Hajinri,"34,690",180,,
-,Hajinri,"34,880",190,,
-,Hajinri,"32,450",160,,
-,Hajinri,"42,860",370,,main layer
-,Hajinri,"46,360",510,,main layer
-,Hajinri,"36,580",210,,4th
-,Hajinri,"34,620",190,,4th
-,Hajinri,"42,000",340,,4th
-,Hajinri,"36,600",360,,4th
-,Hajinri,"37,190",320,,4th
-,Hajinri,"34,870",540,,4th
-,Gunang cave,"37,610",250,,Excavation report :단양 구낭굴 5차
-,Gunang cave,"40,290",320,,
-,Sanggari,"10,910",60,,Excavation report :보은 상가리
-,Sinheug,"16,850",60,,Excavation report :평택 용이동 신흥유적
-,Woojinri,"11,360",60,,Excavation report :보은 우진리
-,Woojinri,"56,510","2,240",,
-,Woojinri,"2,540",40,,
-,Woojinri,"2,510",40,,
-,Oeryang,"31,210",200,,Excavation report :임실 외량
-,Bangsanri,"25,380",140,,Excavation report :옥과-적성-도로확장공사
-,Bangsanri,"29,020",170,,
-,Bangsanri,"42,150",470,,
-,Byungsandong,"48,580",470,,Excavation report : 강릉 병산동
-,Byungsandong,"22,020",70,,
-,Anhyundong,"42,140",300,,Excavation report : 강릉 안현동
-,Anhyundong,"34,100",160,,
+,Suyanggae location1,"28,630",190,AMS,From Suyanggae location 6 report
+,Suyanggae location1,"26,420",200,AMS,
+,Suyanggae location1,"31,140",280,AMS,
+,Hajinri,"18,770",60,AMS,Suyanggae location 6
+,Hajinri,18690,60,AMS,2nd
+,Hajinri,"17,850",60,AMS,2nd
+,Hajinri,"17,660",90,AMS,2nd
+,Hajinri,"17,779",85,AMS,2nd
+,Hajinri,"20,470",70,AMS,2nd
+,Hajinri,"18,400",60,AMS,2nd
+,Hajinri,"17,550",80,AMS,2nd
+,Hajinri,"18,490",80,AMS,2nd
+,Hajinri,"39,930",270,AMS,3rd
+,Hajinri,"33,220",240,AMS,3rd
+,Hajinri,"39,330",360,AMS,3rd
+,Hajinri,"40,070",380,AMS,3rd
+,Hajinri,"35,280",470,AMS,3rd
+,Hajinri,"34,020",400,AMS,3rd
+,Hajinri,"38,180",230,AMS,3rd
+,Hajinri,"39,680",390,AMS,3rd
+,Hajinri,"30,360",350,AMS,3rd
+,Hajinri,"44,100","1,900",AMS,
+,Hajinri,"36,000","1,100",AMS,
+,Hajinri,"36,280",200,AMS,
+,Hajinri,"34,690",180,AMS,
+,Hajinri,"34,880",190,AMS,
+,Hajinri,"32,450",160,AMS,
+,Hajinri,"42,860",370,AMS,main layer
+,Hajinri,"46,360",510,AMS,main layer
+,Hajinri,"36,580",210,AMS,4th
+,Hajinri,"34,620",190,AMS,4th
+,Hajinri,"42,000",340,AMS,4th
+,Hajinri,"36,600",360,AMS,4th
+,Hajinri,"37,190",320,AMS,4th
+,Hajinri,"34,870",540,AMS,4th
+,Gunang cave,"37,610",250,AMS,Excavation report :단양 구낭굴 5차
+,Gunang cave,"40,290",320,AMS,
+,Sanggari,"10,910",60,AMS,Excavation report :보은 상가리
+,Sinheug,"16,850",60,AMS,Excavation report :평택 용이동 신흥유적
+,Woojinri,"11,360",60,AMS,Excavation report :보은 우진리
+,Woojinri,"56,510","2,240",AMS,
+,Woojinri,"2,540",40,AMS,
+,Woojinri,"2,510",40,AMS,
+,Oeryang,"31,210",200,AMS,Excavation report :임실 외량
+,Bangsanri,"25,380",140,AMS,Excavation report :옥과-적성-도로확장공사
+,Bangsanri,"29,020",170,AMS,
+,Bangsanri,"42,150",470,AMS,
+,Byungsandong,"48,580",470,AMS,Excavation report : 강릉 병산동
+,Byungsandong,"22,020",70,AMS,
+,Anhyundong,"42,140",300,AMS,Excavation report : 강릉 안현동
+,Anhyundong,"34,100",160,AMS,
 ,Hashidongri,"39,000","3,000",OSL,Excavation report : 강릉 하시동리유적
 ,Hashidongri,"45,000","3,000",OSL,
 ,Hashidongri,"61,000","4,000",OSL,
 ,Hashidongri,"67,000","5,000",OSL,
-,Gawolri B2,"51,790","1,350",,"Excavation report : 겨레40책 - 파주가월리(적성), 동패동"
-,Gawolri B2,"19,020",100,,
-,Gawolri B2,"19,080",100,,
-,Wonheung-Sinwondong,"10,200",60,,Excavation report : 겨레40책 - 고양 원흥동 신원동 유적
-,Wonheung-Sinwondong,"14,400",300,,
-,Wonheung-Sinwondong,"19,100",100,,
-,Wonheung-Sinwondong,"16,000",120,,
-,Wonheung-Sinwondong,"20,800",400,,
-,Wonheung-Sinwondong,"20,100",200,,
+,Gawolri B2,"51,790","1,350",AMS,"Excavation report : 겨레40책 - 파주가월리(적성), 동패동"
+,Gawolri B2,"19,020",100,AMS,
+,Gawolri B2,"19,080",100,AMS,
+,Wonheung-Sinwondong,"10,200",60,AMS,Excavation report : 겨레40책 - 고양 원흥동 신원동 유적
+,Wonheung-Sinwondong,"14,400",300,AMS,
+,Wonheung-Sinwondong,"19,100",100,AMS,
+,Wonheung-Sinwondong,"16,000",120,AMS,
+,Wonheung-Sinwondong,"20,800",400,AMS,
+,Wonheung-Sinwondong,"20,100",200,AMS,
 ,Tanhyundong,"57,000","4,000",OSL,Excavation report :  고양 탄현동
 ,Tanhyundong,"61,000","4,000",OSL,
 ,Tanhyundong,"51,000","3,000",OSL,
@@ -387,61 +387,61 @@ Yongsandong,Yongsandong,"24,430",870,AMS,mcl
 ,Jongkwangjeongri,"52,100","1,110",AMS,
 ,Jongkwangjeongri,"39,190",590,AMS,
 ,Chatanri,"17,880",80,AMS,Excavation report :  산청 차탄리
-,Chatanri,"20,060",90,,
-,Chatanri,"24,040",150,,
-,Chatanri,"17,890",80,,
-,Chatanri,"24,380",130,,
-,Nosan-ri1_2,"31,700",900,,Excavation report :  신탄진동 구석기유적 부록
-,Nosan-ri2,"22,700",200,,
-,Nosan-ri2,"25,200",200,,
-,Nosan-ri3_2,"43,000","4,000",,
-,Nosan-ri3_2,"42,000","5,000",,
-,Nosan-ri4_1,"43,200","2,000",,
-,Nosan-ri4_1,"43,000","3,000",,
-,Sintanjindong,"41,890",520,,Excavation report :  신탄진동 구석기유적
-,Sintanjindong,"33,050",260,,
-,Sintanjindong,"48,000",900,,
+,Chatanri,"20,060",90,AMS,
+,Chatanri,"24,040",150,AMS,
+,Chatanri,"17,890",80,AMS,
+,Chatanri,"24,380",130,AMS,
+,Nosan-ri1_2,"31,700",900,AMS,Excavation report :  신탄진동 구석기유적 부록
+,Nosan-ri2,"22,700",200,AMS,
+,Nosan-ri2,"25,200",200,AMS,
+,Nosan-ri3_2,"43,000","4,000",AMS,
+,Nosan-ri3_2,"42,000","5,000",AMS,
+,Nosan-ri4_1,"43,200","2,000",AMS,
+,Nosan-ri4_1,"43,000","3,000",AMS,
+,Sintanjindong,"41,890",520,AMS,Excavation report :  신탄진동 구석기유적
+,Sintanjindong,"33,050",260,AMS,
+,Sintanjindong,"48,000",900,AMS,
 ,Eosanri,"27,000","2,000",OSL,Excavation report :  상주어산리
 ,Guraedong,"31,000","2,000",OSL,Excavation report :  김포구래동
 ,Guraedong,"22,000","2,000",OSL,
 ,Guraedong,"48,000","5,000",OSL,
 ,Guraedong,"35,000","3,000",OSL,
-,Punggokri,"22,380",70,,Excavation report :  김포풍곡리
-,Punggokri,"29,420",100,,
-,Punggokri,"20,800",80,,
-,Punggokri,"33,060",140,,
-,Punggokri,"32,310",140,,
-,Songwoldong,"10,140",130,,Excavation report :  나주송월동
-,Songwoldong,"11,623",65,,
-,Songwoldong,"10,822",55,,
-,Songwoldong,"13,175",65,,
-,Songwoldong,"13,487",70,,
-,Songwoldong,"15,950",65,,
-,Songwoldong,"15,720",60,,
-,Songwoldong,"11,563",45,,
-,Songwoldong,"18,040",100,,
-,Songwoldong,"19,230",120,,
-,Deokso,"16,700",100,,Excavation report :  남양주 덕소
-,Deokso,"18,400",400,,
-,Deokso,"26,020",200,,
-,Deokso,"36,800",200,,
-,Deokso,"37,300",200,,
-,Jisaewool,"20,680",80,,Excavation report :  남양주 호평동 지새울
-,Hwajungdong,"19,570",50,,Excavation report :  남원 화정동
-,Hwajungdong,"24,600",70,,
-,Hwajungdong,"17,547",45,,
-,Hwajungdong,"26,380",80,,
-,Hwajungdong,"22,680",60,,
-,Hwajungdong,"16,790",45,,
-,Hwajungdong,"26,110",90,,
-,Hwajungdong,"23,030",80,,
-,Hwajungdong,"22,970",70,,
-,Hwajungdong,"22,630",80,,
-,Hwajungdong,"25,380",80,,
-,Wolsungdong,"32,300","3,200",,Excavation report : 대구 월성동 722-2
-,Wolsungdong,"50,300","2,500",,
-,Wolsungdong,"44,000","2,100",,
-,Wolsungdong,"100,700","7,600",,
+,Punggokri,"22,380",70,AMS,Excavation report :  김포풍곡리
+,Punggokri,"29,420",100,AMS,
+,Punggokri,"20,800",80,AMS,
+,Punggokri,"33,060",140,AMS,
+,Punggokri,"32,310",140,AMS,
+,Songwoldong,"10,140",130,AMS,Excavation report :  나주송월동
+,Songwoldong,"11,623",65,AMS,
+,Songwoldong,"10,822",55,AMS,
+,Songwoldong,"13,175",65,AMS,
+,Songwoldong,"13,487",70,AMS,
+,Songwoldong,"15,950",65,AMS,
+,Songwoldong,"15,720",60,AMS,
+,Songwoldong,"11,563",45,AMS,
+,Songwoldong,"18,040",100,AMS,
+,Songwoldong,"19,230",120,AMS,
+,Deokso,"16,700",100,AMS,Excavation report :  남양주 덕소
+,Deokso,"18,400",400,AMS,
+,Deokso,"26,020",200,AMS,
+,Deokso,"36,800",200,AMS,
+,Deokso,"37,300",200,AMS,
+,Jisaewool,"20,680",80,AMS,Excavation report :  남양주 호평동 지새울
+,Hwajungdong,"19,570",50,AMS,Excavation report :  남원 화정동
+,Hwajungdong,"24,600",70,AMS,
+,Hwajungdong,"17,547",45,AMS,
+,Hwajungdong,"26,380",80,AMS,
+,Hwajungdong,"22,680",60,AMS,
+,Hwajungdong,"16,790",45,AMS,
+,Hwajungdong,"26,110",90,AMS,
+,Hwajungdong,"23,030",80,AMS,
+,Hwajungdong,"22,970",70,AMS,
+,Hwajungdong,"22,630",80,AMS,
+,Hwajungdong,"25,380",80,AMS,
+,Wolsungdong,"32,300","3,200",AMS,Excavation report : 대구 월성동 722-2
+,Wolsungdong,"50,300","2,500",AMS,
+,Wolsungdong,"44,000","2,100",AMS,
+,Wolsungdong,"100,700","7,600",AMS,
 ,Mangsangdong,"34,000",400,AMS,Excavation report : 동해 망상동 360-34
 ,Mangsangdong,"38,000","3,000",OSL,
 ,Mangsangdong,"55,000","3,000",OSL,
