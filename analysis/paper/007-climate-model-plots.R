@@ -169,7 +169,6 @@ ggplot(site_locations_tbl_temps_periods_filtered) +
   xlab("") +
   ylab("Mean annual temperature (MAT, °C)") +
   theme_minimal(base_size = base_size)
-
 #----------------------------------------------------------------------
 
 # can we have a map also?
@@ -230,7 +229,6 @@ ggmap(map)  +
         legend.key.size = unit(0.3, "cm")) +
           xlab('') +
           ylab('')
-
 #----------------------------------------------------------------------
 
 library(ggpubr)
@@ -263,6 +261,7 @@ mat_elev_cor_plot <-
   theme(legend.position = c(0.75, 0.8),
         legend.key.size = unit(0.5, 'lines'))
 
+
 #----------------------------------------------------------------------
 
 # combine plots
@@ -285,7 +284,8 @@ bottom_row <-
 # combine rows
 plot_grid(top_row,
           bottom_row,
-          ncol = 1)
+          ncol = 1) +  theme(panel.background = element_rect(fill='white', colour="white"),
+                             plot.background = element_rect(fill='white', colour="white"))
 
 ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"),
        scale = 1,

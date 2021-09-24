@@ -155,7 +155,10 @@ ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
             .35, .28) +
   draw_plot(retouch_sp_sub_plot,
             .46, .1,
-            .23, .28)
+            .23, .28) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+                               plot.background = element_rect(fill='white', colour="white"))
+
 
 
 ggsave(here::here("analysis/figures/003-retouch-by-density.png"),

@@ -102,7 +102,9 @@ ggplot(kasa_long3,
   scale_fill_viridis_d(name = "Artifact type",
                        option = "D") +
   coord_flip() +
-  theme_minimal(base_size = 8)
+  theme_minimal(base_size = 8) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+        plot.background = element_rect(fill='white', colour="white"))
 
 ggsave(plot = kasa_long3_fill_plot,
          here::here("analysis/figures/004-artifact-types.png"),
