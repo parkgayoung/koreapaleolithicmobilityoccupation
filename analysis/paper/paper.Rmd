@@ -130,7 +130,7 @@ The entire R code [@Rlanguage2019] used for all the analysis and visualizations 
 Figure \@ref(fig:volume-density) shows that there is no strong directional temporal pattern of changes in artifact density. The upper bound of artifact density increases in more recent periods. For example, the density of some assemblages are two or three times higher than others, especially after 30 ka. The inset figure shows that assemblages with stemmed points have higher artifact densities than the assemblages without. With the newer tools, hunter-gatherers may have stayed in the same location for longer duration. We may be seeing site occupation patterns in this sample that represent the long term trend of the use of both base camps or residences, represented by the higher artifact densities, and more briefly occupied camps with lower densities. The most striking result here is that maximum size of base camps increases in more recent periods.
 
 ```{r volume-density, fig.cap="Artifact volumetric density over time. The size of data points represent the total number of artifacts from each assemblage and the colour indicates the presence of stemmed points. The inset plot shows direct comparison of artifact densities for assemblages with and without stemmed points.", cache=TRUE, cache.extra=tools::md5sum(here::here("analysis/paper/002-artifact-volumetric-density.R"))}
-# quietly(source(here::here("analysis/paper/002-artifact-volumetric-density.R")))
+quietly(source(here::here("analysis/paper/002-artifact-volumetric-density.R")))
 knitr::include_graphics(here::here("analysis/figures/002-age-by-density.png"))
 ```
 
