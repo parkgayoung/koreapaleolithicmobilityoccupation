@@ -4,10 +4,8 @@ library(ggrepel)
 library(here)
 library(cowplot)
 
-<<<<<<< HEAD
+
 # import the data
-source(here::here("analysis/paper/008-summed-probability-distributions.R"))
-=======
 dates <-
   read.csv(here("analysis/data/raw_data/Radiocarbon dates_revision.csv"))
 
@@ -29,7 +27,7 @@ dates_clean <-
                                     'Eosanri',
                                     'Jeommal',
                                     'Pyeongneungdong'))#exclude sites that have only one date
->>>>>>> 9bd768474400b84f5496496025189e7c913c0f5f
+
 
 # devtools::install_github('ahb108/rcarbon')
 library(rcarbon)
