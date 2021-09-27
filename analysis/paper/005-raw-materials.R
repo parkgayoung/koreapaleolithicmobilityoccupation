@@ -32,7 +32,7 @@ mydata_ages <-
          total = sum(count, na.rm = TRUE)) %>%
   filter(!is.na(percentage)) %>%
     filter(!X %in% c(
-      #'gneiss', exclude raw materials cluded in less then 4 assemblages
+      #'gneiss', exclude raw materials included in less then 4 assemblages
       'crystal',
       'basalt',
       'etc.',
