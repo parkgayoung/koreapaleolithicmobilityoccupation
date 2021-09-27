@@ -1,0 +1,634 @@
+site_name,site_name_original,age,error,method,notes
+Nosanri4_3,Nosan-ri4_3,"49,000","4,000",OSL,main cultural layer for the targeting period (mcl)
+Nosanri4_3,Nosan-ri4_3,"48,000","4,000",OSL,mcl
+Nosanri4_4,Nosan-ri4_4,"45,000","3,000",OSL,mcl
+Nosanri4_4,Nosan-ri4_4,"44,000","4,000",OSL,mcl
+Galdamri_3,Galdamri537 3rd,"44,010","2,400",OSL,mcl
+Galdamri_3,Galdamri537 3rd,"39,310","6,000",OSL,mcl
+Galdamri_4,Galdamri537 3rd,"28,410","3,400",OSL,younger cultural layer (ycl)
+Galdamri_4,Galdamri537 3rd,"26,710","4,000",OSL,ycl
+Galdamri_4,Galdamri537 3rd,"26,310","19,000",OSL,ycl
+Gawolri_2,Gawol-ri 2nd cultural layer,"45,000","4,000",OSL,31.8m. no cultural layer
+Gawolri_2,Gawol-ri 2nd cultural layer,"53,000","5,000",OSL,31.3m. no cultural layer
+Gawolri_2,Gawol-ri 2nd cultural layer,"43,000","5,000",OSL,"mcl. 32.3m. AMS, 33m: 37,384±822. 32.5m: 35,885±798(they say, problematic cuz it is younger than upper layer)"
+Gawolri_2,Gawol-ri 2nd cultural layer,"35,885",798,AMS,mcl. 32.5m. They say AMS dates are not reliable cuz older layer indicates younger 
+Gawolri_2,Gawol-ri 2nd cultural layer,"37,000",822,AMS,33m. They say AMS dates are not reliable cuz older layer indicates younger 
+Bonggok,Bonggok,"41,500","1,500",AMS,mcl
+Bonggok,Bonggok,"37,000","3,000",AMS,ycl
+Bonggok,Bonggok,"31,000","1,500",AMS,ycl
+Bonggok,Bonggok,"16,400",200,AMS,ycl
+Hahwagyeri_3,Hahwagye-ri 3rd IIlayer,"40,600","1,500",AMS,mcl
+Hahwagyeri_3,Hahwagye-ri 3rd IIlayer,"13,390",60,AMS,ycl
+Hahwagyeri_3,Hahwagye-ri 3rd IIlayer,"79,000","4,000",OSL,older cultural layer (ocl)
+Hahwagyeri_3,Hahwagye-ri 3rd IIlayer,"66,000","3,000",OSL,ocl
+Hahwagyeri_3,Hahwagye-ri 3rd IIlayer,"39,000","2,000",OSL,mcl
+Gihwari,Gihwa-ri Cave,"39,280",470,AMS,mcl. coal. by Kigam
+Gihwari,Gihwa-ri Cave,"34,990",410,AMS,mcl. bone. by Kigam
+Gihwari,Gihwa-ri Cave,"29,700",400,AMS,mcl. bone. by SNU
+Gihwari,Gihwa-ri Cave,"28,400",300,AMS,mcl. soil. by SNU
+Gihwari,Gihwa-ri Cave,"20,500",300,AMS,ycl. bone. by SNU
+Gihwari,Gihwa-ri Cave,"19,790",120,AMS,ycl. bone. by Kigam
+Gihwari,Gihwa-ri Cave,"15,820",290,AMS,ycl. coal. by Kigam
+Gihwari,Gihwa-ri Cave,"58,000","3,000",OSL,mcl
+Gihwari,Gihwa-ri Cave,"58,000","3,000",OSL,"mcl, different sample but same result"
+Gihwari,Gihwa-ri Cave,"56,000","6,000",OSL,mcl
+Gihwari,Gihwa-ri Cave,"56,000","4,000",OSL,mcl
+Gihwari,Gihwa-ri Cave,"51,000","3,000",OSL,ycl
+Gihwari,Gihwa-ri Cave,"49,000","2,000",OSL,ycl
+Gihwari,Gihwa-ri Cave,"45,000","5,000",OSL,ycl
+Gihwari,Gihwa-ri Cave,"45,000","3,000",OSL,ycl
+Sugyanggae_1,Suyanggae location3_1,"58,300","4,000",OSL,ocl. not BP but BC
+Sugyanggae_1,Suyanggae location3_1,"51,000","3,300",OSL,ocl. not BP but BC
+Sugyanggae_1,Suyanggae location3_1,"38,800","3,400",OSL,mcl. not BP but BC
+Sugyanggae_2,Suyanggae location3_2,"37,900","3,600",OSL,mcl. not BP but BC
+Sugyanggae_3,Suyanggae location3 3,"34,200","2,600",OSL,mcl. not BP but BC
+Sugyanggae_3,Suyanggae location3_3,"31,500","1,800",OSL,ycl. not BP but BC
+Sugyanggae_3,Suyanggae location3_3,"29,500","3,300",OSL,ycl. not BP but BC
+Sugyanggae_3,Suyanggae location3_3,"22,400","2,100",OSL,ycl. not BP but BC
+Yonghodong,Yongho-dong 2nd cultural layer,"38,500","1,000",AMS,"mcl. youngest of three main cultural layers. SP excavated from the 2nd, youngest layers."
+Gawolri_1,Gawol-ri 1st cultural layer,"37,384",822,AMS,33m
+Gawolri_1,Gawol-ri 1st cultural layer,"35,885",798,AMS,"32.5m. mcl. AMS dates are not reliable in this case, since 33m one should be younger than this layer but the result is older. Therefore, OSL one is more reliable."
+Gawolri_1,Gawol-ri 1st cultural layer,"53,000","5,000",OSL,31.3m
+Gawolri_1,Gawol-ri 1st cultural layer,"45,000","4,000",OSL,31.8m
+Gawolri_1,Gawol-ri 1st cultural layer,"43,000","5,000",OSL,32.3m. comparable to mcl
+Galdun_4,Galdun ,"37,300",400,AMS,mcl. 4th
+Galdun_4,Galdun ,"30,400",200,AMS,ycl
+Galdun_3,Galdun ,"29,900",100,AMS,mcl. 3rd
+Galdun_4,Galdun ,"28,000",150,AMS,ycl
+Galdun_5,Galdun ,"102,000","9,000",OSL,ocl
+Galdun_6,Galdun ,"98,000","5,000",OSL,ocl
+Galdun_7,Galdun ,"92,000","7,000",OSL,ocl
+Galdun_8,Galdun ,"86,000","6,000",OSL,ocl
+Galdun_9,Galdun ,"68,000","2,000",OSL,ocl
+Galdun_10,Galdun ,"38,000","4,000",OSL,comparable to 4th mcl.
+Galdun_11,Galdun ,"3,800",500,OSL,ycl
+Gigok,Gigok B-1 (2nd cultural layer),"36,070",380,AMS,"same layer, but different pit. by SNU"
+Gigok,Gigok B-1 (2nd cultural layer),"33,500","1,200",AMS,mcl. by SNU
+Gigok,Gigok B-1 (2nd cultural layer),"32,100","1,100",AMS,"same layer, but different pit. by Geochron Lab"
+Gigok,Gigok B-1 (2nd cultural layer),"10,200",60,AMS,ycl. by SNU
+Gigok,Gigok B-1 (2nd cultural layer),"35,230",380,AMS,ycl. but disturbed. by Geochron Lab
+Gigok,Gigok B-1 (2nd cultural layer),"35,000","1,700",AMS,ycl. but disturbed. by SNU
+Cheonri,Cheon-ri,"71,000","6,000",OSL,ocl
+Cheonri,Cheon-ri,"36,000","5,000",OSL,comparable to mcl
+Cheonri,Cheon-ri,"36,000","4,000",OSL,mcl
+Cheonri,Cheon-ri,"27,000","2,000",OSL,ycl
+Songamri_3,Songam-ri ,"40,600","3,400",AMS,ocl. coal
+Songamri_3,Songam-ri 3rd,"33,190",160,AMS,mcl. coal
+Songamri_2,Songam-ri 2nd,"32,300",160,AMS,mcl. coal
+Songamri_2,Songam-ri ,"24,420",170,AMS,ocl. soil. This date is not matched with other date of the ocl. Since the sample type is different. 
+Songamri_2,Songam-ri ,"21,210",110,AMS,ycl. soil. 
+Hwadaeri_2,Hwadae-ri 2nd cultural layer,"31,200",900,AMS,mcl
+Hwadaeri_3,Hwadae-ri 2nd cultural layer,"40,000","1,900",OSL,ocl. BC
+Hwadaeri_4,Hwadae-ri 2nd cultural layer,"39,000","1,400",OSL,ocl. BC
+Hwadaeri_5,Hwadae-ri 2nd cultural layer,"30,000","1,700",OSL,mcl. BC
+Hwadaeri_6,Hwadae-ri 2nd cultural layer,"22,000","1,000",OSL,mcl. BC
+Sageunri,Sageun-ri,"30,800",300,AMS,mcl
+Sageunri,Sageun-ri,"28,460",210,AMS,ycl
+Sageunri,Sageun-ri,"4,520",40,AMS,ycl
+Geumpari,Geumpa-ri,"31,400",400,AMS,mcl
+Geumpari,Geumpa-ri,"31,500","1,300",AMS,mcl
+Geumpari,Geumpa-ri,"30,800",400,AMS,mcl
+Ssangjungri_3,Ssangjung-ri,"30,220",150,AMS,ycl. This date is not matched with chronology. It should be younger than mcl.
+Ssangjungri_3,Ssangjung-ri,"29,450",130,AMS,mcl
+Ssangjungri_2,Ssangjung-ri,"28,780",130,AMS,mcl
+Ssangjungri_2,Ssangjung-ri,"27,860",120,AMS,ycl
+Ssangjungri_1,Ssangjung-ri,"27,340",120,AMS,mcl
+Hopyeongdong1-3b,Hopyeong-dong ,"46,400","2,000",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"34,500",800,AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"33,900","1,000",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"33,400",800,AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"33,200","1,900",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"32,100","1,500",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"31,500",300,AMS,ocl. by Geochron Lab
+Hopyeongdong1-3b,Hopyeong-dong ,"31,100","1,000",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"31,000",500,AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"28,500","1,100",AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"26,800",200,AMS,ocl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"29,200",900,AMS,mcl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"27,600",300,AMS,mcl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"27,500",300,AMS,mcl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"24,100",200,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"23,900",400,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"22,200",600,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"21,100",200,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"17,500",200,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"17,400",400,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"16,900",500,AMS,ycl. by SNU
+Hopyeongdong1-3b,Hopyeong-dong ,"16,600",720,AMS,ycl. by Geochron Lab
+Hopyeongdong1-3b,Hopyeong-dong ,"16,190",50,AMS,ycl. by Geochron Lab
+Hopyeongdong2-3b,Hopyeong-dong2,"30,000","1,500",AMS,comparable to mcl. different pit. by SNU
+Jeungsanri_1,Jeungsan-ri,"29,800","1,500",AMS,mcl
+Jeungsanri_1,Jeungsan-ri,"29,600","1,100",AMS,ycl
+Jeungsanri_1,Jeungsan-ri,"28,900",500,AMS,ycl
+Jeungsanri_1,Jeungsan-ri,"26,700","1,200",AMS,ycl
+Jeungsanri_1,Jeungsan-ri,"53,400","4,280",OSL,comparable to ocl. BC
+Jeungsanri_1,Jeungsan-ri,"47,200","6,930",OSL,comparable to ocl. BC
+Jeungsanri_1,Jeungsan-ri,"52,150","2,760",OSL,comparable to ocl. BC
+Jeungsanri_1,Jeungsan-ri,"49,200","2,740",OSL,comparable to ocl. BC
+Jeungsanri_1,Jeungsan-ri,"49,180","4,080",OSL,comparable to mcl. BC
+Jeungsanri_1,Jeungsan-ri,"29,500","2,920",OSL,comparable to ycl. BC
+Jeungsanri_1,Jeungsan-ri,"28,190","2,980",OSL,comparable to ycl. BC
+Jeungsanri_1,Jeungsan-ri,"25,300","1,520",OSL,comparable to ycl. BC
+Jeungsanri_1,Jeungsan-ri,"24,600","1,360",OSL,comparable to ycl. BC
+Jeungsanri_1,Jeungsan-ri,"20,320","2,130",OSL,comparable to ycl. BC
+Jeungsanri_1,Jeungsan-ri,"18,900","1,360",OSL,comparable to ycl. BC
+Jungjangri,Jungjang-ri,"33,500","1,200",AMS,ocl
+Jungjangri,Jungjang-ri,"29,760",300,AMS,mcl
+Jungjangri,Jungjang-ri,"29,340",700,AMS,mcl
+Jeungsanri_2,Jungjang-ri,"29,200",900,AMS,mcl
+Jungjangri,Jungjang-ri,"28,600","1,000",AMS,mcl
+Jungjangri,Jungjang-ri,"28,600",300,AMS,mcl
+Jungjangri,Jungjang-ri,"26,300","1,100",AMS,ycl
+Jeungsanri_3,Jungjang-ri,"25,700",150,AMS,ycl
+Jungjangri,Jungjang-ri,"22,100",300,AMS,ycl
+Jungjangri,Jungjang-ri,"3,060",40,AMS,ycl
+Sinbook_1,Sinbook,"23,840",87,AMS,comparable to ocl. BC
+Sinbook_1,Sinbook,"22,740",80,AMS,comparable to ocl. BC
+Sinbook_1,Sinbook,"19,750",250,AMS,ocl
+Sinbook_1,Sinbook,"17,810",60,AMS,comparable to ocl. BC
+Sinbook_1,Sinbook,"14,385",45,AMS,comparable to ocl. BC
+Sinbook_1,Sinbook,"25,500","1,000",AMS,mcl
+Sinbook_1,Sinbook,"25,420",190,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"23,850",160,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"21,760",190,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"20,960",80,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"18,540",270,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"18,500",300,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"16,330",60,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"14,250",120,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"13,100",160,AMS,comparable to ycl
+Sinbook_1,Sinbook,"11,300",300,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"9,370",70,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"8,350",50,AMS,"mcl, different level"
+Sinbook_1,Sinbook,"9,725",35,AMS,comparable to ycl
+Sinbook_1,Sinbook,"6,890",60,AMS,comparable to ycl
+Sinbook_1,Sinbook,"4,970",60,AMS,comparable to ycl
+Sinbook_1,Sinbook,"3,340",40,AMS,comparable to ycl
+Yongbang_B,Yongbang,"25,200",200,AMS,33.2m. mcl
+Yongbang_B,Yongbang,"22,700",200,AMS,mcl
+Yongbang_B,Yongbang,"59,000","4,000",OSL,29.8m. BC
+Yongbang_B,Yongbang,"48,000","4,000",OSL,32.8m. BC
+Yongbang_B,Yongbang,"43,000","4,000",OSL,32.5m. mcl. BC
+Yongsandong,Yongsandong,"24,430",870,AMS,mcl
+,Nobong,"33,300","1,700",AMS,"2nd, From here: added for the 1st revision. data from Cha's Masters"
+,Jongdong,35300,340,AMS,"3rd, disturb"
+,Jongdong,36610,320,AMS,3rd
+,Jongdong,22560,140,AMS,2nd
+,Jongdong,25700,170,AMS,2nd
+,Jongdong,14820,100,AMS,1st
+,Galsanri,30400,2000,AMS,
+,Galsanri,26040,130,AMS,
+,Jangdong,30290,100,AMS,2nd
+,Jangdong,34200,600,AMS,2nd
+,Jangdong,20300,80,AMS,1st
+,Jangdong,22600,200,AMS,1st
+,Seoduri2,31230,210,AMS,
+,Dongbaekri,20670,410,AMS,2nd
+,Dongbaekri,"27,000",300,AMS,2nd
+,Dongbaekri,"31,100",300,AMS,2nd
+,Ungyo,"28,500",210,AMS,3rd
+,Ungyo,"21,290",120,AMS,1st
+,Ungyo,"27,330",210,AMS,Excavation report :완주 운교
+,Ungyo,"37,590",340,AMS,
+,Ungyo,"50,140",450,AMS,
+,Sangma,"23,300",250,AMS,
+,Sangma,"23,070",400,AMS,
+,Sangma,"26,700",250,AMS,
+,Jingeuneul,"22,850",350,AMS,
+,Jingeuneul,"17,310",80,AMS,
+,Yulyangdong,"22,360",126,AMS,1st
+,Noeundong,"22,870",110,AMS,
+,Sukpyeong,"19,820",80,AMS,2nd
+,Sukpyeong,"14,450",50,AMS,3rd
+,Sukpyeong,"6,730",30,AMS,
+,Sukpyeong,"8,690",40,AMS,
+,Haga,"19,700",300,AMS,
+,Haga,"19,500",200,AMS,
+,Jiphyeon,"19,640",100,AMS,
+,Jiphyeon,"20,150",100,AMS,
+,Jiphyeon,"13,160",280,AMS,
+,Jiphyeon,"19,490",90,AMS,
+,Jiphyeon,"19,480",540,AMS,
+,Jiphyeon,"22,170",120,AMS,
+,Jiphyeon,"20,480",800,AMS,
+,Jiphyeon,"18,730",89,AMS,
+,Daejungdong,"19,680",90,AMS,
+,Ojiri,"9,180",80,AMS,
+,Ojiri,"17,700",200,AMS,
+,Geoduri,"28,100",200,AMS,"2nd, data from Chang's 2014"
+,Dangga,"45,385","1,250",AMS,2nd
+,Dangga,"44,170","1,150",AMS,2nd
+,Dowon,"15,080",80,AMS,
+,Dowon,"11,060",100,AMS,
+,Mansuri,"17,540",130,AMS,
+,Mansuri,"26,420",240,AMS,
+,Mansuri,"30,900",180,AMS,Excavation report :청원 만수리 10지점
+,Mansuri,"20,460",110,AMS,
+,Mansuri,"25,890",160,AMS,
+,Mansuri,"28,450",170,AMS,
+,Mansuri,"33,890",250,AMS,
+,Mansuri,"31,140",210,AMS,
+,Bongmyeongdong,"49,860","2,710",AMS,
+,Bongmyeongdong,"48,450","1,370",AMS,
+,Bongmyeongdong,"12,260",40,AMS,
+,Sachang,"10,760",80,AMS,
+,Sachang,"19,970",130,AMS,
+,Sachang,"19,610",140,AMS,
+,Seokjangri,"20,830","1,880",AMS,
+,Seokjangri,"30,690","3,000",AMS,
+,Sorori,"13,010",190,AMS,
+,Sorori,"14,820",250,AMS,
+,Sorori,"17,310",310,AMS,
+,Sorori,"9,580",40,AMS,
+,Sorori,"9,450",40,AMS,
+,Sorori,"12,930",400,AMS,
+,Sorori,"12,500",200,AMS,
+,Sorori,"12,780",170,AMS,
+,Sorori,"13,270",180,AMS,
+,Sorori,"13,010",190,AMS,
+,Sorori,"13,490",150,AMS,
+,Sorori,"13,420",180,AMS,
+,Sorori,"13,600",300,AMS,
+,Sorori,"14,020",190,AMS,
+,Sorori,"13,700",200,AMS,
+,Sorori,"13,920",200,AMS,
+,Sorori,"14,000",190,AMS,
+,Sorori,"14,800",210,AMS,
+,Sorori,"14,820",250,AMS,
+,Sorori,"16,250",50,AMS,
+,Sorori,"17,320",200,AMS,
+,Sorori,"16,680",50,AMS,
+,Sorori,"17,310",310,AMS,
+,Sorori,"17,300",150,AMS,
+,Sinwhari,"19,150",130,AMS,
+,Sinwhari,"15,760",100,AMS,
+,Sinwhari,"14,940",180,AMS,
+,Sinwhari,"9,610",60,AMS,
+,Sinwhari,"25,500",160,AMS,
+,Baebang,"23,700","1,000",AMS,
+,Baebang,"22,700",300,AMS,
+,Baebang,"26,700",300,AMS,
+,Wadongri III,"15,600",200,AMS,
+,Wadongri III,"29,600",500,AMS,
+,Wadongri III,"33,600",400,AMS,
+,Wadongri III,"35,600",500,AMS,
+,Wadongri III,"12,070",230,AMS,
+,Wadongri III,"48,000","5,000",OSL,Excavation report: 파주와동리 3
+,Wadongri III,"50,000","4,000",OSL,
+,Wadongri IV,"12,070",230,AMS,Excavation report: 파주와동리 4
+,Oerokgol,"15,100",100,AMS,
+,Oerokgol,"16,800",100,AMS,
+,Unjeong location1,"35,000","2,000",AMS,
+,Unjeong location1,"11,100",100,AMS,
+,Unjeong location1,"31,660",270,AMS,
+,Unjeong location1,"30,700",350,AMS,
+,Unjeong location1,"37,000","3,000",OSL,Excavation report: 파주운정1지구 구석기유적 (1)
+,Unjeong location1,"39,000","2,000",OSL,
+,Unjeong location1,"44,000","3,000",OSL,
+,Unjeong location1,"45,000","3,000",OSL,
+,Unjeong location1,"35,000","3,000",OSL,
+,Unjeong location1,"37,000","3,000",OSL,
+,Unjeong location1,"15,600",200,AMS,
+,Unjeong location1,"29,000",500,AMS,
+,Unjeong location1,"33,600",400,OSL,
+,Unjeong location1,"35,600",500,OSL,
+,Unjeong location1,"48,000","5,000",OSL,
+,Unjeong location1,"50,000","4,000",OSL,
+,Unjeong location1,"50,000","3,000",OSL,Excavation report: 파주운정1지구 구석기유적 (2)
+,Unjeong location1,"51,000","3,000",OSL,
+,Unjeong location1,"63,000","4,000",OSL,
+,Unjeong location1,"66,000","4,000",OSL,
+,Unjeong location1,"43,000","4,000",OSL,
+,Unjeong location1,"42,000","2,000",OSL,
+,Unjeong location1,"37,000","2,000",OSL,
+,Unjeong location1,"35,000","3,000",OSL,
+,Unjeong location1,"43,000","3,000",OSL,
+,Unjeong location1,"43,000","2,000",OSL,
+,Wolpyeong,"10,840",350,AMS,2a
+,Wolpyeong,"21,500",300,AMS,2b
+,Wolpyeong,"18,200",100,AMS,3a
+,Wolpyeong,"27,500",150,AMS,3b
+,Wolpyeong,"36,000",400,AMS,3c
+,Janggi,"43,000","3,500",AMS,2nd
+,Jangheungri,"24,400",600,AMS,
+,Jangheungri-Cheolwon,"24,200",600,AMS,2nd
+,Jangheungri-Cheolwon,"24,400",600,AMS,2nd
+,Jeongokri,"31,000",600,AMS,V
+,Jeongokri,"35,700","3,000",AMS,V
+,Jeommal,"13,700",700,AMS,4th
+,Suyanggae location1,"28,630",190,AMS,From Suyanggae location 6 report
+,Suyanggae location1,"26,420",200,AMS,
+,Suyanggae location1,"31,140",280,AMS,
+,Hajinri,"18,770",60,AMS,Suyanggae location 6
+,Hajinri,18690,60,AMS,2nd
+,Hajinri,"17,850",60,AMS,2nd
+,Hajinri,"17,660",90,AMS,2nd
+,Hajinri,"17,779",85,AMS,2nd
+,Hajinri,"20,470",70,AMS,2nd
+,Hajinri,"18,400",60,AMS,2nd
+,Hajinri,"17,550",80,AMS,2nd
+,Hajinri,"18,490",80,AMS,2nd
+,Hajinri,"39,930",270,AMS,3rd
+,Hajinri,"33,220",240,AMS,3rd
+,Hajinri,"39,330",360,AMS,3rd
+,Hajinri,"40,070",380,AMS,3rd
+,Hajinri,"35,280",470,AMS,3rd
+,Hajinri,"34,020",400,AMS,3rd
+,Hajinri,"38,180",230,AMS,3rd
+,Hajinri,"39,680",390,AMS,3rd
+,Hajinri,"30,360",350,AMS,3rd
+,Hajinri,"44,100","1,900",AMS,
+,Hajinri,"36,000","1,100",AMS,
+,Hajinri,"36,280",200,AMS,
+,Hajinri,"34,690",180,AMS,
+,Hajinri,"34,880",190,AMS,
+,Hajinri,"32,450",160,AMS,
+,Hajinri,"42,860",370,AMS,main layer
+,Hajinri,"46,360",510,AMS,main layer
+,Hajinri,"36,580",210,AMS,4th
+,Hajinri,"34,620",190,AMS,4th
+,Hajinri,"42,000",340,AMS,4th
+,Hajinri,"36,600",360,AMS,4th
+,Hajinri,"37,190",320,AMS,4th
+,Hajinri,"34,870",540,AMS,4th
+,Gunang cave,"37,610",250,AMS,Excavation report :단양 구낭굴 5차
+,Gunang cave,"40,290",320,AMS,
+,Sanggari,"10,910",60,AMS,Excavation report :보은 상가리
+,Sinheug,"16,850",60,AMS,Excavation report :평택 용이동 신흥유적
+,Woojinri,"11,360",60,AMS,Excavation report :보은 우진리
+,Woojinri,"56,510","2,240",AMS,
+,Woojinri,"2,540",40,AMS,
+,Woojinri,"2,510",40,AMS,
+,Oeryang,"31,210",200,AMS,Excavation report :임실 외량
+,Bangsanri,"25,380",140,AMS,Excavation report :옥과-적성-도로확장공사
+,Bangsanri,"29,020",170,AMS,
+,Bangsanri,"42,150",470,AMS,
+,Byungsandong,"48,580",470,AMS,Excavation report : 강릉 병산동
+,Byungsandong,"22,020",70,AMS,
+,Anhyundong,"42,140",300,AMS,Excavation report : 강릉 안현동
+,Anhyundong,"34,100",160,AMS,
+,Hashidongri,"39,000","3,000",OSL,Excavation report : 강릉 하시동리유적
+,Hashidongri,"45,000","3,000",OSL,
+,Hashidongri,"61,000","4,000",OSL,
+,Hashidongri,"67,000","5,000",OSL,
+,Gawolri B2,"51,790","1,350",AMS,"Excavation report : 겨레40책 - 파주가월리(적성), 동패동"
+,Gawolri B2,"19,020",100,AMS,
+,Gawolri B2,"19,080",100,AMS,
+,Wonheung-Sinwondong,"10,200",60,AMS,Excavation report : 겨레40책 - 고양 원흥동 신원동 유적
+,Wonheung-Sinwondong,"14,400",300,AMS,
+,Wonheung-Sinwondong,"19,100",100,AMS,
+,Wonheung-Sinwondong,"16,000",120,AMS,
+,Wonheung-Sinwondong,"20,800",400,AMS,
+,Wonheung-Sinwondong,"20,100",200,AMS,
+,Tanhyundong,"57,000","4,000",OSL,Excavation report :  고양 탄현동
+,Tanhyundong,"61,000","4,000",OSL,
+,Tanhyundong,"51,000","3,000",OSL,
+,Jongkwangjeongri,"46,140",580,AMS,Excavation report :  양양 중광정리
+,Jongkwangjeongri,"52,100","1,110",AMS,
+,Jongkwangjeongri,"39,190",590,AMS,
+,Chatanri,"17,880",80,AMS,Excavation report :  산청 차탄리
+,Chatanri,"20,060",90,AMS,
+,Chatanri,"24,040",150,AMS,
+,Chatanri,"17,890",80,AMS,
+,Chatanri,"24,380",130,AMS,
+,Nosan-ri1_2,"31,700",900,AMS,Excavation report :  신탄진동 구석기유적 부록
+,Nosan-ri2,"22,700",200,AMS,
+,Nosan-ri2,"25,200",200,AMS,
+,Nosan-ri3_2,"43,000","4,000",AMS,
+,Nosan-ri3_2,"42,000","5,000",AMS,
+,Nosan-ri4_1,"43,200","2,000",AMS,
+,Nosan-ri4_1,"43,000","3,000",AMS,
+,Sintanjindong,"41,890",520,AMS,Excavation report :  신탄진동 구석기유적
+,Sintanjindong,"33,050",260,AMS,
+,Sintanjindong,"48,000",900,AMS,
+,Eosanri,"27,000","2,000",OSL,Excavation report :  상주어산리
+,Guraedong,"31,000","2,000",OSL,Excavation report :  김포구래동
+,Guraedong,"22,000","2,000",OSL,
+,Guraedong,"48,000","5,000",OSL,
+,Guraedong,"35,000","3,000",OSL,
+,Punggokri,"22,380",70,AMS,Excavation report :  김포풍곡리
+,Punggokri,"29,420",100,AMS,
+,Punggokri,"20,800",80,AMS,
+,Punggokri,"33,060",140,AMS,
+,Punggokri,"32,310",140,AMS,
+,Songwoldong,"10,140",130,AMS,Excavation report :  나주송월동
+,Songwoldong,"11,623",65,AMS,
+,Songwoldong,"10,822",55,AMS,
+,Songwoldong,"13,175",65,AMS,
+,Songwoldong,"13,487",70,AMS,
+,Songwoldong,"15,950",65,AMS,
+,Songwoldong,"15,720",60,AMS,
+,Songwoldong,"11,563",45,AMS,
+,Songwoldong,"18,040",100,AMS,
+,Songwoldong,"19,230",120,AMS,
+,Deokso,"16,700",100,AMS,Excavation report :  남양주 덕소
+,Deokso,"18,400",400,AMS,
+,Deokso,"26,020",200,AMS,
+,Deokso,"36,800",200,AMS,
+,Deokso,"37,300",200,AMS,
+,Jisaewool,"20,680",80,AMS,Excavation report :  남양주 호평동 지새울
+,Hwajungdong,"19,570",50,AMS,Excavation report :  남원 화정동
+,Hwajungdong,"24,600",70,AMS,
+,Hwajungdong,"17,547",45,AMS,
+,Hwajungdong,"26,380",80,AMS,
+,Hwajungdong,"22,680",60,AMS,
+,Hwajungdong,"16,790",45,AMS,
+,Hwajungdong,"26,110",90,AMS,
+,Hwajungdong,"23,030",80,AMS,
+,Hwajungdong,"22,970",70,AMS,
+,Hwajungdong,"22,630",80,AMS,
+,Hwajungdong,"25,380",80,AMS,
+,Wolsungdong,"32,300","3,200",AMS,Excavation report : 대구 월성동 722-2
+,Wolsungdong,"50,300","2,500",AMS,
+,Wolsungdong,"44,000","2,100",AMS,
+,Wolsungdong,"100,700","7,600",AMS,
+,Mangsangdong,"34,000",400,AMS,Excavation report : 동해 망상동 360-34
+,Mangsangdong,"38,000","3,000",OSL,
+,Mangsangdong,"55,000","3,000",OSL,
+,Mangsangdong,"85,000","8,000",OSL,
+,Mangsangdong,"92,000","4,000",OSL,
+,Mangsangdong,"97,000","9,000",OSL,
+,Wolso,"89,000","4,000",OSL,Excavation report : 동해 묵호진동 월소
+,Wolso,"79,000","5,000",OSL,
+,Wolso,"81,000","10,000",OSL,
+,Wolso,"96,000","14,000",OSL,
+,Wolso,"43,450",790,AMS,
+,Wolso,"54,850","3,320",AMS,
+,Pyeongneungdong,"33,000","3,000",AMS,Excavation report : 동해 평릉동
+,Josan,"17,960",720,AMS,Excavation report : 무안 조산유적
+,Josan,"28,720","2,570",AMS,
+,Josan,"26,540","2,230",AMS,
+,Josan,"35,610","6,690",AMS,
+,Josan,"16,350",500,AMS,
+,Josan,"32,850","1,770",AMS,
+,Josan,"47,900","3,200",OSL,
+,Josan,"56,800","4,500",OSL,
+,Sukpyeong,"30,000","3,000",OSL,Excavation report : 보성 도안리 석평
+,Sukpyeong,"51,000","3,000",OSL,
+,Sukpyeong,"39,000","2,000",OSL,
+,Sukpyeong,"24,000","1,000",OSL,
+,Sinsangri,"31,150",300,AMS,Excavation report : 상주 신상리
+,Sinsangri,"28,500","1,100",AMS,
+,Sinsangri,"24,500","1,000",AMS,
+,Sinsangri,"31,000",600,AMS,
+,Sinwhari3,"20,000",900,OSL,Excavation report : 신화리유적3-울발연
+,Sinwhari3,"27,800","1,100",OSL,
+,Sinwhari3,"28,400","1,800",OSL,
+,Sinwhari3,"28,400","1,600",OSL,
+,Gaejungri,"40,000","2,000",OSL,Excavation report : 개정리
+,Gaejungri,"41,000","4,000",OSL,
+,Gaejungri,"41,000","3,000",OSL,
+,Gaejungri,"41,000","2,000",OSL,
+,Jeongokri2010,"58,000","4,000",OSL,Excavation report : 전곡리 2010-국방문화재연구원
+,Jeongokri2010,"67,000","8,000",OSL,Excavation report : 전곡리 2011-국방문화재연구원
+,Jeongokri2011,"74,000","6,000",OSL,
+,Jeongokri2011,"72,000","4,000",OSL,
+,Jeongokri2011,"71,000","4,000",OSL,
+,Tonghyunri,"19,630",70,AMS,Excavation report : 연천 통현리
+,Tonghyunri,"19,790",70,AMS,
+,Tonghyunri,"27,920",100,AMS,
+,Tonghyunri,"27,520",90,AMS,
+,Tonghyunri,"38,400",350,AMS,
+,Tonghyunri,"40,990",460,AMS,
+,Tonghyunri,"46,520",660,AMS,
+,Tonghyunri,"40,480",360,AMS,
+,Samokri,"41,000","4,000",OSL,Excavation report : 영월 삼옥리2
+,Samokri,"34,000","2,000",OSL,
+,Samokri,"36,000","3,000",OSL,
+,Samokri,"55,000","5,000",OSL,
+,Samokri,"52,000","6,000",OSL,
+,Samokri,"35,000","4,000",OSL,
+,Samokri,"35,000","3,000",OSL,
+,Samokri,"50,000","3,000",OSL,
+,Samokri,"64,000","5,000",OSL,
+,Samokri,"63,000","3,000",OSL,
+,Cheonghodong,"33,000","2,000",OSL,Excavation report : 오산 청호동
+,Cheonghodong,"33,000","3,000",OSL,
+,Cheonghodong,"36,000","2,000",OSL,
+,Cheonghodong,"36,000","2,000",OSL,
+,Cheonghodong,"39,000","3,000",OSL,
+,Cheonghodong,"38,000","2,000",OSL,
+,Bupyeongri,"24,710",130,AMS,Excavation report : 인제 부평리
+,Bupyeongri,"33,080",240,AMS,
+,Gajeongdong,"13,680",40,AMS,Excavation report : 인천 가정동
+,Gajeongdong,"19,070",50,AMS,
+,Gajeongdong,"18,660",50,AMS,
+,Gajeongdong,"20,230",60,AMS,
+,Suheolri,"31,800",300,AMS,Excavation report : 직산 수헐리
+,Suheolri,"23,400",300,AMS,
+,Suheolri,"23,380",70,AMS,
+,Suheolri,"17,900",300,AMS,
+,Suheolri,"30,100","1,100",AMS,
+,Suheolri,"31,600","1,200",AMS,
+,Suheolri,"32,560","1,100",AMS,
+,Suheolri,"22,300",300,AMS,
+,Suheolri,"39,170",440,AMS,
+,Suheolri,"33,300",300,AMS,
+,Suheolri,"25,580",230,AMS,
+,Suheolri,"23,000",200,AMS,
+,Suheolri,"29,400",300,AMS,
+,Suheolri,"38,610",440,AMS,
+,Songduri,"12,700",200,AMS,Excavation report : 진천 송두리
+,Songduri,"11,730",320,AMS,
+,Songduri,"43,100","1,500",AMS,
+,Songduri,"11,850",190,AMS,
+,Songduri,"11,950",110,AMS,
+,Songduri,"35,700","2,200",AMS,
+,Songduri,"44,700","1,500",AMS,
+,Songduri,"35,900","1,200",AMS,
+,Yullyangdong,"38,900",500,AMS,Excavation report : 청주 율량동
+,Yullyangdong,"22,360",120,AMS,
+,Yullyangdong,"46,000",600,AMS,
+,Seosangri,"78,000","6,000",OSL,Excavation report : 춘천 서상리
+,Seosangri,"55,000","3,000",OSL,
+,Seosangri,"48,000","4,000",OSL,
+,Seosangri,"78,000","4,000",OSL,
+,Geumneungdong,"22,300",250,AMS,Excavation report : 춘천 금릉동
+,Sangjiseokri,"18,300",500,AMS,Excavation report : 파주 동패리 상지석리
+,Sangjiseokri,"36,300","1,000",AMS,
+,Sangjiseokri,"32,000","1,000",AMS,
+,Sangjiseokri,"32,900","1,000",AMS,
+,Sangjiseokri,"61,000","5,000",OSL,
+,Sangjiseokri,"64,000","4,000",OSL,
+,Sangjiseokri,"73,000","5,000",OSL,
+,Sangjiseokri,"68,000","5,000",OSL,
+,Sangjiseokri,"68,000","3,000",OSL,
+,Sangjiseokri,"69,000","5,000",OSL,
+,Sangjiseokri,"69,000","3,000",OSL,
+,Sangjiseokri,"72,000","5,000",OSL,
+,Sangjiseokri,"72,000","3,000",OSL,
+,Sangjiseokri,"75,000","3,000",OSL,
+,Sangjiseokri,"75,000","5,000",OSL,
+,Sangjiseokri,"60,000","6,000",OSL,
+,Sangjiseokri,"61,000","5,000",OSL,
+,Sangjiseokri,"64,000","5,000",OSL,
+,Sangjiseokri,"64,000","4,000",OSL,
+,Sangjiseokri,"72,000","3,000",OSL,
+,Sangjiseokri,"73,000","5,000",OSL,
+,Sangjiseokri,"50,000","3,000",OSL,
+,Sangjiseokri,"51,000","3,000",OSL,
+,Sangjiseokri,"63,000","4,000",OSL,
+,Sangjiseokri,"66,000","4,000",OSL,
+,Sangjiseokri,"37,000","4,000",OSL,
+,Sangjiseokri,"38,000","3,000",OSL,
+,Sangjiseokri,"43,000","2,000",OSL,
+,Sangjiseokri,"35,000","3,000",OSL,
+,Sangjiseokri,"37,000","2,000",OSL,
+,Sangjiseokri,"43,000","4,000",OSL,
+,Sangjiseokri,"42,000","2,000",OSL,
+,Dongpaeri,"39,500",400,AMS,Excavation report : 파주 동패리 2 유적 (2010)
+,Dongpaeri,"40,300",400,AMS,
+,Naengjungri,"59,000","4,000",OSL,Excavation report : 포천 냉정리
+,Naengjungri,"66,000","4,000",OSL,
+,Naengjungri,"57,000","2,000",OSL,
+,Neulgeori,"19,590",120,AMS,"Excavation report : 포천 늘거리2권, 3권"
+,Neulgeori,"21,240",150,AMS,
+,Neulgeori,"19,520",120,AMS,
+,Neulgeori,"19,250",140,AMS,
+,Neulgeori,"19,770",130,AMS,
+,Neulgeori,"33,060",290,AMS,
+,Neulgeori,"31,590",290,AMS,
+,Neulgeori,"25,150",150,AMS,
+,Neulgeori,"30,640",200,AMS,
+,Neulgeori,"23,490",150,AMS,
+,Sangsari,"7,510",50,AMS,
+,Sangsari,"14,670",80,AMS,
+,Sangsari,"19,670",100,AMS,
+,Sangsari,"19,800",110,AMS,
+,Sangsari,"23,040",160,AMS,
+,Sangsari,"8,070",50,AMS,
+,Sangsari,"14,700",70,AMS,
+,Sangsari,"15,270",70,AMS,
+,Sangsari,"19,840",100,AMS,
+,Sangsari,"37,640",300,AMS,
+,Sangsari,"37,040",300,AMS,
+,Sangsari,"31,350",220,AMS,
+,Yongsujaeul,"42,080",600,AMS,Excavation report : 포천 중리 용수재울
+,Yongsujaeul,"24,060",130,AMS,
+,Oesanpori,"53,000","3,000",OSL,Excavation report : 홍천 내외삼포리
+,Oesanpori,"58,000","4,000",OSL,
+,Oesanpori,"51,000","4,000",OSL,
+,Oesanpori,"53,000","4,000",OSL,
+,Oesanpori,"58,000","4,000",OSL,
+,Oesanpori,"63,000","4,000",OSL,
+,Oesanpori,"54,000","4,000",OSL,
+,Oesanpori,"56,000","4,000",OSL,
+,Mogokri,"52,000",300,OSL,Excavation report : 홍천 모곡리
+,Mogokri,"57,000","3,000",OSL,
+,Mogokri,"51,000",300,OSL,
+,Mogokri,"59,000","3,000",OSL,
+,Mogokri,"56,000","4,000",OSL,
+,Mogokri,"68,000","6,000",OSL,
+,Yeonbong,"41,600",600,AMS,Excavation report : 홍천 연봉
+,Yeonbong,"45,900","1,200",AMS,
+,Hahwagyeri_1,"34,000","2,000",OSL,Excavation report : 홍천 하화계리 구석기유적 1 (2011)
+,Hahwagyeri_1,"33,000","2,000",OSL,
+,Hahwagyeri_1,"36,000","3,000",OSL,
+,Hahwagyeri_1,"39,000","3,000",OSL,
+,Hahwagyeri_S,"40,000","3,000",OSL,Excavation report : 홍천 하화계리 수삼수매장 (2008)
+,Hahwagyeri_S,"52,000","3,000",OSL,
+,Hahwagyeri_S,"95,000","6,000",OSL,
+,Hahwagyeri_S,"71,000","4,000",OSL,
+,Hahwagyeri_S,"68,000","3,000",OSL,
+,Hahwagyeri_S,"73,000","3,000",OSL,
+,Hahwagyeri_S,"59,000","3,000",OSL,

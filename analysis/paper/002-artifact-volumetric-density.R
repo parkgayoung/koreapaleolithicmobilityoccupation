@@ -17,8 +17,6 @@ kasa <- read.csv(here("analysis/data/raw_data/Assemblage_info.csv"))
 #volume of the cultural layer from KAS data sheet.
 kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 
-dates <- read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
-
 # join artefact type freqs with site data
 
 kasa %>%
@@ -98,7 +96,10 @@ library(cowplot)
 ggdraw(density_sp_main_plot) +
   draw_plot(density_sp_sub_plot,
             .37, .62,
-            .32, .33)
+            .32, .33) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+                               plot.background = element_rect(fill='white', colour="white"))
+
 
 ggsave(here::here("analysis/figures/002-age-by-density.png"),
        width = 4.45,

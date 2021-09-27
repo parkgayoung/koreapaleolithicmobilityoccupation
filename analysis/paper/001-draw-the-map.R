@@ -143,7 +143,10 @@ ggdraw() +
             width = .4, # Inset width
             height = .35, # Inset height
             scale = 0.5 # Inset scale
-            )
+            ) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+                       plot.background = element_rect(fill='white', colour="white"))
+
 
 ggsave(here::here("analysis/figures/001-site-map.png"),
        width = 4.45,

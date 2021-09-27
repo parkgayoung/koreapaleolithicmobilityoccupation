@@ -104,7 +104,6 @@ df_value <- round(unname(kas_sites_retouch_density_corr$parameter ), 3)
 combined_retouch_density_ttest_str <-
   paste0("t(", df_value, ") = ", t_value, ", p = ", p_value)
 
-
 size <-  6
 Assemblage_info_retouch_density_ages_prop_main_plot <-
   ggplot(Assemblage_info_retouch_density_ages_prop,
@@ -156,7 +155,10 @@ ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
             .35, .28) +
   draw_plot(retouch_sp_sub_plot,
             .46, .1,
-            .23, .28)
+            .23, .28) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+                               plot.background = element_rect(fill='white', colour="white"))
+
 
 
 ggsave(here::here("analysis/figures/003-retouch-by-density.png"),

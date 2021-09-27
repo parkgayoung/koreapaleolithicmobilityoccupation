@@ -4,8 +4,32 @@ library(ggrepel)
 library(here)
 library(cowplot)
 
+<<<<<<< HEAD
 # import the data
 source(here::here("analysis/paper/008-summed-probability-distributions.R"))
+=======
+dates <-
+  read.csv(here("analysis/data/raw_data/Radiocarbon dates_revision.csv"))
+
+dates_clean <-
+  dates %>%
+  mutate(age = parse_number(as.character(age)),
+         error = parse_number(as.character(error))) %>%
+  # filter age range here
+  filter(age < 50500,
+         age >= 10000,
+         method == 'AMS') %>%   #exclude OSL dates
+  filter(!site_name_original %in% c('Nobong',
+                                    'Geoduri',
+                                    'Geumneungdong',
+                                    'Janggi',
+                                    'Sanggari',
+                                    'Sinheug',
+                                    'Oeryang',
+                                    'Eosanri',
+                                    'Jeommal',
+                                    'Pyeongneungdong'))#exclude sites that have only one date
+>>>>>>> 9bd768474400b84f5496496025189e7c913c0f5f
 
 # devtools::install_github('ahb108/rcarbon')
 library(rcarbon)
@@ -110,10 +134,10 @@ log_test  <- modelTest(spd_dates,
 
 
 # look at p-values for the models
-exp_test$pval #0.09090909
-uni_test$pval #0.09090909
-lin_test$pval #0.09090909
-log_test$pval #0.09090909
+exp_test$pval #0.000999001
+uni_test$pval #0.000999001
+lin_test$pval #0.000999001
+log_test$pval #0.000999001
 # they are all the same!
 
 ## rank models by AIC score with subset of ages
@@ -142,15 +166,15 @@ aic <- AIC(
 df_aic <- data.frame (Model = c("logistic",
                                 "exponential",
                                 "linear"
-                               # "uniform"
+                                #"uniform"
                                 ),
                      df = c(aic$df),
                      AIC = c(aic$AIC)) %>%
   arrange(-AIC)
 # Model df       AIC
-#  logistic  4     -363176.8
-#  exponential  3  -368376.7
-#  linear  3       -368425.3
+#  logistic  4     -317406.6
+#  exponential  3  -323057.0
+#  linear  3       -323542.5
 
 
 ## plots for all three models.
@@ -420,9 +444,14 @@ mtext(
   font = 2,
   cex = 0.8
 )
+
 }
 
-ggdraw(p1)
+library(gridGraphics)
+ggdraw(p1) +
+  theme(panel.background = element_rect(fill='white', colour="white"),
+        plot.background = element_rect(fill='white', colour="white"))
+
 
 ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.png"),
        h = 15,
@@ -437,7 +466,7 @@ ggsave(here::here("analysis/figures/008-summed-probability-distribution-models.p
 #     w = 13,
 #     res = 1000,
 #     units = "cm")
-#
+# #
 # p1
 #
 # # now close the connection to the PNG file so we can take a look at it

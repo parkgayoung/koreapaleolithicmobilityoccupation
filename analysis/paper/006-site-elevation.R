@@ -78,7 +78,9 @@ library(cowplot)
 ggdraw(elevation_sp_main_plot) +
   draw_plot(elevation_sp_sub_plot,
             .66, .60,
-            .29, .32)
+            .29, .32) +  theme(panel.background = element_rect(fill='white', colour="white"),
+                               plot.background = element_rect(fill='white', colour="white"))
+
 
 ggsave(here::here("analysis/figures/006-site-elevation.png"),
        width = 4.45,
