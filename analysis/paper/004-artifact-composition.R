@@ -49,7 +49,8 @@ kasa_long1 <-
                   'flake',
                    'debris',
                    'beak_shaped',
-                  'awl')
+                  'awl',
+                  'anvil')
                    ) %>%
   # if percentage is <10%, call it 'other'
    mutate(artefact_type =   X1 #ifelse(as.character(X) == 'stemmed_point',

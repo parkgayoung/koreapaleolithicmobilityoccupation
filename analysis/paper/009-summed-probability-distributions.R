@@ -14,7 +14,17 @@ dates_clean <-
   # filter age range here
   filter(age < 50500,
          age >= 10000,
-         method == 'AMS')
+         method == 'AMS') %>%   #exclude OSL dates
+  filter(!site_name_original %in% c('Nobong',
+                                    'Geoduri',
+                                    'Geumneungdong',
+                                    'Janggi',
+                                    'Sanggari',
+                                    'Sinheug',
+                                    'Oeryang',
+                                    'Eosanri',
+                                    'Jeommal',
+                                    'Pyeongneungdong'))#exclude sites that have only one date
 
 # devtools::install_github('ahb108/rcarbon')
 library(rcarbon)

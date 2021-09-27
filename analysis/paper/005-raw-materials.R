@@ -41,7 +41,13 @@ mydata_ages <-
       'limestone',
       'granite',
       'gneiss',
-      'tuff')) %>%
+      'tuff',
+      'amphibolite',
+      'andesite',
+      'grit',
+      'metamorphic-rock',
+      'quartzitic-gneiss',
+      'siliceous-schist')) %>%
   # if percentage is <10%, call it 'other'
   mutate(raw_material = X) %>%  #ifelse(percentage >= 10, as.character(X), "other")) %>%
   #mutate(raw_material = ifelse(raw_material == "etc.", "other", raw_material)) %>%
