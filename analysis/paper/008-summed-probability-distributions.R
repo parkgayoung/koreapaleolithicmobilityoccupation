@@ -6,6 +6,7 @@ library(here)
 dates <-
   read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
 
+
 dates_clean <-
   dates %>%
   mutate(age = parse_number(as.character(age)),
@@ -13,5 +14,14 @@ dates_clean <-
   # filter age range here
   filter(age < 50500,
          age >= 10000,
-         method == 'AMS')
-
+         method == 'AMS') %>%   #exclude OSL dates
+  filter(!site_name_original %in% c('Nobong',
+                                    'Geoduri',
+                                    'Geumneungdong',
+                                    'Janggi',
+                                    'Sanggari',
+                                    'Sinheug',
+                                    'Oeryang',
+                                    'Eosanri',
+                                    'Jeommal',
+                                    'Pyeongneungdong'))
