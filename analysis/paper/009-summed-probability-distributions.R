@@ -4,17 +4,8 @@ library(ggrepel)
 library(here)
 library(cowplot)
 
-dates <-
-  read.csv(here("analysis/data/raw_data/Radiocarbon dates.csv"))
-
-dates_clean <-
-  dates %>%
-  mutate(age = parse_number(as.character(age)),
-         error = parse_number(as.character(error))) %>%
-  # filter age range here
-  filter(age < 50500,
-         age >= 10000,
-         method == 'AMS')
+# import the data
+source(here::here("analysis/paper/008-summed-probability-distributions.R"))
 
 # devtools::install_github('ahb108/rcarbon')
 library(rcarbon)
