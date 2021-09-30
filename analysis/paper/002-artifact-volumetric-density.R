@@ -20,10 +20,10 @@ kasv <- read.csv(here("analysis/data/raw_data/Dating_info.csv"))
 # join artefact type freqs with site data
 
 kasa %>%
-  pivot_longer(-X,
+  pivot_longer(-X1,
                names_to = "site_name",
                values_to = "count") %>%
-  pivot_wider(names_from = "X",
+  pivot_wider(names_from = "X1",
               values_from = "count") %>%
   left_join(mydata)
 
