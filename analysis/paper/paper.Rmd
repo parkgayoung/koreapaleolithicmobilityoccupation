@@ -1,8 +1,8 @@
 ---
 title: "How did the introduction of Stemmed Points affect Mobility and Site Occupation during the Late Pleistocene in Korea?"
 author:
-  - Gayoung Park
-  - Ben Marwick
+  - Gayoung Park (University of Washington)
+  - Ben Marwick (University of Washington)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
     bookdown::word_document2: 
@@ -179,7 +179,7 @@ quietly(source(here::here("analysis/paper/007-climate-model-plots.R")))
 knitr::include_graphics(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"))
 ```
 
-Among the sites in our sample there is a variation of about 5 degrees in the mean annual temperature (MAT), mostly controlled by elevation (Figure \@ref(fig:climate-model)). Through MIS 3, the temperature gradually decreased until the Last Glacial Maximum (LGM, 26.5-20 ka) (Clark et al., 2009). The MAT of MIS 2, including LGM, was relatively stable. The temperature increased again from late MIS 2 towards MIS 1. Compared to the east side of the Korean Peninsula, the west side tends to be relatively warmer. The range of MAT at the sites over our study period is 2-10℃. Gihwari and Gigok sites have the lowest (3℃) and Jeungsan-ri site has the highest MAT (8℃). The mean MAT for all sites fluctuated within 4℃ between 50 ka and 10 ka. The first appearance of stemmed points occurred in the middle of the decreasing MAT trend in MIS 3, at 40-35 ka. Figure 7D shows a negative relationship between temperature and elevation. For example, Gihwari Cave site, with one of the lowest MAT distributions, is located in the highest elevation around 300m above sea level. Jeungsanri is located at a lower elevation and has one of the highest MAT distributions.
+Among the sites in our sample there is a variation of about 5 degrees in the mean annual temperature (MAT), mostly controlled by elevation (Figure \@ref(fig:climate-model)). Through MIS 3, the temperature gradually decreased until the Last Glacial Maximum (LGM, 26.5-20 ka) (Clark et al., 2009). The MAT of MIS 2, including LGM, was relatively stable. The temperature increased again from late MIS 2 towards MIS 1. Compared to the east side of the Korean Peninsula, the west side tends to be relatively warmer. The range of MAT at the sites over our study period is 2-10℃. Gihwari and Gigok sites have the lowest (3℃) and Jeungsan-ri site has the highest MAT (8℃). The mean MAT for all sites fluctuated within 4℃ between 50 ka and 10 ka. The first appearance of stemmed points occurred in the middle of the decreasing MAT trend in MIS 3, at 40-35 ka. Figure 9D shows a negative relationship between temperature and elevation. For example, Gihwari Cave site, with one of the lowest MAT distributions, is located in the highest elevation around 300m above sea level. Jeungsanri is located at a lower elevation and has one of the highest MAT distributions.
 
 
 ## Demographic Context {-}
