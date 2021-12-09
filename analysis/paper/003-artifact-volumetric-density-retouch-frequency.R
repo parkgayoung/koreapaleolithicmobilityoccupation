@@ -57,7 +57,8 @@ retouch_over_time_subplot <-
              colour = "grey80") +
   labs(x = "Age of assemblage (ka)",
        y = "Proportion retouched") +
-  theme_bw(base_size = 4)
+  theme_bw(base_size = 4) +
+  theme(axis.title = element_text(size = 6.5))
 
 
 # compute t-test for retouch pieces and SP existence
@@ -87,7 +88,9 @@ retouch_sp_sub_plot <-
            size = 1.5) +
   theme_bw(base_size = 4)  +
   labs(x = "Contains stemmed points?",
-       y = "Proportion retouched")
+       y = "Proportion retouched",
+       size = 2) +
+  theme(axis.title = element_text(size = 6.5))
 
 # compute correlation
 kas_sites_retouch_density_corr <-
@@ -146,7 +149,8 @@ Assemblage_info_retouch_density_ages_prop_main_plot <-
            y = 0.03,
            label = glue('r = {round(r_value, 3)}, t({df_value}) =  {round(t_value, 3)}, p = {round(p_value, 3)}'),
            size = size - 3,
-           colour = "grey50")
+           colour = "grey50") +
+  theme(axis.title = element_text(size = 11))
 
 
 ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
@@ -162,7 +166,7 @@ ggdraw(Assemblage_info_retouch_density_ages_prop_main_plot) +
 
 
 ggsave(here::here("analysis/figures/003-retouch-by-density.png"),
-       width = 4.45,
-       height = 4.45,
+       width = 6,
+       height = 6,
        units = "in")
 
