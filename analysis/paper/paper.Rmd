@@ -1,13 +1,25 @@
 ---
 title: "How did the introduction of Stemmed Points affect Mobility and Site Occupation during the Late Pleistocene in Korea?"
 author:
-  - Gayoung Park
-  - Ben Marwick
+  - Gayoung Park:
+      email: gayoungp@uw.edu
+      institute: [UofW]
+      correspondence: true
+  - Ben Marwick:
+      email: bmarwick@uw.edu
+      institute: [UofW]
+      correspondence: false
+institute:
+  - UofW: Department of Anthropology, University of Washington, Seattle, USA
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-    bookdown::word_document2: 
+    bookdown::word_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
+      pandoc_args:
+      - --lua-filter=../templates/scholarly-metadata.lua
+      - --lua-filter=../templates/author-info-blocks.lua
+      - --lua-filter=../templates/pagebreak.lua
 bibliography: references.bib
 csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
 abstract: |
@@ -122,7 +134,7 @@ We used SPD to test for correlations between population, environmental proxies a
 
 ## Reproducibility and Open Source Materials {-}
 
-The entire R code [@Rlanguage2019] used for all the analysis and visualizations contained in this paper is included in the Supplementary Online Materials at https://osf.io/jxwy5/ to enable re-use of materials and improve reproducibility and transparency [@Marwick2017]. Also in this version-controlled compendium [@marwick2018packaging] are the raw data for all the visualizations and tests reported here. All of the figures, tables, and statistical test results presented here can be independently reproduced with the code and data in this repository. The code is released under the MIT license, the data as CC-0, and figures as CC-BY, to enable maximum re-use.
+The entire R code [@Rlanguage2019] used for all the analysis and visualizations contained in this paper is included in the Supplementary Online Materials at https://doi.org/10.17605/OSF.IO/JXWY5 to enable re-use of materials and improve reproducibility and transparency [@Marwick2017]. Also in this version-controlled compendium [@marwick2018packaging] are the raw data for all the visualizations and tests reported here. All of the figures, tables, and statistical test results presented here can be independently reproduced with the code and data in this repository. The code is released under the MIT license, the data as CC-0, and figures as CC-BY, to enable maximum re-use.
 
 # Results {-}
 
