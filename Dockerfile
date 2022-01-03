@@ -13,8 +13,8 @@ RUN . /etc/environment \
   && sudo apt-get update \
   && sudo apt-get install libudunits2-dev -y \
   # build this compendium package
-  && R -e "devtools::install('/koreapaleolithicmobilityoccupation', dep=TRUE)" \
   && R -e "remotes::install_github('3wen/legendMap', type = 'source', dependencies=TRUE)" \
+  && R -e "devtools::install('/koreapaleolithicmobilityoccupation', dep=TRUE)" \
   # render the manuscript into a docx, you'll need to edit this if you've
   # customised the location and name of your main Rmd file
   && R -e "rmarkdown::render('/koreapaleolithicmobilityoccupation/analysis/paper/paper.Rmd')"
