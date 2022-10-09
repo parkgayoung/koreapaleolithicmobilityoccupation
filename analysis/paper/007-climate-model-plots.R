@@ -293,13 +293,64 @@ ggsave(here::here("analysis/figures/007-climate-model-sites-panel-plot.png"),
        height = 5,
        units = "in")
 
-
-
-
 #save MAT plot for another figure with spd
 # save(mat_time_series_plot_annotated, file = "mat_time.RData")
 # To load the data again
 # load("mat_time.RData")
 
 
+# This plot is for tcsa paper. I added background color for the exsiting plot.
+# ggplot() +
+#   annotate ("rect",
+#             xmin = 14000, xmax = 29000,
+#             ymin = -Inf, ymax = Inf, fill = "lightgrey",
+#             alpha = .4) +
+#   annotate("rect",
+#            xmin = 19000, xmax = 26500,
+#            ymin = -Inf, ymax = Inf, fill = "grey",
+#            alpha = .4)   +
+#   geom_line(data = site_locations_tbl_temps,
+#             aes(-year,
+#                 mean_annual_temperature,
+#                 group = site_name),
+#             colour = "grey90") +
+#   geom_line(data = site_locations_tbl_temps %>%
+#               group_by(year) %>%
+#               summarise(mean_mean_annual_temperature = mean(mean_annual_temperature,
+#                                                             na.rm = TRUE)),
+#             aes(-year,
+#                 mean_mean_annual_temperature),
+#             size = 1) +
+#   annotate("text",
+#            x = 11100,
+#            y = 11,
+#            label = "MIS\n1",
+#            size = 3) +
+#   annotate("text",
+#            x = 22000,
+#            y = 11,
+#            label = "MIS\n2",
+#            size = 3) +
+#   annotate("text",
+#            x = 38000,
+#            y = 11,
+#            label = "MIS\n3",
+#            size = 3) +
+#   annotate("text",
+#            x = 22500,
+#            y = 9.7,
+#            label = "LGM",
+#            size = 2) +
+#   scale_x_continuous(labels = scales::comma) +
+#   coord_cartesian(ylim = c(1, 12)) +
+#   theme_minimal(base_size = base_size ) +
+#   labs(y = "Mean annual temperature (MAT, °C)",
+#        x = "Year (BP)")
+#
+#
+# ggsave(here::here("analysis/figures/007-tcsa-climate-model-sites-panel-plot.png"),
+#        width = 4.45,
+#        height = 5,
+#        units = "in",
+#        bg = "white")
 
