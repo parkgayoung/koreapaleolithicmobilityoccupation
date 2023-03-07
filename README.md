@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# koreapaleolithicmobilityoccupation
+# How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?
 
 <!-- badges: start -->
 
@@ -11,24 +11,23 @@ Status](https://travis-ci.org/parkgayoung/koreapaleolithicmobilityoccupation.svg
 Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parkgayoung/koreapaleolithicmobilityoccupation/master?urlpath=rstudio)
 <!-- badges: end -->
 
-This repository contains the data and code for our paper:
+This repository contains the data and code for our paper. Our paper
+is online here:
 
-> Authors, (YYYY). *Title of your paper goes here*. Name of journal/book
-> <https://doi.org/xxx/xxx>
-
-Our pre-print is online here:
-
-> Authors, (YYYY). *Title of your paper goes here*. Name of
-> journal/book, Accessed 20 Nov 2019. Online at
-> <https://doi.org/xxx/xxx>
+> Park, G., B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*. 
+> Quaternary Science Reviews 277
+> <https://doi.org/10.1016/j.quascirev.2021.107312>
 
 ### How to cite
 
 Please cite this compendium as:
 
+> Park, G., B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*
+> Quaternary Science Reviews 277, Accessed 20 Nov 2019. Online at
+
 > Authors, (2019). *Compendium of R code and data for Title of your
 > paper goes here*. Accessed 20 Nov 2019. Online at
-> <https://doi.org/xxx/xxx>
+> <https://doi.org/10.17605/OSF.IO/JXWY5>
 
 ### How to download or install
 
