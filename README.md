@@ -14,7 +14,7 @@ Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/parkgayo
 This repository contains the data and code for our paper. Our paper
 is online here:
 
-> Park, G., B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*. 
+> G. Park, B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*. 
 > Quaternary Science Reviews 277
 > <https://doi.org/10.1016/j.quascirev.2021.107312>
 
@@ -22,7 +22,7 @@ is online here:
 
 Please cite this compendium as:
 
-> Park, G., B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*
+> G. Park, B. Marwick, (2022). *How did the introduction of stemmed points affect mobility and site occupation during the late Pleistocene in Korea?*
 > Quaternary Science Reviews 277, Accessed 20 Nov 2019. Online at
 > <https://doi.org/10.17605/OSF.IO/JXWY5>
 
